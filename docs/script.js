@@ -335,7 +335,6 @@ function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
-
 function displayColoredName(nickName, colors) {
   coloredNick.classList.remove('minecraftbold', 'minecraftibold', 'minecraftitalic');
   if (document.getElementById('bold').checked) {
