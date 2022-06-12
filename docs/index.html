@@ -38,13 +38,13 @@
                 <div id="output">
                   <label id="label4" for="outputText">Output</label>
                   <label id="graylabel2" class="gray" for="outputText" style="font-weight: normal;">Copy-paste this for RGB text!</label>
-                  <pre id="outputText" style="border-radius: 10px; white-space: pre-wrap; height: 70px; margin-right: 15px; font-family: MinecraftRegular; margin-bottom: 5px;"
-                       onclick="copyTextToClipboard(this.textContent);"></pre>
+                  <pre id="outputText" 
+                    onclick="copyTextToClipboard(this.textContent);"></pre>
                   <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
                 </div>
               </div>
               <div class="row">
-                <div id="coloredNick" class="minecraft"></div>
+                <div id="coloredNick"></div>
               </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
@@ -55,7 +55,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-3" style="padding-left: 0;">
+                <div class="col-md-3" style="padding-left: 0;" id="minecraft">
                   <label for="output-format">Output format</label>
                   <select id="output-format"
                           class="form-control"
@@ -86,7 +86,7 @@
                 <label for="numOfColors">Número de colores</label>
                 <input class="form-control"
                        style="width: 75px;"
-                       value="2" id="numOfColors" type="number" min="2" max="10"
+                       value="2" id="numOfColors" type="number" min="2" max="20"
                        onchange="updateOutputText(event); toggleColors(this.value);"
                        oninput="updateOutputText(event); toggleColors(this.value);"/>
               </div>

@@ -5,18 +5,23 @@
     background-color:#ffd5f2;
     border-color:#43245c;
     color:rgb(39, 39, 39);
+    font-family: MinecraftRegular;
   }
   .darkgray {
-    color:rgb(134, 134, 134);
+    color:rgb(211, 211, 211);
+    font-family: MinecraftRegular;
   }
   .gray {
-    color:gray;
+    color:rgb(172, 172, 172);
+    font-family: MinecraftRegular;
   }
   .darkerrortext {
     color:red;
+    font-family: MinecraftRegular;
   }
   .errortext {
     color:darkred;
+    font-family: MinecraftRegular;
   }
   .pp::-webkit-scrollbar {
     display: none; 
@@ -25,14 +30,15 @@
     -ms-overflow-style: none; scrollbar-width: none;
   }
   body.dark {
-    background-image: url(../assets/images/galaxy-bg.png);
     background-color:#67118f9a;
     color:rgb(53, 53, 53);
+    font-family: MinecraftRegular;
   }
   select.dark {
     background-color:#27152c;
     border-color:#2C3844;
     color:white;
+    font-family: MinecraftRegular;
   }
   #colors {
     height: 130px;
@@ -93,6 +99,7 @@
   #coloredNick {
     font-size: 4rem;
     word-wrap: break-word;
+    font-family: MinecraftRegular;
   }
   .minecraft {
     font-family: MinecraftRegular;
@@ -121,6 +128,7 @@
     margin-left:0;
     margin-right:auto;
     margin-top:120px;
+    font-family: MinecraftRegular;
   }
   #title {
       position:relative;
@@ -130,9 +138,17 @@
       color: transparent;
       animation: rainbow_animation 6s ease-in-out infinite;
       background-size: 400% 100%;
+      font-family: MinecraftRegular;
+  }
+  #outputText {
+    white-space: pre-wrap;
+    cursor: pointer;
+    height: 95px;
+    font-family: MinecraftRegular;
   }
   #inputs{
     position: relative;
+    font-family: MinecraftRegular;
   }
   @keyframes rainbow_animation {
       0%,100% {
@@ -143,7 +159,13 @@
           background-position: 100% 0;
       }
   }
+  #error {
+    font-size: 15px;
+    font-family: MinecraftBoldItalic;
+    color: red;
+    display: none;
+    margin-bottom: 10px;
+  }
   body{
     margin: auto;
   }
-  

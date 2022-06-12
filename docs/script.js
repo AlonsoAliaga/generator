@@ -1,7 +1,7 @@
 // elements for obtaining vals
 const nickName = document.getElementById('nickname');
 const coloredNick = document.getElementById('coloredNick');
-const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
+const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
 const presets = {
   1: {
     colors: ["FF0000", "FF7F00", "FFFF00", "00FF00", "0000FF", "4B0082", "9400D3"],
@@ -67,8 +67,8 @@ const formats = {
   },
   9: {
     outputPrefix: '',
-    template: '#$1$2$3$4$5$6$c',
-    formatChar: null,
+    template: '#$1$2$3$4$5$6$f$c',
+    formatChar: '&',
     maxLength: null
   },
 };
@@ -81,7 +81,6 @@ function darkMode() {
     document.getElementById('numOfColors').classList.add("dark");
     document.getElementById('graylabel1').classList.replace("gray", "darkgray");
     document.getElementById('graylabel2').classList.replace("gray", "darkgray");
-    document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('error').classList.replace("errortext", "darkerrortext");
     document.getElementById('numOfColors').classList.add("darktextboxes");
@@ -113,8 +112,6 @@ function getRandomHexColor() {
      return Math.floor(Math.random()*16777215).toString(16).toUpperCase();
 }
 
-/* 
-Copies contents to clipboard
 function copyTextToClipboard(text) {
   let textArea = document.createElement('textarea');
   textArea.value = text;
@@ -124,10 +121,9 @@ function copyTextToClipboard(text) {
   textArea.select();
 
   document.execCommand('copy');
-  alert('Copied output!');
+  alert('You text was copied! Ready to paste!\n\nThanks for using our tool!\n- AlonsoAliaga');
   document.body.removeChild(textArea);
 }
-*/
 
 function showError(show) {
   if (show) {
@@ -230,7 +226,7 @@ class TwoStopGradient {
 
 /* Toggles the number of gradient colors between 2 and 10 based on user input */
 function toggleColors(colors) {
-  let clamped = Math.min(10, Math.max(2, colors));
+  let clamped = Math.min(20, Math.max(2, colors));
   if (colors == 1 || colors == '') {
     colors = getColors().length;
   } else if (colors != clamped) {
