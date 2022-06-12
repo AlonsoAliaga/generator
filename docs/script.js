@@ -62,6 +62,12 @@ const formats = {
     formatChar: null,
     maxLength: null
   },
+  9: {
+    outputPrefix: '',
+    template: '&#$1$2$3$4$5$6$c',
+    formatChar: null,
+    maxLength: null
+  },
 };
 
 function darkMode() {
