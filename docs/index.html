@@ -4,7 +4,7 @@
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="assets/images/new_birdflop_logo_large.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://rbg.birdflop.com/assets/images/new_birdflop_logo_large.png" type="image/x-icon">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript"  src="/assets/js/js.cookie.js"></script>
@@ -48,15 +48,15 @@
               </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
-                  <label for="nickname">Mensaje</label>
+                  <label for="nickname">Message</label>
                   <input class="form-control" id="nickname" type="text" maxlength="100" placeholder="Your Text"
-                         value="birdflop.com" oninput="javascript: updateOutputText(event);"
+                         value="alonsoaliaga.com/generator" oninput="javascript: updateOutputText(event);"
                          onchange="javascript: updateOutputText(event)">
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
-                  <label for="output-format">Format de salida</label>
+                  <label for="output-format">Output format</label>
                   <select id="output-format"
                           class="form-control"
                           onchange="updateOutputText(event);">
@@ -66,18 +66,19 @@
                     <option value='8'>MOTD (\u00A7x)</option>
                     <option value='1'>Chat (<#rrggbb>)</option>
                     <option value='7'>BBCode [COLOR=#rrggbb]</option>
-                    <option value='9'>Tags (<#rrggbb>)</option>
+                    <option value='9'>AlonsoTags (#rrggbb)</option>
                   </select>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
-                  <label for="color-preset">Color Predefinido</label>
+                  <label for="color-preset">Presets colors</label>
                   <select id="color-preset"
                           class="form-control"
                           onchange="preset(this.value); updateOutputText(event); ">
                     <option value='0'>None</option>
                     <option value='1'>Rainbow</option>
+                    <option value='2'>Fire</option>
                   </select>
                 </div>
               </div>

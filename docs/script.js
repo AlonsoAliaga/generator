@@ -5,6 +5,9 @@ const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(
 const presets = {
   1: {
     colors: ["FF0000", "FF7F00", "FFFF00", "00FF00", "0000FF", "4B0082", "9400D3"],
+  },
+  2: {
+    colors: ["d4220b", "731b02", "d67309"],
   }
 }
 const formats = {
@@ -275,7 +278,7 @@ function updateOutputText(event) {
     if (nickName.value) {
       let letters = /^[0-9a-zA-Z_]+$/;
       if (!nickName.value.match(letters)) nickName.value = nickName.value.replace(event.data, '');
-      if (!nickName.value.match(letters)) nickName.value = 'birdflop.com';
+      if (!nickName.value.match(letters)) nickName.value = 'alonsoaliaga.com/generator';
     }
   }
 
