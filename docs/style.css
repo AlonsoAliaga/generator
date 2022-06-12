@@ -1,3 +1,9 @@
+
+body {
+  background: rgb(49, 49, 49);
+  color: lightgray;
+  font-family: MinecraftRegular;
+}
 .color {
     width: 100%;
   }
