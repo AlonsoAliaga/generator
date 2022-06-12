@@ -82,6 +82,7 @@ function darkMode() {
     document.getElementById('graylabel1').classList.replace("gray", "darkgray");
     document.getElementById('graylabel2').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
+    document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('error').classList.replace("errortext", "darkerrortext");
     document.getElementById('numOfColors').classList.add("darktextboxes");
     document.getElementById('nickname').classList.add("darktextboxes");
@@ -356,10 +357,14 @@ function displayColoredName(nickName, colors) {
     } else if (document.getElementById('strike').checked) {
       coloredNickSpan.classList.add('minecraftstrike');
     }
-    coloredNickSpan.style.color = colors[i];
+    coloredNickSpan.style.color = "#"+colors[i];
+    //coloredNickSpan.setAttribute("style","color: #"+colors[i]+";");
+    //coloredNickSpan.innerHTML = '<span style="color:'+colors[i]+'>'+nickName[i]+'</span>';
+    //coloredNickSpan.style.backgroundColor = colors[i];
     coloredNickSpan.textContent = nickName[i];
     coloredNick.append(coloredNickSpan);
   }
+  //alert(colors);
 }
 
 function preset(n) {
