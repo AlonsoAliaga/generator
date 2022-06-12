@@ -26,7 +26,7 @@
   }
   body.dark {
     background-color:#470a53;
-    color:white;
+    color:rgb(53, 53, 53);
   }
   select.dark {
     background-color:#27152c;
