@@ -4,10 +4,10 @@
   .darktextboxes {
     background-color:#ffd5f2;
     border-color:#43245c;
-    color:white;
+    color:rgb(39, 39, 39);
   }
   .darkgray {
-    color:darkgray;
+    color:rgb(44, 44, 44);
   }
   .gray {
     color:gray;
