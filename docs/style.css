@@ -25,16 +25,16 @@
     -ms-overflow-style: none; scrollbar-width: none;
   }
   body.dark {
-    background-color:#6f4677;
+    background-color:#470a53;
     color:white;
   }
   select.dark {
-    background-color:#1f1522;
+    background-color:#27152c;
     border-color:#2C3844;
     color:white;
   }
   #colors {
-    height: 120px;
+    height: 130px;
     display: flex;
     flex-direction: row;
   }
