@@ -1,4 +1,4 @@
-.color {
+  .color {
     width: 100%;
   }
   .darktextboxes {
@@ -116,7 +116,7 @@
   }
   footer{
     display: table;
-    text-align: center;
+    text-align: left;
     margin-left:0;
     margin-right:auto;
     margin-top:120px;
@@ -153,6 +153,13 @@
     display: none;
     margin-bottom: 10px;
   }
+  a {
+    color: #940b39;
+  }
+  a:hover {
+    color: #640257
+  }
   body{
     margin: auto;
+    font-family: MinecraftRegular;
   }

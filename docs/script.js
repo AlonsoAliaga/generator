@@ -7,7 +7,76 @@ const presets = {
     colors: ["FF0000", "FF7F00", "FFFF00", "00FF00", "0000FF", "4B0082", "9400D3"],
   },
   2: {
-    colors: ["d4220b", "731b02", "d67309"],
+    colors: ["A10100", "DA3604", "FE650D", "FFC11F", "FFF75D"],
+  },
+  3: {
+    colors: ["FF5F6D", "FFC371"],
+  },
+  4: {
+    colors: ["000000", "434343"],
+  },
+  5: {
+    colors: ["0099F7", "F11712"],
+  },
+  6: {
+    colors: ["8E0E00", "1F1C18"],
+  },
+  7: {
+    colors: ["fc00ff", "00dbde"],
+  },
+  8: {
+    colors: ["ee9ca7", "ffdde1"],
+  },
+  9: {
+    colors: ["833ab4", "fd1d1d", "fcb045"],
+  },
+  10: {
+    colors: ["6441A5", "2a0845"],
+  },
+  11: {
+    colors: ["fe8c00", "f83600"],
+  },
+  12: {
+    colors: ["00c6ff", "0072ff"],
+  },
+  13: {
+    colors: ["9D50BB", "6E48AA"],
+  },
+  14: {
+    colors: ["F0C27B", "4B1248"],
+  },
+  15: {
+    colors: ["FF512F", "DD2476"],
+  },
+  16: {
+    colors: ["12c2e9", "c471ed", "f64f59"],
+  },
+  17: {
+    colors: ["009FFF", "ec2F4B"],
+  },
+  18: {
+    colors: ["03001e", "7303c0", "ec38bc", "fdeff9"],
+  },
+  19: {
+    colors: ["#ff00cc", "#333399"],
+  },
+  20: {
+    colors: ["6a11cb", "2575fc"],
+  },
+  21: {
+    colors: ["f83600", "f9d423"],
+  },
+  22: {
+    colors: ["fc5c7d", "6a82fb"],
+  },
+  23: {
+    colors: ["ff512f", "f09819"],
+  },
+  24: {
+    colors: ["88d3ce", "6e45e2"],
+  },
+  25: {
+    colors: ["ff0844", "ffb199"],
   }
 }
 const formats = {
@@ -68,6 +137,12 @@ const formats = {
   9: {
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
+    formatChar: '&',
+    maxLength: null
+  },
+  10: {
+    outputPrefix: '',
+    template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: null
   },

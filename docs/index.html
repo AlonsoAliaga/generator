@@ -11,7 +11,7 @@
     <title>RGB Gradient Creator</title>
   </head>
 
-  <body id="bg" class="container" style="font-family: Quicksand;">
+  <body id="bg" class="container">
   
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -36,7 +36,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div id="output">
-                  <label id="label4" for="outputText">Output</label>
+                  <label id="label4" for="outputText">Output:</label>
                   <label id="graylabel2" class="gray" for="outputText" style="font-weight: normal;"> Copy-paste this for RGB text!</label>
                   <pre id="outputText" 
                     onclick="copyTextToClipboard(this.textContent);"></pre>
@@ -62,11 +62,14 @@
                           onchange="updateOutputText(event);">
                     <option value='0'>Default (&#rrggbb)</option>
                     <option value='2'>Legacy (&x&r&r&g&g&b&b)</option>
+                    <option value='3'>Nick (&#rrggbb)</option>
+                    <option value='4'>Nick Special (<&#rrggbb>)</option>
                     <option value='6'>Console (§x§r§r§g§g§b§b)</option>
                     <option value='8'>MOTD (\u00A7x)</option>
                     <option value='1'>Chat (<#rrggbb>)</option>
                     <option value='7'>BBCode [COLOR=#rrggbb]</option>
                     <option value='9'>AlonsoTags (#rrggbb)</option>
+                    <option value='10'>AlonsoChat (&#rrggbb)</option>
                   </select>
                 </div>
               </div>
@@ -79,6 +82,29 @@
                     <option value='0'>None</option>
                     <option value='1'>Rainbow</option>
                     <option value='2'>Fire</option>
+                    <option value='3'>Sweet Morning</option>
+                    <option value='4'>Deep Space</option>
+                    <option value='5'>Superman</option>
+                    <option value='6'>Netflix</option>
+                    <option value='7'>Timber</option>
+                    <option value='8'>Piglet</option>
+                    <option value='9'>Instagram</option>
+                    <option value='10'>Twitch</option>
+                    <option value='11'>SoundCloud</option>
+                    <option value='12'>Facebook</option>
+                    <option value='13'>Amethyst</option>
+                    <option value='14'>Starfall</option>
+                    <option value='15'>Bloody Mary</option>
+                    <option value='16'>JShine</option>
+                    <option value='17'>Candy</option>
+                    <option value='18'>Argon</option>
+                    <option value='19'>Cosmic Fusion</option>
+                    <option value='20'>Deep Blue</option>
+                    <option value='21'>Phoenix</option>
+                    <option value='22'>Sublime Light</option>
+                    <option value='23'>Sunrise</option>
+                    <option value='24'>Sky Glider</option>
+                    <option value='25'>Love Kiss</option>
                   </select>
                 </div>
               </div>
@@ -122,6 +148,7 @@
     </body>
 
   <footer>
-    <p>❤ Thanks to <a href="https://github.com/Oli-idk">Oli</a> and <a href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+    <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+    <p text-align="left">❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
   </footer>
 </html>
