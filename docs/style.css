@@ -153,13 +153,13 @@
     display: none;
     margin-bottom: 10px;
   }
+  body {
+    margin: auto;
+    font-family: MinecraftRegular;
+  }
   a {
     color: #940b39;
   }
   a:hover {
     color: #640257
-  }
-  body {
-    margin: auto;
-    font-family: MinecraftRegular;
   }
