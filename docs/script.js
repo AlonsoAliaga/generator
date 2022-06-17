@@ -77,6 +77,9 @@ const presets = {
   },
   25: {
     colors: ["ff0844", "ffb199"],
+  },
+  26: {
+    colors: ["FF0050", "4B0018", "00F2EA"],
   }
 }
 const formats = {
