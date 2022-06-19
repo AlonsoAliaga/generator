@@ -149,6 +149,13 @@ const formats = {
     formatChar: '&',
     maxLength: null
   },
+  11: {
+    outputPrefix: '',
+    template: '&#$1$2$3$4$5$6$f$c',
+    formatChar: null,
+    maxLength: null,
+    iridiumGradient: true
+  },
 };
 
 function darkMode() {
@@ -162,6 +169,8 @@ function darkMode() {
     document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('error').classList.replace("errortext", "darkerrortext");
+    document.getElementById('warning-iridium').classList.replace("errortext", "darkerrortext");
+    document.getElementById('warning-iridium-decoration').classList.replace("errortext", "darkerrortext");
     document.getElementById('numOfColors').classList.add("darktextboxes");
     document.getElementById('nickname').classList.add("darktextboxes");
     document.getElementById('outputText').classList.add("darktextboxes");
@@ -177,6 +186,8 @@ function darkMode() {
     document.getElementById('graylabel2').classList.replace("darkgray", "gray");
     document.getElementById('outputText').classList.replace("darkgray", "gray");
     document.getElementById('error').classList.replace("darkerrortext", "errortext");
+    document.getElementById('warning-iridium').classList.replace("darkerrortext", "errortext");
+    document.getElementById('warning-iridium-decoration').classList.replace("darkerrortext", "errortext");
     document.getElementById('numOfColors').classList.remove("darktextboxes");
     document.getElementById('nickname').classList.remove("darktextboxes");
     document.getElementById('outputText').classList.remove("darktextboxes");
@@ -211,6 +222,28 @@ function showError(show) {
     document.getElementById('outputText').style.marginBottom = '5px';
   } else {
     document.getElementById('error').style.display = 'none';
+    document.getElementById('outputText').style.height = '95px';
+    document.getElementById('outputText').style.marginBottom = '10px';
+  }
+}
+
+function showIridiumWarning(format, colors) {
+  if(format.iridiumGradient && colors.length > 2) {
+    document.getElementById('warning-iridium').style.display = 'block';
+    document.getElementById('outputText').style.height = '70px';
+    document.getElementById('outputText').style.marginBottom = '5px';
+  }else{
+    document.getElementById('warning-iridium').style.display = 'none';
+    document.getElementById('outputText').style.height = '95px';
+    document.getElementById('outputText').style.marginBottom = '10px';
+  }
+  if(format.iridiumGradient && (document.getElementById('strike').checked || document.getElementById('underline').checked ||
+    document.getElementById('italics').checked || document.getElementById('bold').checked)){
+      document.getElementById('warning-iridium-decoration').style.display = 'block';
+      document.getElementById('outputText').style.height = '70px';
+      document.getElementById('outputText').style.marginBottom = '5px';
+  }else{
+    document.getElementById('warning-iridium-decoration').style.display = 'none';
     document.getElementById('outputText').style.height = '95px';
     document.getElementById('outputText').style.marginBottom = '10px';
   }
@@ -368,9 +401,21 @@ function updateOutputText(event) {
   const strike = document.getElementById('strike').checked;
 
   let outputText = document.getElementById('outputText');
-  let gradient = new Gradient(getColors(), newNick.replace(/ /g, '').length);
+  let colorsList = getColors();
+  console.log(colorsList);
+  let gradient;
+  
+  if (format.iridiumGradient) {
+    let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
+    gradient = new Gradient(newColorList, newNick.replace(/ /g, '').length);
+  }else{
+    gradient = new Gradient(colorsList, newNick.replace(/ /g, '').length);
+  }
   let charColors = [];
   let output = format.outputPrefix;
+  
+  let startIridium;
+  let endIridium;
   for (let i = 0; i < newNick.length; i++) {
     let char = newNick.charAt(i);
     if (char == ' ') {
@@ -393,12 +438,21 @@ function updateOutputText(event) {
     }
     hexOutput = hexOutput.replace('$f', formatCodes);
     hexOutput = hexOutput.replace('$c', char);
+    if(i == 0) {
+      startIridium = hexOutput.slice(2,8);
+    }else if((i + 1) == newNick.length) {
+      endIridium = hexOutput.slice(2,8);
+    }
     output += hexOutput;
   }
-
-  outputText.innerText = output;
+  if (format.iridiumGradient) {
+    outputText.innerText = `<GRADIENT:${startIridium}>${newNick}</GRADIENT:${endIridium}>`;
+  }else{
+    outputText.innerText = output;
+  }
+  showIridiumWarning(format, getColors());
   showError(format.maxLength != null && format.maxLength < output.length);
-  displayColoredName(newNick, charColors);
+  displayColoredName(newNick, charColors, format);
 }
 
 /**
@@ -413,20 +467,25 @@ function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
 
-function displayColoredName(nickName, colors) {
+function displayColoredName(nickName, colors, format) {
   coloredNick.classList.remove('minecraftbold', 'minecraftibold', 'minecraftitalic');
-  if (document.getElementById('bold').checked) {
-    if (document.getElementById('italics').checked) {
-      coloredNick.classList.add('minecraftibold');
-    } else {
-      coloredNick.classList.add('minecraftbold');
+  if(!format.iridiumGradient) {
+
+    if (document.getElementById('bold').checked) {
+      if (document.getElementById('italics').checked) {
+        coloredNick.classList.add('minecraftibold');
+      } else {
+        coloredNick.classList.add('minecraftbold');
+      }
+    } else if (document.getElementById('italics').checked) {
+      coloredNick.classList.add('minecraftitalic');
     }
-  } else if (document.getElementById('italics').checked) {
-    coloredNick.classList.add('minecraftitalic');
   }
   coloredNick.innerHTML = '';
   for (let i = 0; i < nickName.length; i++) {
     const coloredNickSpan = document.createElement('span');
+    
+  if(!format.iridiumGradient) {
     if (document.getElementById('underline').checked) {
       if (document.getElementById('strike').checked) {
         coloredNickSpan.classList.add('minecraftustrike');
@@ -434,10 +493,8 @@ function displayColoredName(nickName, colors) {
     } else if (document.getElementById('strike').checked) {
       coloredNickSpan.classList.add('minecraftstrike');
     }
+  }
     coloredNickSpan.style.color = "#"+colors[i];
-    //coloredNickSpan.setAttribute("style","color: #"+colors[i]+";");
-    //coloredNickSpan.innerHTML = '<span style="color:'+colors[i]+'>'+nickName[i]+'</span>';
-    //coloredNickSpan.style.backgroundColor = colors[i];
     coloredNickSpan.textContent = nickName[i];
     coloredNick.append(coloredNickSpan);
   }

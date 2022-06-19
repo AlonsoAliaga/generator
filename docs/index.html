@@ -7,12 +7,23 @@
     <link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/791742603183259648.webp?size=96&quality=lossless" type="image/x-icon">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript"  src="/assets/js/js.cookie.js"></script>
-    <title>RGB Gradient Creator</title>
+    <script type="text/javascript"  src="../assets/js/js.cookie.js"></script>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>HEX Generator (RGB) | AlonsoAliaga Development</title>
+    
+    <meta name="theme-color" content="#9a14ff"/>
+    <meta property="og:title" content="HEX Geenrator (RGB) | AlonsoAliaga Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
+    <meta property="og:description" content="I'm just a hobbiest developer who likes coding plugins for spigot and discord bots. Check out my work, you might find something useful for you!">
+    <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
+
   </head>
 
   <body id="bg" class="container">
-  
+
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
         <label for="color-$NUM">Hex Color #$NUM</label>
@@ -23,8 +34,8 @@
     </div>
     
     <div id="content">
-      <h1 id="title">RGB Gradient Creator</h1>
-      <p id="graylabel1" class="gray" style="padding-bottom: 10px;">Use Google Chrome or Opera for a better experience.</p>
+      <h1 id="title">HEX Generator (RGB) | AlonsoAliaga Development</h1>
+      <p id="graylabel1" class="gray" style="font-size: 20px; padding-bottom: 10px;">Use Google Chrome or Opera for a better experience.</p>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-2" style="padding-left: 0;">
@@ -41,6 +52,8 @@
                   <pre id="outputText" 
                     onclick="copyTextToClipboard(this.textContent);"></pre>
                   <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
+                  <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
+                  <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
                 </div>
               </div>
               <div class="row">
@@ -70,6 +83,7 @@
                     <option value='7'>BBCode [COLOR=#rrggbb]</option>
                     <option value='9'>AlonsoTags (#rrggbb)</option>
                     <option value='10'>AlonsoChat (&#rrggbb)</option>
+                    <option value='11'>Iridium Gradient</option>
                   </select>
                 </div>
               </div>
@@ -144,9 +158,12 @@
         </div>
       </div>
     </div>
+    <div id="mybutton">
+      <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+    </div>
     <script src="jscolor.js"></script>
     <script src="script.js"></script>
-    </body>
+  </body>
 
   <footer>
     <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>

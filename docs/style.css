@@ -25,8 +25,8 @@
     -ms-overflow-style: none; scrollbar-width: none;
   }
   body.dark {
-    background-color:#67118f9a;
-    color:rgb(53, 53, 53);
+    background-color:#2b2b2bd9;
+    color:rgb(208, 208, 208);
   }
   select.dark {
     background-color:#27152c;
@@ -147,8 +147,41 @@
           background-position: 100% 0;
       }
   }
+  .buttonface {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  #mybutton {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+  #mybutton:hover {
+    bottom: 15px;
+    right: 15px;
+    padding: 0;
+    border: none;
+    background: none;
+  }
   #error {
-    font-size: 15px;
+    font-size: 20px;
+    color: red;
+    display: none;
+    margin-bottom: 10px;
+  }
+  #warning-iridium {
+    font-size: 20px;
+    color: red;
+    display: none;
+    margin-bottom: 10px;
+  }
+  #warning-iridium-decoration {
+    font-size: 20px;
     color: red;
     display: none;
     margin-bottom: 10px;
