@@ -44,7 +44,7 @@
   }
   @font-face {
      font-family: MinecraftBold;
-     src: url(../assets/fonts/MinecraftBold.otf);
+     src: url(https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/fonts/MinecraftBold.otf);
   }
   @font-face {
      font-family: MinecraftItalic;
@@ -80,7 +80,7 @@
     font-style: normal;
     font-display: swap;
     font-weight: 700;
-    src: url(../assets/fonts/Quicksand/700.ttf) format('truetype');
+    src: url(../generator/assets/fonts/Quicksand/700.ttf) format('truetype');
   }
   @font-face {
     font-family: 'Quicksand';
