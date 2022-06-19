@@ -402,7 +402,7 @@ function updateOutputText(event) {
 
   let outputText = document.getElementById('outputText');
   let colorsList = getColors();
-  console.log(colorsList);
+  //console.log(colorsList);
   let gradient;
   
   if (format.iridiumGradient) {
@@ -450,7 +450,7 @@ function updateOutputText(event) {
   }else{
     outputText.innerText = output;
   }
-  showIridiumWarning(format, getColors());
+  showIridiumWarning(format, colorsList);
   showError(format.maxLength != null && format.maxLength < output.length);
   displayColoredName(newNick, charColors, format);
 }
@@ -470,7 +470,6 @@ function pad(n, width, z) {
 function displayColoredName(nickName, colors, format) {
   coloredNick.classList.remove('minecraftbold', 'minecraftibold', 'minecraftitalic');
   if(!format.iridiumGradient) {
-
     if (document.getElementById('bold').checked) {
       if (document.getElementById('italics').checked) {
         coloredNick.classList.add('minecraftibold');
@@ -485,15 +484,15 @@ function displayColoredName(nickName, colors, format) {
   for (let i = 0; i < nickName.length; i++) {
     const coloredNickSpan = document.createElement('span');
     
-  if(!format.iridiumGradient) {
-    if (document.getElementById('underline').checked) {
-      if (document.getElementById('strike').checked) {
-        coloredNickSpan.classList.add('minecraftustrike');
-      } else coloredNickSpan.classList.add('minecraftunderline');
-    } else if (document.getElementById('strike').checked) {
-      coloredNickSpan.classList.add('minecraftstrike');
+    if(!format.iridiumGradient) {
+      if (document.getElementById('underline').checked) {
+        if (document.getElementById('strike').checked) {
+          coloredNickSpan.classList.add('minecraftustrike');
+        } else coloredNickSpan.classList.add('minecraftunderline');
+      } else if (document.getElementById('strike').checked) {
+        coloredNickSpan.classList.add('minecraftstrike');
+      }
     }
-  }
     coloredNickSpan.style.color = "#"+colors[i];
     coloredNickSpan.textContent = nickName[i];
     coloredNick.append(coloredNickSpan);
