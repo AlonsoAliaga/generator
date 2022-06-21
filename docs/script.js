@@ -425,15 +425,18 @@ function getColors() {
 }
 
 function updateOutputText(event) {
+  //console.log(event)
   let format = formats[document.getElementById('output-format').value];
+  /*
   if (format.outputPrefix) {
     nickName.value = nickName.value.replace(/ /g, '');
     if (nickName.value) {
       let letters = /^[0-9a-zA-Z_]+$/;
-      if (!nickName.value.match(letters)) nickName.value = nickName.value.replace(event.data, '');
+      if (!nickName.value.match(letters) && event) nickName.value = nickName.value.replace(event.data, '');
       if (!nickName.value.match(letters)) nickName.value = 'alonsoaliaga.com';
     }
   }
+  */
 
   let newNick = nickName.value
   if (!newNick) {
