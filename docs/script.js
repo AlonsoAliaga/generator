@@ -157,7 +157,50 @@ const formats = {
     iridiumGradient: true
   },
 };
-
+let emoji_array = [
+  'Σ','☠','☮','☯','♠','Ω','♤','♣','♧','♥','♡','♦','♢','♔','♕','♚','♛','★','☆','✮','✯','☄','☾','☽','☼',
+  '☀','☁','☂','☃','☻','☺','۞','۩','♬','✄','✂','✆','✉','✦','✧','∞','♂','♀','☿','❤','❥','❦','❧','®','©',
+  '✗','✘','▢','▲','△','▼','▽','◆','◇','○','◎','●','◯','Δ','◕','◔','ʊ','ღ','₪','✓','✔','✕','✖','☢','☣',
+  '☤','✙','✞','✠','✰','❇','❈','❅','❄','❆','╰','╮','❃','❀','✿','❁','✾','❂','⋆','✢','✣','✤','✥','✩','✪',
+  '✫','✬','✭','✵','✴','✳','✲','✱','✶','✷','✸','✹','✺','✻','✼','✽','✡','❋','❊','❉','✌','♼','♽','➣','➢',
+  '⬇','⬆','⬅','➡','✈','➤','➥','➦','➧','➨','➚','➘','➙','➛','➶','➵','➴','➳','➲','➸','➞','➝','➜','⚜',
+  '⛏','⚒','⚔','UwU'
+]
+removeDuplicatedEmojis();
+function removeDuplicatedEmojis() {
+  console.log(`Pre length: ${emoji_array.length}`);
+  emoji_array = Array.from(new Set(emoji_array));
+  console.log(`Post length: ${emoji_array.length}`);
+}
+function addText(emoji) {
+  let input = document.getElementById('nickname');
+  input.value = input.value + emoji.value;
+  updateOutputText();
+}
+createTable(emoji_array);
+function createTable(data){
+  let table = document.getElementById('emoji-table');
+  let columns = 13;
+  let currentRow = [];
+  let rows = [];
+  for (var i = 0; i < data.length; i++){
+    let emoji = data[i];
+    //let rowIndex = Math.floor(i / columns);
+    if(currentRow.length >= columns) {
+      currentRow = [emoji];
+    }else{
+      currentRow.push(emoji);
+    }
+    if(currentRow.length >= columns || i +1 == data.length) {
+      //console.log(`${i} ${emoji} Row: ${rows.length}`)
+      rows.push(currentRow);
+    }
+  }
+  for(let i = 0; i < rows.length; i++){
+    let row = `<tr>${rows[i].map(emoji=>`<td><button type="button" class="form-control" id="boton" onclick="addText(this);" value="${emoji}">${emoji}</button></td>`).join("")}</tr>`
+    table.innerHTML += row;
+  }
+}
 function darkMode() {
   if (document.getElementById('darkmode').checked == true) {
     document.body.classList.add('dark');

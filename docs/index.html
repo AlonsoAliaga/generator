@@ -66,6 +66,19 @@
                          value="alonsoaliaga.com" oninput="javascript: updateOutputText(event);"
                          onchange="javascript: updateOutputText(event)">
                 </div>
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="nickname">Emojis</label>
+                  <input style="width: 45px;" class="form-control" id="emojis" type="button" maxlength="10" placeholder="Pick your emoji"
+                         value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
+                         onchange="javascript: updateOutputText(event)">
+                         
+                  <div style="padding: 5px 5px 5px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: fixed; width: fit-content; height: fit-content; display: none;" class="form-control" id="emojis-spoiler" type="button" value="😁">
+                   <table class="c">
+                    <tbody id="emoji-table">
+                    </tbody>
+                   </table>
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;" id="minecraft">
