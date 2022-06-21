@@ -207,6 +207,7 @@ function darkMode() {
     document.getElementById('output-format').classList.add("dark");
     document.getElementById('color-preset').classList.add("dark");
     document.getElementById('numOfColors').classList.add("dark");
+    document.getElementById('emojis').classList.add("darktextboxes");
     document.getElementById('graylabel1').classList.replace("gray", "darkgray");
     document.getElementById('graylabel2').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
@@ -225,6 +226,7 @@ function darkMode() {
     document.getElementById('output-format').classList.remove("dark");
     document.getElementById('color-preset').classList.remove("dark");
     document.getElementById('numOfColors').classList.remove("dark");
+    document.getElementById('emojis').classList.remove("darktextboxes");
     document.getElementById('graylabel1').classList.replace("darkgray", "gray");
     document.getElementById('graylabel2').classList.replace("darkgray", "gray");
     document.getElementById('outputText').classList.replace("darkgray", "gray");
