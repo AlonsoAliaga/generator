@@ -559,3 +559,4 @@ toggleColors(2);
 updateOutputText();
 document.getElementById('darkmode').checked = true
 darkMode()
+//Script stolen from https://alonsoaliaga.com/hex
