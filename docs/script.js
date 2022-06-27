@@ -113,35 +113,35 @@ const presets = {
 }
 const formats = {
   0: {
-    name: 'Default (&#rrggbb)',
+    name: 'Default &#rrggbb',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   1: {
-    name: 'Chat (<#rrggbb>)',
+    name: 'Chat <#rrggbb>',
     outputPrefix: '',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
   2: {
-    name: 'Legacy (&x&r&r&g&g&b&b)',
+    name: 'Legacy &x&r&r&g&g&b&b',
     outputPrefix: '',
     template: '&x&$1&$2&$3&$4&$5&$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   3: {
-    name: 'Nick (&#rrggbb)',
+    name: 'Nick &#rrggbb',
     outputPrefix: '/nick ',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   4: {
-    name: 'Nick Special (<&#rrggbb>)',
+    name: 'Nick Special <&#rrggbb>',
     outputPrefix: '/nick ',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
@@ -155,7 +155,7 @@ const formats = {
     maxLength: 256
   },
   6: {
-    name: 'Console (§x§r§r§g§g§b§b)',
+    name: 'Console §x§r§r§g§g§b§b',
     outputPrefix: '',
     template: '§x§$1§$2§$3§$4§$5§$6$f$c',
     formatChar: '§',
@@ -176,14 +176,14 @@ const formats = {
     maxLength: null
   },
   9: {
-    name: 'AlonsoTags (#rrggbb)',
+    name: 'AlonsoTags #rrggbb',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: null
   },
   10: {
-    name: 'AlonsoChat (&#rrggbb)',
+    name: 'AlonsoChat &#rrggbb',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
