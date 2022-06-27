@@ -16,13 +16,16 @@
     
     <meta name="theme-color" content="#9a14ff"/>
     <meta property="og:title" content="HEX Generator (RGB) | AlonsoAliaga Development">
+    <meta property="og:key" content="HEX Generator (RGB) | AlonsoAliaga Development">
     <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
-    <meta property="og:description" content="I'm just a hobbiest developer who likes coding plugins for spigot and discord bots. Check out my work, you might find something useful for you!">
+    <meta property="og:description" content="Create HEX gradients for your server easily. Supports multiple formats and emojis!">
+    <meta name="og:keywords" content="spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator">
+    <meta name="keywords" content="spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator">
     <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
 
   </head>
 
-  <body id="bg" class="container">
+  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets()">
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -86,8 +89,10 @@
                   <label for="output-format">Output format</label>
                   <select id="output-format"
                           class="form-control"
-                          onchange="updateOutputText(event);">
-                    <option value='0'>Default (&#rrggbb)</option>
+                          onmouseenter="showOutPutFormatTooltip();"
+                          onmouseout="hideOutPutFormatTooltip();"
+                          onload="addDefaultsFormats();" onchange="updateOutputText(event);">
+                    <!-- <option value='0'>Default (&#rrggbb)</option>
                     <option value='2'>Legacy (&x&r&r&g&g&b&b)</option>
                     <option value='3'>Nick (&#rrggbb)</option>
                     <option value='4'>Nick Special (<&#rrggbb>)</option>
@@ -97,8 +102,9 @@
                     <option value='7'>BBCode [COLOR=#rrggbb]</option>
                     <option value='9'>AlonsoTags (#rrggbb)</option>
                     <option value='10'>AlonsoChat (&#rrggbb)</option>
-                    <option value='11'>Iridium Gradient</option>
+                    <option value='11'>Iridium Gradient</option> -->
                   </select>
+                  <div id="output-format-tooltip" style="width: max-content; height: fit-content; position: absolute; display: none;z-index: 100" class="form-control">Loading..</div>
                 </div>
               </div>
               <div class="row">
@@ -106,8 +112,9 @@
                   <label for="color-preset">Presets colors</label>
                   <select id="color-preset"
                           class="form-control"
+                          onload="addDefaultsPresets();"
                           onchange="preset(this.value); updateOutputText(event); ">
-                    <option value='0'>None</option>
+                    <!-- <option value='0'>None</option>
                     <option value='1'>Rainbow</option>
                     <option value='2'>Fire</option>
                     <option value='3'>Sweet Morning</option>
@@ -133,7 +140,7 @@
                     <option value='23'>Sunrise</option>
                     <option value='24'>Sky Glider</option>
                     <option value='25'>Love Kiss</option>
-                    <option value='26'>TikTok</option>
+                    <option value='26'>TikTok</option> -->
                   </select>
                 </div>
               </div>

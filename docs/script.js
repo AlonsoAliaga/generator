@@ -3,158 +3,229 @@ const nickName = document.getElementById('nickname');
 const coloredNick = document.getElementById('coloredNick');
 const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
 const presets = {
+  0: {
+    name: "None"
+  },
   1: {
+    name: "Rainbow",
     colors: ["FF0000", "FF7F00", "FFFF00", "00FF00", "0000FF", "4B0082", "9400D3"],
   },
   2: {
+    name: "Fire",
     colors: ["A10100", "DA3604", "FE650D", "FFC11F", "FFF75D"],
   },
   3: {
+    name: "Sweet Morning",
     colors: ["FF5F6D", "FFC371"],
   },
   4: {
+    name: "Deep Space",
     colors: ["000000", "434343"],
   },
   5: {
+    name: "Superman",
     colors: ["0099F7", "F11712"],
   },
   6: {
+    name: "Netflix",
     colors: ["8E0E00", "1F1C18"],
   },
   7: {
+    name: "Timber",
     colors: ["fc00ff", "00dbde"],
   },
   8: {
+    name: "Piglet",
     colors: ["ee9ca7", "ffdde1"],
   },
   9: {
+    name: "Instagram",
     colors: ["833ab4", "fd1d1d", "fcb045"],
   },
   10: {
+    name: "Twitch",
     colors: ["6441A5", "2a0845"],
   },
   11: {
+    name: "SoundCloud",
     colors: ["fe8c00", "f83600"],
   },
   12: {
+    name: "Facebook",
     colors: ["00c6ff", "0072ff"],
   },
   13: {
+    name: "Amethyst",
     colors: ["9D50BB", "6E48AA"],
   },
   14: {
+    name: "Starfall",
     colors: ["F0C27B", "4B1248"],
   },
   15: {
+    name: "Bloody Mary",
     colors: ["FF512F", "DD2476"],
   },
   16: {
+    name: "JShine",
     colors: ["12c2e9", "c471ed", "f64f59"],
   },
   17: {
+    name: "Candy",
     colors: ["009FFF", "ec2F4B"],
   },
   18: {
+    name: "Argon",
     colors: ["03001e", "7303c0", "ec38bc", "fdeff9"],
   },
   19: {
+    name: "Cosmic Fusion",
     colors: ["#ff00cc", "#333399"],
   },
   20: {
+    name: "Deep Blue",
     colors: ["6a11cb", "2575fc"],
   },
   21: {
+    name: "Phoenix",
     colors: ["f83600", "f9d423"],
   },
   22: {
+    name: "Sublime Light",
     colors: ["fc5c7d", "6a82fb"],
   },
   23: {
+    name: "Sunrise",
     colors: ["ff512f", "f09819"],
   },
   24: {
+    name: "Sky Glider",
     colors: ["88d3ce", "6e45e2"],
   },
   25: {
+    name: "Love Kiss",
     colors: ["ff0844", "ffb199"],
   },
   26: {
+    name: "TikTok",
     colors: ["FF0050", "4B0018", "00F2EA"],
   }
 }
 const formats = {
   0: {
+    name: 'Default (&#rrggbb)',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   1: {
+    name: 'Chat (<#rrggbb>)',
     outputPrefix: '',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
   2: {
+    name: 'Legacy (&x&r&r&g&g&b&b)',
     outputPrefix: '',
     template: '&x&$1&$2&$3&$4&$5&$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   3: {
+    name: 'Nick (&#rrggbb)',
     outputPrefix: '/nick ',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   4: {
+    name: 'Nick Special (<&#rrggbb>)',
     outputPrefix: '/nick ',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
   5: {
+    name: '',
     outputPrefix: '/nick ',
     template: '&x&$1&$2&$3&$4&$5&$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
   6: {
+    name: 'Console (§x§r§r§g§g§b§b)',
     outputPrefix: '',
     template: '§x§$1§$2§$3§$4§$5§$6$f$c',
     formatChar: '§',
     maxLength: null
   },
   7: {
+    name: 'BBCode [COLOR=#rrggbb]',
     outputPrefix: '',
     template: '[COLOR=#$1$2$3$4$5$6]$c[/COLOR]',
     formatChar: null,
     maxLength: null
   },
   8: {
+    name: 'MOTD (\u00A7x)',
     outputPrefix: '',
     template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$c',
     formatChar: null,
     maxLength: null
   },
   9: {
+    name: 'AlonsoTags (#rrggbb)',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: null
   },
   10: {
+    name: 'AlonsoChat (&#rrggbb)',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: null
   },
   11: {
+    name: 'Iridium Gradient',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: null,
     maxLength: null,
     iridiumGradient: true
+  },
+  12: {
+    name: 'Brackets {#rrggbb}',
+    outputPrefix: '',
+    template: '{#$1$2$3$4$5$6}$f$c',
+    formatChar: null,
+    maxLength: null,
+    hover: [
+      "<strong>Plugins using this format:</strong>",
+      "💠 RoyaleEconomy",
+      "💠 DarkAuctionsX",
+      "💠 AUCTIONMASTER",
+      "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
+    ]
+    
+  },
+  13: {
+    name: 'Simple #rrggbb',
+    outputPrefix: '',
+    template: '#$1$2$3$4$5$6$f$c',
+    formatChar: null,
+    maxLength: null,
+    hover: [
+      "<strong>Plugins using this format:</strong>",
+      "💠 PyroSpawners",
+      "💠 PyroMining",
+      "💠 PyroFishingPro",
+      "💠 PyroWeatherPro",
+      "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
+    ]
   },
 };
 let emoji_array = [
@@ -168,9 +239,9 @@ let emoji_array = [
 ]
 removeDuplicatedEmojis();
 function removeDuplicatedEmojis() {
-  console.log(`Pre length: ${emoji_array.length}`);
+  // console.log(`Pre length: ${emoji_array.length}`);
   emoji_array = Array.from(new Set(emoji_array));
-  console.log(`Post length: ${emoji_array.length}`);
+  // console.log(`Post length: ${emoji_array.length}`);
 }
 function addText(emoji) {
   let input = document.getElementById('nickname');
@@ -197,7 +268,7 @@ function createTable(data){
     }
   }
   for(let i = 0; i < rows.length; i++){
-    let row = `<tr>${rows[i].map(emoji=>`<td><button type="button" class="form-control" id="boton" onclick="addText(this);" value="${emoji}">${emoji}</button></td>`).join("")}</tr>`
+    let row = `<tr>${rows[i].map(emoji=>`<td><button type="button" class="form-control emojibutton" id="boton" onclick="addText(this);" value="${emoji}">${emoji}</button></td>`).join("")}</tr>`
     table.innerHTML += row;
   }
 }
@@ -211,13 +282,14 @@ function darkMode() {
     document.getElementById('graylabel1').classList.replace("gray", "darkgray");
     document.getElementById('graylabel2').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
-    document.getElementById('outputText').classList.replace("gray", "darkgray");
+    document.getElementById('output-format-tooltip').classList.replace("gray", "darkgray");
     document.getElementById('error').classList.replace("errortext", "darkerrortext");
     document.getElementById('warning-iridium').classList.replace("errortext", "darkerrortext");
     document.getElementById('warning-iridium-decoration').classList.replace("errortext", "darkerrortext");
     document.getElementById('numOfColors').classList.add("darktextboxes");
     document.getElementById('nickname').classList.add("darktextboxes");
     document.getElementById('outputText').classList.add("darktextboxes");
+    document.getElementById('output-format-tooltip').classList.add("darktextboxes");
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.add("darktextboxes");
     })
@@ -230,12 +302,14 @@ function darkMode() {
     document.getElementById('graylabel1').classList.replace("darkgray", "gray");
     document.getElementById('graylabel2').classList.replace("darkgray", "gray");
     document.getElementById('outputText').classList.replace("darkgray", "gray");
+    document.getElementById('output-format-tooltip').classList.replace("darkgray", "gray");
     document.getElementById('error').classList.replace("darkerrortext", "errortext");
     document.getElementById('warning-iridium').classList.replace("darkerrortext", "errortext");
     document.getElementById('warning-iridium-decoration').classList.replace("darkerrortext", "errortext");
     document.getElementById('numOfColors').classList.remove("darktextboxes");
     document.getElementById('nickname').classList.remove("darktextboxes");
     document.getElementById('outputText').classList.remove("darktextboxes");
+    document.getElementById('output-format-tooltip').classList.remove("darktextboxes");
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.remove("darktextboxes");
     })
@@ -293,7 +367,58 @@ function showIridiumWarning(format, colors) {
     document.getElementById('outputText').style.marginBottom = '10px';
   }
 }
-
+function addDefaultsFormats() {
+  let select = document.getElementById('output-format');
+  if(select) {
+    for(let value in Object.keys(formats)) {
+      let format = formats[value];
+      if(format.name && format.name.length > 0) {
+        // console.log(`Adding ${format.name} with value ${value}`);
+        let option = document.createElement('option');
+        option.innerHTML = format.name;
+        option.setAttribute("value",`${value}`);
+        select.appendChild(option);
+      }
+    }
+  }
+}
+function addDefaultsPresets() {
+  let select = document.getElementById('color-preset');
+  if(select) {
+    for(let value in Object.keys(presets)) {
+      let preset = presets[value];
+      if(preset.name && preset.name.length > 0) {
+        // console.log(`Adding ${format.name} with value ${value}`);
+        let option = document.createElement('option');
+        option.innerHTML = preset.name;
+        option.setAttribute("value",`${value}`);
+        select.appendChild(option);
+      }
+    }
+  }
+}
+function showOutPutFormatTooltip() {
+  let tooltip = document.getElementById("output-format-tooltip");
+  if(tooltip) {
+    let outputFormat = document.getElementById("output-format");
+    // console.log("Checking: "+outputFormat.value)
+    let format = formats[outputFormat.value];
+    if(format.hover && format.hover.length > 0) {
+      tooltip.style.display = "inline";
+      tooltip.innerHTML = format.hover.join("<br>");
+    }else{
+      tooltip.style.display = "none";
+      tooltip.innerHTML = "Loading..";
+    }
+  }
+}
+function hideOutPutFormatTooltip() {
+  let tooltip = document.getElementById("output-format-tooltip");
+  if(tooltip) {
+    tooltip.style.display = "none";
+    tooltip.innerHTML = "Loading..";
+  }
+}
 function hex(c) {
   let s = '0123456789abcdef';
   let i = parseInt(c);
@@ -426,7 +551,7 @@ function getColors() {
 
 function updateOutputText(event) {
   //console.log(event)
-  let format = formats[document.getElementById('output-format').value];
+  let format = formats[document.getElementById('output-format').value] || formats[0];
   /*
   if (format.outputPrefix) {
     nickName.value = nickName.value.replace(/ /g, '');
@@ -550,6 +675,7 @@ function displayColoredName(nickName, colors, format) {
 
 function preset(n) {
   const colors = presets[n].colors
+  if(!colors || colors.length < 2) return;
   const container = $('#hexColors');
   container.empty();
     // Need to add some colors
