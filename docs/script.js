@@ -224,6 +224,7 @@ const formats = {
       "💠 PyroMining",
       "💠 PyroFishingPro",
       "💠 PyroWeatherPro",
+      "💠 DELUXEBAZAAR",
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
     ]
   },
