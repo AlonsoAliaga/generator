@@ -177,13 +177,20 @@
               <br><br>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
+                  <div id="plugin-tooltip" style="bottom: 34px;width: max-content; height: fit-content; position: absolute; display: none;z-index: 100" class="form-control">Loading..</div>
                   <label for="plugins-list">Plugins list</label>
                   <select id="plugins-list"
+                          style="display:inline-block"
                           class="form-control"
                           onload="addPluginsList();"
+                          onmouseenter="showPluginTooltip();"
+                          onmouseout="hidePluginTooltip();"
                           onchange="updateOutputTextFromPlugin(event);">
                           <option selected="true" disabled="disabled">Select a plugin</option>
                   </select>
+                  <a target="_blank" style="width: 45px;position: absolute;display: none;text-decoration: none;" class="form-control linktooltip" 
+                    id="plugin-link-button" maxlength="10"
+                  >🔗<span class="linktooltiptext">Click to go to download page!</span></a>
                 </div>
               </div>
             </div>

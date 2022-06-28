@@ -214,3 +214,40 @@
   a:hover {
     color: #640257
   }
+
+/* Obtained from google while searching for button tooltips. */
+.linktooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+.linktooltip .linktooltiptext {
+  visibility: hidden;
+  width: 250px;
+  background-color: #555;
+  color: rgb(223, 223, 223);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -125px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.linktooltip .linktooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+.linktooltip:hover .linktooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

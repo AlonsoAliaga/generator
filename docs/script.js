@@ -211,10 +211,45 @@ const formats = {
       "<span style='color: red'>These plugins are made by our team!</span>"
     ],
     plugins: {
-      "alonsochat": "AlonsoChat 💠 (Not released)",
-      "alonsolevels": "AlonsoLevels 💠",
-      "alonsoplus": "AlonsoPlus 💠",
-      "alonsotags": "AlonsoTags 💠",
+      "alonsochat": {
+        displayName: "AlonsoChat 💠 (Not released)",
+        hover: [
+          "Customizable chat for your server!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsolevels": {
+        displayName: "AlonsoLevels 💠",
+        link: "https://alonsoaliaga.com/AlonsoLevelsPro",
+        hover: [
+          "A highly customizable level system for your network that actually works.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsoplus": {
+        displayName: "AlonsoPlus 💠",
+        link: "https://alonsoaliaga.com/AlonsoPlus",
+        hover: [
+          "Customizable colors for your donors' rank. Change PLUS sign in ranks!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsotags": {
+        displayName: "AlonsoTags 💠",
+        link: "https://alonsoaliaga.com/AlonsoTagsPro",
+        hover: [
+          "A highly customizable tag plugin for your network.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
     }
   },
   a10: {
@@ -229,8 +264,26 @@ const formats = {
       "<span style='color: red'>These plugins are made by our team!</span>"
     ],
     plugins: {
-      "betterbackpacks": "BetterBackpacks 💠",
-      "betterrevive": "BetterRevive 💠",
+      "betterbackpacks": {
+        displayName: "BetterBackpacks 💠",
+        link: "https://alonsoaliaga.com/BetterBackpacksPro",
+        hover: [
+          "Backpacks with custom textures and unique features, skins and upgrades!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "betterrevive": {
+        displayName: "BetterRevive 💠",
+        link: "https://alonsoaliaga.com/BetterRevive",
+        hover: [
+          "Give your players a second chance to live.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
     }
   },
   separator3: {
@@ -278,6 +331,7 @@ const formats = {
     plugins: {
       "decentholograms":"DecentHolograms",
       "deluxebazaar":"DELUXEBAZAAR",
+      "elementalgems":"ElementalGems",
       "pyrofishingpro":"PyroFishingPro",
       "pyrominig":"PyroMining",
       "pyrospawners":"PyroSpawners",
@@ -346,13 +400,16 @@ function darkMode() {
     document.getElementById('graylabel2').classList.replace("gray", "darkgray");
     document.getElementById('outputText').classList.replace("gray", "darkgray");
     document.getElementById('output-format-tooltip').classList.replace("gray", "darkgray");
+    document.getElementById('plugin-tooltip').classList.replace("gray", "darkgray");
     document.getElementById('error').classList.replace("errortext", "darkerrortext");
     document.getElementById('warning-iridium').classList.replace("errortext", "darkerrortext");
     document.getElementById('warning-iridium-decoration').classList.replace("errortext", "darkerrortext");
     document.getElementById('numOfColors').classList.add("darktextboxes");
     document.getElementById('nickname').classList.add("darktextboxes");
+    document.getElementById('plugin-link-button').classList.add("darktextboxes");
     document.getElementById('outputText').classList.add("darktextboxes");
     document.getElementById('output-format-tooltip').classList.add("darktextboxes");
+    document.getElementById('plugin-tooltip').classList.add("darktextboxes");
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.add("darktextboxes");
     })
@@ -367,13 +424,16 @@ function darkMode() {
     document.getElementById('graylabel2').classList.replace("darkgray", "gray");
     document.getElementById('outputText').classList.replace("darkgray", "gray");
     document.getElementById('output-format-tooltip').classList.replace("darkgray", "gray");
+    document.getElementById('plugin-tooltip').classList.replace("darkgray", "gray");
     document.getElementById('error').classList.replace("darkerrortext", "errortext");
     document.getElementById('warning-iridium').classList.replace("darkerrortext", "errortext");
     document.getElementById('warning-iridium-decoration').classList.replace("darkerrortext", "errortext");
     document.getElementById('numOfColors').classList.remove("darktextboxes");
     document.getElementById('nickname').classList.remove("darktextboxes");
+    document.getElementById('plugin-link-button').classList.remove("darktextboxes");
     document.getElementById('outputText').classList.remove("darktextboxes");
     document.getElementById('output-format-tooltip').classList.remove("darktextboxes");
+    document.getElementById('plugin-tooltip').classList.remove("darktextboxes");
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.remove("darktextboxes");
     })
@@ -481,10 +541,25 @@ function addPluginsList() {
       format.pluginsArray = [];
       if(format.name && format.name.length > 0 && typeof format.plugins != "undefined" && Object.keys(format.plugins).length > 0) {
         for(let pluginIdentifier of Object.keys(format.plugins)) {
-          if(!unordered[pluginIdentifier]) {
-            unordered[pluginIdentifier] = {
-              "pluginDisplayname": format.plugins[pluginIdentifier],
-              "formatIdentifier": value
+          let displayName;
+          let pluginData;
+          if(typeof format.plugins[pluginIdentifier] == "string") {
+            displayName = format.plugins[pluginIdentifier];
+          }else if(typeof format.plugins[pluginIdentifier] == "object") {
+            pluginData = format.plugins[pluginIdentifier];
+            displayName = pluginData.displayName;
+          }else continue;
+          if(displayName) {
+            if(!unordered[pluginIdentifier]) {
+              unordered[pluginIdentifier] = {
+                "pluginDisplayname": displayName,
+                "formatIdentifier": value,
+              }
+              if(pluginData && pluginData.link) unordered[pluginIdentifier].link = pluginData.link;
+              if(pluginData && pluginData.hover) {
+                let link = pluginData.link || "Not available";
+                unordered[pluginIdentifier].hover = pluginData.hover.map(line=>line.replace("{link}",link));
+              }
             }
           }
         }
@@ -555,6 +630,34 @@ function addPluginsList() {
         format.hover = format.hover.map(line=>line.replace("{plugins}",plugins.join("<br>")));
       }
     }
+  }
+}
+function showPluginTooltip() {
+  let tooltip = document.getElementById("plugin-tooltip");
+  if(tooltip) {
+    let pluginData = pluginsList[document.getElementById('plugins-list').value];
+    // console.log("Checking: "+outputFormat.value)
+    if(pluginData) {
+      //if(pluginData.link) 
+      if(pluginData.hover && pluginData.hover.length > 0) {
+        //
+        tooltip.style.display = "inline";
+        tooltip.innerHTML = pluginData.hover.join("<br>");
+      }else{
+        tooltip.style.display = "none";
+        tooltip.innerHTML = "Loading..";
+      }
+    }else{
+      tooltip.style.display = "none";
+      tooltip.innerHTML = "Loading..";
+    }
+  }
+}
+function hidePluginTooltip() {
+  let tooltip = document.getElementById("plugin-tooltip");
+  if(tooltip) {
+    tooltip.style.display = "none";
+    tooltip.innerHTML = "Loading..";
   }
 }
 function showOutPutFormatTooltip() {
@@ -722,11 +825,24 @@ function updateOutputText(event, setFormat) {
     if(!pluginData) {
       console.log(`Plugins is not a format! Using default..`);
       format = formats[document.getElementById('output-format').value] || formats["a0"];
+      document.getElementById("plugin-link-button").style.display = "none";
     }else{
       document.getElementById('output-format').value = pluginData.formatIdentifier;
       format = formats[pluginData.formatIdentifier] || formats["a0"];
+      // console.log(pluginData.link)
+      if(pluginData.link) {
+        document.getElementById("plugin-link-button").style.display = "initial";
+        document.getElementById("plugin-link-button").href = pluginData.link;
+        // document.getElementById("plugin-link-button").addEventListener("click", function () {
+        //   `window.open('${pluginData.link}', '_blank'); return false;`
+        // });
+      }else{
+        document.getElementById("plugin-link-button").style.display = "none";
+      }
     }
-  }else format = formats[document.getElementById('output-format').value] || formats["a0"];
+  }else {
+    format = formats[document.getElementById('output-format').value] || formats["a0"];
+  }
   /*
   if (format.outputPrefix) {
     nickName.value = nickName.value.replace(/ /g, '');
