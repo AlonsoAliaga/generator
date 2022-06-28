@@ -190,7 +190,10 @@ const formats = {
     outputPrefix: '',
     template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$c',
     formatChar: null,
-    maxLength: null
+    maxLength: null,
+    hover:[
+      "Use this format to edit motd in server.properties!",
+    ]
   },
   separator2: {
     name: 'AlonsoAliaga\'s plugins',
@@ -273,6 +276,7 @@ const formats = {
     formatChar: null,
     maxLength: null,
     plugins: {
+      "decentholograms":"DecentHolograms",
       "deluxebazaar":"DELUXEBAZAAR",
       "pyrofishingpro":"PyroFishingPro",
       "pyrominig":"PyroMining",
