@@ -188,8 +188,8 @@ const formats = {
   a8: {
     name: 'MOTD (\u00A7x)',
     outputPrefix: '',
-    template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$c',
-    formatChar: null,
+    template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$f$c',
+    formatChar: "\\u00A7",
     maxLength: null,
     hover:[
       "Use this format to edit motd in server.properties!",
@@ -256,7 +256,7 @@ const formats = {
     name: 'Brackets {#rrggbb}',
     outputPrefix: '',
     template: '{#$1$2$3$4$5$6}$f$c',
-    formatChar: null,
+    formatChar: "&",
     maxLength: null,
     hover: [
       "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
@@ -273,7 +273,7 @@ const formats = {
     name: 'Simple #rrggbb',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
-    formatChar: null,
+    formatChar: "&",
     maxLength: null,
     plugins: {
       "decentholograms":"DecentHolograms",
