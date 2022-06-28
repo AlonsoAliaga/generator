@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/791742603183259648.webp?size=96&quality=lossless" type="image/x-icon">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/postscribe/2.0.8/postscribe.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript"  src="../generator/main/assets/js/js.cookie.js"></script>
 
@@ -25,7 +26,7 @@
 
   </head>
 
-  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets()">
+  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); loadCounter();">
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -174,20 +175,41 @@
                   <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode</label>
                 </div>
               </div>
+              <br><br>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="plugins-list">Plugins list</label>
+                  <select id="plugins-list"
+                          class="form-control"
+                          onload="addPluginsList();"
+                          onchange="updateOutputTextFromPlugin(event);">
+                          <option selected="true" disabled="disabled">Select a plugin</option>
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div id="mybutton">
-      <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+      <div style="position: center;display: inline-block;">
+        <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+        <br>
+        <div id="visitor-counter" style="padding-left: 10%">
+          <span style="padding-left: 20%;text-align: center;">Visitors:</span>
+        </div>
+      </div>
     </div>
-    <script src="jscolor.js"></script>
-    <script src="script.js"></script>
+    
+
   </body>
 
   <footer>
     <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
     <p text-align="left">❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
+    
   </footer>
+  <script src="jscolor.js"></script>
+  <script src="script.js"></script>
 </html>

@@ -1,4 +1,5 @@
 // elements for obtaining vals
+
 const nickName = document.getElementById('nickname');
 const coloredNick = document.getElementById('coloredNick');
 const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
@@ -112,121 +113,177 @@ const presets = {
   }
 }
 const formats = {
-  0: {
+  separator1: {
+    name: 'Popular formats',
+    separator: true
+  },
+  a0: {
     name: 'Default &#rrggbb',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  1: {
+  a1: {
     name: 'Chat <#rrggbb>',
     outputPrefix: '',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  2: {
+  a2: {
     name: 'Legacy &x&r&r&g&g&b&b',
     outputPrefix: '',
     template: '&x&$1&$2&$3&$4&$5&$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  3: {
+  a3: {
     name: 'Nick &#rrggbb',
     outputPrefix: '/nick ',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  4: {
+  a4: {
     name: 'Nick Special <&#rrggbb>',
     outputPrefix: '/nick ',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  5: {
+  a5: {
     name: '',
     outputPrefix: '/nick ',
     template: '&x&$1&$2&$3&$4&$5&$6$f$c',
     formatChar: '&',
     maxLength: 256
   },
-  6: {
+  a6: {
     name: 'Console §x§r§r§g§g§b§b',
     outputPrefix: '',
     template: '§x§$1§$2§$3§$4§$5§$6$f$c',
     formatChar: '§',
-    maxLength: null
+    maxLength: null,
+    hover:[
+      "Use this format to send messages in console.",
+      "",
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>"
+    ],
+    plugins: {
+      "animatedscoreboards": "AnimatedScoreboards",
+      "sternalboard": "SternalBoard",
+      "tab": "TAB",
+    }
   },
-  7: {
+  a7: {
     name: 'BBCode [COLOR=#rrggbb]',
     outputPrefix: '',
     template: '[COLOR=#$1$2$3$4$5$6]$c[/COLOR]',
     formatChar: null,
     maxLength: null
   },
-  8: {
+  a8: {
     name: 'MOTD (\u00A7x)',
     outputPrefix: '',
     template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$c',
     formatChar: null,
     maxLength: null
   },
-  9: {
-    name: 'AlonsoTags #rrggbb',
+  separator2: {
+    name: 'AlonsoAliaga\'s plugins',
+    separator: true
+  },
+  a9: {
+    name: 'Alonso Series ✔️',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
     formatChar: '&',
-    maxLength: null
+    maxLength: null,
+    hover: [
+      "🔔 <span style='margin: auto;'><strong>Our plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red'>These plugins are made by our team!</span>"
+    ],
+    plugins: {
+      "alonsochat": "AlonsoChat 💠 (Not released)",
+      "alonsolevels": "AlonsoLevels 💠",
+      "alonsoplus": "AlonsoPlus 💠",
+      "alonsotags": "AlonsoTags 💠",
+    }
   },
-  10: {
-    name: 'AlonsoChat &#rrggbb',
+  a10: {
+    name: 'Better Series ✔️',
     outputPrefix: '',
-    template: '&#$1$2$3$4$5$6$f$c',
+    template: '#$1$2$3$4$5$6$f$c',
     formatChar: '&',
-    maxLength: null
+    maxLength: null,
+    hover: [
+      "🔔 <span style='margin: auto;'><strong>Our plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red'>These plugins are made by our team!</span>"
+    ],
+    plugins: {
+      "betterbackpacks": "BetterBackpacks 💠",
+      "betterrevive": "BetterRevive 💠",
+    }
   },
-  11: {
+  separator3: {
+    name: 'Popular APIs',
+    separator: true
+  },
+  a11: {
     name: 'Iridium Gradient',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: null,
     maxLength: null,
-    iridiumGradient: true
+    iridiumGradient: true,
+    hover: [
+      "<span style='color: red'>To use this format your plugin MUST support IridiumColor format!</span>"
+    ]
   },
-  12: {
+  separator4: {
+    name: 'Common formats',
+    separator: true
+  },
+  a12: {
     name: 'Brackets {#rrggbb}',
     outputPrefix: '',
     template: '{#$1$2$3$4$5$6}$f$c',
     formatChar: null,
     maxLength: null,
     hover: [
-      "<strong>Plugins using this format:</strong>",
-      "💠 RoyaleEconomy",
-      "💠 DarkAuctionsX",
-      "💠 AUCTIONMASTER",
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
-    ]
-    
+    ],
+    plugins: {
+      "auctionmaster":"AUCTIONMASTER",
+      "darkauctionsx":"DarkAuctionsX",
+      "royaleeconomy":"RoyaleEconomy",
+    }
   },
-  13: {
+  a13: {
     name: 'Simple #rrggbb',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
     formatChar: null,
     maxLength: null,
+    plugins: {
+      "deluxebazaar":"DELUXEBAZAAR",
+      "pyrofishingpro":"PyroFishingPro",
+      "pyrominig":"PyroMining",
+      "pyrospawners":"PyroSpawners",
+      "pyroweatherpro":"PyroWeatherPro",
+    },
     hover: [
-      "<strong>Plugins using this format:</strong>",
-      "💠 PyroSpawners",
-      "💠 PyroMining",
-      "💠 PyroFishingPro",
-      "💠 PyroWeatherPro",
-      "💠 DELUXEBAZAAR",
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
-    ]
+    ],
   },
 };
 let emoji_array = [
@@ -247,7 +304,7 @@ function removeDuplicatedEmojis() {
 function addText(emoji) {
   let input = document.getElementById('nickname');
   input.value = input.value + emoji.value;
-  updateOutputText();
+  updateOutputText(undefined);
 }
 createTable(emoji_array);
 function createTable(data){
@@ -277,6 +334,7 @@ function darkMode() {
   if (document.getElementById('darkmode').checked == true) {
     document.body.classList.add('dark');
     document.getElementById('output-format').classList.add("dark");
+    document.getElementById('plugins-list').classList.add("dark");
     document.getElementById('color-preset').classList.add("dark");
     document.getElementById('numOfColors').classList.add("dark");
     document.getElementById('emojis').classList.add("darktextboxes");
@@ -297,6 +355,7 @@ function darkMode() {
   } else {
     document.body.classList.remove('dark');
     document.getElementById('output-format').classList.remove("dark");
+    document.getElementById('plugins-list').classList.remove("dark");
     document.getElementById('color-preset').classList.remove("dark");
     document.getElementById('numOfColors').classList.remove("dark");
     document.getElementById('emojis').classList.remove("darktextboxes");
@@ -371,13 +430,20 @@ function showIridiumWarning(format, colors) {
 function addDefaultsFormats() {
   let select = document.getElementById('output-format');
   if(select) {
-    for(let value in Object.keys(formats)) {
+    for(let value of Object.keys(formats)) {
+      // console.log(`Checking format value: ${value}`);
       let format = formats[value];
-      if(format.name && format.name.length > 0) {
+      if(format && format.name && format.name.length > 0) {
         // console.log(`Adding ${format.name} with value ${value}`);
         let option = document.createElement('option');
         option.innerHTML = format.name;
         option.setAttribute("value",`${value}`);
+        if(format.separator) {
+          option.setAttribute("disabled","disabled");
+          option.setAttribute("style",`color: rgb(235, 235, 235); background: rgba(78, 78, 78, 0.698);text-align: center;padding-left: 0px;`);
+        }else{
+          option.setAttribute("value",`${value}`);
+        }
         select.appendChild(option);
       }
     }
@@ -386,7 +452,7 @@ function addDefaultsFormats() {
 function addDefaultsPresets() {
   let select = document.getElementById('color-preset');
   if(select) {
-    for(let value in Object.keys(presets)) {
+    for(let value of Object.keys(presets)) {
       let preset = presets[value];
       if(preset.name && preset.name.length > 0) {
         // console.log(`Adding ${format.name} with value ${value}`);
@@ -398,13 +464,102 @@ function addDefaultsPresets() {
     }
   }
 }
+let pluginsList = {
+
+}
+function addPluginsList() {
+  let select = document.getElementById('plugins-list');
+  if(select) {
+    let unordered = {}
+    for(let value of Object.keys(formats)) {
+      // console.log(`Checking format ${value}`);
+      let format = formats[value];
+      format.pluginsArray = [];
+      if(format.name && format.name.length > 0 && typeof format.plugins != "undefined" && Object.keys(format.plugins).length > 0) {
+        for(let pluginIdentifier of Object.keys(format.plugins)) {
+          if(!unordered[pluginIdentifier]) {
+            unordered[pluginIdentifier] = {
+              "pluginDisplayname": format.plugins[pluginIdentifier],
+              "formatIdentifier": value
+            }
+          }
+        }
+      }
+    }
+    pluginsList = Object.keys(unordered).sort().reduce(
+    (obj, key) => { 
+      obj[key] = unordered[key]; 
+      return obj;
+    },{});
+    let added = [];
+    for(let pluginIdentifier of Object.keys(pluginsList)) {
+      let pluginData = pluginsList[pluginIdentifier];
+      let format = formats[pluginData.formatIdentifier];
+      if(format) format.pluginsArray.push(pluginData.pluginDisplayname);
+      // console.log(`Adding ${pluginIdentifier} (${pluginData.pluginDisplayname})`);
+      let firstLetter = pluginIdentifier.substring(0,1).toUpperCase();
+      if(!added.includes(firstLetter)) {
+        added.push(firstLetter);
+        if(!isNaN(firstLetter)) {
+          let option = document.createElement('option');
+          option.innerHTML = `<strong>Number ${firstLetter}</strong>`;
+          option.setAttribute("disabled",`disabled`);
+          select.appendChild(option);
+        }else if(firstLetter.match(/[a-z]/gi)) {
+          let option = document.createElement('option');
+          option.innerHTML = `<strong>Letter ${firstLetter}</strong>`;
+          option.setAttribute("disabled",`disabled`);
+          select.appendChild(option);
+        }else{
+          let option = document.createElement('option');
+          option.innerHTML = `<strong>Other characters</strong>`;
+          option.setAttribute("disabled",`disabled`);
+          select.appendChild(option);
+        }
+      }
+      let option = document.createElement('option');
+      option.innerHTML = pluginData.pluginDisplayname;
+      option.setAttribute("value",`${pluginIdentifier}`);
+      option.setAttribute("format-identifier",`${pluginData.formatIdentifier}`);
+      select.appendChild(option);
+    }
+    for(let value of Object.keys(formats)) {
+      let format = formats[value];
+      if(format && format.hover) {
+        let plugins = []
+        let length = 0;
+        let pluginStrings = [];
+        for(let index in format.pluginsArray) {
+          let string = format.pluginsArray[index];
+          pluginStrings.push(string);
+          length += string.length;
+          //console.log("Format ("+format.name+") Index: ("+index+"/"+format.pluginsArray.length+") String: ("+string+") Total ("+length+"): '"+pluginStrings.join(", ")+"'");
+          if(length > 60) {
+            //console.log("New line!");
+            plugins.push(pluginStrings.join(", "));
+            pluginStrings = [];
+            length = 0;
+          }else if(index >= format.pluginsArray.length - 1){
+            //console.log("Last item: "+index+"/"+format.pluginsArray.length);
+            plugins.push(pluginStrings.join(", "));
+            pluginStrings = [];
+            length = 0;
+          }else {
+            //console.log("Adding!");
+          }
+        }
+        format.hover = format.hover.map(line=>line.replace("{plugins}",plugins.join("<br>")));
+      }
+    }
+  }
+}
 function showOutPutFormatTooltip() {
   let tooltip = document.getElementById("output-format-tooltip");
   if(tooltip) {
     let outputFormat = document.getElementById("output-format");
     // console.log("Checking: "+outputFormat.value)
     let format = formats[outputFormat.value];
-    if(format.hover && format.hover.length > 0) {
+    if(format && format.hover && format.hover.length > 0) {
       tooltip.style.display = "inline";
       tooltip.innerHTML = format.hover.join("<br>");
     }else{
@@ -549,10 +704,25 @@ function getColors() {
   });
   return colors;
 }
-
+function updateOutputTextFromPlugin(event) {
+  updateOutputText(event, true);
+}
 function updateOutputText(event) {
+  updateOutputText(event, false);
+}
+function updateOutputText(event, setFormat) {
   //console.log(event)
-  let format = formats[document.getElementById('output-format').value] || formats[0];
+  let format;
+  if(setFormat) {
+    let pluginData = pluginsList[document.getElementById('plugins-list').value];
+    if(!pluginData) {
+      console.log(`Plugins is not a format! Using default..`);
+      format = formats[document.getElementById('output-format').value] || formats["a0"];
+    }else{
+      document.getElementById('output-format').value = pluginData.formatIdentifier;
+      format = formats[pluginData.formatIdentifier] || formats["a0"];
+    }
+  }else format = formats[document.getElementById('output-format').value] || formats["a0"];
   /*
   if (format.outputPrefix) {
     nickName.value = nickName.value.replace(/ /g, '');
@@ -687,8 +857,30 @@ function preset(n) {
     }
     jscolor.install(); // Refresh all jscolor elements
 }
+function loadCounter() {
+  let counter = document.getElementById("visitor-counter");
+  if(counter) {
+    setTimeout(()=>{
+      const script1 = document.createElement('script');
+      script1.type = 'text/javascript';
+      script1.src='https://www.freevisitorcounters.com/auth.php?id=47e33aac24b63bf2e5c44436afa983346bcccaf2';
+      counter.appendChild(script1);
+      try{
+        const script2 = document.createElement('script');
+        script2.type = 'text/javascript';
+        script2.src='https://www.freevisitorcounters.com/en/home/counter/951390/t/13';
+        counter.appendChild(script2);
+      }catch(e){}
+      const a = document.createElement('a');
+      a.setAttribute("href","https://alonsoaliaga.github.io");
+      a.setAttribute("target","_blank");
+      a.innerHTML = '<br><img src="https://www.freevisitorcounters.com/en/counter/render/951390/t/13" border="0" class="counterimg">'
+      counter.appendChild(a);
+    },0)
+  }
+}
 toggleColors(2);
-updateOutputText();
+updateOutputText(undefined);
 document.getElementById('darkmode').checked = true
-darkMode()
+darkMode();
 //Script stolen from https://alonsoaliaga.com/hex
