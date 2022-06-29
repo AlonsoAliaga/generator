@@ -74,7 +74,7 @@
                   <input style="width: 45px;" class="form-control" id="emojis" type="button" maxlength="10" placeholder="Pick your emoji"
                          value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
                          onchange="javascript: updateOutputText(event)">
-                  <div style="padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: fixed; width: fit-content; height: fit-content; display: none;" class="form-control" id="emojis-spoiler" type="button" value="😁">
+                  <div style="z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; height: fit-content; display: none;" class="form-control" id="emojis-spoiler" type="button" value="😁">
                     <p style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(248, 248, 248);">Click on your favorite emojis to add them!</p>
                     <table class="c">
                     <tbody id="emoji-table">
@@ -104,7 +104,7 @@
                     <option value='10'>AlonsoChat (&#rrggbb)</option>
                     <option value='11'>Iridium Gradient</option> -->
                   </select>
-                  <div id="output-format-tooltip" style="width: max-content; height: fit-content; position: absolute; display: none;z-index: 100" class="form-control">Loading..</div>
+                  <div id="output-format-tooltip" style="width: max-content; height: fit-content; position: absolute; display: none;z-index: 1" class="form-control">Loading..</div>
                 </div>
               </div>
               <div class="row">
@@ -177,7 +177,7 @@
               <br><br>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
-                  <div id="plugin-tooltip" style="bottom: 34px;width: max-content; height: fit-content; position: absolute; display: none;z-index: 100" class="form-control">Loading..</div>
+                  <div id="plugin-tooltip" style="bottom: 34px;width: max-content; height: fit-content; position: absolute; display: none" class="form-control">Loading..</div>
                   <label for="plugins-list">Plugins list</label>
                   <select id="plugins-list"
                           style="display:inline-block"

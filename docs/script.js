@@ -64,7 +64,7 @@ const presets = {
     colors: ["F0C27B", "4B1248"],
   },
   15: {
-    name: "Bloody Mary",
+    name: "Sunset",
     colors: ["FF512F", "DD2476"],
   },
   16: {
@@ -122,7 +122,17 @@ const formats = {
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
     formatChar: '&',
-    maxLength: 256
+    maxLength: 256,
+    hover:[
+      "This is the most well-known format for hex!",
+      "",
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>"
+    ],
+    plugins: {
+      "deluxemenus": "DeluxeMenus"
+    }
   },
   a1: {
     name: 'Chat <#rrggbb>',
