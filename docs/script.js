@@ -990,7 +990,7 @@ function loadCounter() {
       success: function (result) {
         if(isNaN(result))
           document.getElementById("counter-amount").innerHTML = "Click to return!";
-        else document.getElementById("counter-amount").innerHTML = `Visits: ${data}`;
+        else document.getElementById("counter-amount").innerHTML = `Visits: ${result}`;
       },
       error: function (e) {
         document.getElementById("counter-amount").innerHTML = "Click to return!";
