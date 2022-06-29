@@ -131,7 +131,9 @@ const formats = {
       "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>"
     ],
     plugins: {
-      "deluxemenus": "DeluxeMenus"
+      "deluxemenus": "DeluxeMenus",
+      "executableblocks":"ExecutableBlocks",
+      "executableitems":"ExecutableItems",
     }
   },
   a1: {
