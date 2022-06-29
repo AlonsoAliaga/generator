@@ -1005,6 +1005,9 @@ function loadCounter() {
       },
       error: function (e) {
         document.getElementById("counter-amount").innerHTML = "Click to return!";
+        setTimeout(()=>{
+          loadCounter();
+        },1000*10);
       }
     });
     /*
