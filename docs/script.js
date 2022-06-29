@@ -978,8 +978,14 @@ function preset(n) {
     jscolor.install(); // Refresh all jscolor elements
 }
 function loadCounter() {
+  let link = atob("aHR0cHM6Ly9hbG9uc29hbGlhZ2EtcGFnZS1jb3VudC5nbGl0Y2gubWUvY291bnRlcj9zaXRlPTxzaXRlPiZrZXk9PGtleT4=").replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A");
   let counter = document.getElementById("visitor-counter");
   if(counter) {
+    $.getJSON(link, data => {
+      //data is the JSON string
+      console.log(`Received data: ${data}`);
+      document.getElementById("counter-amount").innerHTML = data;
+    });
     setTimeout(()=>{
       const script1 = document.createElement('script');
       script1.type = 'text/javascript';
