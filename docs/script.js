@@ -339,6 +339,7 @@ const formats = {
     formatChar: "&",
     maxLength: null,
     plugins: {
+      "advancedcrates":"AdvancedCrates",
       "decentholograms":"DecentHolograms",
       "deluxebazaar":"DELUXEBAZAAR",
       "elementalgems":"ElementalGems",
