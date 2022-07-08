@@ -356,6 +356,25 @@ const formats = {
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
     ],
   },
+  separator5: {
+    name: 'Uncommon formats',
+    separator: true
+  },
+  a14: {
+    name: 'Percentage %#rrggbb',
+    outputPrefix: '',
+    template: '%#$1$2$3$4$5$6$f$c',
+    formatChar: "&",
+    maxLength: null,
+    plugins: {
+      "advancednmotd":"AdvancedNMotd"
+    },
+    hover: [
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
+    ],
+  },
 };
 let emoji_array = [
   'Σ','☠','☮','☯','♠','Ω','♤','♣','♧','♥','♡','♦','♢','♔','♕','♚','♛','★','☆','✮','✯','☄','☾','☽','☼',
