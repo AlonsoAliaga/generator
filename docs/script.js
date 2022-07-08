@@ -1125,6 +1125,7 @@ function checkSite(window) {
   //return;
   setTimeout(()=>{
     let href = window.location.href;
+    console.log(href)
     if(!href.endsWith(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
       try{
         document.title = "Page stolen from https://alonsoaliaga.github.io";
