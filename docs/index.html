@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -25,7 +24,7 @@
 
   </head>
 
-  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); loadCounter();">
+  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); loadCounter(); checkSite(window);">
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -75,12 +74,13 @@
                          value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
                          onchange="javascript: updateOutputText(event)">
                   <div 
-                  style="max-height:350px;overflow:auto;overflow-y:scroll;height:fit-content;z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; display: none;"
+                  style="min-width:450px;max-height:350px;overflow:auto;overflow-y:scroll;height:fit-content;z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; display: none;"
                    class="form-control" id="emojis-spoiler" type="button" value="😁">
                     <p style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(248, 248, 248);">Click on your favorite emojis to add them!</p>
                     <div>
-                      <table class="c" style="height:200px;">
-                      <tbody id="emoji-table" style="height:200px;overflow:auto;overflow-y:scroll">
+                      <table class="c"> <!-- style="height:200px;" -->
+                      <tbody id="emoji-table" style="overflow:auto;overflow-y:scroll">
+                        <p id="loading_text" style="color:rgb(255, 227, 16);text-decoration: double;font-size: 30px;text-align:center;">Loading..</p>
                       </tbody>
                      </table>
                     </div>

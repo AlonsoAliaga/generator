@@ -1,5 +1,4 @@
 // elements for obtaining vals
-
 const nickName = document.getElementById('nickname');
 const coloredNick = document.getElementById('coloredNick');
 const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
@@ -303,6 +302,17 @@ const formats = {
     separator: true
   },
   a11: {
+    name: 'Adventure Gradient',
+    outputPrefix: '',
+    template: '&#$1$2$3$4$5$6$f$c',
+    formatChar: null,
+    maxLength: null,
+    adventureGradient: true,
+    hover: [
+      "<span style='color: red'>To use this format your plugin MUST support Adventure format!</span>"
+    ]
+  },
+  a12: {
     name: 'Iridium Gradient',
     outputPrefix: '',
     template: '&#$1$2$3$4$5$6$f$c',
@@ -317,7 +327,7 @@ const formats = {
     name: 'Common formats',
     separator: true
   },
-  a12: {
+  a13: {
     name: 'Brackets {#rrggbb}',
     outputPrefix: '',
     template: '{#$1$2$3$4$5$6}$f$c',
@@ -334,7 +344,7 @@ const formats = {
       "royaleeconomy":"RoyaleEconomy",
     }
   },
-  a13: {
+  a14: {
     name: 'Simple #rrggbb',
     outputPrefix: '',
     template: '#$1$2$3$4$5$6$f$c',
@@ -360,10 +370,10 @@ const formats = {
     name: 'Uncommon formats',
     separator: true
   },
-  a14: {
-    name: 'Percentage %#rrggbb',
+  a15: {
+    name: 'Percentage %#rrggbb%',
     outputPrefix: '',
-    template: '%#$1$2$3$4$5$6$f$c',
+    template: '%#$1$2$3$4$5$6%$f$c',
     formatChar: "&",
     maxLength: null,
     plugins: {
@@ -473,7 +483,10 @@ let emoji_array = [
   '꒵','꒶','꒷','꒸','꒹','꒺','꒻','꒼','꒽','꒾','꒿','꓀','꓁','꓂','꓃','꓄','꓅','꓆','꠨','꠩','꠪','꠫','￤','￨','￭','￮'
 ]
 // Removed: ﷽
-removeDuplicatedEmojis();
+setTimeout(async ()=>{
+  removeDuplicatedEmojis();
+  createTable(emoji_array);
+},1000);
 function removeDuplicatedEmojis() {
   // console.log(`Pre length: ${emoji_array.length}`);
   emoji_array = Array.from(new Set(emoji_array));
@@ -484,7 +497,6 @@ function addText(emoji) {
   input.value = input.value + emoji.value;
   updateOutputText(undefined);
 }
-createTable(emoji_array);
 function createTable(data){
   let table = document.getElementById('emoji-table');
   let columns = 35;
@@ -503,6 +515,8 @@ function createTable(data){
       rows.push(currentRow);
     }
   }
+  let loading_text = document.getElementById('loading_text');
+  if(loading_text) loading_text.remove();
   for(let i = 0; i < rows.length; i++){
     let row = `<tr>${rows[i].map(emoji=>`<td><button style="padding: 0px 2px 0px 2px" type="button" class="form-control emojibutton" id="boton" onclick="addText(this);" value="${emoji}">${emoji}</button></td>`).join("")}</tr>`
     table.innerHTML += row;
@@ -1031,6 +1045,17 @@ function updateOutputText(event, setFormat) {
   }
   if (format.iridiumGradient) {
     outputText.innerText = `<GRADIENT:${startIridium}>${newNick}</GRADIENT:${endIridium}>`;
+  }else if (format.adventureGradient) {
+    let effects = "";
+    if (bold) effects += '<b>';
+    if (italic) effects += '<o>';
+    if (underline) effects += '<u>';
+    if (strike) effects += 'st';
+    if(colorsList.length == 1) {
+      outputText.innerText = `<${convertToHex(colorsList[0])}>${effects}${newNick}`
+    }else{
+      outputText.innerText = `<gradient:${colorsList.map(c=>`#${convertToHex(c)}`).join(":")}>${effects}${newNick}</gradient>`
+    }
   }else{
     outputText.innerText = output;
   }
@@ -1067,7 +1092,6 @@ function displayColoredName(nickName, colors, format) {
   coloredNick.innerHTML = '';
   for (let i = 0; i < nickName.length; i++) {
     const coloredNickSpan = document.createElement('span');
-    
     if(!format.iridiumGradient) {
       if (document.getElementById('underline').checked) {
         if (document.getElementById('strike').checked) {
@@ -1096,6 +1120,18 @@ function preset(n) {
       container.append(html);
     }
     jscolor.install(); // Refresh all jscolor elements
+}
+function checkSite(window) {
+  //return;
+  setTimeout(()=>{
+    let href = window.location.href;
+    if(!href.endsWith(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+      try{
+        document.title = "Page stolen from https://alonsoaliaga.github.io";
+      }catch(e){}
+      window.location = "https://alonsoaliaga.github.io/generator/"
+    }
+  });
 }
 function loadCounter() {
   let link = atob("aHR0cHM6Ly9hbG9uc29hbGlhZ2EtcGFnZS1jb3VudC5nbGl0Y2gubWUvY291bnRlcj9zaXRlPTxzaXRlPiZrZXk9PGtleT4=").replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A");
