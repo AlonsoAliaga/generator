@@ -353,6 +353,7 @@ const formats = {
     maxLength: null,
     plugins: {
       "advancedcrates":"AdvancedCrates",
+      "combatpetreborn":"CombatPets REBORN",
       "decentholograms":"DecentHolograms",
       "deluxebazaar":"DELUXEBAZAAR",
       "elementalgems":"ElementalGems",
@@ -583,6 +584,9 @@ function getRandomHexColor() {
 function copyTextToClipboard(text) {
   let textArea = document.createElement('textarea');
   textArea.value = text;
+  textArea.style.position = "fixed";
+  textArea.style.bottom= 0;
+  textArea.style.left= 0;
 
   document.body.appendChild(textArea);
   textArea.focus();
