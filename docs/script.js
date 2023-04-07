@@ -1330,7 +1330,7 @@ function updateOutputText(event, setFormat) {
       let fontData = fonts[document.getElementById('fonts-list').value];
       if(fontData){
         if(!fontData.default) {
-          console.log("Font is selected and not default");
+          //console.log("Font is selected and not default");
           let toModify = newNick;
           newNick = "";
           if(typeof fontData.before != "undefined") {
