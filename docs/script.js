@@ -940,7 +940,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"ąɓƈđε∱ɠɧïʆҡℓɱŋŋσþҩŗşŧų√щхγẕąɓƈđε∱ɠɧïʆҡℓɱŋŋ̃σþҩŗşŧų√щхγẕ0123456789".split("")
+      toreplace:"ąɓƈđε∱ɠɧïʆҡℓɱŋñσþҩŗşŧų√щхγẕąɓƈđε∱ɠɧïʆҡℓɱŋñσþҩŗşŧų√щхγẕ0123456789".split("")
     }
   },
   "greek": {
@@ -948,7 +948,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"αႦƈԃҽϝɠԋιʝƙʅɱɳɳσρϙɾʂƚυʋɯxყȥαႦƈԃҽϝɠԋιʝƙʅɱɳɳ̃σρϙɾʂƚυʋɯxყȥ0123456789".split("")
+      toreplace:"αႦƈԃҽϝɠԋιʝƙʅɱɳñσρϙɾʂƚυʋɯxყȥαႦƈԃҽϝɠԋιʝƙʅɱɳñσρϙɾʂƚυʋɯxყȥ0123456789".split("")
     }
   },
   "knight": {
@@ -983,7 +983,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"abcdefghijklmnñopqrstuvwxyzqæƀðʒǝɠɨłꟽɯœɔȣꝵʉγλπρψ0123456789".split(""),
-      toreplace:"ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴɴ̃ᴏᴘǫʀsᴛᴜᴠᴡxʏᴢǫᴁᴃᴆᴣⱻʛᵻᴌꟺꟺɶᴐᴕꝶᵾᴦᴧᴨᴩᴪ₀₁₂₃₄₅₆₇₈₉".split("")
+      toreplace:"ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴñᴏᴘǫʀsᴛᴜᴠᴡxʏᴢǫᴁᴃᴆᴣⱻʛᵻᴌꟺꟺɶᴐᴕꝶᵾᴦᴧᴨᴩᴪ₀₁₂₃₄₅₆₇₈₉".split("")
     }
   },
   "spaced": {
@@ -999,7 +999,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤʌƅƈɗєƒʛɦɪʝƙʅɱɲɲ̃ơƥƣɾƨƭυvɯҳɣȥ0123456789".split("")
+      toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυvɯҳɣȥ0123456789".split("")
     }
   },
   "tailuppercase": {
@@ -1007,7 +1007,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤƛƁƇƊЄƑƓӇƖʆƘԼMƝƝ̃ƠƤƢƦƧƬƲƔƜҲƳȤ0123456789".split("")
+      toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤƛƁƇƊЄƑƓӇƖʆƘԼMƝÑƠƤƢƦƧƬƲƔƜҲƳȤ0123456789".split("")
     }
   },
   "taillowercase": {
@@ -1015,7 +1015,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"ʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυVɯҳɣȥʌƅƈɗєƒʛɦɪʝƙʅɱɲɲ̃ơƥƣɾƨƭυvɯҳɣȥ0123456789".split("")
+      toreplace:"ʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυVɯҳɣȥʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυvɯҳɣȥ0123456789".split("")
     }
   },
   "upsidedown": {
@@ -1039,7 +1039,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"∀ʙCᴅєɻƋʜǀๅĸΓWИ̃ИObƠɩƧ⊥Λ∏ΛMXλZɑʙcᴅєɻმʜιɿĸгwи̃иoƅϭʁƨ⊥nʌʍx⑃z0123456789".split("")
+      toreplac:"∀ʙCᴅєɻƋʜǀๅĸΓWИÑObƠɩƧ⊥∏ΛMXλZɑʙcᴅєɻმʜιɿĸгwиñoƅϭʁƨ⊥nʌʍx⑃z0123456789".split("")
     }
   },
   "weird": {
@@ -1047,7 +1047,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplace:"ǟɮƈɖɛʄɢɦɨʝӄʟʍռռօքզʀֆȶʊʋաӼʏʐǟɮƈɖɛʄɢɦɨʝӄʟʍռռ̃օքզʀֆȶʊʋաӼʏʐ0123456789".split("")
+      toreplace:"ǟɮƈɖɛʄɢɦɨʝӄʟʍռñօքզʀֆȶʊʋաӼʏʐǟɮƈɖɛʄɢɦɨʝӄʟʍռñօքզʀֆȶʊʋաӼʏʐ0123456789".split("")
     }
   }
 }
