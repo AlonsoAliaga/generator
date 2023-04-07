@@ -24,7 +24,7 @@
 
   </head>
 
-  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); loadCounter(); checkSite(window);">
+  <body id="bg" class="container" onload="addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter(); checkSite(window);">
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -195,6 +195,18 @@
                   <a target="_blank" style="width: 45px;position: absolute;display: none;text-decoration: none;" class="form-control linktooltip" 
                     id="plugin-link-button" maxlength="10"
                   >🔗<span class="linktooltiptext">Click to go to download page!</span></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="fonts-list">Fonts list</label>
+                  <select id="fonts-list"
+                          style="display:inline-block"
+                          class="form-control"
+                          onload="addFontsList();"
+                          onchange="updateOutputTextFromFont(event);">
+                          <option selected="true" disabled="disabled">Select a font</option>
+                  </select>
                 </div>
               </div>
             </div>

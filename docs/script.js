@@ -109,6 +109,14 @@ const presets = {
   26: {
     name: "TikTok",
     colors: ["FF0050", "4B0018", "00F2EA"],
+  },
+  27: {
+    name: "Peach",
+    colors: ["ED4264","FFEDBC"],
+  },
+  28: {
+    name: "Electric Violet",
+    colors: ["4776E6","8E54E9"],
   }
 }
 const formats = {
@@ -130,10 +138,12 @@ const formats = {
       "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>"
     ],
     plugins: {
+      "deluxecombat":"DeluxeCombat",
       "deluxemenus": "DeluxeMenus",
       "executableblocks":"ExecutableBlocks",
       "executableitems":"ExecutableItems",
-      "deluxecombat":"DeluxeCombat",
+      "sternalboard": "SternalBoard",
+      "tab": "TAB",
     }
   },
   a1: {
@@ -186,8 +196,6 @@ const formats = {
     ],
     plugins: {
       "animatedscoreboards": "AnimatedScoreboards",
-      "sternalboard": "SternalBoard",
-      "tab": "TAB",
     }
   },
   a7: {
@@ -224,9 +232,50 @@ const formats = {
     ],
     plugins: {
       "alonsochat": {
-        displayName: "AlonsoChat 💠 (Not released)",
+        displayName: "AlonsoChat 💠",
+        link: "https://alonsoaliaga.com/AlonsoChat",
         hover: [
           "Customizable chat for your server!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsogg": {
+        displayName: "AlonsoGG 💠",
+        link: "https://alonsoaliaga.com/AlonsoGG",
+        hover: [
+          "Reward your players for being good players!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsojoin": {
+        displayName: "AlonsoJoin 💠",
+        link: "https://alonsoaliaga.com/AlonsoJoin",
+        hover: [
+          "Customizable join message for your server!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsoleaderboards": {
+        displayName: "AlonsoLeaderboards 💠",
+        link: "https://alonsoaliaga.com/AlonsoLeaderboards",
+        hover: [
+          "Highly customizable leaderboards plugin for your server!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsoleagues": {
+        displayName: "AlonsoLeagues 💠",
+        link: "https://alonsoaliaga.com/AlonsoLeagues",
+        hover: [
+          "Create a ranking system for your players!",
           "<span style='color: red;'>This plugin was made by our team!</span>",
           "",
           "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
@@ -247,6 +296,16 @@ const formats = {
         link: "https://alonsoaliaga.com/AlonsoPlus",
         hover: [
           "Customizable colors for your donors' rank. Change PLUS sign in ranks!",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "alonsorftb": {
+        displayName: "AlonsoRunFromTheBeast 💠",
+        link: "https://alonsoaliaga.com/AlonsoRFTB",
+        hover: [
+          "Escape from the beast, get loot and defeat it!",
           "<span style='color: red;'>This plugin was made by our team!</span>",
           "",
           "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
@@ -276,6 +335,16 @@ const formats = {
       "<span style='color: red'>These plugins are made by our team!</span>"
     ],
     plugins: {
+      "bettereggs": {
+        displayName: "BetterEggs 💠",
+        link: "https://alonsoaliaga.com/BetterEggs",
+        hover: [
+          "Make your players walk to hatch mystery eggs.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
       "betterbackpacks": {
         displayName: "BetterBackpacks 💠",
         link: "https://alonsoaliaga.com/BetterBackpacksPro",
@@ -286,11 +355,51 @@ const formats = {
           "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
         ]
       },
+      "betterheads": {
+        displayName: "BetterHeads 💠",
+        link: "https://alonsoaliaga.com/BetterHeads",
+        hover: [
+          "Give your players/builders access to amazing heads for a price.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "betterprofiles": {
+        displayName: "BetterProfiles 💠",
+        link: "https://alonsoaliaga.com/BetterProfiles",
+        hover: [
+          "An amazing way to display players profiles to others.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
       "betterrevive": {
         displayName: "BetterRevive 💠",
         link: "https://alonsoaliaga.com/BetterRevive",
         hover: [
           "Give your players a second chance to live.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "bettersocial": {
+        displayName: "BetterSocial 💠",
+        link: "https://alonsoaliaga.com/BetterSocial",
+        hover: [
+          "Enhance your community by letting your players share their social media.",
+          "<span style='color: red;'>This plugin was made by our team!</span>",
+          "",
+          "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
+        ]
+      },
+      "betterwaypoints": {
+        displayName: "BetterWaypoints 💠",
+        link: "https://alonsoaliaga.com/BetterWaypoints",
+        hover: [
+          "A whole new way to save waypoints!",
           "<span style='color: red;'>This plugin was made by our team!</span>",
           "",
           "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}"
@@ -311,7 +420,10 @@ const formats = {
     adventureGradient: true,
     hover: [
       "<span style='color: red'>To use this format your plugin MUST support Adventure format!</span>"
-    ]
+    ],
+    plugins: {
+      "playervaults":"PlayerVaults",
+    }
   },
   a12: {
     name: 'Iridium Gradient',
@@ -354,9 +466,11 @@ const formats = {
     plugins: {
       "advancedcrates":"AdvancedCrates",
       "combatpetreborn":"CombatPets REBORN",
+      "conditionalevents":"ConditionalEvents",
       "decentholograms":"DecentHolograms",
       "deluxebazaar":"DELUXEBAZAAR",
       "elementalgems":"ElementalGems",
+      "playerkits":"PlayerKits",
       "pyrofishingpro":"PyroFishingPro",
       "pyrominig":"PyroMining",
       "pyrospawners":"PyroSpawners",
@@ -379,7 +493,8 @@ const formats = {
     formatChar: "&",
     maxLength: null,
     plugins: {
-      "advancednmotd":"AdvancedNMotd"
+      "advancednmotd":"AdvancedNMotd",
+      "itemsadder":"ItemsAdder"
     },
     hover: [
       "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
@@ -424,7 +539,7 @@ let emoji_array = [
   '◔','◕','◖','◗','◘','◙','◚','◛','◜','◝','◞','◟','◠','◡','◢','◣','◤','◥','◦','◧','◨','◩','◪','◫','◬','◭','◮',
   '◯','◰','◱','◲','◳','◴','◵','◶','◷','☀','☁','☂','☃','☄','★','☆','☇','☈','☉','☊','☋','☌','☍','☎','☏','☐','☑',
   '☒','☓','☔','☕','☖','☗','☘','☙','☚','☛','☜','☝','☞','☟','☠','☡','☢','☣','☤','☥','☦','☧','☨','☩','☪','☫','☬',
-  '☭','☮','☯','☰','☱','☲','☳','☴','☵','☶','☷','☸','☹','☺','☻','☼','☽','☾','☿','♀','♁','♂','♃','♄','♅','♆','♇','♈',
+  '☭','☮','☯','☰','☱','☲','☳','☴','☵','☶','☷','☸','☹','☼','☽','☾','☿','♀','♁','♂','♃','♄','♅','♆','♇','♈',
   '♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟','♠',
   '♡','♢','♣','♤','♥','♦','♧','♨','♩','♪','♫','♬','♭','♮','♰','♱','♲','♳','♴','♵','♶','♷','♸','♹','♺','♻','♼','♽',
   '♾','♿','⚀','⚁','⚂','⚃','⚄','⚅','⚆','⚇','⚈','⚉','⚊','⚋','⚌','⚍','⚎','⚏','⚐','⚑','⚒','⚓','⚔','⚕','⚖','⚗','⚘',
@@ -432,7 +547,7 @@ let emoji_array = [
   '⚶','⚷','⚸','⚹','⚺','⚻','⚼','⛀','⛁','⛂','⛃','⛄','⛈','⛏','⛨','✁','✂','✃','✄','✆','✇','✈','✉','✌','✍','✎',
   '✏','✐','✑','✒','✓','✔','✕','✖','✗','✘','✙','✚','✛','✜','✝','✞','✟','✠','✡','✢','✣','✤','✥','✦','✧','✩','✪',
   '✫','✬','✭','✮','✯','✰','✱','✲','✳','✴','✵','✶','✷','✸','✹','✺','✻','✼','✽','✾','✿','❀','❁','❂','❃','❄','❅',
-  '❆','❇','❈','❉','❊','❋','❌','❍','❏','❐','❑','❒','❖','❘','❙','❚','❛','❜','❝','❞','❡','❢','❣','❤','❥','❦','❧','➔',
+  '❆','❇','❈','❉','❊','❋','❌','❍','❏','❐','❑','❒','❖','❘','❙','❚','❛','❜','❝','❞','❡','❢','❧','➔',
   '➘','➙','➚','➛','➜','➝','➞','➟','➠','➡','➢','➣','➤','➥','➦','➧','➨','➩','➪','➫','➬','➭','➮','➯','➱','➲',
   '➳','➴','➵','➶','➷','➸','➹','➺','➻','➼','➽','➾','⠁','⠂','⠃','⠄','⠅','⠆','⠇','⠈','⠉','⠊','⠋','⠌','⠍','⠎',
   '⠏','⠐','⠑','⠒','⠓','⠔','⠕','⠖','⠗','⠘','⠙','⠚','⠛','⠜','⠝','⠞','⠟','⠠','⠡','⠢','⠣','⠤','⠥','⠦','⠧','⠨','⠩','⠪',
@@ -482,7 +597,8 @@ let emoji_array = [
   '䷐','䷑','䷒','䷓','䷔','䷕','䷖','䷗','䷘','䷙','䷚','䷛','䷜','䷝','䷞','䷟','䷠','䷡','䷢','䷣','䷤','䷥','䷦','䷧','䷨','䷩','䷪',
   '䷫','䷬','䷭','䷮','䷯','䷰','䷱','䷲','䷳','䷴','䷵','䷶','䷷','䷸','䷹','䷺','䷻','䷼','䷽','䷾','䷿','꒐','꒑','꒒','꒓','꒔','꒕','꒖',
   '꒗','꒘','꒙','꒚','꒛','꒜','꒝','꒞','꒟','꒠','꒡','꒢','꒣','꒤','꒥','꒦','꒧','꒨','꒩','꒪','꒫','꒬','꒭','꒮','꒯','꒰','꒱','꒲','꒳','꒴',
-  '꒵','꒶','꒷','꒸','꒹','꒺','꒻','꒼','꒽','꒾','꒿','꓀','꓁','꓂','꓃','꓄','꓅','꓆','￤','￨','￭','￮'
+  '꒵','꒶','꒷','꒸','꒹','꒺','꒻','꒼','꒽','꒾','꒿','꓀','꓁','꓂','꓃','꓄','꓅','꓆','￤','￨','￭','￮','🌊','☀','🌧','☁','☂','🍖','🔥',
+  '🎣','🏹','🔔','🔱','🗡','🛡','🪓','⛏','🪣','🧪','☠','✎','☄','✔','✘','♪','♩','♫'
 ]
 // Removed: ﷽
 setTimeout(async ()=>{
@@ -529,6 +645,7 @@ function darkMode() {
     document.body.classList.add('dark');
     document.getElementById('output-format').classList.add("dark");
     document.getElementById('plugins-list').classList.add("dark");
+    document.getElementById('fonts-list').classList.add("dark");
     document.getElementById('color-preset').classList.add("dark");
     document.getElementById('numOfColors').classList.add("dark");
     document.getElementById('emojis').classList.add("darktextboxes");
@@ -553,6 +670,7 @@ function darkMode() {
     document.body.classList.remove('dark');
     document.getElementById('output-format').classList.remove("dark");
     document.getElementById('plugins-list').classList.remove("dark");
+    document.getElementById('fonts-list').classList.remove("dark");
     document.getElementById('color-preset').classList.remove("dark");
     document.getElementById('numOfColors').classList.remove("dark");
     document.getElementById('emojis').classList.remove("darktextboxes");
@@ -668,7 +786,6 @@ function addDefaultsPresets() {
   }
 }
 let pluginsList = {
-
 }
 function addPluginsList() {
   let select = document.getElementById('plugins-list');
@@ -771,6 +888,80 @@ function addPluginsList() {
     }
   }
 }
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+const numbers = "0123456789";
+const fonts = {
+  "normal": {
+    "name": "Normal",
+    "default": true
+  },
+  "bold": {
+    "name": "Bold",
+    "processed": {},
+    "data": {
+      tosearch:(letters + numbers).split(""),
+      toreplace:"𝗔 𝗕 𝗖 𝗗 𝗘 𝗙 𝗚 𝗛 𝗜 𝗝 𝗞 𝗟 𝗠 𝗡 𝗢 𝗣 𝗤 𝗥 𝗦 𝗧 𝗨 𝗩 𝗪 𝗫 𝗬 𝗭 𝗮 𝗯 𝗰 𝗱 𝗲 𝗳 𝗴 𝗵 𝗶 𝗷 𝗸 𝗹 𝗺 𝗻 𝗼 𝗽 𝗾 𝗿 𝘀 𝘁 𝘂 𝘃 𝘄 𝘅 𝘆 𝘇 𝟬 𝟭 𝟮 𝟯 𝟰 𝟱 𝟲 𝟳 𝟴 𝟵".split(" ")
+    }
+  },
+  "bubble": {
+    "name": "Bubble",
+    "processed": {},
+    "data": {
+      tosearch:(letters + numbers).split(""),
+      toreplace:"Ⓐ Ⓑ Ⓒ Ⓓ Ⓔ Ⓕ Ⓖ Ⓗ Ⓘ Ⓙ Ⓚ Ⓛ Ⓜ Ⓝ Ⓞ Ⓟ Ⓠ Ⓡ Ⓢ Ⓣ Ⓤ Ⓥ Ⓦ Ⓧ Ⓨ Ⓩ ⓐ ⓑ ⓒ ⓓ ⓔ ⓕ ⓖ ⓗ ⓘ ⓙ ⓚ ⓛ ⓜ ⓝ ⓞ ⓟ ⓠ ⓡ ⓢ ⓣ ⓤ ⓥ ⓦ ⓧ ⓨ ⓩ ⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨".split(" ")
+    }
+  },
+  "outline": {
+    "name": "Outline",
+    "processed": {},
+    "data": {
+      tosearch:(letters + numbers).split(""),
+      toreplace:"𝔸 𝔹 ℂ 𝔻 𝔼 𝔽 𝔾 ℍ 𝕀 𝕁 𝕂 𝕃 𝕄 ℕ 𝕆 ℙ ℚ ℝ 𝕊 𝕋 𝕌 𝕍 𝕎 𝕏 𝕐 ℤ 𝕒 𝕓 𝕔 𝕕 𝕖 𝕗 𝕘 𝕙 𝕚 𝕛 𝕜 𝕝 𝕞 𝕟 𝕠 𝕡 𝕢 𝕣 𝕤 𝕥 𝕦 𝕧 𝕨 𝕩 𝕪 𝕫 𝟘 𝟙 𝟚 𝟛 𝟜 𝟝 𝟞 𝟟 𝟠 𝟡".split(" ")
+    }
+  },
+  "small-caps": {
+    "name": "Small caps",
+    "before": function(s) {
+      return s.toLowerCase();
+    },
+    "processed": {},
+    "data": {
+      tosearch:"abcdefghijklmnoprtuvwyzqæƀðʒǝɠɨłꟽɯœɔȣꝵʉγλπρψ".split(""),
+      toreplace:"ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴᴏᴘʀᴛᴜᴠᴡʏᴢǫᴁᴃᴆᴣⱻʛᵻᴌꟺꟺɶᴐᴕꝶᵾᴦᴧᴨᴩᴪ".split("")
+    }
+  }
+}
+let fontsList = {
+}
+function addFontsList() {
+  //console.log(`Called addFontsList`);
+  let select = document.getElementById('fonts-list');
+  if(select) {
+    for(let fontIdentifier of Object.keys(fonts)) {
+      let fontData = fonts[fontIdentifier];
+      //console.log(`Adding ${fontIdentifier} (${fontData.name})`);
+      let option = document.createElement('option');
+      option.innerHTML = fontData.name;
+      option.setAttribute("value",`${fontIdentifier}`);
+      option.setAttribute("font-identifier",`${fontIdentifier}`);
+      select.appendChild(option);
+      fontData.processed = {};
+      if(fontData.data && fontData.data.tosearch && fontData.data.toreplace &&
+        fontData.data.tosearch.length == fontData.data.toreplace.length) {
+          for (let i = 0; i < fontData.data.tosearch.length; i++) {
+            fontData.processed[fontData.data.tosearch[i]] = fontData.data.toreplace[i];
+          }
+      }
+    }
+    /*
+    fontsList = Object.keys(unordered).sort().reduce(
+    (obj, key) => { 
+      obj[key] = unordered[key]; 
+      return obj;
+    },{});
+    */
+  }
+}
 function showPluginTooltip() {
   let tooltip = document.getElementById("plugin-tooltip");
   if(tooltip) {
@@ -867,9 +1058,13 @@ class Gradient {
 
   /* Gets the next color in the gradient sequence as an array of 3 numbers: [r, g, b] */
   next() {
-    if (this.steps <= 1)
+    if (this.steps < 1)
       return this.colors[0];
-
+    if(this.steps < this.colors.length) {
+      let tColor = this.colors[this.step]
+      this.step++;
+      return tColor;
+    }
     const adjustedStep = Math.round(Math.abs(((2 * Math.asin(Math.sin(this.step * (Math.PI / (2 * this.steps))))) / Math.PI) * this.steps));
     let color;
     if (this.gradients.length < 2) {
@@ -953,6 +1148,9 @@ function getColors() {
 function updateOutputTextFromPlugin(event) {
   updateOutputText(event, true);
 }
+function updateOutputTextFromFont(event) {
+  updateOutputText(event, false);
+}
 function updateOutputText(event) {
   updateOutputText(event, false);
 }
@@ -997,7 +1195,7 @@ function updateOutputText(event, setFormat) {
   if (!newNick) {
     newNick = 'Type something!'
   }
-
+  
   const bold = document.getElementById('bold').checked;
   const italic = document.getElementById('italics').checked;
   const underline = document.getElementById('underline').checked;
@@ -1007,7 +1205,33 @@ function updateOutputText(event, setFormat) {
   let colorsList = getColors();
   //console.log(colorsList);
   let gradient;
-  
+  if(document.getElementById('fonts-list')) {
+    if(document.getElementById('fonts-list').value) {
+      let fontData = fonts[document.getElementById('fonts-list').value];
+      if(fontData){
+        if(!fontData.default) {
+          console.log("Font is selected and not default");
+          let toModify = newNick;
+          newNick = "";
+          if(typeof fontData.before != "undefined") {
+            toModify = fontData.before(toModify);
+          }
+          let processed = fontData.processed;
+          for (let i = 0; i < toModify.length; i++) {
+            newNick += processed[toModify[i]] || toModify[i];
+          }
+          if(typeof fontData.after != "undefined") {
+            toModify = fontData.after(toModify);
+          }
+        }
+        //else console.log("Font is selected and default");
+      }
+      //else console.log("Font is not selected..");
+    }
+    //else console.log("Font not value. Impossible..");
+  }
+  //else console.log("Not fonts-list.. How?");
+
   if (format.iridiumGradient) {
     let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
     gradient = new Gradient(newColorList, newNick.replace(/ /g, '').length);
@@ -1151,7 +1375,7 @@ function loadCounter() {
         else document.getElementById("counter-amount").innerHTML = `Visits: ${result}`;
       },
       error: function (e) {
-        times++;
+        count++;
         document.getElementById("counter-amount").innerHTML = "Click to return!";
         if(count <= 1) {
           setTimeout(()=>{
