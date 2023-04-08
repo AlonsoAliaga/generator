@@ -117,7 +117,23 @@ const presets = {
   28: {
     name: "Electric Violet",
     colors: ["4776E6","8E54E9"],
-  }
+  },
+  29: {
+    name: "Party",
+    colors: ["3A3AAE","7719B8","FF00CC"],
+  },
+  30: {
+    name: "Purple Lake",
+    colors: ["662D8C","ED1E79"],
+  },
+  31: {
+    name: "Quepal",
+    colors: ["11998E","38EF7D"],
+  },
+  32: {
+    name: "Fresh",
+    colors: ["9F025E","F9C929"],
+  },
 }
 const formats = {
   separator1: {
@@ -1039,7 +1055,7 @@ const fonts = {
     "processed": {},
     "data": {
       tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""),
-      toreplac:"∀ʙCᴅєɻƋʜǀๅĸΓWИÑObƠɩƧ⊥∏ΛMXλZɑʙcᴅєɻმʜιɿĸгwиñoƅϭʁƨ⊥nʌʍx⑃z0123456789".split("")
+      toreplace:"∀ʙCᴅєɻƋʜǀๅĸΓWИÑObƠɩƧ⊥∏ΛMXλZɑʙcᴅєɻმʜιɿĸгwиñoƅϭʁƨ⊥nʌʍx⑃z0123456789".split("")
     }
   },
   "weird": {
@@ -1051,8 +1067,10 @@ const fonts = {
     }
   }
 }
+/*
 let fontsList = {
 }
+*/
 function addFontsList() {
   //console.log(`Called addFontsList`);
   let select = document.getElementById('fonts-list');
