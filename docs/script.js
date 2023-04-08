@@ -1415,9 +1415,9 @@ function updateOutputText(event, setFormat) {
   }else if (format.adventureGradient) {
     let effects = "";
     if (bold) effects += '<b>';
-    if (italic) effects += '<o>';
+    if (italic) effects += '<i>';
     if (underline) effects += '<u>';
-    if (strike) effects += 'st';
+    if (strike) effects += '<st>';
     if(colorsList.length == 1) {
       outputText.innerText = `<${convertToHex(colorsList[0])}>${effects}${newNick}`
     }else{
