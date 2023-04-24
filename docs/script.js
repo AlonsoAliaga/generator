@@ -167,7 +167,10 @@ const formats = {
     outputPrefix: '',
     template: '<#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
-    maxLength: 256
+    maxLength: 256,
+    plugins: {
+      "libertybans":"LibertyBans"
+    }
   },
   a2: {
     name: 'Legacy &x&r&r&g&g&b&b',
@@ -186,7 +189,7 @@ const formats = {
   a4: {
     name: 'Nick Special <&#rrggbb>',
     outputPrefix: '/nick ',
-    template: '<#$1$2$3$4$5$6>$f$c',
+    template: '<&#$1$2$3$4$5$6>$f$c',
     formatChar: '&',
     maxLength: 256
   },
@@ -212,6 +215,7 @@ const formats = {
     ],
     plugins: {
       "animatedscoreboards": "AnimatedScoreboards",
+      "litebans": "LiteBans"
     }
   },
   a7: {
@@ -510,7 +514,8 @@ const formats = {
     maxLength: null,
     plugins: {
       "advancednmotd":"AdvancedNMotd",
-      "itemsadder":"ItemsAdder"
+      "itemsadder":"ItemsAdder",
+      "cosmeticscore":"CosmeticsCore"
     },
     hover: [
       "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
@@ -519,6 +524,8 @@ const formats = {
     ],
   },
 };
+let emojis_to_use_as_replacement = []
+let double_emojis = []
 let emoji_array = [
   'Σ','☠','☮','☯','♠','Ω','♤','♣','♧','♥','♡','♦','♢','♔','♕','♚','♛','★','☆','✮','✯','☄','☾','☽','☼',
   '☀','☁','☂','☃','☻','☺','۞','۩','♬','✄','✂','✆','✉','✦','✧','∞','♂','♀','☿','❤','❥','❦','❧','®','©',
@@ -614,7 +621,7 @@ let emoji_array = [
   '䷫','䷬','䷭','䷮','䷯','䷰','䷱','䷲','䷳','䷴','䷵','䷶','䷷','䷸','䷹','䷺','䷻','䷼','䷽','䷾','䷿','꒐','꒑','꒒','꒓','꒔','꒕','꒖',
   '꒗','꒘','꒙','꒚','꒛','꒜','꒝','꒞','꒟','꒠','꒡','꒢','꒣','꒤','꒥','꒦','꒧','꒨','꒩','꒪','꒫','꒬','꒭','꒮','꒯','꒰','꒱','꒲','꒳','꒴',
   '꒵','꒶','꒷','꒸','꒹','꒺','꒻','꒼','꒽','꒾','꒿','꓀','꓁','꓂','꓃','꓄','꓅','꓆','￤','￨','￭','￮','🌊','☀','🌧','☁','☂','🍖','🔥',
-  '🎣','🏹','🔔','🔱','🗡','🛡','🪓','⛏','🪣','🧪','☠','✎','☄','✔','✘','♪','♩','♫'
+  '🎣','🏹','🔔','🔱','🗡','🛡','🪓','⛏','🪣','🧪','☠','✎','☄','✔','✘','♪','♩','♫','≫'
 ]
 // Removed: ﷽
 setTimeout(async ()=>{
@@ -625,6 +632,8 @@ function removeDuplicatedEmojis() {
   // console.log(`Pre length: ${emoji_array.length}`);
   emoji_array = Array.from(new Set(emoji_array));
   // console.log(`Post length: ${emoji_array.length}`);
+  double_emojis = emoji_array.filter(e=>e.length > 1);
+  emojis_to_use_as_replacement = emoji_array.filter(e=>e.length == 1);
 }
 function addText(emoji) {
   let input = document.getElementById('nickname');
@@ -1292,6 +1301,37 @@ function updateOutputTextFromFont(event) {
 function updateOutputText(event) {
   updateOutputText(event, false);
 }
+
+let replacements = new Map();
+function fixReplacements(text) {
+  console.log(`Before fix replacement: ${text}`);
+  for(let [k,v] of replacements.entries()) {
+    text = text.replaceAll(k,v);
+  }
+  console.log(`After fix replacement: ${text}`);
+  return text;
+}
+function addReplacements(text) {
+  replacements.clear();
+  //console.log(`Before replacement: ${text}`)
+  for(let e of double_emojis) {
+    if(text.includes(e)) {
+      let randomEmoji = getRandomEmoji(text);
+      replacements.set(randomEmoji,e)
+      text = text.replaceAll(e,randomEmoji);
+      console.log(`Replacing: ${e} -> ${randomEmoji}`)
+    }
+  }
+  //console.log(`After replacement: ${text}`)
+  return text;
+}
+function getRandomEmoji(text) {
+  let random = emojis_to_use_as_replacement[Math.floor(Math.random() * emojis_to_use_as_replacement.length)]
+  if(replacements.has(random) || text.includes(random)) {
+    return getRandomEmoji(text);
+  }
+  return random;
+}
 function updateOutputText(event, setFormat) {
   //console.log(event)
   let format;
@@ -1369,12 +1409,31 @@ function updateOutputText(event, setFormat) {
     //else console.log("Font not value. Impossible..");
   }
   //else console.log("Not fonts-list.. How?");
+  //console.log(`Before replaced newNick: ${newNick}`)
+  
+  newNick = addReplacements(newNick);
+  /*
+  replacements.clear();
+  console.log(`Before replacement: ${newNick}`)
+  for(let e of double_emojis) {
+    if(newNick.includes(e)) {
+      let randomEmoji = getRandomEmoji(newNick);
+      replacements.set(randomEmoji,e)
+      newNick = newNick.replaceAll(e,randomEmoji);
+      console.log(`Replacing: ${e} -> ${randomEmoji}`)
+    }
+  }
+  console.log(`After replacement: ${newNick}`)
+  */
+  //console.log(`Replaced newNick: ${newNick}`)
+
+  let chars = newNick.replace(/ /g, '');
 
   if (format.iridiumGradient) {
     let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
-    gradient = new Gradient(newColorList, newNick.replace(/ /g, '').length);
+    gradient = new Gradient(newColorList, chars.length);
   }else{
-    gradient = new Gradient(colorsList, newNick.replace(/ /g, '').length);
+    gradient = new Gradient(colorsList, chars.length);
   }
   let charColors = [];
   let output = format.outputPrefix;
@@ -1388,6 +1447,7 @@ function updateOutputText(event, setFormat) {
       charColors.push(null);
       continue;
     }
+    
 
     let hex = convertToHex(gradient.next());
     charColors.push(hex);
@@ -1410,6 +1470,10 @@ function updateOutputText(event, setFormat) {
     }
     output += hexOutput;
   }
+
+  output = fixReplacements(output);
+  newNick = fixReplacements(newNick);
+
   if (format.iridiumGradient) {
     outputText.innerText = `<GRADIENT:${startIridium}>${newNick}</GRADIENT:${endIridium}>`;
   }else if (format.adventureGradient) {
