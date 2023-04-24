@@ -134,6 +134,26 @@ const presets = {
     name: "Fresh",
     colors: ["9F025E","F9C929"],
   },
+  33: {
+    name: "Skyline",
+    colors: ["1488CC","2B32B2"],
+  },
+  34: {
+    name: "Mango",
+    colors: ["FFE259","FFA751"],
+  },
+  35: {
+    name: "Dawn",
+    colors: ["F3904F","3B4371"],
+  },
+  36: {
+    name: "Rose",
+    colors: ["F4C4F3","FC67FA"],
+  },
+  37: {
+    name: "Firewatch",
+    colors: ["CB2D3E","EF473A"],
+  },
 }
 const formats = {
   separator1: {
