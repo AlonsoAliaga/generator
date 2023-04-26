@@ -1513,7 +1513,7 @@ function updateOutputText(event, setFormat) {
   }
   showIridiumWarning(format, colorsList);
   showError(format.maxLength != null && format.maxLength < output.length);
-  displayColoredName(newNick, charColors, format);
+  displayColoredName(beforeFixedNewNick, charColors, format);
 }
 
 /**
