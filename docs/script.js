@@ -1492,7 +1492,7 @@ function updateOutputText(event, setFormat) {
   }
 
   output = fixReplacements(output);
-  let beforeFixedNewNick = newNick;
+  let beforeFixedNewNick = newNick + "";
   newNick = fixReplacements(newNick);
 
   if (format.iridiumGradient) {
@@ -1554,10 +1554,15 @@ function displayColoredName(nickName, colors, format) {
       }
     }
     coloredNickSpan.style.color = "#"+colors[i];
-    coloredNickSpan.textContent = nickName[i];
+    let char = nickName[i];
+    if(replacements.has(char)) {
+      coloredNickSpan.textContent = replacements.get(char);
+    }else{
+      coloredNickSpan.textContent = char;
+    }
     coloredNick.append(coloredNickSpan);
   }
-  coloredNick.innerHTML = fixReplacements(coloredNick.innerHTML);
+  //coloredNick.innerHTML = fixReplacements(coloredNick.innerHTML);
   //alert(colors);
 }
 
