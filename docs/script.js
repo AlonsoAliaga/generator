@@ -1492,6 +1492,7 @@ function updateOutputText(event, setFormat) {
   }
 
   output = fixReplacements(output);
+  let beforeFixedNewNick = newNick;
   newNick = fixReplacements(newNick);
 
   if (format.iridiumGradient) {
@@ -1556,6 +1557,7 @@ function displayColoredName(nickName, colors, format) {
     coloredNickSpan.textContent = nickName[i];
     coloredNick.append(coloredNickSpan);
   }
+  coloredNick.innerHTML = fixReplacements(coloredNick.innerHTML);
   //alert(colors);
 }
 
