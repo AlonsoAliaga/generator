@@ -1324,11 +1324,11 @@ function updateOutputText(event) {
 
 let replacements = new Map();
 function fixReplacements(text) {
-  console.log(`Before fix replacement: ${text}`);
+  //console.log(`Before fix replacement: ${text}`);
   for(let [k,v] of replacements.entries()) {
     text = text.replaceAll(k,v);
   }
-  console.log(`After fix replacement: ${text}`);
+  //console.log(`After fix replacement: ${text}`);
   return text;
 }
 function addReplacements(text) {
@@ -1339,7 +1339,7 @@ function addReplacements(text) {
       let randomEmoji = getRandomEmoji(text);
       replacements.set(randomEmoji,e)
       text = text.replaceAll(e,randomEmoji);
-      console.log(`Replacing: ${e} -> ${randomEmoji}`)
+      //console.log(`Replacing: ${e} -> ${randomEmoji}`)
     }
   }
   //console.log(`After replacement: ${text}`)
