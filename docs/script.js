@@ -756,7 +756,9 @@ function copyTextToClipboard(text) {
   textArea.select();
 
   document.execCommand('copy');
-  alert('You text was copied! Ready to paste!\n\nThanks for using our tool!\n- AlonsoAliaga');
+  //alert('You text was copied! Ready to paste!\n\nThanks for using our tool!\n- AlonsoAliaga');
+  
+  alertCopied();
   document.body.removeChild(textArea);
 }
 
@@ -1630,6 +1632,21 @@ function loadCounter() {
       }
     });
   }
+}
+
+let copiedTimeout;
+function alertCopied() {
+  if(copiedTimeout) {
+    clearTimeout(copiedTimeout);
+    var sb = document.getElementById("snackbar");
+    sb.className = sb.className.replace("show", "");
+  }
+  var sb = document.getElementById("snackbar");
+
+  //this is where the class name will be added & removed to activate the css
+  sb.className = "show";
+
+  copiedTimeout = setTimeout(()=>{ sb.className = sb.className.replace("show", ""); }, 3000);
 }
 toggleColors(2);
 updateOutputText(undefined);
