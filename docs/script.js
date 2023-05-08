@@ -178,6 +178,7 @@ const formats = {
       "deluxemenus": "DeluxeMenus",
       "executableblocks":"ExecutableBlocks",
       "executableitems":"ExecutableItems",
+      "loreattributesrecoded": "LoreAttributesRecoded",
       "sternalboard": "SternalBoard",
       "tab": "TAB",
     }
@@ -246,7 +247,7 @@ const formats = {
     maxLength: null
   },
   a8: {
-    name: 'MOTD (\u00A7x)',
+    name: 'MOTD (\\u00A7x)',
     outputPrefix: '',
     template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$f$c',
     formatChar: "\\u00A7",
