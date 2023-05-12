@@ -62,12 +62,20 @@
               <div class="row">
                 <div id="coloredNick"></div>
               </div>
+              <div id="lore-container" class="lore-item">
+                <div id="lore-text" class="lore-text">
+                  Hello2
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
                   <label for="nickname">Message</label>
                   <input class="form-control" id="nickname" type="text" maxlength="100" placeholder="Type your Text"
                          value="alonsoaliaga.com" oninput="javascript: updateOutputText(event);"
                          onchange="javascript: updateOutputText(event)">
+                  <textarea class="form-control" id="lore-input" placeholder="Type your Lore"
+                         value="alonsoaliaga.com" oninput="javascript: updateOutputText(this);"
+                         onchange="javascript: updateOutputText(this)"></textarea>
                 </div>
                 <div class="col-md-3" style="padding-left: 0;">
                   <label for="nickname">Emojis</label>
@@ -173,6 +181,10 @@
                 <div id="dstrike">
                   <input type="checkbox" id="strike" onclick="updateOutputText(event);"/>
                   <label for="strike">Strikethrough</label>
+                </div>
+                <div id="dlore" style="display: none;">
+                  <input type="checkbox" id="lore-mode" onclick="toggleLoreMode(event);"/>
+                  <label for="lore-mode">Lore 💎</label>
                 </div>
                 <div id="appearance">
                   <input type="checkbox" id="darkmode" onclick="darkMode();"></input>
