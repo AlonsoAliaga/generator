@@ -1466,7 +1466,7 @@ function updateOutputText(event, setFormat) {
       //else console.log("Font not value. Impossible..");
     }
     if(event) {
-      console.log(event);
+      //console.log(event);
       if(typeof event.style !== "undefined") {
         event.style.height = "1px";
         event.style.height = ((event.scrollHeight)+2)+"px";
@@ -1695,8 +1695,9 @@ function toggleLoreMode(event) {
     loreContainer.style.display = "none";
   }
   if(event) {
-    loreContainer.style.left = (event.clientX) + 'px';
-    loreContainer.style.top = (event.clientY) + 'px';
+    console.log(event)
+    loreContainer.style.left = (event.pageX) + 'px';
+    loreContainer.style.top = (event.pageX) + 'px';
   }
 }
 
@@ -1716,6 +1717,8 @@ function addDisplayColoredLore(finalBeforeReplacement, format) {
         }
       }
       coloredNickSpan.style.color = "#"+colors[i];
+      coloredNick.style.paddingTop = "2px";
+      coloredNick.style.paddingBottom = "2px";
       let char = line[i];
       if(replacements.has(char)) {
         coloredNickSpan.textContent = replacements.get(char);
@@ -1780,7 +1783,7 @@ function preset(n) {
 }
 function checkSite(window) {
   let href = window.location.href;
-  if(href.endsWith("?beta=true&username=Anghelot")) {
+  if(href.endsWith(atob("P2JldGE9dHJ1ZQ=="))) {
     beta = true;
     let dlore = document.getElementById("dlore");
     if(dlore) {

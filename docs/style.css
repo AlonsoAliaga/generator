@@ -312,8 +312,9 @@
 
 .lore-text {
   color: #fff;
+  text-shadow: 1px 1px 1px #584b68;
   font-size: 25px;
-  line-height: 1.5;
+  line-height: 1.0;
   text-align: left;
 }
 
