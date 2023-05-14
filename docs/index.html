@@ -53,9 +53,11 @@
                   <label id="graylabel2" class="gray" for="outputText" style="font-weight: bold;"><span style="color: #fc5044;">TIP: </span> Click below to copy the content with RGB!</label>
                   <pre id="outputText" 
                     onclick="copyTextToClipboard(this.textContent);"></pre>
+                    <!--
                   <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
                   <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
                   <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
+                -->
                   <span id="snackbar"><b>💎 Successfully Copied! 💎</b><br><span style="font-size: small;">Thanks for using our tool!</span></span>
                 </div>
               </div>
@@ -68,11 +70,16 @@
                   <p style= "left:unset; right: 91px" class="alonsocraft">0/20</p>
                   <!-- <img style="position: absolute; width: -webkit-fill-available;" src="https://i.imgur.com/GMwGfAW.png"> -->
                   <img style="position: absolute;" class="motd-icon" src="https://alonsoaliaga.github.io/assets/img/AlonsoAliaga_logo_animated.gif">
-                  <img style="position: absolute; width: 27px; height: auto; left: 700px; top: 148px" src="https://i.imgur.com/etolITx.png">  
+                  <img style="position: absolute; width: 27px; height: auto; top: 145px;left: unset;right: 60px" src="https://i.imgur.com/etolITx.png">  
                 </div>
                 <div style="display: none" class="motd-class" id="coloredMOTD">
                 </div>
               </div>
+              
+              <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
+              <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
+              <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
+
               <div id="lore-container" class="lore-item">
                 <div id="lore-text" class="lore-text">
                   Loading..
