@@ -1,10 +1,31 @@
-// elements for obtaining vals
+const modes = {
+  1: {
+    Label: "Text Mode 🔖",
+    InputId: "nickname"
+  },
+  2: {
+    Label: "Lore Mode 💎",
+    InputId: "lore-input"
+  },
+  3: {
+    Label: "MOTD Mode 🎀",
+    InputId: "motd-input"
+  }
+}
+let mode = 1;
+//Text variables
 const nickName = document.getElementById('nickname');
-const loreInput = document.getElementById('lore-input');
 const coloredNick = document.getElementById('coloredNick');
-
+//Lore variables
+const loreInput = document.getElementById('lore-input');
 const loreContainer = document.getElementById('lore-container');
 const loreText = document.getElementById('lore-text');
+//MOTD variables
+const motdInput = document.getElementById('motd-input');
+const motdIcon = document.getElementById('motd-icon');
+const coloredMOTD = document.getElementById('coloredMOTD');
+
+//
 let isDragging = false;
 let offsetX, offsetY;
 const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
@@ -663,11 +684,14 @@ function removeDuplicatedEmojis() {
   emojis_to_use_as_replacement = emoji_array.filter(e=>e.length == 1);
 }
 function addText(emoji) {
-  let isLoreEnabled = document.getElementById('lore-mode').checked;
-  if(isLoreEnabled) {
+  //let isLoreEnabled = document.getElementById('lore-mode').checked;
+  if(mode == 1){
+    let input = document.getElementById('nickname');
+    input.value = input.value + emoji.value;
+  }else if(mode == 2) {
     let input = document.getElementById('lore-input');
     input.value = input.value + emoji.value;
-  }else{
+  }else if(mode == 3){
     let input = document.getElementById('nickname');
     input.value = input.value + emoji.value;
   }
@@ -718,6 +742,7 @@ function darkMode() {
     document.getElementById('numOfColors').classList.add("darktextboxes");
     document.getElementById('nickname').classList.add("darktextboxes");
     document.getElementById('lore-input').classList.add("darktextboxes");
+    document.getElementById('motd-input').classList.add("darktextboxes");
     document.getElementById('plugin-link-button').classList.add("darktextboxes");
     document.getElementById('outputText').classList.add("darktextboxes");
     document.getElementById('output-format-tooltip').classList.add("darktextboxes");
@@ -744,6 +769,7 @@ function darkMode() {
     document.getElementById('numOfColors').classList.remove("darktextboxes");
     document.getElementById('nickname').classList.remove("darktextboxes");
     document.getElementById('lore-input').classList.remove("darktextboxes");
+    document.getElementById('motd-input').classList.remove("darktextboxes");
     document.getElementById('plugin-link-button').classList.remove("darktextboxes");
     document.getElementById('outputText').classList.remove("darktextboxes");
     document.getElementById('output-format-tooltip').classList.remove("darktextboxes");
@@ -1387,7 +1413,7 @@ function getRandomEmoji(text) {
   return random;
 }
 function updateOutputText(event, setFormat) {
-  const loreEnabled = document.getElementById('lore-mode').checked;
+  //const loreEnabled = document.getElementById('lore-mode').checked;
   //console.log(event)
   let format;
   if(setFormat) {
@@ -1431,10 +1457,112 @@ function updateOutputText(event, setFormat) {
 
   let outputText = document.getElementById('outputText');
   let colorsList = getColors();
-
-  if(loreEnabled) {
+  //if(loreEnabled) {
+  if(mode == 1){
+    let newNick = nickName.value
+    if (!newNick) newNick = 'Type something!'
+    //console.log(colorsList);
+    let gradient;
+    if(document.getElementById('fonts-list')) {
+      if(document.getElementById('fonts-list').value) {
+        let fontData = fonts[document.getElementById('fonts-list').value];
+        if(fontData){
+          if(!fontData.default) {
+            //console.log("Font is selected and not default");
+            let toModify = newNick;
+            newNick = "";
+            if(typeof fontData.before != "undefined") {
+              toModify = fontData.before(toModify);
+            }
+            let processed = fontData.processed;
+            for (let i = 0; i < toModify.length; i++) {
+              newNick += processed[toModify[i]] || toModify[i];
+            }
+            if(typeof fontData.after != "undefined") {
+              newNick = fontData.after(newNick);
+            }
+          }
+          //else console.log("Font is selected and default");
+        }
+        //else console.log("Font is not selected..");
+      }
+      //else console.log("Font not value. Impossible..");
+    }
+    //else console.log("Not fonts-list.. How?");
+    //console.log(`Before replaced newNick: ${newNick}`)
+    
+    newNick = addReplacements(newNick);
+  
+    let chars = newNick.replace(/ /g, '');
+  
+    if (format.iridiumGradient) {
+      let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
+      gradient = new Gradient(newColorList, chars.length);
+    }else{
+      gradient = new Gradient(colorsList, chars.length);
+    }
+    let charColors = [];
+    let output = format.outputPrefix;
+    
+    let startIridium;
+    let endIridium;
+    for (let i = 0; i < newNick.length; i++) {
+      let char = newNick.charAt(i);
+      if (char == ' ') {
+        output += char;
+        charColors.push(null);
+        continue;
+      }
+      
+  
+      let hex = convertToHex(gradient.next());
+      charColors.push(hex);
+      let hexOutput = format.template;
+      for (let n = 1; n <= 6; n++)
+        hexOutput = hexOutput.replace(`$${n}`, hex.charAt(n - 1));
+      let formatCodes = '';
+      if (format.formatChar != null) {
+        if (bold) formatCodes += format.formatChar + 'l';
+        if (italic) formatCodes += format.formatChar + 'o';
+        if (underline) formatCodes += format.formatChar + 'n';
+        if (strike) formatCodes += format.formatChar + 'm';
+      }
+      hexOutput = hexOutput.replace('$f', formatCodes);
+      hexOutput = hexOutput.replace('$c', char);
+      if(i == 0) {
+        startIridium = hexOutput.slice(2,8);
+      }else if((i + 1) == newNick.length) {
+        endIridium = hexOutput.slice(2,8);
+      }
+      output += hexOutput;
+    }
+  
+    output = fixReplacements(output);
+    let beforeFixedNewNick = newNick + "";
+    newNick = fixReplacements(newNick);
+  
+    if (format.iridiumGradient) {
+      outputText.innerText = `<GRADIENT:${startIridium}>${newNick}</GRADIENT:${endIridium}>`;
+    }else if (format.adventureGradient) {
+      let effects = "";
+      if (bold) effects += '<b>';
+      if (italic) effects += '<i>';
+      if (underline) effects += '<u>';
+      if (strike) effects += '<st>';
+      if(colorsList.length == 1) {
+        outputText.innerText = `<${convertToHex(colorsList[0])}>${effects}${newNick}`
+      }else{
+        outputText.innerText = `<gradient:${colorsList.map(c=>`#${convertToHex(c)}`).join(":")}>${effects}${newNick}</gradient>`
+      }
+    }else{
+      outputText.innerText = output;
+    }
+    showIridiumWarning(format, colorsList);
+    showError(format.maxLength != null && format.maxLength < output.length);
+    displayColoredName(beforeFixedNewNick, charColors, format);
+  }else if(mode == 2) {
     let loreLines = loreInput.value.split("\n");
-    if(loreInput.value.replace("\n","").trim().length == 0) loreLines = [`Type something!`];
+    if(loreInput.value.replace(/\n/g,"").trim().length == 0) loreLines = [`Type something!`];
 
     if(document.getElementById('fonts-list')) {
       if(document.getElementById('fonts-list').value) {
@@ -1563,28 +1691,31 @@ function updateOutputText(event, setFormat) {
     addDisplayColoredLore(finalBeforeReplacement, format);
     outputText.innerText = finalOutput.join("\r\n");
     showIridiumWarning(format, colorsList);
-  }else{
-    let newNick = nickName.value
-    if (!newNick) newNick = 'Type something!'
-    //console.log(colorsList);
-    let gradient;
+  }else if(mode == 3) {
+    let motdLines = motdInput.value.split("\n");
+    if(motdInput.value.replace(/\n/g,"").trim().length == 0) motdLines = [`Type something!`,`Choose your MOTD!`];
+    //console.log(motdLines)
     if(document.getElementById('fonts-list')) {
       if(document.getElementById('fonts-list').value) {
         let fontData = fonts[document.getElementById('fonts-list').value];
         if(fontData){
           if(!fontData.default) {
-            //console.log("Font is selected and not default");
-            let toModify = newNick;
-            newNick = "";
-            if(typeof fontData.before != "undefined") {
-              toModify = fontData.before(toModify);
-            }
-            let processed = fontData.processed;
-            for (let i = 0; i < toModify.length; i++) {
-              newNick += processed[toModify[i]] || toModify[i];
-            }
-            if(typeof fontData.after != "undefined") {
-              newNick = fontData.after(newNick);
+            let loretoModify = motdLines.concat();
+            motdLines = [];
+            for(let line of loretoModify) {
+              let toModify = line;
+              let newLine = "";
+              if(typeof fontData.before != "undefined") {
+                toModify = fontData.before(toModify);
+              }
+              let processed = fontData.processed;
+              for (let i = 0; i < toModify.length; i++) {
+                newLine += processed[toModify[i]] || toModify[i];
+              }
+              if(typeof fontData.after != "undefined") {
+                newLine = fontData.after(newLine);
+              }
+              motdLines.push(newLine);
             }
           }
           //else console.log("Font is selected and default");
@@ -1593,78 +1724,104 @@ function updateOutputText(event, setFormat) {
       }
       //else console.log("Font not value. Impossible..");
     }
-    //else console.log("Not fonts-list.. How?");
-    //console.log(`Before replaced newNick: ${newNick}`)
-    
-    newNick = addReplacements(newNick);
-  
-    let chars = newNick.replace(/ /g, '');
-  
-    if (format.iridiumGradient) {
-      let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
-      gradient = new Gradient(newColorList, chars.length);
-    }else{
-      gradient = new Gradient(colorsList, chars.length);
+    if(event) {
+      //console.log(event);
+      if(typeof event.style !== "undefined") {
+        event.style.height = "54px";
+        //event.style.height = ((event.scrollHeight)+2)+"px";
+      }
     }
-    let charColors = [];
-    let output = format.outputPrefix;
-    
-    let startIridium;
-    let endIridium;
-    for (let i = 0; i < newNick.length; i++) {
-      let char = newNick.charAt(i);
-      if (char == ' ') {
-        output += char;
-        charColors.push(null);
-        continue;
+
+    let finalOutput = [];
+    let finalBeforeReplacement = [];
+
+    coloredMOTD.classList.remove('minecraftbold', 'minecraftibold', 'minecraftitalic');
+    if(!format.iridiumGradient) {
+      if (document.getElementById('bold').checked) {
+        if (document.getElementById('italics').checked) {
+          coloredMOTD.classList.add('minecraftibold');
+        } else {
+          coloredMOTD.classList.add('minecraftbold');
+        }
+      } else if (document.getElementById('italics').checked) {
+        coloredMOTD.classList.add('minecraftitalic');
       }
-      
-  
-      let hex = convertToHex(gradient.next());
-      charColors.push(hex);
-      let hexOutput = format.template;
-      for (let n = 1; n <= 6; n++)
-        hexOutput = hexOutput.replace(`$${n}`, hex.charAt(n - 1));
-      let formatCodes = '';
-      if (format.formatChar != null) {
-        if (bold) formatCodes += format.formatChar + 'l';
-        if (italic) formatCodes += format.formatChar + 'o';
-        if (underline) formatCodes += format.formatChar + 'n';
-        if (strike) formatCodes += format.formatChar + 'm';
-      }
-      hexOutput = hexOutput.replace('$f', formatCodes);
-      hexOutput = hexOutput.replace('$c', char);
-      if(i == 0) {
-        startIridium = hexOutput.slice(2,8);
-      }else if((i + 1) == newNick.length) {
-        endIridium = hexOutput.slice(2,8);
-      }
-      output += hexOutput;
     }
-  
-    output = fixReplacements(output);
-    let beforeFixedNewNick = newNick + "";
-    newNick = fixReplacements(newNick);
-  
-    if (format.iridiumGradient) {
-      outputText.innerText = `<GRADIENT:${startIridium}>${newNick}</GRADIENT:${endIridium}>`;
-    }else if (format.adventureGradient) {
-      let effects = "";
-      if (bold) effects += '<b>';
-      if (italic) effects += '<i>';
-      if (underline) effects += '<u>';
-      if (strike) effects += '<st>';
-      if(colorsList.length == 1) {
-        outputText.innerText = `<${convertToHex(colorsList[0])}>${effects}${newNick}`
+    coloredMOTD.innerHTML = '';
+    
+    for(let line of motdLines) {
+      line = addReplacements(line);
+      let gradient;
+
+      let chars = line.replace(/ /g, '');
+    
+      if (format.iridiumGradient) {
+        let newColorList = [colorsList[0],colorsList[colorsList.length - 1]]
+        gradient = new Gradient(newColorList, chars.length);
       }else{
-        outputText.innerText = `<gradient:${colorsList.map(c=>`#${convertToHex(c)}`).join(":")}>${effects}${newNick}</gradient>`
+        gradient = new Gradient(colorsList, chars.length);
       }
-    }else{
-      outputText.innerText = output;
+      let charColors = [];
+      let output = format.outputPrefix;
+      
+      let startIridium;
+      let endIridium;
+      for (let i = 0; i < line.length; i++) {
+        let char = line.charAt(i);
+        if (char == ' ') {
+          output += char;
+          charColors.push(null);
+          continue;
+        }
+        
+    
+        let hex = convertToHex(gradient.next());
+        charColors.push(hex);
+        let hexOutput = format.template;
+        for (let n = 1; n <= 6; n++)
+          hexOutput = hexOutput.replace(`$${n}`, hex.charAt(n - 1));
+        let formatCodes = '';
+        if (format.formatChar != null) {
+          if (bold) formatCodes += format.formatChar + 'l';
+          if (italic) formatCodes += format.formatChar + 'o';
+          if (underline) formatCodes += format.formatChar + 'n';
+          if (strike) formatCodes += format.formatChar + 'm';
+        }
+        hexOutput = hexOutput.replace('$f', formatCodes);
+        hexOutput = hexOutput.replace('$c', char);
+        if(i == 0) {
+          startIridium = hexOutput.slice(2,8);
+        }else if((i + 1) == line.length) {
+          endIridium = hexOutput.slice(2,8);
+        }
+        output += hexOutput;
+      }
+    
+      output = fixReplacements(output);
+      let beforeFixedNewNick = line + "";
+      finalBeforeReplacement.push([beforeFixedNewNick,charColors]);
+      line = fixReplacements(line);
+    
+      if (format.iridiumGradient) {
+        finalOutput.push(`<GRADIENT:${startIridium}>${line}</GRADIENT:${endIridium}>`);
+      }else if (format.adventureGradient) {
+        let effects = "";
+        if (bold) effects += '<b>';
+        if (italic) effects += '<i>';
+        if (underline) effects += '<u>';
+        if (strike) effects += '<st>';
+        if(colorsList.length == 1) {
+          finalOutput.push(`<${convertToHex(colorsList[0])}>${effects}${line}`)
+        }else{
+          finalOutput.push(`<gradient:${colorsList.map(c=>`#${convertToHex(c)}`).join(":")}>${effects}${line}</gradient>`)
+        }
+      }else{
+        finalOutput.push(output);
+      }
     }
+    addDisplayColoredMOTD(finalBeforeReplacement, format);
+    outputText.innerText = finalOutput.join("\r\n");
     showIridiumWarning(format, colorsList);
-    showError(format.maxLength != null && format.maxLength < output.length);
-    displayColoredName(beforeFixedNewNick, charColors, format);
   }
 }
 
@@ -1679,7 +1836,97 @@ function pad(n, width, z) {
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
-function toggleLoreMode(event) {
+function toggleMode(event) {
+  let oldInput;
+  if(event) {
+    let o = document.getElementById(modes[mode].InputId);
+    if(o) oldInput = o.value;
+    console.log(o.value)
+    /*
+    if(mode == 1) {
+      let o = document.getElementById(modes[mode].InputId);
+      if(o) oldInput = o.innerText;
+    }else if(mode == 2){
+      let o = document.getElementById("nickname");
+      if(o) oldInput = o.innerText;
+    }else {
+      let o = document.getElementById("nickname");
+      if(o) oldInput = o.innerText;
+    }
+    */
+    mode++;
+    if(!modes[mode]) mode = 1;
+  }
+  if(mode == 1) { //Text
+    //Text
+    coloredNick.style.display = "block";
+    nickName.style.display = "block";
+    //Lore
+    loreInput.style.display = "none";
+    loreContainer.style.display = "none";
+    //Motd
+    motdInput.style.display = "none";
+    motdIcon.style.display = "none";
+    coloredMOTD.style.display = "none";
+    //
+    let genModeText = document.getElementById('gen-mode-text');
+    if(genModeText) genModeText.innerText = modes[mode].Label || "Unknown?";
+    
+    let genMode = document.getElementById('gen-mode');
+    if(genMode) genMode.checked = true;
+    
+    
+    let o = document.getElementById(modes[mode].InputId);
+    if(o && oldInput) o.value = oldInput;
+    updateOutputText(null);
+  }else if(mode == 2) { //Lore
+    updateOutputText(null)
+    //Text
+    coloredNick.style.display = "none";
+    nickName.style.display = "none";
+    //Lore
+    loreInput.style.display = "block";
+    loreContainer.style.display = "block";
+    //Motd
+    motdInput.style.display = "none";
+    motdIcon.style.display = "none";
+    coloredMOTD.style.display = "none";
+    //
+    if(event) {
+      //console.log(event)
+      loreContainer.style.left = (event.pageX) + 'px';
+      loreContainer.style.top = (event.pageX) + 'px';
+    }
+    let genModeText = document.getElementById('gen-mode-text');
+    if(genModeText) genModeText.innerText = modes[mode].Label || "Unknown?";
+    
+    let genMode = document.getElementById('gen-mode');
+    if(genMode) genMode.checked = true;
+    let o = document.getElementById(modes[mode].InputId);
+    if(o && oldInput) o.value = oldInput;
+    updateOutputText(null);
+  }else if(mode == 3) { //MOTD
+    //Text
+    coloredNick.style.display = "none";
+    nickName.style.display = "none";
+    //Lore
+    loreInput.style.display = "none";
+    loreContainer.style.display = "none";
+    //Motd
+    motdInput.style.display = "block";
+    motdIcon.style.display = "block";
+    coloredMOTD.style.display = "block";
+
+    let genModeText = document.getElementById('gen-mode-text');
+    if(genModeText) genModeText.innerText = modes[mode].Label || "Unknown?";
+    
+    let genMode = document.getElementById('gen-mode');
+    if(genMode) genMode.checked = true;
+    let o = document.getElementById(modes[mode].InputId);
+    if(o && oldInput) o.value = oldInput;
+    updateOutputText(null);
+  }
+  /*
   let isLoreEnabled = document.getElementById('lore-mode').checked;
   //console.log(coloredNick.style.display)
   if(isLoreEnabled) {
@@ -1699,8 +1946,37 @@ function toggleLoreMode(event) {
     loreContainer.style.left = (event.pageX) + 'px';
     loreContainer.style.top = (event.pageX) + 'px';
   }
+  */
 }
-
+function addDisplayColoredMOTD(finalBeforeReplacement, format) {
+  let index = 0;
+  for(let [line,colors] of finalBeforeReplacement) {
+    if(index > 0) coloredMOTD.innerHTML = coloredMOTD.innerHTML + "<br>";
+    for (let i = 0; i <= line.length; i++) {
+      const coloredNickSpan = document.createElement('span');
+      if(!format.iridiumGradient) {
+        if (document.getElementById('underline').checked) {
+          if (document.getElementById('strike').checked) {
+            coloredNickSpan.classList.add('minecraftustrike');
+          } else coloredNickSpan.classList.add('minecraftunderline');
+        } else if (document.getElementById('strike').checked) {
+          coloredNickSpan.classList.add('minecraftstrike');
+        }
+      }
+      coloredNickSpan.style.color = "#"+colors[i];
+      //coloredMOTD.style.paddingTop = "10px";
+      //coloredMOTD.style.paddingBottom = "2px";
+      let char = line[i];
+      if(replacements.has(char)) {
+        coloredNickSpan.textContent = replacements.get(char);
+      }else{
+        coloredNickSpan.textContent = char;
+      }
+      coloredMOTD.append(coloredNickSpan);
+      index++;
+    }
+  }
+}
 function addDisplayColoredLore(finalBeforeReplacement, format) {
   let index = 0;
   for(let [line,colors] of finalBeforeReplacement) {
@@ -1717,8 +1993,8 @@ function addDisplayColoredLore(finalBeforeReplacement, format) {
         }
       }
       coloredNickSpan.style.color = "#"+colors[i];
-      coloredNick.style.paddingTop = "2px";
-      coloredNick.style.paddingBottom = "2px";
+      loreText.style.paddingTop = "2px";
+      loreText.style.paddingBottom = "2px";
       let char = line[i];
       if(replacements.has(char)) {
         coloredNickSpan.textContent = replacements.get(char);
@@ -1782,14 +2058,38 @@ function preset(n) {
     jscolor.install(); // Refresh all jscolor elements
 }
 function checkSite(window) {
+  let search = window.location.search;
+  if(typeof search !== "undefined" && search.length > 0) {
+    let parts = search.slice(1).split("&");
+    console.log(parts);
+    for(let part of parts) {
+      let [k,v] = part.split("=",2);
+      if(k == atob("YmV0YQ==")) {
+        if(v === "true") {
+          beta = true;
+          let dgenmode = document.getElementById("dgenmode");
+          if(dgenmode) {
+            dgenmode.style.display = "block";
+          }
+        }
+      }else if(k == atob("bW9kZQ==")) {
+        if(!isNaN(v) && typeof modes[v] !== "undefined") {
+          mode = parseInt(v);
+          toggleMode(null);
+        }
+      }
+    }
+  }
+  /*
   let href = window.location.href;
   if(href.endsWith(atob("P2JldGE9dHJ1ZQ=="))) {
     beta = true;
-    let dlore = document.getElementById("dlore");
-    if(dlore) {
-      dlore.style.display = "block";
+    let dgenmode = document.getElementById("dgenmode");
+    if(dgenmode) {
+      dgenmode.style.display = "block";
     }
   }
+  */
   setTimeout(()=>{
     let href = window.location.href;
     if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
@@ -1857,7 +2157,7 @@ toggleColors(2);
 updateOutputText(undefined);
 document.getElementById('darkmode').checked = true
 darkMode();
-toggleLoreMode(null);
+toggleMode(null);
 addListeners();
 function addListeners() {
   loreContainer.addEventListener('mousedown', startDrag);

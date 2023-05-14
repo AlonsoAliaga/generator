@@ -62,9 +62,20 @@
               <div class="row">
                 <div id="coloredNick"></div>
               </div>
+              <div class="row">
+                <div id="motd-icon" style="display: none;">
+                  <p class="alonsocraft">AlonsoCraft</p>
+                  <p style= "left:unset; right: 91px" class="alonsocraft">0/20</p>
+                  <!-- <img style="position: absolute; width: -webkit-fill-available;" src="https://i.imgur.com/GMwGfAW.png"> -->
+                  <img style="position: absolute;" class="motd-icon" src="https://alonsoaliaga.github.io/assets/img/AlonsoAliaga_logo_animated.gif">
+                  <img style="position: absolute; width: 27px; height: auto; left: 700px; top: 148px" src="https://i.imgur.com/etolITx.png">  
+                </div>
+                <div style="display: none" class="motd-class" id="coloredMOTD">
+                </div>
+              </div>
               <div id="lore-container" class="lore-item">
                 <div id="lore-text" class="lore-text">
-                  Hello2
+                  Loading..
                 </div>
               </div>
               <div class="row">
@@ -75,6 +86,9 @@
                          onchange="javascript: updateOutputText(event)">
                   <textarea class="form-control" id="lore-input" placeholder="Type your Lore"
                          value="alonsoaliaga.com" oninput="javascript: updateOutputText(this);"
+                         onchange="javascript: updateOutputText(this)"></textarea>
+                  <textarea class="form-control" id="motd-input" placeholder="Type your MOTD"
+                         value="alonsoaliaga.com\r\nJoin us now!" oninput="javascript: updateOutputText(this);"
                          onchange="javascript: updateOutputText(this)"></textarea>
                 </div>
                 <div class="col-md-3" style="padding-left: 0;">
@@ -182,9 +196,9 @@
                   <input type="checkbox" id="strike" onclick="updateOutputText(event);"/>
                   <label for="strike">Strikethrough</label>
                 </div>
-                <div id="dlore" style="display: none;">
-                  <input type="checkbox" id="lore-mode" onclick="toggleLoreMode(event);"/>
-                  <label for="lore-mode">Lore 💎</label>
+                <div id="dgenmode" style="display: none;">
+                  <input type="checkbox" id="gen-mode" onclick="toggleMode(event);"/>
+                  <label id="gen-mode-text" for="gen-mode">Loading..</label>
                 </div>
                 <div id="appearance">
                   <input type="checkbox" id="darkmode" onclick="darkMode();"></input>

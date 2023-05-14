@@ -321,3 +321,37 @@
 .lore-text p {
   margin: 0;
 }
+
+.motd-class {
+  background-color: #b2b2b2f2;
+  border: 1px solid #2C3844;
+  border-radius: 5px;
+  padding: 47px 52px 20px 152px;
+  margin-bottom: 10px;
+  cursor: move;
+  z-index: -500;
+  color: #fff;
+  text-shadow: 1px 1px 1px #584b68;
+  font-size: 20px;
+  line-height: 1.0;
+  text-align: center;
+  height: 130px;
+  background-image: url('https://i.imgur.com/GMwGfAW.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.motd-icon {
+  width: 91px; /* Set the desired width */
+  height: auto; /* Let the height adjust proportionally */
+  left: 69px;
+  top: 148px;
+}
+
+.alonsocraft {
+  position: absolute;
+  font-size: x-large;
+  color: white;
+  top: 145px;
+  left: 181px;
+}
