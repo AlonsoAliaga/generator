@@ -2160,7 +2160,6 @@ function checkSite(window) {
     }
   }
   */
- return;
   setTimeout(()=>{
     let href = window.location.href;
     if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
