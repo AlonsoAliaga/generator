@@ -1842,7 +1842,7 @@ function toggleMode(event) {
   if(event) {
     let o = document.getElementById(modes[mode].InputId);
     if(o) oldInput = o.value;
-    console.log(o.value)
+    //console.log(o.value)
     /*
     if(mode == 1) {
       let o = document.getElementById(modes[mode].InputId);
@@ -2060,10 +2060,10 @@ function preset(n) {
 }
 function checkSite(window) {
   let search = window.location.search;
-  console.log(search)
+  //console.log(search)
   if(typeof search !== "undefined" && search.length > 0) {
     let parts = atob(search.slice(1)).split("&");
-    console.log(parts);
+    //console.log(parts);
     for(let part of parts) {
       let [k,v] = part.split("=",2);
       if(k == atob("YmV0YQ==")) {
