@@ -2065,7 +2065,7 @@ function checkSite(window) {
     let parts = atob(search.slice(1)).split("&");
     //console.log(parts);
     for(let part of parts) {
-      let [k,v] = part.split("=",2);
+      let [k,v] = part.split("=");
       if(k == atob("YmV0YQ==")) {
         if(v === "true") {
           beta = true;
