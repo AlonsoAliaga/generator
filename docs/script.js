@@ -1405,6 +1405,7 @@ function addReplacements(text) {
   return text;
 }
 let beta = false;
+let developer = false;
 function getRandomEmoji(text) {
   let random = emojis_to_use_as_replacement[Math.floor(Math.random() * emojis_to_use_as_replacement.length)]
   if(replacements.has(random) || text.includes(random)) {
@@ -2059,8 +2060,9 @@ function preset(n) {
 }
 function checkSite(window) {
   let search = window.location.search;
+  console.log(search)
   if(typeof search !== "undefined" && search.length > 0) {
-    let parts = search.slice(1).split("&");
+    let parts = atob(search.slice(1)).split("&");
     console.log(parts);
     for(let part of parts) {
       let [k,v] = part.split("=",2);
@@ -2076,6 +2078,19 @@ function checkSite(window) {
         if(!isNaN(v) && typeof modes[v] !== "undefined") {
           mode = parseInt(v);
           toggleMode(null);
+        }
+      }else if(k == atob("Y29udGVudA==")) {
+        try{
+          let content = decodeURIComponent(v);
+          setContent(content);
+        }catch(e) {}
+      }else if(k == atob("ZGV2ZWxvcGVy")) {
+        if(v === "true") {
+          developer = true;
+          let ddevmode = document.getElementById("ddevmode");
+          if(ddevmode) {
+            ddevmode.style.display = "block";
+          }
         }
       }
     }
@@ -2096,6 +2111,43 @@ function checkSite(window) {
       try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
       window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
   });
+}
+function setContent(content) {
+  setTimeout(()=>{
+    if(modes[mode]) {
+      let input = document.getElementById(modes[mode].InputId);
+      if(input) {
+        input.value = content;
+        updateOutputText();
+      }
+    }
+  },500);
+}
+function copyCustomURL() {
+  let url = createCustomURL();
+  copyTextToClipboard(url);
+  let ddevmode = document.getElementById("dev-mode");
+  if(ddevmode) ddevmode.checked = false;
+}
+function createCustomURL() {
+  let url = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname;
+  let m = new Map();
+  if(modes[mode]) {
+    let d = modes[mode];
+    if(mode != 1) {
+      m.set("mode",mode);
+      m.set("beta",true);
+    }
+    let c = document.getElementById(d.InputId);
+    if(c) {
+      m.set("content",encodeURIComponent(c.value));
+    }
+  }
+  if(m.size > 0) {
+    let q = [];
+    for(let [k,v] of m.entries()) q.push(`${k}=${v}`)
+    return `${url}?${btoa(q.join("&"))}`;
+  }else return `${url}`;
 }
 let count = 0;
 function loadCounter() {
