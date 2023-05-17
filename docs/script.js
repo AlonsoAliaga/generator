@@ -1943,27 +1943,6 @@ function toggleMode(event) {
     if(o && oldInput) o.value = oldInput;
     updateOutputText(null);
   }
-  /*
-  let isLoreEnabled = document.getElementById('lore-mode').checked;
-  //console.log(coloredNick.style.display)
-  if(isLoreEnabled) {
-    updateOutputText(null)
-    coloredNick.style.display = "none";
-    nickName.style.display = "none";
-    loreInput.style.display = "block";
-    loreContainer.style.display = "block";
-  }else{
-    coloredNick.style.display = "block";
-    nickName.style.display = "block";
-    loreInput.style.display = "none";
-    loreContainer.style.display = "none";
-  }
-  if(event) {
-    console.log(event)
-    loreContainer.style.left = (event.pageX) + 'px';
-    loreContainer.style.top = (event.pageX) + 'px';
-  }
-  */
 }
 function addDisplayColoredMOTD(finalBeforeReplacement, format) {
   let index = 0;
