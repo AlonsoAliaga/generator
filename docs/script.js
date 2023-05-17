@@ -28,7 +28,10 @@ const coloredMOTD = document.getElementById('coloredMOTD');
 //
 let isDragging = false;
 let offsetX, offsetY;
-const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
+const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(),
+getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), 
+getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), 
+getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];
 const presets = {
   0: {
     name: "None"
@@ -1331,7 +1334,7 @@ class TwoStopGradient {
 
 /* Toggles the number of gradient colors between 2 and 10 based on user input */
 function toggleColors(colors) {
-  let clamped = Math.min(20, Math.max(2, colors));
+  let clamped = Math.min(savedColors.length, Math.max(2, colors));
   if (colors == 1 || colors == '') {
     colors = getColors().length;
   } else if (colors != clamped) {
@@ -1350,6 +1353,7 @@ function toggleColors(colors) {
       }
     });
   } else if (number < colors) {
+    //console.log(number,colors)
     // Need to add some colors
     let template = $('#hexColorTemplate').html();
     for (let i = number + 1; i <= colors; i++) {
@@ -1358,14 +1362,26 @@ function toggleColors(colors) {
     }
     jscolor.install(); // Refresh all jscolor elements
   }
+  
+  hexColors.each((index, element) => {
+    if(index < number) {
+      let eColor = document.getElementById(`color-${index + 1}`);
+      if(eColor) eColor.value = `#${savedColors[index]}`
+      //console.log(eColor);
+    }
+  });
 }
 
 /* Gets all colored entered by the user */
 function getColors() {
+  //console.log(savedColors);
   const hexColors = $('#hexColors').find('.hexColor');
   const colors = [];
+  //console.log(`Listening to getColors():`)
   hexColors.each((index, element) => {
     const value = $(element).val();
+    //console.log(`#${index} ${savedColors[index]} => ${value}`)
+    //console.log(element)
     savedColors[index] = value;
     colors[index] = convertToRGB(value);
   });
@@ -2084,6 +2100,13 @@ function checkSite(window) {
           let content = decodeURIComponent(v);
           setContent(content);
         }catch(e) {}
+      }else if(k == atob("Zm9udA==")) {
+        if(v != "normal" && typeof fonts[v] != "undefined") {
+          let fontsList = document.getElementById("fonts-list");
+          if(fontsList) {
+            fontsList.value = v;
+          }
+        }
       }else if(k == atob("ZGV2ZWxvcGVy")) {
         if(v === "true") {
           developer = true;
@@ -2091,6 +2114,38 @@ function checkSite(window) {
           if(ddevmode) {
             ddevmode.style.display = "block";
           }
+        }
+      }else if(["Ym9sZA==","aXRhbGljcw==","dW5kZXJsaW5l","c3RyaWtl"].includes(btoa(k))) {
+        if(v == "true") {
+          let option = document.getElementById(k);
+          if(option) option.checked = true;
+        }
+      }else if(k == atob("Y29sb3Jz")) {
+        //console.log(`Init colors: [${v}]`);
+        let c = v.split("-").filter(s=>s.match(/[a-fA-F0-9]{6}/g));
+        //console.log(`Colors: [${c.join("-")}]`);
+        if(c.length >= 2) {
+          if(c.length > savedColors.length) {
+            c.slice(0,savedColors.length);
+          }          
+          const container = $('#hexColors');
+          const hexColors = container.find('.hexColor');
+          hexColors.each((index, element) => {
+            $(element).parent().remove();
+          });
+          //console.log(`Storing saved colors from url:`)
+          setTimeout(()=>{
+            for (let i = 0; i < c.length; i++) {
+              //console.log(`#${i} ${savedColors[i]} => ${c[i]}`);
+              savedColors[i] = c[i];
+              let eColor = document.getElementById(`color-${i + 1}`);
+              if(eColor) eColor.value = `#${c[i]}`
+            }
+            if (c.length != $('#numOfColors').val()) {
+              $('#numOfColors').val(c.length);
+            }
+            toggleColors(c.length);
+          },25);
         }
       }
     }
@@ -2105,6 +2160,7 @@ function checkSite(window) {
     }
   }
   */
+ return;
   setTimeout(()=>{
     let href = window.location.href;
     if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
@@ -2138,10 +2194,20 @@ function createCustomURL() {
       m.set("mode",mode);
       m.set("beta",true);
     }
+    if(document.getElementById('bold').checked) m.set("bold",true);
+    if(document.getElementById('italics').checked) m.set("italics",true);
+    if(document.getElementById('underline').checked) m.set("underline",true);
+    if(document.getElementById('strike').checked) m.set("strike",true);
     let c = document.getElementById(d.InputId);
     if(c) {
       m.set("content",encodeURIComponent(c.value));
     }
+    let fontPreset = document.getElementById("fonts-list");
+    if(fontPreset && fontPreset.value != "Select a font") {
+      //console.log(fontPreset.value);
+      m.set("font",fontPreset.value)
+    }
+    m.set("colors",getColors().map(s=>convertToHex(s)).join("-"));
   }
   if(m.size > 0) {
     let q = [];
