@@ -346,6 +346,7 @@
   height: auto; /* Let the height adjust proportionally */
   left: 69px;
   top: 148px;
+  cursor: pointer;
 }
 
 .alonsocraft {

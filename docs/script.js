@@ -2039,7 +2039,76 @@ function displayColoredName(nickName, colors, format) {
   //coloredNick.innerHTML = fixReplacements(coloredNick.innerHTML);
   //alert(colors);
 }
+function openIconUploadBox(event) {
+  console.log(event);
+  //let imageContainer = document.getElementById("motd-icon");
+  let imagePreview = document.getElementById("motd-icon-item");
+  // Create a new input element
+  const uploadInput = document.createElement('input');
+  uploadInput.type = 'file';
 
+  // Add event listener to handle file selection
+  uploadInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    // Handle the file upload or further processing here
+    
+    // Create a FileReader object
+    const reader = new FileReader();
+
+    // Set up a load event listener on the FileReader
+    reader.addEventListener('load', function() {
+      // Update the image source with the uploaded image
+      imagePreview.src = reader.result;
+    });
+
+    // Read the uploaded file as a data URL
+    reader.readAsDataURL(file);
+  });
+
+  // Append the input element to the image container
+  document.body.appendChild(uploadInput);
+
+  // Trigger a click event on the input element
+  uploadInput.click();
+  
+  document.body.removeChild(uploadInput);
+}
+function makeEditable(element) {
+  const originalOnClick = element.onclick;
+  // Create an input element
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = element.textContent;
+  inputElement.classList.add("alonsocraft");
+
+  // Set styles for the input element
+  inputElement.style.border = 'none';
+  inputElement.style.backgroundColor = 'transparent';
+  inputElement.style.color = 'white';
+  inputElement.style.position = "absolute"
+
+  // Replace the <p> element with the input element
+  element.replaceWith(inputElement);
+
+  // Focus on the input element
+  inputElement.focus();
+
+  // Handle the blur event to restore the <p> element
+  inputElement.addEventListener('blur', function() {
+    const text = inputElement.value.trim() || 'AlonsoCraft';
+    // Create a new <p> element with the updated text
+    const newElement = document.createElement('p');
+    newElement.classList.add("alonsocraft");
+    newElement.textContent = text;
+    newElement.onclick = originalOnClick;
+    
+    newElement.addEventListener('onclick', function(el) {
+      makeEditable(el);
+    });
+    // Replace the input element with the new <p> element
+    inputElement.replaceWith(newElement);
+  });
+}
 function preset(n) {
   const colors = presets[n].colors
   if(!colors || colors.length < 2) return;
