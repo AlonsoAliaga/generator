@@ -2042,7 +2042,7 @@ function displayColoredName(nickName, colors, format) {
 function openIconUploadBox(event) {
   console.log(event);
   //let imageContainer = document.getElementById("motd-icon");
-  let imagePreview = document.getElementById("motd-icon-container");
+  let imagePreview = document.getElementById("motd-icon-icon");
   // Create a new input element
   const uploadInput = document.createElement('input');
   uploadInput.type = 'file';
