@@ -28,7 +28,8 @@ const coloredMOTD = document.getElementById('coloredMOTD');
 //
 let isDragging = false;
 let offsetX, offsetY;
-const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(),
+// const savedColors = ['084CFB', 'ADF3FD', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(),
+const savedColors = ['C00BD6', 'FD2177', getRandomHexColor(), getRandomHexColor(), getRandomHexColor(),
 getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), 
 getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), 
 getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor(), getRandomHexColor()];

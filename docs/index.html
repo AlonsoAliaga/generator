@@ -37,7 +37,7 @@
     
     <div id="content">
       <h1 id="title">HEX Generator (RGB) | AlonsoAliaga Development</h1>
-      <p id="graylabel1" class="gray" style="font-size: 20px; padding-bottom: 10px;">Use Google Chrome or Opera for a better experience.</p>
+      <p id="graylabel1" class="gray" style="text-align: center;color:#ff5448;font-size: 29px; padding-bottom: 0px;">Use Google Chrome or Opera for a better experience.</p>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-2" style="padding-left: 0;">
@@ -92,7 +92,7 @@
               <div class="row">
                 <div class="col-md-3" style="padding-left: 0;">
                   <label for="nickname">Message</label>
-                  <input class="form-control" id="nickname" type="text" maxlength="100" placeholder="Type your Text"
+                  <input class="form-control" id="nickname" type="text" maxlength="200" placeholder="Type your Text"
                          value="alonsoaliaga.com" oninput="javascript: updateOutputText(event);"
                          onchange="javascript: updateOutputText(event)">
                   <textarea class="form-control" id="lore-input" placeholder="Type your Lore"
@@ -256,7 +256,11 @@
         </div>
       </div>
     </div>
-    <div id="mybutton">
+    <footer>
+      <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+      <p text-align="left">❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
+    </footer>
+    <div id="mybutton" style="z-index: 250;">
       <div style="position: center;display: inline-block;">
         <div style="text-align: center;">
           <span style="font-weight: bold;">Click for more tools!</span>
@@ -269,10 +273,21 @@
       </div>
     </div>
   </body>
-  <footer>
-    <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
-    <p text-align="left">❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
-  </footer>
+  <div id="theoptions" class="options">
+    <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
+      <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
+      <div style="text-align: left;font-size: 20px;">
+        <span>💠</span> <span ><a href="http://alonsoaliaga.github.io/font-generator">Font Generator</a></span><br>
+        <span>💠</span> <span><a href="http://alonsoaliaga.github.io/mcpfp">Pixel Art Minecraft Profile Picture Generator</a></span><br>
+        <span>💠</span> <span><a href="http://alonsoaliaga.github.io/config-comparator">Config Comparator Updater</a></span><br>
+        <span>💠</span> <span><a href="http://alonsoaliaga.github.io/yaml-parser">YAML/JSON Parser</a></span><br>
+        <span>💠</span> <span><a href="http://alonsoaliaga.github.io/pretty-json">Pretty JSON</a></span><br>
+        <span>💠</span> <span><a href="http://alonsoaliaga.github.io/version-generator">ViaVersion Protocol Generator</a></span>
+      </div>
+      <br>
+      <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
+    </div>
+  </div>
   <script src="jscolor.js"></script>
   <script src="script.js"></script>
 </html>

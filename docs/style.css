@@ -1,4 +1,30 @@
-  .color {
+
+.options {
+  font-size: 20px;
+  border: 2px solid #363636;
+  border-radius: 30px;
+  padding: 20px 50px 20px 50px;
+  position: relative;
+  border-radius: 30px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  /* width: 200px; */
+}
+
+.examples {
+  margin-top: 10px;
+}
+#theoptions h1, h2 {
+  margin: 0;
+}
+#theoptions h1 {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+}
+.header, .footer {
+  text-align: center;
+}
+.color {
     width: 100%;
   }
   .emojibutton:hover {
@@ -137,7 +163,8 @@
     text-align: left;
     margin-left:0;
     margin-right:auto;
-    margin-top:50px;
+    margin-top:9px;
+    margin-bottom:10px;
   }
   #title {
       position:relative;
@@ -146,6 +173,15 @@
       background-clip: text;
       color: transparent;
       animation: rainbow_animation 3s ease-in-out infinite;
+      background-size: 400% 100%;
+  }
+  .rainbow {
+      position:relative;
+      background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rainbow_animation 2s ease-in-out infinite;
       background-size: 400% 100%;
   }
   #outputText {
@@ -296,6 +332,16 @@
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+#theoptions a:visited,a {
+  color: rgb(23, 142, 246);
+  text-decoration: none;
+}
+#theoptions a:hover {
+  color: rgb(246, 246, 23);
+  text-decoration: none;
+}
+
 .lore-item {
   background-color: #280027f2;
   border: 1px solid #260062;
