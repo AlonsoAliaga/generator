@@ -1366,7 +1366,7 @@ function toggleColors(colors) {
   hexColors.each((index, element) => {
     if(index < number) {
       let eColor = document.getElementById(`color-${index + 1}`);
-      if(eColor) eColor.value = `#${savedColors[index]}`
+      if(eColor) eColor.value = `${savedColors[index]}`
       //console.log(eColor);
     }
   });
