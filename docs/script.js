@@ -543,6 +543,7 @@ const formats = {
       "deluxebazaar":"DELUXEBAZAAR",
       "elementalgems":"ElementalGems",
       "playerkits":"PlayerKits",
+      "playerkits2":"PlayerKits2",
       "pyrofishingpro":"PyroFishingPro",
       "pyrominig":"PyroMining",
       "pyrospawners":"PyroSpawners",
@@ -696,7 +697,7 @@ function addText(emoji) {
     let input = document.getElementById('lore-input');
     input.value = input.value + emoji.value;
   }else if(mode == 3){
-    let input = document.getElementById('nickname');
+    let input = document.getElementById('motd-input');
     input.value = input.value + emoji.value;
   }
   updateOutputText(undefined);
@@ -2127,7 +2128,16 @@ function checkSite(window) {
   let search = window.location.search;
   //console.log(search)
   if(typeof search !== "undefined" && search.length > 0) {
-    let parts = atob(search.slice(1)).split("&");
+    
+    let finalString = search.slice(1);
+    let parts = [];
+    try{
+      parts = atob(finalString).split("&");
+    }catch(e) {
+      console.log(`Search part is not in base64`);
+    }
+
+    //let parts = atob(search.slice(1)).split("&");
     //console.log(parts);
     for(let part of parts) {
       let [k,v] = part.split("=");
