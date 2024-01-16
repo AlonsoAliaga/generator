@@ -191,7 +191,7 @@ const presets = {
   },
   39: {
     name: "Skyline Reverse",
-    colors: ["3C5ED6","3C5ED6"],
+    colors: ["3C5ED6","51B2E8"],
   },
 }
 const formats = {
