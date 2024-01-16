@@ -185,6 +185,14 @@ const presets = {
     name: "Firewatch",
     colors: ["CB2D3E","EF473A"],
   },
+  38: {
+    name: "Chroma Blend",
+    colors: ["FF000F","FD2170","C204AF"],
+  },
+  39: {
+    name: "Skyline Reverse",
+    colors: ["3C5ED6","3C5ED6"],
+  },
 }
 const formats = {
   separator1: {
@@ -221,7 +229,8 @@ const formats = {
     formatChar: '&',
     maxLength: 256,
     plugins: {
-      "libertybans":"LibertyBans"
+      "libertybans":"LibertyBans",
+      "mythicmobs":"MythicMobs"
     }
   },
   a2: {
