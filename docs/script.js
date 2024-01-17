@@ -2188,6 +2188,15 @@ function checkSite(window) {
           let option = document.getElementById(k);
           if(option) option.checked = true;
         }
+      }else if(k == atob("Zm9ybWF0")) {
+        let outputFormat = document.getElementById(`output-format`);
+        if(outputFormat) {
+          let theFormat = formats[v];
+          if(typeof theFormat != "undefined") {
+            outputFormat.value = v;
+            updateOutputText();
+          }
+        }
       }else if(k == atob("Y29sb3Jz")) {
         //console.log(`Init colors: [${v}]`);
         let c = v.split("-").filter(s=>s.match(/[a-fA-F0-9]{6}/g));
