@@ -504,6 +504,7 @@ const formats = {
     ],
     plugins: {
       "playervaults":"PlayerVaults",
+      "itemsadder":"ItemsAdder"
     }
   },
   a12: {
@@ -576,7 +577,6 @@ const formats = {
     maxLength: null,
     plugins: {
       "advancednmotd":"AdvancedNMotd",
-      "itemsadder":"ItemsAdder",
       "cosmeticscore":"CosmeticsCore"
     },
     hover: [
