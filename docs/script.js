@@ -736,6 +736,7 @@ function createTable(data){
     table.innerHTML += row;
   }
 }
+let toReplace = ["left-permute","right-permute"]
 function darkMode() {
   if (document.getElementById('darkmode').checked == true) {
     document.body.classList.add('dark');
@@ -764,6 +765,11 @@ function darkMode() {
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.add("darktextboxes");
     })
+    for(let index = 0; index < toReplace.length; index++) {
+      const name = toReplace[index];
+      let element = document.getElementById(name);
+      if(element) element.classList.add("darktextboxes");
+    }
   } else {
     document.body.classList.remove('dark');
     document.getElementById('output-format').classList.remove("dark");
@@ -791,6 +797,11 @@ function darkMode() {
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.remove("darktextboxes");
     })
+    for(let index = 0; index < toReplace.length; index++) {
+      const name = toReplace[index];
+      let element = document.getElementById(name);
+      if(element) element.classList.remove("darktextboxes");
+    }
   }
 }
 
@@ -1440,9 +1451,67 @@ function getRandomEmoji(text) {
   }
   return random;
 }
+function s(){
+  //console.log(`Init colors: [${v}]`);
+  let c = v.split("-").filter(s=>s.match(/[a-fA-F0-9]{6}/g));
+  //console.log(`Colors: [${c.join("-")}]`);
+  if(c.length >= 2) {
+    if(c.length > savedColors.length) {
+      c.slice(0,savedColors.length);
+    }          
+    const container = $('#hexColors');
+    const hexColors = container.find('.hexColor');
+    hexColors.each((index, element) => {
+      $(element).parent().remove();
+    });
+    //console.log(`Storing saved colors from url:`)
+    setTimeout(()=>{
+      for (let i = 0; i < c.length; i++) {
+        //console.log(`#${i} ${savedColors[i]} => ${c[i]}`);
+        savedColors[i] = c[i];
+        let eColor = document.getElementById(`color-${i + 1}`);
+        if(eColor) eColor.value = `#${c[i]}`
+      }
+      if (c.length != $('#numOfColors').val()) {
+        $('#numOfColors').val(c.length);
+      }
+      toggleColors(c.length);
+    },25);
+  }
+}
+function runPermutation(event, right) {
+  const hexColors = $('#hexColors').find('.hexColor');
+  let count = hexColors.length;
+  const toRotate = savedColors.slice(0, count);
+  const saveFromRotation = savedColors.slice(count);
+  if(right) {
+    const element = toRotate.shift();
+    toRotate.push(element);
+  }else{
+    const element = toRotate.pop();
+    toRotate.splice(0, 0, element);
+  }
+  savedColors.length = 0;
+  savedColors.push(...toRotate,...saveFromRotation);
+  const container = $('#hexColors');
+  container.empty();
+  // Need to add some colors
+  let template = $('#hexColorTemplate').html();
+  for (let i = 0; i < count; i++) {
+    let html = template.replace(/\$NUM/g, i + 1).replace(/\$VAL/g, savedColors[i]);
+    container.append(html);
+  }
+  jscolor.install(); // Refresh all jscolor elements
+  updateOutputText(event);
+}
 function updateOutputText(event, setFormat) {
+  // console.log(event)
+  // if(event && typeof event !== "undefined") {
+  //   event.cancelBubble = true;
+  //   event.preventDefault();
+  //   event.stopPropagation();
+  // }
   //const loreEnabled = document.getElementById('lore-mode').checked;
-  //console.log(event)
   let format;
   if(setFormat) {
     let pluginData = pluginsList[document.getElementById('plugins-list').value];
@@ -2134,6 +2203,12 @@ function preset(n) {
     jscolor.install(); // Refresh all jscolor elements
 }
 function checkSite(window) {
+  setTimeout(()=>{
+    let href = window.location.href;
+    if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+      try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
+      window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
+  });
   let search = window.location.search;
   //console.log(search)
   if(typeof search !== "undefined" && search.length > 0) {
@@ -2237,12 +2312,6 @@ function checkSite(window) {
     }
   }
   */
-  setTimeout(()=>{
-    let href = window.location.href;
-    if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
-      try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
-      window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
-  });
 }
 function setContent(content) {
   setTimeout(()=>{

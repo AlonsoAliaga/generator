@@ -41,6 +41,14 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-2" style="padding-left: 0;">
+            <p style="text-align: center;font-weight: bold;font-size: 20px;margin-bottom: 0px;">Permutation:</a><div style="display:inline-flex;">
+              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="left-permute" type="button" maxlength="10"
+                         value="🡄" onclick="runPermutation(event,false)">
+              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="right-permute" type="button" maxlength="10" 
+                         value="🡆" onclick="runPermutation(event,true)">
+            </div>
+            <br>
+            <br>
             <div id="hexColors" class="container-fluid">
               <!-- Will be populated in JavaScript -->
             </div>
