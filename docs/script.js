@@ -2312,6 +2312,22 @@ function checkSite(window) {
     }
   }
   */
+  fetch('https://api.github.com/repos/AlonsoAliaga/AlonsoAliagaAPI/contents/api/tools/tools-list.json?ref=main')
+  .then(res => res.json())
+  .then(content => {
+    const decoded = atob(content.content);
+    const parsed = JSON.parse(decoded);
+    let toolsData = parsed;
+    let toolsArray = []
+    for(let toolData of toolsData) {
+      //console.log(toolData);
+      let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+      let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+      toolsArray.push(`<span>💠</span> <span${clazz}${style}><a href="${toolData.link}">${toolData.name}</a></span><br>`);
+    }
+    document.getElementById("tools-for-you").innerHTML = toolsArray.join(`
+`);
+  });
 }
 function setContent(content) {
   setTimeout(()=>{
