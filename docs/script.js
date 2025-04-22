@@ -2319,6 +2319,7 @@ function checkSite(window) {
     const parsed = JSON.parse(decoded);
     let toolsData = parsed;
     let toolsArray = []
+    console.log(`Loading ${Object.keys(toolsData).length} tools..`);
     for(let toolData of toolsData) {
       //console.log(toolData);
       let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
