@@ -10,8 +10,8 @@
  * See usage examples at http://jscolor.com/examples/
  */
 
-let additionalX = 140;
-let additionalY = 55;
+let additionalX = 0;
+let additionalY = 0;
 
  (function (global, factory) {
 
@@ -2807,7 +2807,9 @@ var jsc = {
 			}
 
 			jsc.addClass(THIS.targetElement, jsc.pub.activeClassName);
-			p.wrap.style.left = `${additionalX}px`
+			if(additionalX != 0) {
+				p.wrap.style.left = `${additionalX}px`
+			}
 		}
 
 
