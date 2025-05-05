@@ -278,8 +278,8 @@
       <span style="align-items: center;">&nbsp;Export and import settings:&nbsp;</span>
     </div>
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <input id="export-button" style="max-width:fit-content" class="form-control" type="button" value="Export options ⚙️" onclick="exportOptions();">
-      <input id="import-button" class="form-control" style="width: 50%;" type="text" placeholder="Paste your exported options and hit enter to load."
+      <input id="export-button" style="max-width:fit-content" class="form-control darktextboxes" type="button" value="Export options ⚙️" onclick="exportOptions();">
+      <input id="import-button" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste your exported options and hit enter to load."
              onkeypress="
              if(event.key == 'Enter' || event.code == 'Enter'){
                 loadImport(event.srcElement);
@@ -293,7 +293,7 @@
       <span style="align-items: center;">&nbsp;Decode a gradient you have:&nbsp;</span>
     </div>
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <input id="input-to-decode" class="form-control" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
+      <input id="input-to-decode" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
               <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="less-threshold" type="button" maxlength="10"
                          value="-" onclick="
                          let value = +document.getElementById('threshold-value').value;
