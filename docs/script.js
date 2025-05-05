@@ -2550,6 +2550,7 @@ function loadImport(element) {
   }else if(importMode == 2) {
     loadColors(extractedColors);
     document.getElementById('numOfColors').value = extractedColors.length;
+    updateOutputText()
   }else{
     console.log(`Invalid options..`)
     alert("Invalid option to import!")
