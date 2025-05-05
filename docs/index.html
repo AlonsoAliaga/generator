@@ -275,11 +275,11 @@
       </div>
     </div><br>
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="align-items: center;">&nbsp;Export and import settings:&nbsp;</span>
+      <span style="align-items: center;">&nbsp;Export your settings to use them later:&nbsp;</span>
     </div>
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
       <input id="export-button" style="max-width:fit-content" class="form-control darktextboxes" type="button" value="Export options ⚙️" onclick="exportOptions();">
-      <input id="import-button" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste your exported options and hit enter to load."
+      <input id="import-button" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste your exported options and press enter to import."
              onkeypress="
              if(event.key == 'Enter' || event.code == 'Enter'){
                 loadImport(event.srcElement);
