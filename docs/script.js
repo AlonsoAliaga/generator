@@ -2242,7 +2242,7 @@ function preset(n) {
     }
     jscolor.install(); // Refresh all jscolor elements
 }
-function checkSite(window) {
+async function checkSite(window) {
   setTimeout(()=>{
     let href = window.location.href;
     if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
