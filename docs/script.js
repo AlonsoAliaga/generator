@@ -2721,16 +2721,22 @@ function decodeInput() {
   let inputToDecode = document.getElementById("input-to-decode").value;
   if(true) {
     const regex = /§x((§[0-9a-fA-F]){6})/g;
-    for(let match of inputToDecode.match(regex)) {
-      //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
-      inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+    let matches = inputToDecode.match(regex);
+    if(typeof matches !== "undefined" && matches.length > 0) {
+      for(let match of inputToDecode.match(regex)) {
+        //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+        inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+      }
     }
   }
   if(true) {
     const regex = /&x((&[0-9a-fA-F]){6})/g;
-    for(let match of inputToDecode.match(regex)) {
-      //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
-      inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\&/g,"")}`)
+    let matches = inputToDecode.match(regex);
+    if(typeof matches !== "undefined" && matches.length > 0) {
+      for(let match of inputToDecode.match(regex)) {
+        //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+        inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\&/g,"")}`)
+      }
     }
   }
   let points = extractGradientPoints(inputToDecode,document.getElementById('threshold-value').value);
