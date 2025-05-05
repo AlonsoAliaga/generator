@@ -2739,3 +2739,8 @@ function decodeInput() {
   copyTextToClipboard(points.join("-"))
   console.log(points);
 }
+
+function loadThings() {
+  addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter();
+}
+loadThings();
