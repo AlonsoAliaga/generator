@@ -10,6 +10,8 @@
  * See usage examples at http://jscolor.com/examples/
  */
 
+let additionalX = 140;
+let additionalY = 55;
 
  (function (global, factory) {
 
@@ -2486,7 +2488,7 @@ var jsc = {
 			p.boxS.className = 'jscolor-picker-shadow';
 			p.boxS.style.position = 'absolute';
 			p.boxS.style.left = '0';
-			p.boxS.style.top = '0';
+			p.boxS.style.top = `${additionalY}px`;
 			p.boxS.style.width = '100%';
 			p.boxS.style.height = '100%';
 			jsc.setBorderRadius(p.boxS, borderRadius + 'px');
@@ -2497,6 +2499,7 @@ var jsc = {
 			p.boxB.style.border = THIS.borderWidth + 'px solid';
 			p.boxB.style.borderColor = THIS.borderColor;
 			p.boxB.style.background = THIS.backgroundColor;
+			p.boxB.style.top = `${additionalY}px`;
 			jsc.setBorderRadius(p.boxB, borderRadius + 'px');
 
 			// IE hack:
@@ -2522,14 +2525,14 @@ var jsc = {
 			// pad border
 			p.padB.style.position = 'absolute';
 			p.padB.style.left = THIS.padding + 'px';
-			p.padB.style.top = THIS.padding + 'px';
+			p.padB.style.top = THIS.padding +'px';
 			p.padB.style.border = THIS.controlBorderWidth + 'px solid';
 			p.padB.style.borderColor = THIS.controlBorderColor;
 
 			// pad mouse area
 			p.padM.style.position = 'absolute';
 			p.padM.style.left = 0 + 'px';
-			p.padM.style.top = 0 + 'px';
+			p.padM.style.top = 0 +'px';
 			p.padM.style.width = (THIS.padding + 2 * THIS.controlBorderWidth + THIS.width + controlPadding) + 'px';
 			p.padM.style.height = (2 * THIS.controlBorderWidth + 2 * THIS.padding + THIS.height) + 'px';
 			p.padM.style.cursor = padCursor;
@@ -2804,6 +2807,7 @@ var jsc = {
 			}
 
 			jsc.addClass(THIS.targetElement, jsc.pub.activeClassName);
+			p.wrap.style.left = `${additionalX}px`
 		}
 
 
