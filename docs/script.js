@@ -2719,25 +2719,22 @@ function extractGradientPoints(gradientStr, threshold) {
 // --- Example Usage (Remains the same) ---
 function decodeInput() {
   let inputToDecode = document.getElementById("input-to-decode").value;
-  const regex1 = /§x((§[0-9a-fA-F]){6})/g;
-  console.log(inputToDecode.match(regex1))
-  console.log(inputToDecode);
-  for(let match of inputToDecode.match(regex1)) {
-    console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
-    //console.log(`Replacing: ${match[1]} -> ${match[1].replace(/\x/g,"").replace(/\§/g,"")}`)
-    inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+  if(true) {
+    const regex = /§x((§[0-9a-fA-F]){6})/g;
+    for(let match of inputToDecode.match(regex)) {
+      //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+      inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+    }
   }
-  /*
-  while ((match = regex1.exec(inputToDecode)) !== null) {
-    // match[0] is the full match (e.g., '&#C00BD6')
-    // match[1] is the first captured group (e.g., 'C00BD6')
-    inputToDecode = inputToDecode.replace(match,`#${match[0].replace(/x/g,"").replace(/§/g,"")}`)
+  if(true) {
+    const regex = /&x((&[0-9a-fA-F]){6})/g;
+    for(let match of inputToDecode.match(regex)) {
+      //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+      inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\&/g,"")}`)
+    }
   }
-  */
-  console.log(inputToDecode);
   let points = extractGradientPoints(inputToDecode,document.getElementById('threshold-value').value);
   copyTextToClipboard(points.join("-"))
-  console.log(points);
 }
 
 function loadThings() {
