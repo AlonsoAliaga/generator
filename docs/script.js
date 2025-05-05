@@ -2722,7 +2722,8 @@ function decodeInput() {
   if(true) {
     const regex = /§x((§[0-9a-fA-F]){6})/g;
     let matches = inputToDecode.match(regex);
-    if(typeof matches !== "undefined" && matches.length > 0) {
+    console.log(matches);
+    if(matches && matches.length > 0) {
       for(let match of inputToDecode.match(regex)) {
         //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
         inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
@@ -2732,7 +2733,8 @@ function decodeInput() {
   if(true) {
     const regex = /&x((&[0-9a-fA-F]){6})/g;
     let matches = inputToDecode.match(regex);
-    if(typeof matches !== "undefined" && matches.length > 0) {
+    console.log(matches);
+    if(matches && matches.length > 0) {
       for(let match of inputToDecode.match(regex)) {
         //console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
         inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\&/g,"")}`)
