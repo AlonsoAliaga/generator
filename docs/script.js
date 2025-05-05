@@ -25,6 +25,8 @@ const motdInput = document.getElementById('motd-input');
 const motdIcon = document.getElementById('motd-icon');
 const coloredMOTD = document.getElementById('coloredMOTD');
 
+let isGeneratingPermutation = false;
+let generatedPermutation = [];
 //
 let isDragging = false;
 let offsetX, offsetY;
@@ -740,6 +742,7 @@ let toReplace = ["left-permute","right-permute"]
 function darkMode() {
   if (document.getElementById('darkmode').checked == true) {
     document.body.classList.add('dark');
+
     document.getElementById('output-format').classList.add("dark");
     document.getElementById('plugins-list').classList.add("dark");
     document.getElementById('fonts-list').classList.add("dark");
@@ -762,6 +765,19 @@ function darkMode() {
     document.getElementById('outputText').classList.add("darktextboxes");
     document.getElementById('output-format-tooltip').classList.add("darktextboxes");
     document.getElementById('plugin-tooltip').classList.add("darktextboxes");
+
+    document.getElementById('export-button').classList.add("darktextboxes");
+    document.getElementById('import-button').classList.add("darktextboxes");
+    document.getElementById('generate-permutation').classList.add("darktextboxes");
+    document.getElementById('reverse-permutation-div').classList.add("darktextboxes");
+
+    document.getElementById('input-to-decode').classList.add("darktextboxes");
+    document.getElementById('decode-button').classList.add("darktextboxes");
+    for(let o of document.querySelectorAll('.movecolorclass')) {
+      o.classList.add("darktextboxes");
+      //console.log(`Darking: ${o.id}`)
+    }
+
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.add("darktextboxes");
     })
@@ -794,6 +810,19 @@ function darkMode() {
     document.getElementById('outputText').classList.remove("darktextboxes");
     document.getElementById('output-format-tooltip').classList.remove("darktextboxes");
     document.getElementById('plugin-tooltip').classList.remove("darktextboxes");
+    
+    document.getElementById('export-button').classList.remove("darktextboxes");
+    document.getElementById('import-button').classList.remove("darktextboxes");
+    document.getElementById('generate-permutation').classList.remove("darktextboxes");
+    document.getElementById('reverse-permutation-div').classList.remove("darktextboxes");
+
+    document.getElementById('input-to-decode').classList.remove("darktextboxes");
+    document.getElementById('decode-button').classList.remove("darktextboxes");
+
+    for(let o of document.querySelectorAll('.movecolorclass')) {
+      o.classList.remove("darktextboxes");
+      //console.log(`Darking: ${o.id}`)
+    }
     Array.from(document.getElementsByClassName("hexColor")).forEach(e => {
       document.getElementById(e.id).classList.remove("darktextboxes");
     })
@@ -1371,7 +1400,11 @@ function toggleColors(colors) {
     hexColors.each((index, element) => {
       if (index + 1 > colors) {
         savedColors[index] = $(element).val();
-        $(element).parent().remove();
+        let parent = $(element).parent().parent();
+        if(!parent) {
+          $(element).parent().remove();
+        }
+        parent.remove();
       }
     });
   } else if (number < colors) {
@@ -1654,6 +1687,9 @@ function updateOutputText(event, setFormat) {
     }else{
       outputText.innerText = output;
     }
+    if(isGeneratingPermutation) {
+      generatedPermutation.push(outputText.innerText);
+    }
     showIridiumWarning(format, colorsList);
     showError(format.maxLength != null && format.maxLength < output.length);
     displayColoredName(beforeFixedNewNick, charColors, format);
@@ -1786,7 +1822,9 @@ function updateOutputText(event, setFormat) {
       }
     }
     addDisplayColoredLore(finalBeforeReplacement, format);
+    outputText.style.whiteSpace = "pre";
     outputText.innerText = finalOutput.join("\r\n");
+    outputText.style.whiteSpace = "normal";
     showIridiumWarning(format, colorsList);
   }else if(mode == 3) {
     let motdLines = motdInput.value.split("\n");
@@ -1917,7 +1955,9 @@ function updateOutputText(event, setFormat) {
       }
     }
     addDisplayColoredMOTD(finalBeforeReplacement, format);
+    outputText.style.whiteSpace = "pre";
     outputText.innerText = finalOutput.join("\r\n");
+    outputText.style.whiteSpace = "normal";
     showIridiumWarning(format, colorsList);
   }
 }
@@ -2445,3 +2485,257 @@ function addListeners() {
   window.addEventListener('mouseup', stopDrag);
 }
 //Script stolen from https://alonsoaliaga.com/hex
+function exportOptions() {
+  console.log(`Exporting options..`);
+
+  let formatIdentifier = document.getElementById('output-format').value
+  let formatFontIdentifier = document.getElementById('fonts-list').value
+  if(!formats[formatIdentifier]) {
+    formatIdentifier = "a0";
+  }
+  if(!fonts[formatFontIdentifier]) {
+    formatFontIdentifier = "normal";
+  }
+  let colors = getColors();
+  let bold = document.getElementById('bold').checked;
+  let italic = document.getElementById('italics').checked;
+  let underline = document.getElementById('underline').checked;
+  let strike = document.getElementById('strike').checked;
+
+  let exported = {
+    format: formatIdentifier,
+    font: formatFontIdentifier,
+    colors: colors,
+    bold: bold,
+    italic: italic,
+    underline: underline,
+    strike: strike,
+  }
+  console.log(exported)
+  let toExport = btoa(JSON.stringify(exported,null,4));
+  copyTextToClipboard(toExport);
+}
+function loadImport(element) {
+  console.log(`Importing options..`);
+  let importJSON;
+  let value = element.value;
+  element.value = "";
+  let importMode = 0;
+  let extractedColors = []
+  try{
+    let string = atob(value);
+    importJSON = JSON.parse(string);
+    importMode = 1;
+  }catch(e) {}
+  if(importMode == 0) {
+    let regex = /#[0-9a-fA-F]{6}/g
+    let match = value.match(regex);
+    if(typeof match !== "undefined" && match.length > 0) {
+      importMode = 2;
+      extractedColors = match.map(s=>convertToRGB(s.replace(/&/g,"").replace(/#/g,"")))
+    }
+  }
+  if(importMode == 1) {
+    console.log(importJSON);
+    loadColors(importJSON.colors);
+    document.getElementById('fonts-list').value = importJSON.font;
+    document.getElementById('output-format').value = importJSON.format;
+    document.getElementById('bold').checked = importJSON.bold;
+    document.getElementById('italics').checked = importJSON.italic;
+    document.getElementById('underline').checked = importJSON.underline;
+    document.getElementById('strike').checked = importJSON.strike;
+    document.getElementById('numOfColors').value = importJSON.colors.length;
+  
+    updateOutputText()
+  }else if(importMode == 2) {
+    loadColors(extractedColors);
+    document.getElementById('numOfColors').value = extractedColors.length;
+  }else{
+    console.log(`Invalid options..`)
+    alert("Invalid option to import!")
+  }
+}
+function loadColors(colors) {
+  toggleColors(2);
+  const container = $('#hexColors');
+  /*
+  for (let i = 0 + 1; i <= colors.length; i++) {
+    savedColors[i] = colors[i];
+  }
+  convertToHex()
+  */
+  toggleColors(colors.length);
+
+  container.empty();
+  // Need to add some colors
+  let template = $('#hexColorTemplate').html();
+  for (let i = 0 + 1; i <= colors.length; i++) {
+    let html = template.replace(/\$NUM/g, i).replace(/\$VAL/g, convertToHex(colors[i - 1]));
+    container.append(html);
+  }
+  jscolor.install(); // Refresh all jscolor elements
+}
+function generatePermutation(){
+  let reversed = document.getElementById("reverse-permutation").checked;
+  isGeneratingPermutation = true;
+  generatedPermutation = [];
+  let colorsAmount = getColors().length;
+  let originalMode = mode;
+  mode = 1;
+  for(let i = 0; i < colorsAmount; i++) {
+    runPermutation(undefined,!reversed);
+  }
+  isGeneratingPermutation = false;
+  runPermutation(undefined,!reversed);
+  mode = originalMode;
+  
+  let outputText = document.getElementById('outputText');
+  outputText.style.whiteSpace = "pre";
+  outputText.innerText = generatedPermutation.map(s=>`- "${s}"`).join(`\r\n`);
+  outputText.style.whiteSpace = "normal";
+}
+function moveColor(element,direction) {
+  let currentColorNumber = +element.getAttribute("color-number");
+  let currentColorIndex = currentColorNumber - 1;
+  let colorToMigrate = savedColors[currentColorIndex];
+  const container = $('#hexColors');
+  const activeColors = container.find('.hexColor').size();
+  if(direction == "up") {
+    if(currentColorIndex > 0) {
+      let upColor = savedColors[currentColorIndex - 1];
+      savedColors[currentColorIndex - 1] = oneMichi(colorToMigrate);
+      savedColors[currentColorIndex] = oneMichi(upColor);
+    }
+  }else{
+    if(currentColorIndex < activeColors - 1) {
+      let downColor = savedColors[currentColorIndex + 1];
+      savedColors[currentColorIndex + 1] = oneMichi(colorToMigrate);
+      savedColors[currentColorIndex] = oneMichi(downColor);
+    }
+  }
+  let c = savedColors;
+  if(c.length > activeColors) {
+    c = c.slice(0,activeColors);
+  }
+  const hexColors = container.find('.hexColor');
+  hexColors.each((index, element) => {
+    let parent = $(element).parent().parent();
+    if(!parent) {
+      $(element).parent().remove();
+    }else{
+      parent.remove();
+    }
+  });
+  for (let i = 0; i < c.length; i++) {
+    //console.log(`#${i} ${savedColors[i]} => ${c[i]}`);
+    savedColors[i] = c[i];
+    let eColor = document.getElementById(`color-${i + 1}`);
+    if(eColor) eColor.value = `#${c[i]}`
+  }
+  if (c.length != $('#numOfColors').val()) {
+    $('#numOfColors').val(c.length);
+  }
+  toggleColors(c.length);
+  updateOutputText();
+}
+function oneMichi(str) {
+  return str.startsWith("#") ? str : `${str}` ;
+}
+
+/**
+ * Extracts defining color points from a string containing gradient codes (e.g., &#RRGGBBtext).
+ * Uses a threshold to filter out intermediate colors that are too close to the previously identified point.
+ * COMPATIBILITY: Uses regex.exec() instead of matchAll() for older environments.
+ * @param {string} gradientStr - The input string with gradient codes. Should be a valid string.
+ * @param {number} threshold - Minimum color distance (Euclidean RGB) to identify a new defining point. Higher threshold = fewer points.
+ * @returns {string[]} An array of hex color strings (#RRGGBB) representing the defining points.
+ */
+function extractGradientPoints(gradientStr, threshold) {
+  // Compact helper: Convert #RRGGBB hex to [r, g, b] array
+  const hexToRgb = hex => {
+    // Check if hex is a valid string before parsing
+    if (typeof hex !== 'string' || hex.length !== 7) return [0, 0, 0];
+    const bigint = parseInt(hex.slice(1), 16);
+    // Check if parsing was successful
+    if (isNaN(bigint)) return [0,0,0];
+    return [(bigint >> 16) & 0xFF, (bigint >> 8) & 0xFF, bigint & 0xFF];
+  };
+  // Compact helper: Calculate squared Euclidean distance between two RGB colors
+  const distSq = (rgb1, rgb2) =>
+    (rgb1[0] - rgb2[0]) ** 2 + (rgb1[1] - rgb2[1]) ** 2 + (rgb1[2] - rgb2[2]) ** 2;
+
+  // 1. Extract all color codes found in the string, in order (Using exec loop for compatibility)
+  const allColors = [];
+  const regex = /#([0-9a-fA-F]{6})/g; // Regex with global flag
+  let match;
+
+  // Ensure gradientStr is a string before trying to match
+  if (typeof gradientStr !== 'string') {
+      console.error("Input is not a string:", gradientStr);
+      return []; // Return empty if input is invalid
+  }
+
+  while ((match = regex.exec(gradientStr)) !== null) {
+    // match[0] is the full match (e.g., '&#C00BD6')
+    // match[1] is the first captured group (e.g., 'C00BD6')
+    allColors.push(`#${match[1].toUpperCase()}`);
+  }
+
+  // If fewer than 2 colors, return them all
+  if (allColors.length < 2) {
+    return allColors;
+  }
+
+  // 2. Filter based on threshold
+  const definingPoints = [allColors[0]]; // Start point is always defining
+  let lastKeptRgb = hexToRgb(allColors[0]);
+  const thresholdSq = threshold ** 2;
+
+  for (let i = 1; i < allColors.length; i++) {
+    const currentHex = allColors[i];
+    const currentRgb = hexToRgb(currentHex);
+
+    // Keep the current color if it's sufficiently different from the *last kept* defining point
+    if (distSq(currentRgb, lastKeptRgb) > thresholdSq) {
+      definingPoints.push(currentHex);
+      lastKeptRgb = currentRgb; // Update the point of reference
+    }
+  }
+
+  // Ensure the very last color code extracted from the string is included if it wasn't already
+  const lastExtractedColor = allColors[allColors.length - 1];
+   if (definingPoints.length > 0 && definingPoints[definingPoints.length - 1] !== lastExtractedColor) {
+     definingPoints.push(lastExtractedColor);
+   } else if (definingPoints.length === 0 && allColors.length > 0) {
+     // If no points were added besides the first one (e.g., high threshold),
+     // still ensure the last one is present if different. Added this condition just in case.
+     definingPoints.push(lastExtractedColor);
+   }
+
+
+  return definingPoints;
+}
+
+// --- Example Usage (Remains the same) ---
+function decodeInput() {
+  let inputToDecode = document.getElementById("input-to-decode").value;
+  const regex1 = /§x((§[0-9a-fA-F]){6})/g;
+  console.log(inputToDecode.match(regex1))
+  console.log(inputToDecode);
+  for(let match of inputToDecode.match(regex1)) {
+    console.log(`Replacing: ${match}, ${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+    //console.log(`Replacing: ${match[1]} -> ${match[1].replace(/\x/g,"").replace(/\§/g,"")}`)
+    inputToDecode = inputToDecode.replace(match,`#${match.replace(/\x/g,"").replace(/\§/g,"")}`)
+  }
+  /*
+  while ((match = regex1.exec(inputToDecode)) !== null) {
+    // match[0] is the full match (e.g., '&#C00BD6')
+    // match[1] is the first captured group (e.g., 'C00BD6')
+    inputToDecode = inputToDecode.replace(match,`#${match[0].replace(/x/g,"").replace(/§/g,"")}`)
+  }
+  */
+  console.log(inputToDecode);
+  let points = extractGradientPoints(inputToDecode,document.getElementById('threshold-value').value);
+  copyTextToClipboard(points.join("-"))
+  console.log(points);
+}

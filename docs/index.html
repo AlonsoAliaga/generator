@@ -27,11 +27,16 @@
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
-        <label for="color-$NUM">Hex Color #$NUM</label>
-        <input class="form-control col-md-1 hexColor" id="color-$NUM" style="border-radius: 10px;" value="$VAL"
-               data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
-               onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
-      </div>
+        <label style="border: 3px;border-color: rgb(65, 65, 65);" for="color-$NUM">Hex Color #$NUM</label>
+        <div style="display: flex;">
+          <div>
+            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'up')">▲</button><br>
+            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'down')">▼</button>
+          </div>&nbsp<input class="form-control col-md-1 hexColor" id="color-$NUM" style="height: 50px;border-radius: 10px;" value="$VAL"
+                 data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
+                 onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
+          </div>
+        </div>
     </div>
     
     <div id="content">
@@ -39,14 +44,13 @@
       <p id="graylabel1" class="gray" style="text-align: center;color:#ff5448;font-size: 29px; padding-bottom: 0px;">Use Google Chrome or Opera for a better experience.</p>
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-2" style="padding-left: 0;">
+          <div class="col-md-2" style="display: flex;flex-direction: column;align-items: center;padding-left: 0;">
             <p style="text-align: center;font-weight: bold;font-size: 20px;margin-bottom: 0px;">Permutation:</a><div style="display:inline-flex;">
               <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="left-permute" type="button" maxlength="10"
                          value="🡄" onclick="runPermutation(event,false)">
               <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="right-permute" type="button" maxlength="10" 
                          value="🡆" onclick="runPermutation(event,true)">
             </div>
-            <br>
             <br>
             <div id="hexColors" class="container-fluid">
               <!-- Will be populated in JavaScript -->
@@ -83,7 +87,7 @@
                   </div>
                   <img style="position: absolute; width: 27px; height: auto; top: 145px;left: unset;right: 60px" src="https://i.imgur.com/etolITx.png">  
                 </div>
-                <div style="display: none" class="motd-class" id="coloredMOTD">
+                <div style="display: none;white-space: pre;" class="motd-class" id="coloredMOTD">
                 </div>
               </div>
               
@@ -114,7 +118,7 @@
                   <input style="width: 45px;" class="form-control" id="emojis" type="button" maxlength="10" placeholder="Pick your emoji"
                          value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
                          onchange="javascript: updateOutputText(event)">
-                  <div 
+                  <div
                   style="min-width:450px;max-height:350px;overflow:auto;overflow-y:scroll;height:fit-content;z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; display: none;"
                    class="form-control" id="emojis-spoiler" type="button" value="😁">
                     <p style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(248, 248, 248);">Click on your favorite emojis to add them!</p>
@@ -225,6 +229,13 @@
                 <div id="appearance">
                   <input type="checkbox" id="darkmode" onclick="darkMode();"></input>
                   <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode 👁‍🗨</label>
+                </div><br>
+                <div style="display: inline-flex;">
+                  <input id="generate-permutation" style="max-width:fit-content" class="form-control" type="button" value="Generate permutation 🎨" onclick="generatePermutation();">&nbsp;
+                  <div style="padding: 5px;justify-content: center;align-content: center;max-width: fit-content;" class="darktextboxes form-control" id="reverse-permutation-div">
+                    <input type="checkbox" id="reverse-permutation"/>
+                    <label for="reverse-permutation">Reverse?</label>
+                  </div>
                 </div>
               </div>
               <br><br>
@@ -262,10 +273,48 @@
           </div>
         </div>
       </div>
+    </div><br>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="align-items: center;">&nbsp;Export and import settings:&nbsp;</span>
     </div>
-    <footer>
-      <p text-align="left">❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
-      <p text-align="left">❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <input id="export-button" style="max-width:fit-content" class="form-control" type="button" value="Export options ⚙️" onclick="exportOptions();">
+      <input id="import-button" class="form-control" style="width: 50%;" type="text" placeholder="Paste your exported options and hit enter to load."
+             onkeypress="
+             if(event.key == 'Enter' || event.code == 'Enter'){
+                loadImport(event.srcElement);
+             }
+             ">
+    </div><br>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="display:inline-block; padding:5px 10px 0px 10px; background-color:red; color:#fff; font-size:18px; font-weight:bold; border-radius:4px; text-transform:uppercase;">EXPERIMENTAL FEATURE</span>
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="align-items: center;">&nbsp;Decode a gradient you have:&nbsp;</span>
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <input id="input-to-decode" class="form-control" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
+              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="less-threshold" type="button" maxlength="10"
+                         value="-" onclick="
+                         let value = +document.getElementById('threshold-value').value;
+                         let newValue = value - (((event.altKey || event.shiftKey)) ? 10 : 1);
+                         document.getElementById('threshold-value').value = newValue;
+                         ">
+              <input style="width: fit-content;font-size: 15px;padding: 0 5 0 5;align-content: center;justify-content: center;vertical-align: middle;" class="form-control darktextboxes" id="threshold-value" type="button" maxlength="10"
+              value="75">
+              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="more-threshold" type="button" maxlength="10" 
+                         value="+" onclick="
+                         let value2 = +document.getElementById('threshold-value').value;
+                         let newValue2 = value2 + (((event.altKey || event.shiftKey)) ? 10 : 1);
+                         document.getElementById('threshold-value').value = newValue2;
+                         "><input id="decode-button" style="max-width:fit-content" class="form-control" type="button" value="Decode gradient 🧬" onclick="decodeInput();">
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10.&nbsp;</span>
+    </div><br>
+    <footer style="display: block;text-align: center;">
+      <p>❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+      <p>❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
     </footer>
     <div id="mybutton" style="z-index: 250;">
       <div style="position: center;display: inline-block;">
@@ -281,7 +330,7 @@
     </div>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
      crossorigin="anonymous"></script>
-<!-- Testing ads -->
+<!-- 
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-5185973148525065"
@@ -289,17 +338,17 @@
      data-ad-format="auto"
      data-full-width-responsive="true"></ins>
 <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+     (adsbygoogle = window.adsbygoogle || []).push({}); Testing ads -->
 </script>
-  <div id="theoptions" class="options">
-    <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
-      <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
-      <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+    <div id="theoptions" class="options">
+      <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
+        <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
+        <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+        </div>
+        <br>
+        <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
       </div>
-      <br>
-      <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
     </div>
-  </div>
   </body>
   <script src="jscolor.js"></script>
   <script src="script.js"></script>
