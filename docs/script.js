@@ -2248,7 +2248,7 @@ async function checkSite(window) {
     if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
       try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
       window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
-  });
+  },150);
   let search = window.location.search;
   //console.log(search)
   if(typeof search !== "undefined" && search.length > 0) {
@@ -2418,7 +2418,7 @@ function createCustomURL() {
   }else return `${url}`;
 }
 let count = 0;
-function loadCounter() {
+async function loadCounter() {
   let link = atob("aHR0cHM6Ly9hbG9uc29hbGlhZ2EtcGFnZS1jb3VudC5nbGl0Y2gubWUvY291bnRlcj9zaXRlPTxzaXRlPiZrZXk9PGtleT4=").replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A");
   let counter = document.getElementById("visitor-counter");
   if(counter) {
@@ -2749,4 +2749,9 @@ function decodeInput() {
 function loadThings() {
   addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter();
 }
-loadThings();
+
+document.addEventListener("DOMContentLoaded", () => {
+  checkSite(window);
+  loadCounter();
+  loadThings();
+});

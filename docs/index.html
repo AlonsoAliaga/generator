@@ -23,7 +23,7 @@
 
   </head>
 
-  <body id="bg" class="container" onload="loadThings(); setTimeout(()=>checkSite(window),150);">
+  <body id="bg" class="container">
 
     <div id="hexColorTemplate" style="display:none;">
       <div class="row">
@@ -47,9 +47,9 @@
           <div class="col-md-2" style="display: flex;flex-direction: column;align-items: center;padding-left: 0;">
             <p style="text-align: center;font-weight: bold;font-size: 20px;margin-bottom: 0px;">Permutation:</a><div style="display:inline-flex;">
               <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="left-permute" type="button" maxlength="10"
-                         value="🡄" onclick="runPermutation(event,false)">
+                         value="⬅️" onclick="runPermutation(event,false)">
               <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="right-permute" type="button" maxlength="10" 
-                         value="🡆" onclick="runPermutation(event,true)">
+                         value="➡️" onclick="runPermutation(event,true)">
             </div>
             <br>
             <div id="hexColors" class="container-fluid">
