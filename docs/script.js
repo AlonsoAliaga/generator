@@ -2745,13 +2745,26 @@ function decodeInput() {
   let points = extractGradientPoints(inputToDecode,document.getElementById('threshold-value').value);
   copyTextToClipboard(points.join("-"))
 }
-
 function loadThings() {
   addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter();
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   checkSite(window);
   loadCounter();
   loadThings();
 });
+function lockElementWithMessage(element,className,message,iconUrl='https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/images/lock-icon.png') {
+  if(element) {
+    element.classList.add(className);
+    const ov = document.createElement('div');
+    ov.className = 'overlay';
+    ov.innerHTML = `<img src="${iconUrl}"><span>${message}</span>`;
+    element.append(ov);
+  }
+}
+function processAds() {
+  lockElementWithMessage(document.getElementById("gen-perm-div"),"adlocked",`Disable AdBlock to generate animations!`)
+  lockElementWithMessage(document.getElementById("input-to-decode-div"),"adlockedsmall",`Disable AdBlock to decode gradients and create new gradients with the same colors!`)
+  lockElementWithMessage(document.getElementById("button-toggle-custom-gradient-div"),"adlockedfit",`Disable AdBlock to use custom gradients!`)
+  lockElementWithMessage(document.getElementById("customskindiv"),"adlockedsmall",`Disable AdBlock to use custom skin texture!`)
+}

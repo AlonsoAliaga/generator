@@ -230,7 +230,7 @@
                   <input type="checkbox" id="darkmode" onclick="darkMode();"></input>
                   <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode 👁‍🗨</label>
                 </div><br>
-                <div style="display: inline-flex;">
+                <div id="gen-perm-div" style="display: inline-flex;">
                   <input id="generate-permutation" style="max-width:fit-content" class="form-control" type="button" value="Generate permutation 🎨" onclick="generatePermutation();">&nbsp;
                   <div style="padding: 5px;justify-content: center;align-content: center;max-width: fit-content;" class="darktextboxes form-control" id="reverse-permutation-div">
                     <input type="checkbox" id="reverse-permutation"/>
@@ -295,7 +295,7 @@
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
       <span style="align-items: center;">&nbsp;Decode a gradient you have and obtain the colors used for this gradient:&nbsp;</span>
     </div>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+    <div id="input-to-decode-div" style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
       <input id="input-to-decode" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
               <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="less-threshold" type="button" maxlength="10"
                          value="-" onclick="
@@ -315,10 +315,6 @@
     <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
       <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10.&nbsp;</span>
     </div><br>
-    <footer style="display: block;text-align: center;">
-      <p>❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
-      <p>❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
-    </footer>
     <div id="mybutton" style="z-index: 250;">
       <div style="position: center;display: inline-block;">
         <div style="text-align: center;">
@@ -331,7 +327,41 @@
         </div>
       </div>
     </div>
-    
+    <div style="justify-content: center;display: flex;">
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a pixelart like this? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/pixelart-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+        </fieldset>
+      </div>&nbsp;&nbsp;
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a render like this one? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/render-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-render', '_blank');">
+        </fieldset>
+      </div>&nbsp;&nbsp;
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 80%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for an animation like this one? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/skin-showcase.gif" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+        </fieldset>
+      </div>
+    </div>
+    <br>
+    <div id="theoptions" class="options">
+      <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
+        <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
+        <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+        </div>
+        <br>
+        <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
+      </div>
+    </div>
+    <footer style="display: block;text-align: center;">
+      <p>❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+      <p>❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
+    </footer>
+  </body>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
      crossorigin="anonymous"></script>
 <ins class="adsbygoogle"
@@ -344,16 +374,7 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 
 </script>
-    <div id="theoptions" class="options">
-      <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
-        <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
-        <div style="text-align: left;font-size: 20px;" id="tools-for-you">
-        </div>
-        <br>
-        <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
-      </div>
-    </div>
-  </body>
   <script src="jscolor.js"></script>
   <script src="script.js"></script>
+  <script src="resources.js"></script>
 </html>
