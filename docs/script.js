@@ -2256,7 +2256,7 @@ function loadChecking() {
      data: {
      },
      success: function (result) {
-        console.log(`Total fails: ${counter.dataset.failed}`)
+        //console.log(`Total fails: ${counter.dataset.failed}`)
         counter.dataset.failed = "0";
         counter.style.display = "flex";
         if(isNaN(result)) {
@@ -2264,12 +2264,12 @@ function loadChecking() {
          counter.style.backgroundColor = "yellow";
         }else{
          //counter.textContent = `🟢 ${result} user${result==1?``:`s`} online using our Minecraft Profile Picture Generator!`;
-         counter.textContent = `🟢 ${result} online using our Hex Generator!`;
+         counter.textContent = `🟢 ${result} online using our HEX Generator!`;
          counter.style.backgroundColor = "green";
         }
      },
      error: function (e) {
-      console.log(`Total fails: ${counter.dataset.failed}`)
+      //console.log(`Total fails: ${counter.dataset.failed}`)
       if(counter.style.display != "none") {
         let currentFails = +counter.dataset.failed;
         if(currentFails >= 1){
