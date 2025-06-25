@@ -2264,7 +2264,7 @@ function loadChecking() {
          counter.style.backgroundColor = "yellow";
         }else{
          //counter.textContent = `🟢 ${result} user${result==1?``:`s`} online using our Minecraft Profile Picture Generator!`;
-         counter.textContent = `🟢 ${result} online using our HEX Generator!`;
+         counter.textContent = `🟢 ${result} online creating amazing gradients for their server with our generator!`;
          counter.style.backgroundColor = "green";
         }
      },
