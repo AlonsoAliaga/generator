@@ -1,6 +1,6 @@
 ## All Rights Reserved
 
-**Copyright (c) 2025 AlonsoAliaga Development (AlonsoAliaga). All rights reserved.**
+**Copyright (c) 2022 AlonsoAliaga Development (AlonsoAliaga). All rights reserved.**
 
 This software and associated documentation files (the "Software") are the exclusive property of AlonsoAliaga Development (AlonsoAliaga).
 
