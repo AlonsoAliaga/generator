@@ -44,7 +44,7 @@ window.onload = async () => {
       body.innerHTML = '';
     }
     showBannerAdBlock();
-  }
+  }else randomUUID();
 };
 function showBannerAdBlock () {
   body.style.overflow = 'hidden'

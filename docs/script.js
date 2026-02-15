@@ -2785,6 +2785,7 @@ function decodeInput() {
 function loadThings() {
   addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter();
 }
+let uuid;
 document.addEventListener("DOMContentLoaded", () => {
   checkSite(window);
   loadCounter();
@@ -2795,7 +2796,20 @@ document.addEventListener("DOMContentLoaded", () => {
       loadChecking();
     },10000)
   },2500)
+  setTimeout(() => {
+    if(!uuid) {
+      processAds();
+    }
+  },5000);
 });
+function randomUUID() {
+  // Generate a random UUID (version 4)
+  uuid = "UUID not supported in this environment";
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
 function lockElementWithMessage(element,className,message,iconUrl='https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/images/lock-icon.png') {
   if(element) {
     element.classList.add(className);
@@ -2806,6 +2820,7 @@ function lockElementWithMessage(element,className,message,iconUrl='https://raw.g
   }
 }
 function processAds() {
+  uuid = "UUID supported in this environment";
   lockElementWithMessage(document.getElementById("gen-perm-div"),"adlocked",`Disable AdBlock to generate animations!`)
   lockElementWithMessage(document.getElementById("input-to-decode-div"),"adlockedsmall",`Disable AdBlock to decode gradients and create new gradients with the same colors!`)
   lockElementWithMessage(document.getElementById("button-toggle-custom-gradient-div"),"adlockedfit",`Disable AdBlock to use custom gradients!`)
