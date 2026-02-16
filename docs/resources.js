@@ -24,34 +24,34 @@ async function detectAdBlock() {
   } catch (e) {
       adBlockEnabled = true;
   } finally {
-      console.log(`AdBlock Enabled: ${adBlockEnabled}`);
+      //console.log(`AdBlock Enabled: ${adBlockEnabled}`);
   }
   return adBlockEnabled;
 }
 const hiddenBody = false
 const isSpanishLanguage = navigator.language === 'es-ES' ? true : false;
 const imagesCdnUrl = 'https://cdn.jsdelivr.net/gh/The-3Labs-Team/js-anti-adblock@main/assets'  
-const body = document.querySelector('body')
-window.onload = async () => {
+const bodyVar = document.querySelector('body')
+window.addEventListener('load', async () => {
   const adBlockEnabled = await detectAdBlock();
   if (adBlockEnabled) {
     processAds();
     if(!isTimeToRemember()) {
       return;
     }
-    body.setAttribute('aria-hidden', 'true');
+    bodyVar.setAttribute('aria-hidden', 'true');
     if (hiddenBody) {
-      body.innerHTML = '';
+      bodyVar.innerHTML = '';
     }
     showBannerAdBlock();
   }else randomUUID();
-};
+});
 function showBannerAdBlock () {
-  body.style.overflow = 'hidden'
+  bodyVar.style.overflow = 'hidden'
   let reminder = allowReminder ? `<span onclick="remindMe();" style="width: 50%; height: 60px; padding: 10px; text-align: center; display: flex; justify-content: center; align-items:center; cursor: pointer; background-color: #ff5a5a; color: white; font-weight: bold; ">
                     ${isSpanishLanguage ? `Recuerdame en<br>${hours} horas` : `Remind me<br>in ${hours} hours`}
                   </span>` : ``
-  body.innerHTML +=
+  bodyVar.innerHTML +=
         `
         <div style="${getRandomStyle()};">
         <!-- <div class="style"> -->
@@ -112,7 +112,7 @@ function showBannerAdBlock () {
       }
     }
   `;
-  body.appendChild(script);
+  bodyVar.appendChild(script);
 }
 function getRandomStyle () {
   const styles = [

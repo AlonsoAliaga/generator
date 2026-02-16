@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "RGB 生成器",
+    "browser_warning": "为了获得更好的体验，请使用 Google Chrome 或 Opera。据报告 Edge 不兼容！"
+  },
+  "header": {
+    "description_title": "这与其他生成器有何不同？",
+    "description_text": "好吧，老实说。外面有<span class=\"rainbow\">太多的生成器</span>了。但它们都缺少这样或那样的功能。我们的生成器具有配置服务器所需的<span class=\"rainbow\">所有功能</span>！",
+    "discord_suggestion": "⚠️ 如果您有好主意，请在我们的 <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">官方 Discord 服务器</a> 中提出建议。",
+    "donate_text": "如果您觉得这个工具有用，请考虑 <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">捐赠</a> 以支持我们的辛勤工作。我们非常感激！"
+  },
+  "options": {
+    "site_options": "站点选项：",
+    "dark_mode": "深色模式 👁️‍🗨️",
+    "button_auto": "🤖 自动",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ 点击这里返回旧生成器 🎉 <span style='color: #ff6c6c;'>(可能很快会被移除)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;输出代码 📝&nbsp;",
+    "btn_copy": "📋 复制代码",
+    "output_placeholder": "结果代码将显示在这里...",
+    "length_warning": "⚠️ 输出对于聊天来说太长了！",
+    "format_label": "格式：{{name}}",
+    "input_placeholder": "在此输入您的文本...",
+    "preview_default": "写点什么..."
+  },
+  "palette": {
+    "legend": "&nbsp;调色板 🎨&nbsp;",
+    "btn_remove_title": "移除颜色",
+    "btn_add_title": "添加颜色",
+    "colors_text": "颜色",
+    "max_colors": "最多 20 种颜色",
+    "drag_drop_tip": "提示：拖放颜色以重新排序、交换或插入到其他颜色之间！"
+  },
+  "styling": {
+    "legend": "&nbsp;样式与工具 ✨&nbsp;",
+    "label_styles": "样式：",
+    "check_bold": "粗体",
+    "check_italic": "斜体",
+    "check_underline": "下划线",
+    "check_strike": "删除线",
+    "label_actions": "操作：",
+    "btn_rotate_left": "向左旋转",
+    "btn_reverse": "反转 🔄",
+    "btn_reverse_title": "反转调色板",
+    "btn_rotate_right": "向右旋转",
+    "warning_iridium": "⚠️ Iridium 格式不支持样式！",
+    "mode_text": "模式：文本 📖",
+    "mode_lore": "模式：Lore 🏹",
+    "mode_motd": "模式：MOTD 🎀",
+    "label_anim": "动画：",
+    "anim_right": "向右 ->",
+    "anim_left": "<- 向左",
+    "btn_generate_anim": "🎬 生成"
+  },
+  "config": {
+    "legend": "&nbsp;配置 🛠️&nbsp;",
+    "label_format": "格式：",
+    "label_plugins": "插件列表：",
+    "select_plugin_default": "(选择一个插件)",
+    "btn_link_tooltip": "插件信息",
+    "btn_view_plugin": "查看插件",
+    "label_presets": "预设：",
+    "label_fonts": "字体列表："
+  },
+  "alonso_color": {
+    "title": "立即将此格式带入 Minecraft！",
+    "description": "停止复制粘贴！使用 <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod)，您可以创建预设并自动输入渐变。<br>创建并保存预设，随时随地使用！<br><span style=\"font-size: 11px;\">有关 AlonsoColor 的更多信息，请访问 <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>。</span>",
+    "label_identifier": "标识符：",
+    "placeholder_identifier": "渐变名称",
+    "btn_generate": "生成指令 🚀",
+    "placeholder_command": "指令将显示在这里...",
+    "btn_copy": "复制",
+    "help_text": "复制并粘贴此指令以创建它，并使用 <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code> 选择它"
+  },
+  "data": {
+    "legend": "&nbsp;数据管理 💾&nbsp;",
+    "btn_export": "导出选项 ⚙️",
+    "input_import": "粘贴您导出的选项并按 Enter 键导入。",
+    "footer_note": "💎 还支持从下面的解码功能生成的内容。"
+  },
+  "decoder": {
+    "label_experimental": "实验性功能",
+    "title": "解码您拥有的渐变并获取此渐变使用的颜色：",
+    "input_placeholder": "粘贴您要解码的渐变。",
+    "btn_decode": "解码渐变 🧬",
+    "btn_load": "解码并加载 📥",
+    "footer_note": "上面的值是阈值。如果您认为获得的颜色太多，请增加它。Alt + 单击以修改 10。"
+  },
+  "showcase": {
+    "pixelart": "正在寻找像这样的像素画？ 💎",
+    "render": "正在寻找像这样的渲染图？ 💎",
+    "animation": "正在寻找像这样的动画？ 💎"
+  },
+  "moretoolsforyou": {
+    "title": "更多工具供您使用:"
+  },
+  "footer": {
+    "text": "感谢 <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> 和 <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> 在此工具开发过程中的辛勤工作。"
+  },
+  "emoji": {
+    "title": "选择表情符号",
+    "button": "😀 表情符号",
+    "information": "🖱️ 按住 Alt + 单击添加表情符号而不关闭框！"
+  },
+  "modal": {
+    "title": "我们回来了！ 🚀",
+    "text": "<span class=\"font-bold\">快速提醒：</span><br>我们还是您所熟知的那个值得信赖的工具！<br>由于一些无聊的原因，我们不得不从头开始重建！但我们带着更多功能回来了！ 💎",
+    "btn_got_it": "知道了！ 👍",
+    "footer": "嘘... 颜色组织现在感觉更流畅了。试着拖动东西！"
+  },
+  "toasts": {
+    "copied": "已复制到剪贴板！",
+    "exported": "设置已导出到剪贴板！",
+    "imported": "设置导入成功！",
+    "decoded_copied": "解码颜色已复制！",
+    "decoded_loaded": "渐变已解码并加载！"
+  },
+  "errors": {
+    "import_failed": "无效的导入字符串！",
+    "no_colors_found": "未找到颜色！",
+    "iridium_limit": "Iridium 格式仅支持 2 种颜色！",
+    "max_colors": "最多允许 {{count}} 种颜色！",
+    "min_colors": "您至少需要 2 种颜色！"
+  }
+}

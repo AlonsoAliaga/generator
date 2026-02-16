@@ -2607,9 +2607,16 @@ function loadColors(colors) {
   container.empty();
   // Need to add some colors
   let template = $('#hexColorTemplate').html();
-  for (let i = 0 + 1; i <= colors.length; i++) {
-    let html = template.replace(/\$NUM/g, i).replace(/\$VAL/g, convertToHex(colors[i - 1]));
-    container.append(html);
+  if(typeof colors[0] == "string") {
+    for (let i = 0 + 1; i <= colors.length; i++) {
+      let html = template.replace(/\$NUM/g, i).replace(/\$VAL/g, colors[i - 1]);
+      container.append(html);
+    }
+  }else{
+    for (let i = 0 + 1; i <= colors.length; i++) {
+      let html = template.replace(/\$NUM/g, i).replace(/\$VAL/g, convertToHex(colors[i - 1]));
+      container.append(html);
+    }
   }
   jscolor.install(); // Refresh all jscolor elements
 }
@@ -2785,6 +2792,7 @@ function decodeInput() {
 function loadThings() {
   addDefaultsFormats(); addDefaultsPresets(); addPluginsList(); addFontsList(); loadCounter();
 }
+let myTimeout;
 let uuid;
 document.addEventListener("DOMContentLoaded", () => {
   checkSite(window);
@@ -2801,6 +2809,35 @@ document.addEventListener("DOMContentLoaded", () => {
       processAds();
     }
   },5000);
+  setTimeout(()=>{
+    let favoriteVersion = localStorage.getItem("favorite-version");
+    if(typeof favoriteVersion != "undefined" && favoriteVersion != null) {
+      if(favoriteVersion == "new") {  
+        window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`;
+        return;
+      }else{
+        let openNewGeneratorButton = document.getElementById("new-generator-div");
+          let isRed = false;
+          setInterval(()=>{
+              if(isRed) {
+                  openNewGeneratorButton.style.backgroundColor = "#ffc107";
+                  openNewGeneratorButton.style.color = "black";
+                  isRed = false;
+              }else{
+                  isRed = true;
+                  openNewGeneratorButton.style.backgroundColor = "red";
+                  openNewGeneratorButton.style.color = "white";
+              }
+          },500);
+          openNewGeneratorButton.addEventListener("click", ()=>{
+              localStorage.setItem("favorite-version", "new");
+              window.open(`./index.html`, '_blank').focus();
+              //window.open(`https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`, '_blank').focus();
+          });
+        return;
+      }
+    }
+  },250);
 });
 function randomUUID() {
   // Generate a random UUID (version 4)

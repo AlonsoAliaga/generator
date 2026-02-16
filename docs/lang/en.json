@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "Generator (RGB)",
+    "browser_warning": "Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!"
+  },
+  "header": {
+    "description_title": "How is this different from other generators?",
+    "description_text": "Well, let's be honest. There are <span class=\"rainbow\">too many generators</span> out there. But all of them lack one feature or another. Our generator has <span class=\"rainbow\">all features</span> you might need to configure your server!",
+    "discord_suggestion": "⚠️ If you have cool ideas, suggest them in our <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">official discord server</a>.",
+    "donate_text": "If you found this tool useful, consider <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">making a donation</a> for our hard work. We appreciate it!"
+  },
+  "options": {
+    "site_options": "Site options:",
+    "dark_mode": "Dark Mode 👁️‍🗨️",
+    "button_auto": "🤖 Auto",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ Click here to return to the old generator 🎉 <span style='color: #ff6c6c;'>(Might be removed soon)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;Output Code 📝&nbsp;",
+    "btn_copy": "📋 COPY CODE",
+    "output_placeholder": "Result code will appear here...",
+    "length_warning": "⚠️ Output too long for chat!",
+    "format_label": "Format: {{name}}",
+    "input_placeholder": "Type your text here...",
+    "preview_default": "Write something..."
+  },
+  "palette": {
+    "legend": "&nbsp;Color Palette 🎨&nbsp;",
+    "btn_remove_title": "Remove Color",
+    "btn_add_title": "Add Color",
+    "colors_text": "Colors",
+    "max_colors": "Max 20 colors",
+    "drag_drop_tip": "Tip: Drag & drop colors to reorder, swap, or insert between others!"
+  },
+  "styling": {
+    "legend": "&nbsp;Styling & Tools ✨&nbsp;",
+    "label_styles": "Styles:",
+    "check_bold": "Bold",
+    "check_italic": "Italic",
+    "check_underline": "Underline",
+    "check_strike": "Strike",
+    "label_actions": "Actions:",
+    "btn_rotate_left": "Rotate Left",
+    "btn_reverse": "Reverse 🔄",
+    "btn_reverse_title": "Reverse Palette",
+    "btn_rotate_right": "Rotate Right",
+    "warning_iridium": "⚠️ Iridium format does not support styling!",
+    "mode_text": "Mode: Text 📖",
+    "mode_lore": "Mode: Lore 🏹",
+    "mode_motd": "Mode: MOTD 🎀",
+    "label_anim": "Anim:",
+    "anim_right": "To Right ->",
+    "anim_left": "<- To Left",
+    "btn_generate_anim": "🎬 Generate"
+  },
+  "config": {
+    "legend": "&nbsp;Configuration 🛠️&nbsp;",
+    "label_format": "Format:",
+    "label_plugins": "Plugins list:",
+    "select_plugin_default": "(Select a plugin)",
+    "btn_link_tooltip": "Plugin Info",
+    "btn_view_plugin": "View Plugin",
+    "label_presets": "Presets:",
+    "label_fonts": "Fonts list:"
+  },
+  "alonso_color": {
+    "title": "Bring this format to Minecraft now!",
+    "description": "Stop copying and pasting! With <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod), you can create presets and type in gradients automatically.<br>Create and save presets to use anytime, anywhere!<br><span style=\"font-size: 11px;\">More information about AlonsoColor on <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>",
+    "label_identifier": "Identifier:",
+    "placeholder_identifier": "gradientname",
+    "btn_generate": "Generate Command 🚀",
+    "placeholder_command": "Command will appear here...",
+    "btn_copy": "Copy",
+    "help_text": "Copy and paste this command to create it and select it with <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>"
+  },
+  "data": {
+    "legend": "&nbsp;Data Management 💾&nbsp;",
+    "btn_export": "Export options ⚙️",
+    "input_import": "Paste your exported options and press enter to import.",
+    "footer_note": "💎 Supports also the content generated from Decode feature below."
+  },
+  "decoder": {
+    "label_experimental": "EXPERIMENTAL FEATURE",
+    "title": "Decode a gradient you have and obtain the colors used for this gradient:",
+    "input_placeholder": "Paste the gradient you want to decode.",
+    "btn_decode": "Decode gradient 🧬",
+    "btn_load": "Decode and load 📥",
+    "footer_note": "The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10."
+  },
+  "showcase": {
+    "pixelart": "Looking for a pixelart like this? 💎",
+    "render": "Looking for a render like this one? 💎",
+    "animation": "Looking for an animation like this one? 💎"
+  },
+  "moretoolsforyou": {
+    "title": "More tools for you:"
+  },
+  "footer": {
+    "text": "Thanks to <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> and <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> for his hard work during the development of this tool."
+  },
+  "emoji": {
+    "title": "Select Emoji",
+    "button": "😀 Emojis",
+    "information": "🖱️ Keeping Alt + Click add emojis without closing box!"
+  },
+  "modal": {
+    "title": "We are back! 🚀",
+    "text": "<span class=\"font-bold\">Just a quick reminder:</span><br>We are the same trusted tool you know! <br>We had to rebuild from scratch due to some boring reasons!, but we are here with even more features! 💎",
+    "btn_got_it": "Got it! 👍",
+    "footer": "Psst... color organization feels smoother now. Try dragging things!"
+  },
+  "toasts": {
+    "copied": "Copied to clipboard!",
+    "exported": "Settings exported to clipboard!",
+    "imported": "Settings imported successfully!",
+    "decoded_copied": "Decoded colors copied!",
+    "decoded_loaded": "Gradient decoded & loaded!"
+  },
+  "errors": {
+    "import_failed": "Invalid import string!",
+    "no_colors_found": "No colors found!",
+    "iridium_limit": "Iridium format supports only 2 colors!",
+    "max_colors": "Max {{count}} colors allowed!",
+    "min_colors": "You need at least 2 colors!"
+  }
+}

@@ -1,18 +1,14 @@
-<!doctype html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="shortcut icon" href="https://i.imgur.com/0zaH4wJ.png" type="image/png">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://i.imgur.com/0zaH4wJ.png" type="image/png">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://i.imgur.com/0zaH4wJ.png" type="image/png">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
     <title>Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development</title>
 
+    
     <meta name="theme-color" content="#9a14ff"/>
     <meta property="og:title" content="Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development">
     <meta property="og:key" content="Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development">
@@ -24,370 +20,2658 @@
     <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
     <meta property="og:site_name" content="Minecraft HEX Generator (RGB Color Gradient) - AlonsoAliaga Development" />
 
-  </head>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* FONTS */
+        @font-face {
+            font-family: MinecraftRegular;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftRegular.otf);
+        }
+        @font-face {
+            font-family: MinecraftBold;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftBold.otf);
+        }
+        @font-face {
+            font-family: MinecraftBoldItalic;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftBoldItalic.otf);
+        }
+        @font-face {
+            font-family: MinecraftItalic;
+            src: url(https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/fonts/MinecraftItalic.otf);
+        }
 
-  <body id="bg" class="container">
-    <span style="display: none;text-align: center;">Create HEX color gradients for your Minecraft server easily with the #1 HEX generator! Supports multiple formats, emojis, lore and MOTD!</span>
-    <div id="online-counter" data-failed="0" style="position: relative;background-color: green;height: 30px;display: flex; align-items: center;justify-content: center;">🟢 0 online creating amazing gradients for their server with our generator!</div>
-    <div id="hexColorTemplate" style="display:none;">
-      <div class="row">
-        <label style="border: 3px;border-color: rgb(65, 65, 65);" for="color-$NUM">Hex Color #$NUM</label>
-        <div style="display: flex;">
-          <div>
-            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'up')">▲</button><br>
-            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'down')">▼</button>
-          </div>&nbsp<input class="form-control col-md-1 hexColor" id="color-$NUM" style="height: 50px;border-radius: 10px;" value="$VAL"
-                 data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
-                 onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
-          </div>
-        </div>
-    </div>
-    
-    <div id="content">
-      <h1 id="title">HEX Generator (RGB) | AlonsoAliaga Development</h1>
-      <p id="graylabel1" class="gray" style="text-align: center;color:#ff5448;font-size: 29px; padding-bottom: 0px;">Use Google Chrome or Opera for a better experience.</p>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-2" style="display: flex;flex-direction: column;align-items: center;padding-left: 0;">
-            <p style="text-align: center;font-weight: bold;font-size: 20px;margin-bottom: 0px;">Permutation:</a><div style="display:inline-flex;">
-              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="left-permute" type="button" maxlength="10"
-                         value="⬅️" onclick="runPermutation(event,false)">
-              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="right-permute" type="button" maxlength="10" 
-                         value="➡️" onclick="runPermutation(event,true)">
+        /* Color Palette */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #aaa;
+            --btn-bg: #f8fdc9; 
+            --btn-border: #333333;
+            --btn-text: #272727;
+            --input-bg: #ffffff;
+            --input-border: #cccccc;
+            --input-text: #000000;
+            --link-color: #5555FF;
+            --canvas-gradient-start: #f5f5f5;
+            --canvas-gradient-end: #dcdcdc;
+            --container-bg: #f9f9f9;
+            --showcase-border: silver;
+        }
+
+        body.dark-mode {
+            --bg-color: #363636; 
+            --text-color: #d0d0d0;
+            --border-color: #555;
+            --btn-bg: #ffd5f2; 
+            --btn-border: #25172f;
+            --btn-text: #272727; 
+            --input-bg: #e4d2de;
+            --input-border: #43245c;
+            --input-text: #272727;
+            --link-color: #5555FF;
+            --canvas-gradient-start: #2a2a2a;
+            --canvas-gradient-end: #1a1a1a;
+            --container-bg: #1a1a1a;
+            --showcase-border: #555; 
+        }
+
+        body { 
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'MinecraftRegular', sans-serif;
+            overflow-x: hidden;
+            margin: auto;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .rainbow {
+            background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow_animation 2s ease-in-out infinite;
+            background-size: 400% 100%;
+            font-family: 'MinecraftBold', sans-serif;
+        }
+        @keyframes rainbow_animation {
+            0%,100% { background-position: 0 0; }
+            50% { background-position: 100% 0; }
+        }
+
+        #online-counter {
+            width: 100%;
+            background-color: #00aa00; 
+            color: white;
+            text-align: center;
+            padding: 4px;
+            font-size: 18px; /* +2px (16->18) */
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            min-height: 32px;
+        }
+
+        .warning-text {
+            color: #FF5555; 
+            font-size: 17px; /* +2px (15->17) */
+            text-shadow: 1px 1px 0 #000;
+            margin-bottom: 10px;
+            font-family: 'MinecraftBold';
+            margin-top: 5px;
+            width: 100%;
+            max-width: 950px;
+            text-align: center;
+        }
+
+        .description-box {
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 10px 25px;
+            background-color: transparent;
+            max-width: 950px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px; /* +2px (16->18) */
+            position: relative;
+        }
+
+        .main-title {
+            font-size: 42px; /* +2px (40->42) */
+            margin-bottom: 2px;
+            text-decoration: none;
+            color: #5555FF;
+            text-shadow: 2px 2px 0 #000;
+            font-family: 'MinecraftBold';
+        }
+        .main-title span { color: #ffffff; }
+
+        .btn-custom {
+            font-family: 'MinecraftRegular';
+            border-radius: 25px;
+            border-color: var(--btn-border);
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border-style: solid;
+            border-width: 2px;
+            padding: 4px 12px; 
+            cursor: pointer;
+            font-size: 16px; /* +2px (14->16) */
+            transition: transform 0.1s, filter 0.2s;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 30px; /* Adjusted height slightly for font */
+            white-space: nowrap; 
+        }
+        .btn-custom:active { transform: translate(2px, 2px); box-shadow: none; }
+        .btn-custom:disabled {
+            filter: grayscale(100%);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .btn-custom input[type="checkbox"] { 
+            accent-color: #ff3399; 
+            width: 16px; /* +2px size */
+            height: 16px; 
+            cursor: pointer;
+        }
+        
+        .btn-action {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px; /* +2px (18->20) */
+            font-weight: bold;
+            border: 2px solid;
+            transition: all 0.2s;
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+        }
+        .btn-action:active {
+            transform: translate(1px, 1px);
+            box-shadow: none;
+        }
+        .btn-add { background-color: #d1fae5; border-color: #047857; color: #047857; }
+        .btn-add:hover { background-color: #a7f3d0; }
+        .btn-remove { background-color: #fee2e2; border-color: #b91c1c; color: #b91c1c; }
+        .btn-remove:hover { background-color: #fecaca; }
+
+        .input-custom {
+            font-family: 'MinecraftRegular';
+            background-color: var(--input-bg);
+            border-color: var(--input-border);
+            color: var(--input-text);
+            border-style: solid;
+            border-width: 2px; 
+            border-radius: 10px; 
+            padding: 4px 8px; 
+            font-size: 16px; /* +2px (14->16) */
+            text-align: center;
+            height: 32px; /* Adjusted height */
+        }
+        .input-custom:focus { outline: none; }
+        .input-custom:disabled { opacity: 0.6; cursor: not-allowed; }
+        
+        .color-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px; 
+            background: rgba(0,0,0,0.05);
+            padding: 3px; 
+            border-radius: 6px;
+            border: 2px solid var(--border-color); 
+            transition: transform 0.1s, background-color 0.2s;
+            cursor: grab;
+        }
+        .color-card:hover { transform: translateY(-2px); background: rgba(0,0,0,0.1); }
+        .color-card:active { cursor: grabbing; }
+        .color-card.dragging { opacity: 0.4; transform: scale(0.95); }
+        .color-card.drop-swap { background-color: rgba(0, 200, 0, 0.2); border-color: #00aa00; border-style: dashed; }
+        .color-card.drop-insert-left { border-left-width: 6px; border-left-color: #00aa00; padding-left: 0; }
+        .color-card.drop-insert-right { border-right-width: 6px; border-right-color: #00aa00; padding-right: 0; }
+
+        .input-color {
+            -webkit-appearance: none;
+            border: none;
+            cursor: pointer;
+            background: none;
+            padding: 0;
+            width: 100%;
+            height: 42px; 
+        }
+        .input-color::-webkit-color-swatch-wrapper { padding: 0; }
+        .input-color::-webkit-color-swatch { border: 1px solid var(--border-color); border-radius: 4px; }
+
+        .main-layout {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 10px;
+        }
+        .ad-space { width: 160px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+        .app-container { width: 100%; max-width: 950px; display: flex; flex-direction: column; gap: 15px; }
+
+        .canvas-box {
+            width: 100%;
+            border: 2px solid var(--border-color);
+            border-radius: 20px;
+            background: radial-gradient(circle at center, var(--canvas-gradient-start) 0%, var(--canvas-gradient-end) 100%);
+            min-height: 80px; 
+            height: auto;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px; 
+        }
+        
+        .canvas-content {
+            color: var(--text-color);
+            font-family: 'MinecraftRegular'; 
+            font-size: 30px; /* -2px (32->30) - PREVIEW */
+            word-break: break-all;
+            white-space: pre-wrap;
+            line-height: 1.2;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            width: 100%;
+            text-align: center;
+        }
+
+        /* LORE MODE STYLES REVISED */
+        .lore-box {
+            background-color: rgba(16, 0, 16, 0.95); 
+            border: 2px solid #2a002a; 
+            border-radius: 4px;
+            padding: 8px 10px;
+            font-size: 16px; /* -2px (18->16) - PREVIEW */
+            text-align: left;
+            display: inline-block;
+            min-width: 250px;
+            position: relative;
+            color: #bfaabb;
+            box-shadow: inset 0 0 0 1px #5000ff, 4px 4px 4px rgba(0,0,0,0.5);
+            align-items: flex-start;
+        }
+
+        /* MOTD MODE STYLES */
+        .motd-container {
+            width: 100%;
+            max-width: 750px;
+            background-image: url('https://i.imgur.com/GMwGfAW.png'); 
+            background-repeat: repeat;
+            border: 2px solid #808080; 
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start; 
+            padding: 8px 60px; 
+            position: relative;
+            text-align: left;
+            box-sizing: border-box;
+            height: 104px; 
+        }
+        
+        .motd-icon {
+            width: 64px;
+            height: 64px;
+            cursor: pointer;
+            flex-shrink: 0;
+            image-rendering: pixelated;
+            margin-right: 8px; 
+            margin-top: 4px; 
+        }
+        
+        .motd-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            height: 100%;
+            overflow: hidden;
+            padding-top: 4px; 
+        }
+        
+        .motd-top-row { 
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            width: 100%;
+            margin-bottom: 2px;
+            height: 24px; 
+        }
+        
+        .motd-server-name {
+            font-family: 'MinecraftRegular';
+            color: #ffffff;
+            font-size: 20px; /* -2px (22->20) - PREVIEW */
+            text-shadow: 2px 2px #000;
+            white-space: nowrap;
+            cursor: text;
+            line-height: 1;
+            margin: 0;
+        }
+        
+        .motd-stats {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            font-family: 'MinecraftRegular';
+            color: #aaaaaa;
+            font-size: 14px; /* -2px (16->14) - PREVIEW */
+            text-shadow: 1px 1px #000;
+            margin-left: auto; 
+        }
+        
+        .motd-ping-img {
+            width: auto;
+            height: 20px; 
+            image-rendering: pixelated;
+        }
+        
+        .motd-message {
+            font-family: 'MinecraftRegular';
+            font-size: 20px; /* -2px (22->20) - PREVIEW */
+            line-height: 1.2;
+            white-space: pre; 
+            text-align: center; 
+            text-shadow: 2px 2px #000;
+            color: #aaaaaa;
+            display: block;
+            width: 100%;
+        }
+
+        fieldset {
+            border: 2px solid var(--border-color); 
+            border-radius: 20px;
+            padding: 10px 15px 15px 15px;
+            margin-top: 2px;
+            background: transparent;
+            position: relative; 
+        }
+        
+        .config-block {
+            padding: 5px 10px 10px 10px;
+            margin-bottom: 0px; 
+            background-color: var(--container-bg);
+            border: 2px solid var(--border-color); 
+            border-radius: 20px;
+            position: relative;
+        }
+        
+        legend {
+            text-align: center;
+            padding: 0 5px; 
+            font-size: 16px; /* +2px (14->16) */
+            color: var(--text-color);
+            font-family: 'MinecraftBold';
+        }
+
+        .generic-textarea {
+            background-color: var(--input-bg);
+            border: 2px solid var(--input-border);
+            color: var(--input-text);
+            width: calc(100% - 20px); 
+            border-radius: 15px;
+            padding: 8px;
+            font-family: "MinecraftRegular";
+            font-size: 14px; /* -2px (16->14) - OUTPUT CODE */
+            resize: vertical;
+            margin: 10px auto 0 auto; 
+            display: block;
+        }
+        
+        .custom-tooltip {
+            position: relative;
+            display: block; 
+            width: 100%;
+        }
+        .custom-tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px; 
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            text-align: center; 
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            z-index: 100;
+            bottom: 125%; 
+            left: 50%;
+            transform: translateX(-50%); 
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px; /* +2px (12->14) */
+            font-family: 'MinecraftRegular';
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+            pointer-events: none;
+            border: 2px solid #555;
+            line-height: 1.4;
+        }
+        .custom-tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .custom-tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent; 
+        }
+
+        .error-popup {
+            position: fixed;
+            bottom: -100px; 
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #500000; 
+            border: 2px solid #ff5555; 
+            color: white;
+            padding: 10px 20px;
+            font-family: 'MinecraftRegular';
+            font-size: 18px; /* +2px (16->18) */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.5); 
+            z-index: 9999; 
+            transition: bottom 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28); 
+            border-radius: 4px;
+            pointer-events: none; 
+        }
+        .error-popup.show { bottom: 40px; }
+
+        .showcase-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px; 
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 100%;
+        }
+        .showcase-box {
+            border: 2px solid var(--showcase-border);
+            padding: 0;
+            width: 32%;
+            border-radius: 0; 
+            display: flex;
+            justify-content: center;
+            background: transparent;
+            flex-direction: column; 
+            align-items: center;
+        }
+        .showcase-legend {
+            text-align: center;
+            width: 95%; 
+            padding: 0 5px 5px 5px;
+            font-family: 'MinecraftBold';
+            font-size: 16px; /* +2px (14->16) */
+            color: var(--text-color);
+            margin: auto; 
+            line-height: 1.2;
+            background-color: var(--bg-color); 
+        }
+        .showcase-img {
+            height: 200px;
+            width: auto;
+            max-width: 100%;
+            cursor: pointer;
+            border-radius: 0 0 8px 8px;
+            transition: transform 0.2s;
+            margin-bottom: 0px;
+            object-fit: contain; 
+        }
+        .showcase-img:hover { transform: scale(1.02); }
+
+        .options {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .examples {
+            width: 100%;
+            border: 2px solid var(--border-color);
+            border-radius: 30px;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        #tools-for-you a { color: var(--link-color); text-decoration: none; }
+        #tools-for-you a:hover { color: #FFFF55; text-decoration: none; }
+        #tools-for-you span.rainbow { display: inline-block; }
+        #tools-for-you span.rainbow a { background: inherit; -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+        #mybutton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 0;
+            border: none;
+            background: none;
+            font-family: MinecraftRegular;
+            z-index: 9999;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #mybutton:hover { bottom: 15px; right: 15px; }
+        
+        .floating-icon {
+            width: 96px; 
+            height: auto;
+            image-rendering: pixelated;
+            filter: drop-shadow(4px 4px 2px rgba(0,0,0,0.5));
+            cursor: pointer;
+        }
+
+        #visitor-counter {
+            margin-top: -5px;
+            background: rgba(0,0,0,0.7);
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        #counter-amount { color: white; font-size: 14px; text-shadow: 1px 1px 0 #000; } /* +2px (12->14) */
+        
+        .exp-label {
+            background-color: #FF0000;
+            color: white;
+            font-size: 14px; /* +2px (12->14) */
+            font-weight: bold;
+            padding: 2px 6px; 
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 0 5px red;
+        }
+
+        .ad-locked-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(200, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'MinecraftBold';
+            font-size: 16px; /* +2px (14->16) */
+            z-index: 50;
+            border-radius: 20px;
+            gap: 5px;
+            text-shadow: 1px 1px 0 black;
+        }
+
+        /* Lang Flag Styles */
+        .lang-flags {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 10px;
+        }
+        .lang-flag {
+            width: 24px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border-radius: 2px;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .lang-flag:hover { transform: scale(1.1); }
+        .lang-flag.active { border: 2px solid white; transform: scale(1.1); }
+
+                /* Emoji Picker Styles */
+        .emoji-picker-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(2px);
+        }
+        .emoji-picker-content {
+            background: var(--container-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 10px 15px 5px 15px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+            gap: 5px;
+            overflow-y: auto;
+            padding: 10px;
+            background: var(--input-bg);
+            border-radius: 8px;
+            height: 300px;
+        }
+        .emoji-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            border-radius: 4px;
+            transition: background 0.1s;
+            color: var(--input-text); /* Use high contrast text color */
+        }
+        .emoji-btn:hover { background: rgba(128,128,128,0.2); }
+        
+        @media (max-width: 850px) {
+            .canvas-box { height: auto; min-height: 100px; width: 100%; }
+            .ad-space { display: none; }
+            .showcase-container { flex-wrap: wrap; }
+            .showcase-box { width: 100%; }
+            #mybutton { display: none; } 
+            .motd-container { flex-wrap: nowrap; padding-left: 5px; } 
+            .motd-icon { margin-left: 5px; margin-right: 10px; }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- EMOJI PICKER MODAL -->
+    <div id="emojiPickerModal" class="emoji-picker-modal">
+        <div class="emoji-picker-content">
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-lg" style="color:var(--text-color);" data-i18n="emoji.title">Select Emoji</span>
+                <button onclick="toggleEmojiPicker()" class="text-red-500 font-bold hover:text-red-400">✕</button>
+            </div>
+            <div id="emojiGrid" class="emoji-grid">
+                <!-- Emojis loaded here -->
+                <div class="flex justify-center items-center h-full text-gray-500">Loading...</div>
             </div>
             <br>
-            <div id="hexColors" class="container-fluid">
-              <!-- Will be populated in JavaScript -->
+            <div class="flex justify-between items-center mb-2" style="align-self: center;">
+                <span class="font-bold text-lg" style="color:var(--text-color);font-size: 13px;" data-i18n="emoji.information">🖱️ Keeping Alt + Click add emojis without closing box!</span>
             </div>
-          </div>
-          <div class="col-md-10" style="padding-right: 0;">
-            <div class="container-fluid">
-              <div class="row">
-                <div id="output">
-                  <!-- <label id="label4" for="outputText">Output:</label> -->
-                  <label id="graylabel2" class="gray" for="outputText" style="font-weight: bold;"><span style="color: #fc5044;">TIP: </span> Click below to copy the content with RGB!</label>
-                  <pre id="outputText" 
-                    onclick="copyTextToClipboard(this.textContent);"></pre>
-                    <!--
-                  <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
-                  <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
-                  <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
-                -->
-                  <span id="snackbar"><b>💎 Successfully Copied! 💎</b><br><span style="font-size: small;">Thanks for using our tool!</span></span>
-                </div>
-              </div>
-              <div class="row">
-                <div id="coloredNick"></div>
-              </div>
-              <div class="row">
-                <div id="motd-icon" style="display: none;">
-                  <p class="alonsocraft" onclick="makeEditable(this)">AlonsoCraft</p>
-                  <p style= "left:unset; right: 91px" class="alonsocraft">0/20</p>
-                  <!-- <img style="position: absolute; width: -webkit-fill-available;" src="https://i.imgur.com/GMwGfAW.png"> -->
-                  <div class="motd-icon-container">
-                    <img id="motd-icon-item" style="position: absolute;" class="motd-icon" 
-                      src="https://i.imgur.com/wDASRvr.gif" onclick="openIconUploadBox(event)"
-                      alt="📤 Click to upload your icon!">
-                  </div>
-                  <img style="position: absolute; width: 27px; height: auto; top: 145px;left: unset;right: 60px" src="https://i.imgur.com/etolITx.png">  
-                </div>
-                <div style="display: none;white-space: pre;" class="motd-class" id="coloredMOTD">
-                </div>
-              </div>
-              
-              <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
-              <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
-              <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
+        </div>
+    </div>
+    <!-- REMINDER MODAL -->
+    <div id="reminderModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center z-[100] backdrop-blur-sm opacity-0 transition-opacity duration-300">
+        <div class="bg-[#1c1c1c] border-2 border-[#555] rounded-xl p-6 pb-8 max-w-md w-[90%] shadow-2xl transform scale-95 transition-transform duration-300 relative">
+            <h3 class="text-xl font-bold text-center rainbow mb-4" data-i18n="modal.title">We are back! 🚀</h3>
+            <p class="text-gray-300 text-center mb-6 text-base leading-relaxed" data-i18n="modal.text"> <!-- text-sm -> text-base (16px) -->
+                <span class="font-bold">Just a quick reminder:</span><br>
+                We are the same trusted tool you know! <br>
+                We had to rebuild from scratch due to some boring reasons!, but we are here with even more features! 💎
+            </p>
+            <div class="flex justify-center">
+                <button onclick="closeReminder()" class="btn-custom bg-green-900/20 border-green-500 text-green-400 hover:bg-green-900/40 px-10 py-3 text-lg" data-i18n="modal.btn_got_it">
+                    Got it! 👍
+                </button>
+            </div>
+            <br>
+            <div class="absolute bottom-1 left-0 w-full text-[12px] text-center opacity-40 italic" data-i18n="modal.footer"> <!-- 10->12 -->
+                Psst... color organization feels smoother now. Try dragging things!
+            </div>
+        </div>
+    </div>
 
-              <div id="lore-container" class="lore-item">
-                <div id="lore-text" class="lore-text">
-                  Loading..
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3" style="padding-left: 0;">
-                  <label for="nickname">Message</label>
-                  <input class="form-control" id="nickname" type="text" maxlength="200" placeholder="Type your Text"
-                         value="alonsoaliaga.com" oninput="javascript: updateOutputText(event);"
-                         onchange="javascript: updateOutputText(event)">
-                  <textarea class="form-control" id="lore-input" placeholder="Type your Lore"
-                         value="alonsoaliaga.com" oninput="javascript: updateOutputText(this);"
-                         onchange="javascript: updateOutputText(this)"></textarea>
-                  <textarea class="form-control" id="motd-input" placeholder="Type your MOTD"
-                         value="alonsoaliaga.com\r\nJoin us now!" oninput="javascript: updateOutputText(this);"
-                         onchange="javascript: updateOutputText(this)"></textarea>
-                </div>
-                <div class="col-md-3" style="padding-left: 0;">
-                  <label for="nickname">Emojis</label>
-                  <input style="width: 45px;" class="form-control" id="emojis" type="button" maxlength="10" placeholder="Pick your emoji"
-                         value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
-                         onchange="javascript: updateOutputText(event)">
-                  <div
-                  style="min-width:450px;max-height:350px;overflow:auto;overflow-y:scroll;height:fit-content;z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; display: none;"
-                   class="form-control" id="emojis-spoiler" type="button" value="😁">
-                    <p style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(248, 248, 248);">Click on your favorite emojis to add them!</p>
-                    <div>
-                      <table class="c"> <!-- style="height:200px;" -->
-                      <tbody id="emoji-table" style="overflow:auto;overflow-y:scroll">
-                        <p id="loading_text" style="color:rgb(255, 227, 16);text-decoration: double;font-size: 30px;text-align:center;">Loading..</p>
-                      </tbody>
-                     </table>
+    <!-- Notification Bar -->
+    <div id="online-counter" style="display:none;"></div>
+    
+    <!-- Title -->
+    <div class="text-center mt-2">
+        <a href="https://alonsoaliaga.com/hex" class="main-title block rainbow">
+            <span style="color: #061ce2;" data-i18n="meta.title_hex">HEX</span> <span data-i18n="meta.title_generator">Generator (RGB)</span>
+        </a>
+    </div>
+
+    <!-- Separator Line -->
+    <hr style="width: 70%; border-color: #888; margin-bottom: 5px;width: 100%;max-width: 950px;">
+
+    <!-- Warning Bar -->
+    <div class="warning-text" data-i18n="meta.browser_warning">
+        Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!
+    </div>
+
+    <!-- Description Box -->
+    <div class="description-box">
+        <p class="rainbow font-bold mb-2 text-xl" style="display:inline-block;" data-i18n="header.description_title">How is this different from other generators?</p>
+        <p data-i18n="header.description_text">
+            Well, let's be honest. There are <span class="rainbow">too many generators</span> out there. But all of them lack one feature or another. Our generator has <span class="rainbow">all features</span> you might need to configure your server!
+        </p>
+        <div class="text-sm mt-2" style="display: inline-block; text-align: center; color: var(--text-color);">
+            <div style="margin-bottom: 2px;" data-i18n="header.discord_suggestion">
+                ⚠️ If you have cool ideas, suggest them in our <a href="https://alonsoaliaga.com/discord" target="_blank" style="color:#5555ff; text-decoration:underline;">official discord server</a>.
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" style="width: 12px; height: auto; margin-right: 4px;">
+                <span data-i18n="header.donate_text">If you found this tool useful, consider <a href="https://alonsoaliaga.com/donate" target="_blank" style="color:#5555ff; text-decoration:underline;">making a donation</a> for our hard work. We appreciate it!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Options -->
+    <div style="margin-bottom: 8px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px;">
+        <span class="font-bold mr-2" data-i18n="options.site_options" style="font-size:16px;">Site options:</span>
+        <label class="btn-custom">
+            <input type="checkbox" id="darkModeCheck" checked> <span data-i18n="options.dark_mode">Dark Mode 👁️‍🗨️</span>
+        </label>
+        
+        <button id="langAutoBtn" class="btn-custom" style="padding: 2px 8px; font-size:14px; background: #3b82f6; border-color: #1d4ed8; color: white;" data-i18n="options.button_auto">🤖 AUTO</button>
+        
+        <div class="lang-flags" id="flagsContainer">
+            <!-- Flags will be injected here -->
+        </div>
+    </div>
+    <label class="btn-custom" style="margin-bottom: 10px;margin-top: 5px;" id="openLegacyGeneratorButtonDiv">
+        <input type="checkbox" style="visibility: hidden;" id="openLegacyGeneratorButton" checked> <span data-i18n="options.open_legacy_generator">Click to return to old generator! 🔄️</span>
+    </label>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <div class="ad-space"></div>
+
+        <!-- Central Column -->
+        <div class="flex flex-col w-full max-w-[950px]">
+            
+            <!-- App Container -->
+            <div class="app-container">
+                
+                <!-- 1. Output Code Section -->
+                <fieldset id="feature-data" style="padding: 2px 5px 5px 5px; border-radius: 15px; border: 2px solid var(--border-color);"> 
+                    <legend data-i18n="main.output_legend">&nbsp;Output Code 📝&nbsp;</legend>
+                    <div id="data-content" class="relative">
+                        <div class="flex gap-2 mb-1 justify-center"> 
+                            <button id="copyBtn" class="btn-custom" style="font-size:14px; padding: 1px 8px; height: 28px;" data-i18n="main.btn_copy"> 
+                                📋 COPY CODE
+                            </button>
+                        </div>
+                        <textarea id="outputArea" class="generic-textarea" style="height: 40px; min-height: 40px; margin-top: 2px; padding: 4px; font-size: 14px; overflow-y: hidden;" placeholder="Result code will appear here..." readonly data-i18n="[placeholder]main.output_placeholder"></textarea>
+                        <div id="lengthWarning" class="hidden text-red-500 text-sm font-bold mt-1 text-center" data-i18n="main.length_warning">⚠️ Output too long for chat!</div>
                     </div>
-                   <p style="text-align: center; padding-bottom: 0px;font-size: 15px; font-weight: bold; color: rgb(156, 0, 0);">New emojis? Suggest your favorites in our <a target="_blank" href="https://alonsoaliaga.com/discord">Discord</a>!</p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3" style="padding-left: 0;" id="minecraft">
-                  <label for="output-format">Output format</label>
-                  <select id="output-format"
-                          class="form-control"
-                          onmouseenter="showOutPutFormatTooltip();"
-                          onmouseout="hideOutPutFormatTooltip();"
-                          onload="addDefaultsFormats();" onchange="updateOutputText(event);">
-                    <!-- <option value='0'>Default (&#rrggbb)</option>
-                    <option value='2'>Legacy (&x&r&r&g&g&b&b)</option>
-                    <option value='3'>Nick (&#rrggbb)</option>
-                    <option value='4'>Nick Special (<&#rrggbb>)</option>
-                    <option value='6'>Console (§x§r§r§g§g§b§b)</option>
-                    <option value='8'>MOTD (\u00A7x)</option>
-                    <option value='1'>Chat (<#rrggbb>)</option>
-                    <option value='7'>BBCode [COLOR=#rrggbb]</option>
-                    <option value='9'>AlonsoTags (#rrggbb)</option>
-                    <option value='10'>AlonsoChat (&#rrggbb)</option>
-                    <option value='11'>Iridium Gradient</option> -->
-                  </select>
-                  <div id="output-format-tooltip" style="width: max-content; height: fit-content; position: absolute; display: none;z-index: 1" class="form-control">Loading..</div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3" style="padding-left: 0;">
-                  <label for="color-preset">Presets colors</label>
-                  <select id="color-preset"
-                          class="form-control"
-                          onload="addDefaultsPresets();"
-                          onchange="preset(this.value); updateOutputText(event); ">
-                    <!-- <option value='0'>None</option>
-                    <option value='1'>Rainbow</option>
-                    <option value='2'>Fire</option>
-                    <option value='3'>Sweet Morning</option>
-                    <option value='4'>Deep Space</option>
-                    <option value='5'>Superman</option>
-                    <option value='6'>Netflix</option>
-                    <option value='7'>Timber</option>
-                    <option value='8'>Piglet</option>
-                    <option value='9'>Instagram</option>
-                    <option value='10'>Twitch</option>
-                    <option value='11'>SoundCloud</option>
-                    <option value='12'>Facebook</option>
-                    <option value='13'>Amethyst</option>
-                    <option value='14'>Starfall</option>
-                    <option value='15'>Bloody Mary</option>
-                    <option value='16'>JShine</option>
-                    <option value='17'>Candy</option>
-                    <option value='18'>Argon</option>
-                    <option value='19'>Cosmic Fusion</option>
-                    <option value='20'>Deep Blue</option>
-                    <option value='21'>Phoenix</option>
-                    <option value='22'>Sublime Light</option>
-                    <option value='23'>Sunrise</option>
-                    <option value='24'>Sky Glider</option>
-                    <option value='25'>Love Kiss</option>
-                    <option value='26'>TikTok</option> -->
-                  </select>
-                </div>
-              </div>
-              <div class="row">
-                <label for="numOfColors">Amount of colors</label>
-                <input class="form-control"
-                       style="width: 75px;"
-                       value="2" id="numOfColors" type="number" min="2" max="20"
-                       onchange="updateOutputText(event); toggleColors(this.value);"
-                       oninput="updateOutputText(event); toggleColors(this.value);"/>
-              </div>
-              <div class="row">
-                <div id="dbold">
-                  <input type="checkbox" id="bold" onclick="updateOutputText(event);"/>
-                  <label for="bold">Bold</label>
-                </div>
-                <div id="ditalics">
-                  <input type="checkbox" id="italics" onclick="updateOutputText(event);"/>
-                  <label for="italics">Italic</label>
-                </div>
-                <div id="dunderline">
-                  <input type="checkbox" id="underline" onclick="updateOutputText(event);"/>
-                  <label for="underline">Underline</label>
-                </div>
-                <div id="dstrike">
-                  <input type="checkbox" id="strike" onclick="updateOutputText(event);"/>
-                  <label for="strike">Strikethrough</label>
-                </div>
-                <div id="dgenmode" style="display: block;">
-                  <input type="checkbox" id="gen-mode" onclick="toggleMode(event);"/>
-                  <label id="gen-mode-text" for="gen-mode">Loading..</label>
-                </div>
-                <div id="ddevmode" style="display: none;">
-                  <input type="checkbox" id="dev-mode" onclick="copyCustomURL();"/>
-                  <label id="dev-mode-text" for="dev-mode">Create URL 🦄</label>
-                </div>
-                <div id="appearance">
-                  <input type="checkbox" id="darkmode" onclick="darkMode();"></input>
-                  <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode 👁‍🗨</label>
-                </div><br>
-                <div id="gen-perm-div" style="display: inline-flex;">
-                  <input id="generate-permutation" style="max-width:fit-content" class="form-control" type="button" value="Generate permutation 🎨" onclick="generatePermutation();">&nbsp;
-                  <div style="padding: 5px;justify-content: center;align-content: center;max-width: fit-content;" class="darktextboxes form-control" id="reverse-permutation-div">
-                    <input type="checkbox" id="reverse-permutation"/>
-                    <label for="reverse-permutation">Reverse?</label>
-                  </div>
-                </div>
-              </div>
-              <br><br>
-              <div class="row">
-                <div class="col-md-3" style="padding-left: 0;">
-                  <div id="plugin-tooltip" style="bottom: 34px;width: max-content; height: fit-content; position: absolute; display: none" class="form-control">Loading..</div>
-                  <label for="plugins-list">Plugins list</label>
-                  <select id="plugins-list"
-                          style="display:inline-block"
-                          class="form-control"
-                          onload="addPluginsList();"
-                          onmouseenter="showPluginTooltip();"
-                          onmouseout="hidePluginTooltip();"
-                          onchange="updateOutputTextFromPlugin(event);">
-                          <option selected="true" disabled="disabled">Select a plugin</option>
-                  </select>
-                  <a target="_blank" style="width: 45px;position: absolute;display: none;text-decoration: none;" class="form-control linktooltip" 
-                    id="plugin-link-button" maxlength="10"
-                  >🔗<span class="linktooltiptext">Click to go to download page!</span></a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3" style="padding-left: 0;">
-                  <label for="fonts-list">Fonts list</label>
-                  <select id="fonts-list"
-                          style="display:inline-block"
-                          class="form-control"
-                          onload="addFontsList();"
-                          onchange="updateOutputTextFromFont(event);">
-                          <option selected="true" disabled="disabled">Select a font</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><br>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="align-items: center;">&nbsp;Export your settings to use them later:&nbsp;</span>
-    </div>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <input id="export-button" style="max-width:fit-content" class="form-control darktextboxes" type="button" value="Export options ⚙️" onclick="exportOptions();">
-      <input id="import-button" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste your exported options and press enter to import."
-             onkeypress="
-             if(event.key == 'Enter' || event.code == 'Enter'){
-                loadImport(event.srcElement);
-             }
-             ">
-    </div>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;Supports also the content generated from Decode feature below.&nbsp;</span>
-    </div><br>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="display:inline-block; padding:5px 10px 0px 10px; background-color:red; color:#fff; font-size:18px; font-weight:bold; border-radius:4px; text-transform:uppercase;">EXPERIMENTAL FEATURE</span>
-    </div>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="align-items: center;">&nbsp;Decode a gradient you have and obtain the colors used for this gradient:&nbsp;</span>
-    </div>
-    <div id="input-to-decode-div" style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <input id="input-to-decode" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
-              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="less-threshold" type="button" maxlength="10"
-                         value="-" onclick="
-                         let value = +document.getElementById('threshold-value').value;
-                         let newValue = value - (((event.altKey || event.shiftKey)) ? 10 : 1);
-                         document.getElementById('threshold-value').value = newValue;
-                         ">
-              <input style="width: fit-content;font-size: 15px;padding: 0 5 0 5;align-content: center;justify-content: center;vertical-align: middle;" class="form-control darktextboxes" id="threshold-value" type="button" maxlength="10"
-              value="75">
-              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="more-threshold" type="button" maxlength="10" 
-                         value="+" onclick="
-                         let value2 = +document.getElementById('threshold-value').value;
-                         let newValue2 = value2 + (((event.altKey || event.shiftKey)) ? 10 : 1);
-                         document.getElementById('threshold-value').value = newValue2;
-                         "><input id="decode-button" style="max-width:fit-content" class="form-control" type="button" value="Decode gradient 🧬" onclick="decodeInput();">
-    </div>
-    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
-      <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10.&nbsp;</span>
-    </div><br>
-    <div id="mybutton" style="z-index: 250;">
-      <div style="position: center;display: inline-block;">
-        <div style="text-align: center;">
-          <span style="font-weight: bold;">Click for more tools!</span>
-        </div>
-        <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
-        <br>
-        <div id="visitor-counter" style="text-align: center;">
-          <span id="counter-amount" style="font-weight: bold;">Visits: 0</span>
-        </div>
-      </div>
-    </div>
-    <div style="justify-content: center;display: flex;">
-      <div class="center-container">
-        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
-          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a pixelart like this? 💎</legend> 
-          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/pixelart-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
-        </fieldset>
-      </div>&nbsp;&nbsp;
-      <div class="center-container">
-        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
-          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a render like this one? 💎</legend> 
-          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/render-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
-        </fieldset>
-      </div>&nbsp;&nbsp;
-      <div class="center-container">
-        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
-          <legend style="text-align: center;width: 80%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for an animation like this one? 💎</legend> 
-          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/skin-showcase.gif" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
-        </fieldset>
-      </div>
-    </div>
-    <br>
-    <div id="theoptions" class="options">
-      <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
-        <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
-        <div style="text-align: left;font-size: 20px;" id="tools-for-you">
-        </div>
-        <br>
-        <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
-      </div>
-    </div>
-    <footer style="display: block;text-align: center;">
-      <p>❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
-      <p>❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
-    </footer>
-  </body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5185973148525065"
-     data-ad-slot="2004758913"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
+                </fieldset>
 
-</script>
-  <script src="jscolor.js"></script>
-  <script src="script.js"></script>
-  <script src="resources.js"></script>
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-  <script>
-    kofiWidgetOverlay.draw('alonsoaliaga', {
-      'type': 'floating-chat',
-      'floating-chat.donateButton.text': 'Send love ❤️',
-      'floating-chat.donateButton.background-color': '#fcbf47',
-      'floating-chat.donateButton.text-color': '#323842'
-    });
-  </script>
+                <!-- 2. Preview Canvas Box -->
+                <div class="canvas-box" id="mainContainer" style="margin-top: 0px; margin-bottom: 5px;">
+                    <div class="canvas-content" id="preview-text" data-i18n="main.preview_default">
+                        Write something...
+                    </div>
+                    <div id="toast" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 border border-white px-3 py-1 rounded text-xs opacity-0 transition-opacity pointer-events-none text-white font-bold">Done</div>
+                </div>
+                <!-- Hidden file input for MOTD icon -->
+                <input type="file" id="iconUpload" accept="image/*" style="display:none;">
+
+                <!-- 3. Text Input Section - Multiline -->
+                <div class="flex flex-col w-full gap-2 justify-center relative">
+                    <div class="flex justify-end px-2" style="margin-bottom: -4px; z-index: 10;">
+                        <button onclick="toggleEmojiPicker()" class="btn-custom" style="position: absolute;top: -6px;right: -9px;padding: 1px 6px; font-size: 12px; height: 24px; border-radius: 6px; opacity: 0.9;" data-i18n="emoji.button">😀 Emojis</button>
+                    </div>
+                    <textarea id="textInput" class="input-custom w-full" style="border-radius: 15px; height: 60px; font-size: 20px; resize: vertical;" placeholder="Type your text here..." data-i18n="[placeholder]main.input_placeholder">alonsoaliaga.com</textarea>
+                </div>
+
+                <!-- 4. Settings Sections (Stacked, no outer wrapper) -->
+                <div class="flex flex-col gap-4">
+                    
+                    <!-- BLOCK 1: Color Palette -->
+                    <fieldset class="config-block">
+                        <legend data-i18n="palette.legend">&nbsp;Color Palette 🎨&nbsp;</legend>
+                        <div class="flex flex-col gap-2 items-center px-1">
+                            <!-- Counter and Buttons Row -->
+                            <div class="flex flex-col items-center mb-1">
+                                <div class="flex gap-4 items-center">
+                                    <button id="removeInfoBtn" class="btn-action btn-remove" title="Remove Color"><i class="fa-solid fa-minus"></i></button>
+                                    <div class="flex flex-col items-center">
+                                        <span id="colorCounter" class="text-2xl font-bold font-mono">2</span>
+                                        <span class="text-[12px] opacity-60 font-bold uppercase tracking-wider" data-i18n="palette.colors_text">Colors</span> <!-- +2px -->
+                                    </div>
+                                    <button id="addInfoBtn" class="btn-action btn-add" title="Add Color"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                                <span class="text-[12px] opacity-40 mt-1" data-i18n="palette.max_colors">Max 20 colors</span> <!-- +2px -->
+                            </div>
+
+                            <!-- Container for dynamic color inputs -->
+                            <div id="colors-container" class="flex flex-wrap justify-center gap-x-2 gap-y-0.5 w-full"> 
+                                <!-- Dynamic content here -->
+                            </div>
+                            
+                            <div class="text-[11px] opacity-50 text-center mt-2 italic" data-i18n="palette.drag_drop_tip">
+                                Tip: Drag & drop colors to reorder, swap, or insert between others!
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- BLOCK 2: Styling & Tools -->
+                    <fieldset class="config-block">
+                        <legend data-i18n="styling.legend">&nbsp;Styling & Tools ✨&nbsp;</legend>
+                        <div class="flex flex-col gap-2 w-full justify-center items-center px-1">
+                            <!-- STYLING & ACTIONS ROW -->
+                            <div class="flex flex-col sm:flex-row gap-4 w-full justify-between items-center mb-1 px-2">
+                                <!-- Styles Left -->
+                                <div class="flex flex-col items-center w-full sm:w-1/2">
+                                    <label class="text-sm font-bold opacity-70 mb-1" data-i18n="styling.label_styles">Styles:</label>
+                                    <div class="flex flex-wrap gap-2 justify-center items-center">
+                                        <label class="btn-custom" style="padding: 2px 8px; font-size:14px;">
+                                            <input type="checkbox" id="checkBold"> <span data-i18n="styling.check_bold">Bold</span>
+                                        </label>
+                                        <label class="btn-custom" style="padding: 2px 8px; font-size:14px;">
+                                            <input type="checkbox" id="checkItalic"> <span data-i18n="styling.check_italic">Italic</span>
+                                        </label>
+                                        <label class="btn-custom" style="padding: 2px 8px; font-size:14px;">
+                                            <input type="checkbox" id="checkUnderline"> <span data-i18n="styling.check_underline">Underline</span>
+                                        </label>
+                                        <label class="btn-custom" style="padding: 2px 8px; font-size:14px;">
+                                            <input type="checkbox" id="checkStrike"> <span data-i18n="styling.check_strike">Strike</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- Actions Right -->
+                                <div class="flex flex-col items-center w-full sm:w-1/2">
+                                    <label class="text-sm font-bold opacity-70 mb-1" data-i18n="styling.label_actions">Actions:</label>
+                                    <div class="flex items-center gap-2">
+                                        <button id="rotateLeftBtn" class="btn-custom" title="Rotate Left" style="padding: 2px 8px;">⬅️</button>
+                                        <button id="reversePaletteBtn" class="btn-custom" style="padding: 2px 8px; background: #ffe4c4; color: #5c3a00; border-color: #d2b48c;" data-i18n="styling.btn_reverse">🔄 Reverse</button>
+                                        <button id="rotateRightBtn" class="btn-custom" title="Rotate Right" style="padding: 2px 8px;">➡️</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="iridiumWarning" class="hidden text-center mt-1" style="color: #ff5555; font-size: 12px; font-weight: bold;" data-i18n="styling.warning_iridium">
+                                ⚠️ Iridium format does not support styling!
+                            </div>
+
+                            <hr class="border-gray-400 opacity-30 my-2 w-full mx-4">
+
+                            <!-- MODE & ANIMATION ROW -->
+                            <div id="anim-mode-row" class="flex flex-col sm:flex-row gap-4 w-full justify-between items-center mb-1 px-2">
+                                <!-- Mode Left -->
+                                <div class="flex items-center gap-2 w-full sm:w-1/2 justify-center">
+                                    <button id="modeBtn" class="btn-custom" style="padding: 2px 10px; font-size:14px; background: #e0e7ff; color: #1e3a8a; border-color: #93c5fd;" data-i18n="styling.mode_text">
+                                        Mode: Text 📖
+                                    </button>
+                                </div>
+                                <!-- Animation Right -->
+                                <div class="flex items-center gap-2 w-full sm:w-1/2 justify-center">
+                                    <label class="text-sm font-bold opacity-70" data-i18n="styling.label_anim">Anim:</label>
+                                    <select id="animDirection" class="input-custom text-sm" style="height: 26px;">
+                                        <option value="right" data-i18n="styling.anim_right">To Right -&gt;</option>
+                                        <option value="left" data-i18n="styling.anim_left">&lt;- To Left</option>
+                                    </select>
+                                    <button id="generateAnimBtn" class="btn-custom" style="font-size:14px; background: #e0f2fe; border-color: #0284c7; color: #0369a1;" data-i18n="styling.btn_generate_anim">
+                                        🎬 Generate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- BLOCK 3: Configuration -->
+                    <fieldset class="config-block">
+                        <legend data-i18n="config.legend">&nbsp;Configuration 🛠️&nbsp;</legend>
+                        <div class="flex flex-col sm:flex-row gap-4 w-full justify-between items-center mb-2 px-1">
+                            <div class="flex flex-col w-full group relative">
+                                <label class="text-sm font-bold opacity-70 mb-1 text-center w-full" data-i18n="config.label_format">Format:</label>
+                                <div class="custom-tooltip">
+                                    <select id="formatSelector" class="input-custom text-sm w-full" style="height: 30px; text-align: left;"></select>
+                                    <span class="tooltiptext" id="formatInfoTooltip"></span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col w-full">
+                                <label class="text-sm font-bold opacity-70 mb-1 text-center w-full" data-i18n="config.label_plugins">Plugins list:</label>
+                                <div class="flex gap-2 w-full items-center">
+                                    <select id="pluginSelector" class="input-custom text-sm flex-grow" style="height: 30px; text-align: left;"></select>
+                                    <div id="pluginLinkContainer" class="custom-tooltip hidden" style="width: auto;">
+                                        <a id="pluginLinkBtn" href="#" target="_blank" class="btn-custom" style="height: 30px; padding: 0 10px; background: #5555FF; border-color: #3333aa; color: white;">🔗</a>
+                                        <span class="tooltiptext" id="pluginLinkTooltip" data-i18n="config.btn_link_tooltip">Plugin Info</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 w-full justify-between items-center px-1">
+                            <div class="flex flex-col w-full sm:w-1/2">
+                                <label class="text-sm font-bold opacity-70 mb-1 text-center w-full" data-i18n="config.label_presets">Presets:</label>
+                                <select id="presetSelector" class="input-custom text-sm w-full" style="height: 30px; text-align: left;"></select>
+                            </div>
+                            <div class="flex flex-col w-full sm:w-1/2">
+                                <label class="text-sm font-bold opacity-70 mb-1 text-center w-full" data-i18n="config.label_fonts">Fonts list:</label>
+                                <select id="fontSelector" class="input-custom text-sm w-full" style="height: 30px; text-align: left;"></select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    
+                    <!-- BLOCK 5: AlonsoColor Mod -->
+                    <fieldset class="config-block" id="alonso-color-section">
+                        <div class="flex flex-col items-center justify-center mb-1">
+                             <span class="rainbow font-bold text-xl" data-i18n="alonso_color.title">Bring this format to Minecraft now!</span>
+                        </div>
+                        <div class="text-center text-[13px] opacity-80 mb-2 px-4 leading-tight" data-i18n="alonso_color.description">
+                            Stop copying and pasting! With <a href="https://alonsoaliaga.com/AlonsoColor" target="_blank" style="color: #5555ff; font-weight: bold;">AlonsoColor</a> (Fabric Mod), you can create presets and type in gradients automatically. Create and save presets to use anytime, anywhere!<br>
+                            <span style="font-size: 13px;">More information about AlonsoColor on <a href="https://github.com/AlonsoAliaga/AlonsoColor" target="_blank" style="color: #5555ff; text-decoration: underline;">GitHub</a>.</span>
+                        </div>
+                        
+                        <div class="flex flex-col gap-1 px-2">
+                            <div class="flex flex-col sm:flex-row gap-2 items-center">
+                                <label class="text-sm font-bold opacity-70 whitespace-nowrap" data-i18n="alonso_color.label_identifier">Identifier:</label>
+                                <input type="text" id="acIdentifier" class="input-custom flex-grow w-full sm:w-auto text-left" value="mygradient" placeholder="gradientname" style="height: 26px;" data-i18n="[placeholder]alonso_color.placeholder_identifier">
+                                <button id="generateAcBtn" class="btn-custom w-full sm:w-auto" style="background:#dbeafe; border-color:#2563eb; color:#1e40af; font-size:14px; height: 26px;" data-i18n="alonso_color.btn_generate">
+                                    Generate Command 🚀
+                                </button>
+                            </div>
+                            
+                            <div class="relative w-full">
+                                 <textarea id="acOutput" class="generic-textarea" style="height: 33px; min-height: 33px; padding: 4px 8px; font-family: 'MinecraftRegular'; font-size: 14px; resize: none; margin-top: 2px;" readonly placeholder="Command will appear here..." data-i18n="[placeholder]alonso_color.placeholder_command"></textarea>
+                                 <button id="copyAcBtn" class="absolute right-2 top-1 btn-custom" style="font-size: 12px; padding: 1px 6px; height: 18px;" data-i18n="alonso_color.btn_copy">Copy</button>
+                            </div>
+                            
+                            <div class="text-[12px] opacity-60 text-center -mt-1" id="acHelpText" data-i18n="alonso_color.help_text">
+                                <!-- Filled by JS -->
+                                Copy and paste this command to create it and select it with <code class="bg-black/20 px-1 rounded text-white/90">.ac set <span id="acHelpId">mygradient</span></code>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- BLOCK 6: Data Management -->
+                    <fieldset class="config-block">
+                        <legend data-i18n="data.legend">&nbsp;Data Management 💾&nbsp;</legend>
+                        <div class="flex flex-col sm:flex-row gap-3 items-center justify-center p-2">
+                             <div class="flex flex-col w-full sm:w-auto">
+                                 <button id="exportBtn" class="btn-custom w-full sm:w-auto" style="background:#ffd1dc; border-color:#d4a0a0; color:#5c2b2b; padding-left: 20px; padding-right: 20px;" data-i18n="data.btn_export">Export options ⚙️</button>
+                             </div>
+                             <div class="flex flex-col w-full">
+                                 <input type="text" id="importInput" class="input-custom w-full" style="text-align: left;" placeholder="Paste your exported options and press enter to import." data-i18n="[placeholder]data.input_import">
+                             </div>
+                        </div>
+                        <div class="text-[11px] opacity-50 text-center pb-1" data-i18n="data.footer_note">💎 Supports also the content generated from Decode feature below.</div>
+                    </fieldset>
+
+                    <!-- BLOCK 5: Decoder -->
+                    <fieldset class="config-block" id="decoder-section">
+                         <div class="flex flex-col items-center justify-center mb-1">
+                             <span class="exp-label" data-i18n="decoder.label_experimental">EXPERIMENTAL FEATURE</span>
+                         </div>
+                         <div class="text-center text-sm font-bold opacity-80 mb-2" data-i18n="decoder.title">Decode a gradient you have and obtain the colors used for this gradient:</div>
+                         <div class="flex flex-col gap-2">
+                             <input type="text" id="decodeInput" class="input-custom w-full" style="background-color: #fce7f3; color: #333; border-color:#f472b6;" placeholder="Paste the gradient you want to decode." data-i18n="[placeholder]decoder.input_placeholder">
+                             <div class="flex flex-wrap items-center justify-center gap-2">
+                                 <button id="decThreshDec" class="btn-action" style="width:24px; height:24px; font-size:14px;">-</button>
+                                 <input type="number" id="decThreshold" value="100" class="input-custom" style="width: 60px; height: 24px; font-size: 14px;" readonly>
+                                 <button id="decThreshInc" class="btn-action" style="width:24px; height:24px; font-size:14px;">+</button>
+                                 <button id="decodeBtn" class="btn-custom" style="background:#fce7f3; border-color:#db2777; color:#831843; font-size:14px;" data-i18n="decoder.btn_decode">Decode gradient 🧬</button>
+                                 <button id="decodeLoadBtn" class="btn-custom" style="background:#dbeafe; border-color:#2563eb; color:#1e40af; font-size:14px;" data-i18n="decoder.btn_load">Decode and load 📥</button>
+                             </div>
+                             <div class="text-[11px] opacity-50 text-center" data-i18n="decoder.footer_note">The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10.</div>
+                         </div>
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+            <!-- Showcase Section -->
+            <div class="showcase-container">
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend" data-i18n="showcase.pixelart">Looking for a pixelart like this? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/pixelart-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend" data-i18n="showcase.render">Looking for a render like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/render-showcase.png" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
+                </fieldset>
+                
+                <fieldset class="showcase-box" style="display: flex; justify-content: center;">
+                    <legend class="showcase-legend" id="thelegend" data-i18n="showcase.animation">Looking for an animation like this one? 💎</legend>
+                    <img src="https://raw.githubusercontent.com/AlonsoAliaga/rank-textures/main/assets/showcase/skin-showcase.gif" class="showcase-img" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+                </fieldset>
+            </div>
+
+            <!-- More Tools Section -->
+            <div class="options">
+                <div style="border-radius: 25px;font-size: 18px ;padding-top: 20px;padding-bottom: 20px; font-family: MinecraftRegular;" class="examples">
+                    <h2 style="font-size: 18px; font-family: MinecraftBold;" data-i18n="moretoolsforyou.title">More tools for you:</h2>
+                    <div style="text-align: left;font-size: 20px;" id="tools-for-you"></div>
+                    <br>
+                    <a href="https://alonsoaliaga.github.io" rel="noopener" target="_blank" style="font-size: 18px; font-family: MinecraftBold; color: var(--link-color); text-decoration: none;">AlonsoAliaga Development</a>
+                </div>
+            </div>
+            
+            <h2 style="font-size: 15px ;text-align: center; margin-top: 10px;" data-i18n="footer.text">Thanks to <a href="https://alonsoaliaga.com/donate" rel="noopener" target="_blank" style="color:var(--link-color);">AlonsoAliaga</a> and <a href="https://google.com" rel="noopener" target="_blank" style="color:var(--link-color);">Gemini</a> for his hard work during the development of this tool.</h2>
+            <br>
+
+        </div>
+
+        <div class="ad-space"></div>
+    </div>
+    
+    <!-- Floating Visitor Counter -->
+    <div id="mybutton">
+        <a href="https://alonsoaliaga.github.io">
+            <img class="floating-icon" src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
+        </a>
+        <div id="visitor-counter">
+            <span id="counter-amount" style="font-family: MinecraftBold;font-weight: bold;">Visits: 0</span>
+        </div>
+    </div>
+
+    <!-- Generic Error Popup -->
+    <div id="errorPopup" class="error-popup">
+        <span style="font-size: 20px;">⚠️</span>
+        <div style="text-align: center;">
+            <div style="font-weight: bold; font-size: 16px;">Error!</div>
+            <div style="font-size: 12px; opacity: 0.9;" id="errorMsg">Something went wrong.</div>
+        </div>
+        <span style="font-size: 20px;">⚠️</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+
+
+    <script>
+        // Ko-fi Widget
+        if (typeof kofiWidgetOverlay !== 'undefined') {
+            kofiWidgetOverlay.draw('alonsoaliaga', {
+                'type': 'floating-chat',
+                'floating-chat.donateButton.text': 'Send love ❤️',
+                'floating-chat.donateButton.background-color': '#fcbf47',
+                'floating-chat.donateButton.text-color': '#323842'
+            });
+        }
+
+        // --- I18N SYSTEM ---
+        const AVAILABLE_LANGUAGES = ['en', 'es', 'fr', 'it', 'zh', 'ja', 'ko'];
+        const DEFAULT_LANGUAGE = 'en';
+        
+        // HARDCODED FALLBACK (English)
+        const TRANSLATIONS = {
+            "en": {
+              "meta": { "title_hex": "HEX", "title_generator": "Generator RGB", "browser_warning": "Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!" },
+              "header": {
+                "description_title": "How is this different from other generators?",
+                "description_text": "Well, let's be honest. There are <span class=\"rainbow\">too many generators</span> out there. But all of them lack one feature or another. Our generator has <span class=\"rainbow\">all features</span> you might need to configure your server!",
+                "discord_suggestion": "⚠️ If you have cool ideas, suggest them in our <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">official discord server</a>.",
+                "donate_text": "If you found this tool useful, consider <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">making a donation</a> for our hard work. We appreciate it!"
+              },
+              "options": { "site_options": "Site options:", "dark_mode": "Dark Mode 👁️‍🗨️" },
+              "main": { "output_legend": "&nbsp;Output Code 📝&nbsp;", "btn_copy": "📋 COPY CODE", "output_placeholder": "Result code will appear here...", "length_warning": "⚠️ Output too long for chat!", "preview_default": "Write something...", "input_placeholder": "Type your text here..." },
+              "palette": { "legend": "&nbsp;Color Palette 🎨&nbsp;", "colors_text": "Colors", "max_colors": "Max 20 colors", "drag_drop_tip": "Tip: Drag & drop colors to reorder, swap, or insert between others!" },
+              "styling": { "legend": "&nbsp;Styling & Tools ✨&nbsp;", "label_styles": "Styles:", "check_bold": "Bold", "check_italic": "Italic", "check_underline": "Underline", "check_strike": "Strike", "label_actions": "Actions:", "btn_reverse": "🔄 Reverse", "warning_iridium": "⚠️ Iridium format does not support styling!", "mode_text": "Mode: Text 📖", "mode_lore": "Mode: Lore 🏹", "mode_motd": "Mode: MOTD 🎀", "label_anim": "Anim:", "anim_right": "To Right ->", "anim_left": "<- To Left", "btn_generate_anim": "🎬 Generate" },
+              "config": { "legend": "&nbsp;Configuration 🛠️&nbsp;", "label_format": "Format:", "label_plugins": "Plugins list:", "btn_link_tooltip": "Plugin Info", "label_presets": "Presets:", "label_fonts": "Fonts list:" },
+              "alonso_color": { "title": "Bring this format to Minecraft now!", "description": "Stop copying and pasting! With <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod), you can create presets and type in gradients automatically. Create and save presets to use anytime, anywhere!<br><span style=\"font-size: 11px;\">More information about AlonsoColor on <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>", "label_identifier": "Identifier:", "placeholder_identifier": "gradientname", "btn_generate": "Generate Command 🚀", "placeholder_command": "Command will appear here...", "btn_copy": "Copy", "help_text": "Copy and paste this command to create it and select it with <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>" },
+              "data": { "legend": "&nbsp;Data Management 💾&nbsp;", "btn_export": "Export options ⚙️", "input_import": "Paste your exported options and press enter to import.", "footer_note": "💎 Supports also the content generated from Decode feature below." },
+              "decoder": { "label_experimental": "EXPERIMENTAL FEATURE", "title": "Decode a gradient you have and obtain the colors used for this gradient:", "input_placeholder": "Paste the gradient you want to decode.", "btn_decode": "Decode gradient 🧬", "btn_load": "Decode and load 📥", "footer_note": "The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10." },
+              "showcase": { "pixelart": "Looking for a pixelart like this? 💎", "render": "Looking for a render like this one? 💎", "animation": "Looking for an animation like this one? 💎" },
+              "footer": { "text": "Thanks to <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> and <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> for his hard work during the development of this tool." },
+              "modal": { "title": "We are back! 🚀", "text": "<span class=\"font-bold\">Just a quick reminder:</span><br>We are the same trusted tool you know! <br>We had to rebuild from scratch due to some boring reasons!, but we are here with even more features! 💎", "btn_got_it": "Got it! 👍", "footer": "Psst... color organization feels smoother now. Try dragging things!" },
+              "toasts": { "copied": "Copied to clipboard!", "exported": "Settings exported to clipboard!", "imported": "Settings imported successfully!", "decoded_copied": "Decoded colors copied!", "decoded_loaded": "Gradient decoded & loaded!" },
+              "errors": { "import_failed": "Invalid import string!", "no_colors_found": "No colors found!", "iridium_limit": "Iridium format supports only 2 colors!", "max_colors": "Max {{count}} colors allowed!", "min_colors": "You need at least 2 colors!" }
+            },
+            "es": {
+                "meta": { "title_hex": "HEX", "title_generator": "Generador RGB", "browser_warning": "Usa Google Chrome u Opera para una mejor experiencia. ¡Edge está reportado como no compatible!" },
+                "header": {
+                  "description_title": "¿En qué se diferencia de otros generadores?",
+                  "description_text": "Bueno, seamos honestos. Hay <span class=\"rainbow\">demasiados generadores</span> ahí fuera. Pero a todos les falta una característica u otra. ¡Nuestro generador tiene <span class=\"rainbow\">todas las funciones</span> que podrías necesitar para configurar tu servidor!",
+                  "discord_suggestion": "⚠️ Si tienes buenas ideas, sugiérelas en nuestro <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">servidor oficial de discord</a>.",
+                  "donate_text": "Si encontraste útil esta herramienta, considera <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">hacer una donación</a> por nuestro arduo trabajo. ¡Lo apreciamos!"
+                },
+                "options": { "site_options": "Opciones del sitio:", "dark_mode": "Modo Oscuro 👁️‍🗨️" },
+                "main": { "output_legend": "&nbsp;Código de Salida 📝&nbsp;", "btn_copy": "📋 COPIAR CÓDIGO", "output_placeholder": "El código resultante aparecerá aquí...", "length_warning": "⚠️ ¡La salida es demasiado larga para el chat!", "format_label": "Formato: {{name}}", "input_placeholder": "Escribe tu texto aquí...", "preview_default": "Escribe algo..." },
+                "palette": { "legend": "&nbsp;Paleta de Colores 🎨&nbsp;", "btn_remove_title": "Eliminar Color", "btn_add_title": "Añadir Color", "colors_text": "Colores", "max_colors": "Máx 20 colores", "drag_drop_tip": "Tip: ¡Arrastra y suelta los colores para reordenar, intercambiar o insertar entre otros!" },
+                "styling": { "legend": "&nbsp;Estilo y Herramientas ✨&nbsp;", "label_styles": "Estilos:", "check_bold": "Negrita", "check_italic": "Cursiva", "check_underline": "Subrayado", "check_strike": "Tachado", "label_actions": "Acciones:", "btn_reverse": "🔄 Invertir", "btn_reverse_title": "Invertir Paleta", "btn_rotate_left": "Rotar Izq", "btn_rotate_right": "Rotar Der", "warning_iridium": "⚠️ ¡El formato Iridium no soporta estilos!", "mode_text": "Modo: Texto 📖", "mode_lore": "Modo: Lore 🏹", "mode_motd": "Modo: MOTD 🎀", "label_anim": "Anim:", "anim_right": "A Derecha ->", "anim_left": "<- A Izquierda", "btn_generate_anim": "🎬 Generar" },
+                "config": { "legend": "&nbsp;Configuración 🛠️&nbsp;", "label_format": "Formato:", "label_plugins": "Lista de plugins:", "btn_link_tooltip": "Info del Plugin", "label_presets": "Preajustes:", "label_fonts": "Lista de fuentes:" },
+                "alonso_color": { "title": "¡Lleva este formato a Minecraft ahora!", "description": "¡Deja de copiar y pegar! Con <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Mod de Fabric), puedes crear presets y escribir en gradientes automáticamente. ¡Crea y guarda presets para usarlos cuando y donde quieras!<br><span style=\"font-size: 11px;\">Más información sobre AlonsoColor en <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>", "label_identifier": "Identificador:", "placeholder_identifier": "nombregradiente", "btn_generate": "Generar Comando 🚀", "placeholder_command": "El comando aparecerá aquí...", "btn_copy": "Copiar", "help_text": "Copia y pega este comando para crearlo y selecciónalo con <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>" },
+                "data": { "legend": "&nbsp;Gestión de Datos 💾&nbsp;", "btn_export": "Exportar opciones ⚙️", "input_import": "Pega tus opciones exportadas y presiona enter para importar.", "footer_note": "💎 También soporta el contenido generado por la función Decodificar abajo." },
+                "decoder": { "label_experimental": "FUNCIÓN EXPERIMENTAL", "title": "Decodifica un gradiente que tengas y obtén los colores usados para este gradiente:", "input_placeholder": "Pega el gradiente que quieres decodificar.", "btn_decode": "Decodificar gradiente 🧬", "btn_load": "Decodificar y cargar 📥", "footer_note": "El valor arriba es el umbral. Auméntalo si consideras que obtienes demasiados colores. Alt + clic para modificar de 10 en 10." },
+                "showcase": { "pixelart": "¿Buscas un pixelart como este? 💎", "render": "¿Buscas un render como este? 💎", "animation": "¿Buscas una animación como esta? 💎" },
+                "footer": { "text": "Gracias a <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> y <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> por su arduo trabajo durante el desarrollo de esta herramienta." },
+                "modal": { "title": "¡Estamos de vuelta! 🚀", "text": "<span class=\"font-bold\">Solo un recordatorio rápido:</span><br>¡Somos la misma herramienta confiable que conoces! <br>Tuvimos que reconstruir desde cero debido a algunas razones aburridas, ¡pero estamos aquí con aún más funciones! 💎", "btn_got_it": "¡Entendido! 👍", "footer": "Psst... la organización de colores se siente más fluida ahora. ¡Intenta arrastrar cosas!" },
+                "toasts": { "copied": "¡Copiado al portapapeles!", "exported": "¡Ajustes exportados al portapapeles!", "imported": "¡Ajustes importados correctamente!", "decoded_copied": "¡Colores decodificados copiados!", "decoded_loaded": "¡Gradiente decodificado y cargado!" },
+                "errors": { "import_failed": "¡Cadena de importación inválida!", "no_colors_found": "¡No se encontraron colores!", "iridium_limit": "¡El formato Iridium solo soporta 2 colores!", "max_colors": "¡Máximo {{count}} colores permitidos!", "min_colors": "¡Necesitas al menos 2 colores!" }
+              }
+        };
+
+        let myTimeoutLine;
+        let currentLanguage = DEFAULT_LANGUAGE;
+        let emoji_array = ['Σ','☠','☮','☯','♠','Ω','♤','♣','♧','♥','♡','♦','♢','♔','♕','♚','♛','★','☆','✮','✯','☄','☾','☽','☼','☀','☁','☂','☃','☻','☺','۞','۩','♬','✄','✂','✆','✉','✦','✧','∞','♂','♀','☿','❤','❥','❦','❧','®','©','✗','✘','▢','▲','△','▼','▽','◆','◇','○','◎','●','◯','Δ','◕','◔','ʊ','ღ','₪','✓','✔','✕','✖','☢','☣','☤','✙','✞','✠','✰','❇','❈','❅','❄','❆','╰','╮','❃','❀','✿','❁','✾','❂','⋆','✢','✣','✤','✥','✩','✪','✫','✬','✭','✵','✴','✳','✲','✱','✶','✷','✸','✹','✺','✻','✼','✽','✡','❋','❊','❉','✌','♼','♽','➣','➢','⬇','⬆','⬅','➡','✈','➤','➥','➦','➧','➨','➚','➘','➙','➛','➶','➵','➴','➳','➲','➸','➞','➝','➜','⚜','⛏','⚒','⚔','UwU','¦','©','®','°','҂','؎','؏','۞','۩','۽','۾','߶','৺','୰','௳','௴','௵','௶','௷','௸','௺','౿','൹','༁','༂','༃','༓','༕','༖','༗','༚','༛','༜','༝','༞','༟','༴','༶','༸','྾','྿','࿀','࿁','࿂','࿃','࿄','࿅','࿇','࿈','࿉','࿊','࿋','࿌','࿎','࿏','႞','႟','᎐','᎑','᎒','᎓','᎔','᎕','᎖','᎗','᎘','᎙','᙭','᧞','᧟','᧠','᧡','᧢','᧣','᧤','᧥','᧦','᧧','᧨','᧩','᧪','᧫','᧬','᧭','᧮','᧯','᧰','᧱','᧲','᧳','᧴','᧵','᧶','᧷','᧸','᧹','᧺','᧻','᧼','᧽','᧾','℀','℁','℃','℄','℅','℆','℈','℉','℔','№','℗','℞','℟','℠','℡','™','℣','℥','℧','℩','℮','℺','℻','⅊','⅌','⅍','⅏','↕','↖','↗','↘','↙','↜','↝','↞','↟','↡','↢','↤','↥','↧','↨','↩','↪','↫','↬','᧿','⌚','⌛','⌜','⌝','⌞','⌟','⌢','⌣','⌤','⌥','⌦','⌧','⌨','⌫','⌬','⌭','⌮','⌯','⌰','⌱','⌲','⌳','⌴','⌵','⌶','⌷','⌸','⌹','⌺','⌻','⌼','⌽','⌾','⌿','⍀','⍁','⍂','⍃','⍄','⍅','⍆','⍇','⍈','⍉','⍊','⍋','⍌','⍍','⍎','⍏','⍐','⍑','⍒','⍓','⍔','⍕','⍖','⍗','⍘','⍙','⍚','⍛','⍜','⍝','⍞','⍟','⍠','⍡','⍢','⍣','⍤','⍥','⍦','⍧','⍨','⍩','⍪','⍫','⍬','⍭','⍮','⍯','⍱','⍲','⍳','⍴','⍵','⍶','⍷','⍸','⍹','⍺','⍻','⍽','⍾','⍿','⎀','⎁','⎂','⎃','⎄','⎅','⎆','⎇','⎈','⎉','⎊','⎋','⎌','⎍','⎎','⎏','⎐','⎑','⎒','⎓','⎔','⎖','⎗','⎘','⎙','⎚','⎴','⎵','⎶','⎷','⎹','⎺','⎻','⎼','⎽','⎾','⎿','⏀','⏁','⏂','⏃','⏄','⏅','⏆','⏇','⏈','⏉','⏊','⏋','⏌','⏍','⏎','⏏','⏐','⏑','⏒','⏓','⏔','⏕','⏖','⏗','⏘','⏙','⏚','⏛','⏢','⏣','⏤','⏥','⏦','⏧','⏩','⏪','⏭','⏮','⏯','⏳','⏴','⏵','⏶','⏷','⏸','⏹','⏺','␀','␁','␂','␃','␄','␅','␆','␇','␈','␉','␊','␋','␌','␍','␎','␏','␐','␑','␒','␓','␔','␕','␖','␗','␘','␙','␚','␛','␜','␝','␞','␟','␠','␡','␢','␣','␤','␥','␦','⑀','⑁','⑂','⑃','⑄','⑅','⑆','⑇','⑈','⑉','⑊','⒜','⒝','⒞','⒟','⒠','⒡','⒢','⒣','⒤','⒥','⒦','⒧','⒨','⒩','⒪','⒫','⒬','⒭','⒮','⒯','⒰','⒱','⒲','⒳','⒴','⒵','Ⓐ','Ⓑ','Ⓒ','Ⓓ','Ⓔ','Ⓕ','Ⓖ','Ⓗ','Ⓘ','Ⓙ','Ⓚ','Ⓛ','Ⓜ','Ⓝ','Ⓞ','Ⓟ','Ⓠ','Ⓡ','Ⓢ','Ⓣ','Ⓤ','Ⓥ','Ⓦ','Ⓧ','Ⓨ','Ⓩ','ⓐ','ⓑ','ⓒ','ⓓ','ⓔ','ⓕ','ⓖ','ⓗ','ⓘ','ⓙ','ⓚ','ⓛ','ⓜ','ⓝ','ⓞ','ⓟ','ⓠ','ⓡ','ⓢ','ⓣ','ⓤ','ⓥ','ⓦ','ⓧ','ⓨ','ⓩ','─','━','│','┃','┄','┅','┆','┇','┈','┉','┊','┋','┌','┍','┎','┏','┐','┑','┒','┓','└','┕','┖','┗','┘','┙','┚','┛','├','┝','┞','┟','┠','┡','┢','┣','┤','┥','┦','┧','┨','┩','┪','┫','┬','┭','┮','┯','┰','┱','┲','┳','┴','┵','┶','┷','┸','┹','┺','┻','┼','┽','┾','┿','╀','╁','╂','╃','╄','╅','╆','╇','╈','╉','╊','╋','╌','╍','╎','╏','═','║','╒','╓','╔','╕','╖','╗','╘','╙','╚','╛','╜','╝','╞','╟','╠','╡','╢','╣','╤','╥','╦','╧','╨','╩','╪','╫','╬','╭','╮','╯','╰','╱','╲','╳','╴','╵','╶','╷','╸','╹','╺','╻','╼','╽','╾','╿','▀','▁','▂','▃','▄','▅','▆','▇','█','▉','▊','▋','▌','▍','▎','▏','▐','░','▒','▓','▔','▕','▖','▗','▘','▙','▚','▛','▜','▝','▞','▟','■','□','▢','▣','▤','▥','▦','▧','▨','▩','▪','▫','▬','▭','▮','▯','▰','▱','▲','△','▴','▵','▶','▸','▹','►','▻','▼','▽','▾','▿','◀','◂','◃','◄','◅','◆','◇','◈','◉','◊','○','◌','◍','◎','●','◐','◑','◒','◓','◔','◕','◖','◗','◘','◙','◚','◛','◜','◝','◞','◟','◠','◡','◢','◣','◤','◥','◦','◧','◨','◩','◪','◫','◬','◭','◮','◯','◰','◱','◲','◳','◴','◵','◶','◷','☀','☁','☂','☃','☄','★','☆','☇','☈','☉','☊','☋','☌','☍','☎','☏','☐','☑','☒','☓','☔','☕','☖','☗','☘','☙','☚','☛','☜','☝','☞','☟','☠','☡','☢','☣','☤','☥','☦','☧','☨','☩','☪','☫','☬','☭','☮','☯','☰','☱','☲','☳','☴','☵','☶','☷','☸','☹','☼','☽','☾','☿','♀','♁','♂','♃','♄','♅','♆','♇','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟','♠','♡','♢','♣','♤','♥','♦','♧','♨','♩','♪','♫','♬','♭','♮','♰','♱','♲','♳','♴','♵','♶','♷','♸','♹','♺','♻','♼','♽','♾','♿','⚀','⚁','⚂','⚃','⚄','⚅','⚆','⚇','⚈','⚉','⚊','⚋','⚌','⚍','⚎','⚏','⚐','⚑','⚒','⚓','⚔','⚕','⚖','⚗','⚘','⚙','⚚','⚛','⚜','⚝','⚠','⚡','⚢','⚣','⚤','⚥','⚦','⚧','⚨','⚩','⚪','⚫','⚬','⚭','⚮','⚯','⚰','⚱','⚲','⚳','⚴','⚵','⚶','⚷','⚸','⚹','⚺','⚻','⚼','⛀','⛁','⛂','⛃','⛄','⛈','⛏','⛨','✁','✂','✃','✄','✆','✇','✈','✉','✌','✍','✎','✏','✐','✑','✒','✓','✔','✕','✖','✗','✘','✙','✚','✛','✜','✝','✞','✟','✠','✡','✢','✣','✤','✥','✦','✧','✩','✪','✫','✬','✭','✮','✯','✰','✱','✲','✳','✴','✵','✶','✷','✸','✹','✺','✻','✼','✽','✾','✿','❀','❁','❂','❃','❄','❅','❆','❇','❈','❉','❊','❋','❌','❍','❏','❐','❑','❒','❖','❘','❙','❚','❛','❜','❝','❞','❡','❢','❧','➔','➘','➙','➚','➛','➜','➝','➞','➟','➠','➡','➢','➣','➤','➥','➦','➧','➨','➩','➪','➫','➬','➭','➮','➯','➱','➲','➳','➴','➵','➶','➷','➸','➹','➺','➻','➼','➽','➾','⠁','⠂','⠃','⠄','⠅','⠆','⠇','⠈','⠉','⠊','⠋','⠌','⠍','⠎','⠏','⠐','⠑','⠒','⠓','⠔','⠕','⠖','⠗','⠘','⠙','⠚','⠛','⠜','⠝','⠞','⠟','⠠','⠡','⠢','⠣','⠤','⠥','⠦','⠧','⠨','⠩','⠪','⠫','⠬','⠭','⠮','⠯','⠰','⠱','⠲','⠳','⠴','⠵','⠶','⠷','⠸','⠹','⠺','⠻','⠼','⠽','⠾','⠿','⡀','⡁','⡂','⡃','⡄','⡅','⡆','⡇','⡈','⡉','⡊','⡋','⡌','⡍','⡎','⡏','⡐','⡑','⡒','⡓','⡔','⡕','⡖','⡗','⡘','⡙','⡚','⡛','⡜','⡝','⡞','⡟','⡠','⡡','⡢','⡣','⡤','⡥','⡦','⡧','⡨','⡩','⡪','⡫','⡬','⡭','⡮','⡯','⡰','⡱','⡲','⡳','⡴','⡵','⡶','⡷','⡸','⡹','⡺','⡻','⡼','⡽','⡾','⡿','⢀','⢁','⢂','⢃','⢄','⢅','⢆','⢇','⢈','⢉','⢊','⢋','⢌','⢍','⢎','⢏','⢐','⢑','⢒','⢓','⢔','⢕','⢖','⢗','⢘','⢙','⢚','⢛','⢜','⢝','⢞','⢟','⢠','⢡','⢢','⢣','⢤','⢥','⢦','⢧','⢨','⢩','⢪','⢫','⢬','⢭','⢮','⢯','⢰','⢱','⢲','⢳','⢴','⢵','⢶','⢷','⢸','⢹','⢺','⢻','⢼','⢽','⢾','⢿','⣀','⣁','⣂','⣃','⣄','⣅','⣆','⣇','⣈','⣉','⣊','⣋','⣌','⣍','⣎','⣏','⣐','⣑','⣒','⣓','⣔','⣕','⣖','⣗','⣘','⣙','⣚','⣛','⣜','⣝','⣞','⣟','⣠','⣡','⣢','⣣','⣤','⣥','⣦','⣧','⣨','⣩','⣪','⣫','⣬','⣭','⣮','⣯','⣰','⣱','⣲','⣳','⣴','⣵','⣶','⣷','⣸','⣹','⣺','⣻','⣼','⣽','⣾','⣿','⬀','⬁','⬂','⬃','⬄','⬅','⬆','⬇','⬈','⬉','⬊','⬋','⬌','⬍','⬎','⬏','⬐','⬑','⬒','⬓','⬔','⬕','⬖','⬗','⬘','⬙','⬚','⬛','⬜','⬝','⬞','⬟','⬠','⬡','⬢','⬣','⬤','⬥','⬦','⬧','⬨','⬩','⬪','⬫','⬬','⬭','⬮','⬯','⭅','⭆','⭐','⭑','⭒','⭓','⭔','⭘','⳥','⳦','⳧','⳨','⳩','⳪','⺀','⺁','⺂','⺃','⺄','⺅','⺆','⺇','⺈','⺉','⺊','⺋','⺌','⺍','⺎','⺏','⺐','⺑','⺒','⺓','⺔','⺕','⺖','⺗','⺘','⺙','⺛','⺜','⺝','⺞','⺟','⺠','⺡','⺢','⺣','⺤','⺥','⺦','⺧','⺨','⺩','⺪','⺫','⺬','⺭','⺮','⺯','⺰','⺱','⺲','⺳','⺴','⺵','⺶','⺷','⺸','⺹','⺺','⺻','⺼','⺽','⺾','⺿','⻀','⻁','⻂','⻃','⻄','⻅','⻆','⻇','⻈','⻉','⻊','⻋','⻌','⻍','⻎','⻏','⻐','⻑','⻒','⻓','⻔','⻕','⻖','⻗','⻘','⻙','⻚','⻛','⻜','⻝','⻞','⻟','⻠','⻡','⻢','⻣','⻤','⻥','⻦','⻧','⻨','⻩','⻪','⻫','⻬','⻭','⻮','⻯','⻰','⻱','⻲','⻳','⼀','⼁','⼂','⼃','⼄','⼅','⼆','⼇','⼈','⼉','⼊','⼋','⼌','⼍','⼎','⼏','⼐','⼑','⼒','⼓','⼔','⼕','⼖','⼗','⼘','⼙','⼚','⼛','⼜','⼝','⼞','⼟','⼠','⼡','⼢','⼣','⼤','⼥','⼦','⼧','⼨','⼩','⼪','⼫','⼬','⼭','⼮','⼯','⼰','⼱','⼲','⼳','⼴','⼵','⼶','⼷','⼸','⼹','⼺','⼻','⼼','⼽','⼾','⼿','⽀','⽁','⽂','⽃','⽄','⽅','⽆','⽇','⽈','⽉','⽊','⽋','⽌','⽍','⽎','⽏','⽐','⽑','⽒','⽓','⽔','⽕','⽖','⽗','⽘','⽙','⽚','⽛','⽜','⽝','⽞','⽟','⽠','⽡','⽢','⽣','⽤','⽥','⽦','⽧','⽨','⽩','⽪','⽫','⽬','⽭','⽮','⽯','⽰','⽱','⽲','⽳','⽴','⽵','⽶','⽷','⽸','⽹','⽺','⽻','⽼','⽽','⽾','⽿','⾀','⾁','⾂','⾃','⾄','⾅','⾆','⾇','⾈','⾉','⾊','⾋','⾌','⾍','⾎','⾏','⾐','⾑','⾒','⾓','⾔','⾕','⾖','⾗','⾘','⾙','⾚','⾛','⾜','⾝','⾞','⾟','⾠','⾡','⾢','⾣','⾤','⾥','⾦','⾧','⾨','⾩','⾪','⾫','⾬','⾭','⾮','⾯','⾰','⾱','⾲','⾳','⾴','⾵','⾶','⾷','⾸','⾹','⾺','⾻','⾼','⾽','⾾','⾿','⿀','⿁','⿂','⿃','⿄','⿅','⿆','⿇','⿈','⿉','⿊','⿋','⿌','⿍','⿎','⿏','⿐','⿑','⿒','⿓','⿔','⿕','⿰','⿱','⿲','⿳','⿴','⿵','⿶','⿷','⿸','⿹','⿺','⿻','〄','〒','〓','〠','〶','〷','〾','〿','㆐','㆑','㆖','㆗','㆘','㆙','㆚','㆛','㆜','㆝','㆞','㆟','㇀','㇁','㇂','㇃','㇄','㇅','㇆','㇇','㇈','㇉','㇊','㇋','㇌','㇍','㇎','㇏','㇐','㇑','㇒','㇓','㇔','㇕','㇖','㇗','㇘','㇙','㇚','㇛','㇜','㇝','㇞','㇟','㇠','㇡','㇢','㇣','㈀','㈁','㈂','㈃','㈄','㈅','㈆','㈇','㈈','㈉','㈊','㈋','㈌','㈍','㈎','㈏','㈐','㈑','㈒','㈓','㈔','㈕','㈖','㈗','㈘','㈙','㈚','㈛','㈜','㈝','㈞','㈪','㈫','㈬','㈭','㈮','㈯','㈰','㈱','㈲','㈳','㈴','㈵','㈶','㈷','㈸','㈹','㈺','㈻','㈼','㈽','㈾','㈿','㉀','㉁','㉂','㉃','㉐','㉠','㉡','㉢','㉣','㉤','㉥','㉦','㉧','㉨','㉩','㉪','㉫','㉬','㉭','㉮','㉯','㉰','㉱','㉲','㉳','㉴','㉵','㉶','㉷','㉸','㉹','㉺','㉻','㉼','㉽','㉾','㉿','㊊','㊋','㊌','㊍','㊎','㊏','㊐','㊑','㊒','㊓','㊔','㊕','㊖','㊗','㊘','㊙','㊚','㊛','㊜','㊝','㊞','㊟','㊠','㊡','㊢','㊣','㊤','㊥','㊦','㊧','㊨','㊩','㊪','㊫','㊬','㊭','㊮','㊯','㊰','㋀','㋁','㋂','㋃','㋄','㋅','㋆','㋇','㋈','㋉','㋊','㋋','㋌','㋍','㋎','㋏','㋐','㋑','㋒','㋓','㋔','㋕','㋖','㋗','㋘','㋙','㋚','㋛','㋜','㋝','㋞','㋟','㋠','㋡','㋢','㋣','㋤','㋥','㋦','㋧','㋨','㋩','㋪','㋫','㋬','㋭','㋮','㋯','㋰','㋱','㋲','㋳','㋴','㋵','㋶','㋷','㋸','㋹','㋺','㋻','㋼','㋽','㋾','㌀','㌁','㌂','㌃','㌄','㌅','㌆','㌇','㌈','㌉','㌊','㌋','㌌','㌍','㌎','㌏','㌐','㌑','㌒','㌓','㌔','㌕','㌖','㌗','㌘','㌙','㌚','㌛','㌜','㌝','㌞','㌟','㌠','㌡','㌢','㌣','㌤','㌥','㌦','㌧','㌨','㌩','㌪','㌫','㌬','㌭','㌮','㌯','㌰','㌱','㌲','㌳','㌴','㌵','㌶','㌷','㌸','㌹','㌺','㌻','㌼','㌽','㌾','㌿','㍀','㍁','㍂','㍃','㍄','㍅','㍆','㍇','㍈','㍉','㍊','㍋','㍌','㍍','㍎','㍏','㍐','㍑','㍒','㍓','㍔','㍕','㍖','㍗','㍘','㍙','㍚','㍛','㍜','㍝','㍞','㍟','㍠','㍡','㍢','㍣','㍤','㍥','㍦','㍧','㍨','㍩','㍪','㍫','㍬','㍭','㍮','㍯','㍰','㍱','㍲','㍳','㍴','㍵','㍶','㍷','㍸','㍹','㍺','㍻','㍼','㍽','㍾','㍿','㎀','㎁','㎂','㎃','㎄','㎅','㎆','㎇','㎈','㎉','㎊','㎋','㎌','㎍','㎎','㎏','㎐','㎑','㎒','㎓','㎔','㎕','㎖','㎗','㎘','㎙','㎚','㎛','㎜','㎝','㎞','㎟','㎠','㎡','㎢','㎣','㎤','㎥','㎦','㎧','㎨','㎩','㎪','㎫','㎬','㎭','㎮','㎯','㎰','㎱','㎲','㎳','㎴','㎵','㎶','㎷','㎸','㎹','㎺','㎻','㎼','㎽','㎾','㎿','㏀','㏁','㏂','㏃','㏄','㏅','㏆','㏇','㏈','㏉','㏊','㏋','㏌','㏍','㏎','㏏','㏐','㏑','㏒','㏓','㏔','㏕','㏖','㏗','㏘','㏙','㏚','㏛','㏜','㏝','㏞','㏟','㏠','㏡','㏢','㏣','㏤','㏥','㏦','㏧','㏨','㏩','㏪','㏫','㏬','㏭','㏮','㏯','㏰','㏱','㏲','㏳','㏴','㏵','㏶','㏷','㏸','㏹','㏺','㏻','㏼','㏽','㏾','㏿','䷀','䷁','䷂','䷃','䷄','䷅','䷆','䷇','䷈','䷉','䷊','䷋','䷌','䷍','䷎','䷏','䷐','䷑','䷒','䷓','䷔','䷕','䷖','䷗','䷘','䷙','䷚','䷛','䷜','䷝','䷞','䷟','䷠','䷡','䷢','䷣','䷤','䷥','䷦','䷧','䷨','䷩','䷪','䷫','䷬','䷭','䷮','䷯','䷰','䷱','䷲','䷳','䷴','䷵','䷶','䷷','䷸','䷹','䷺','䷻','䷼','䷽','䷾','䷿','꒐','꒑','꒒','꒓','꒔','꒕','꒖','꒗','꒘','꒙','꒚','꒛','꒜','꒝','꒞','꒟','꒠','꒡','꒢','꒣','꒤','꒥','꒦','꒧','꒨','꒩','꒪','꒫','꒬','꒭','꒮','꒯','꒰','꒱','꒲','꒳','꒴','꒵','꒶','꒷','꒸','꒹','꒺','꒻','꒼','꒽','꒾','꒿','꓀','꓁','꓂','꓃','꓄','꓅','꓆','￤','￨','￭','￮','🌊','☀','🌧','☁','☂','🍖','🔥','🎣','🏹','🔔','🔱','🗡','🛡','🪓','⛏','🪣','🧪','☠','✎','☄','✔','✘','♪','♩','♫','≫'];
+
+        function resolveLanguage() {
+            // Check manual selection first (if we implemented saving it)
+            // For now check navigator
+            let lang = navigator.language || navigator.userLanguage || DEFAULT_LANGUAGE;
+            lang = lang.split('-')[0].toLowerCase();
+            return AVAILABLE_LANGUAGES.includes(lang) ? lang : DEFAULT_LANGUAGE;
+        }
+
+        async function loadLanguage(lang) {
+            // Hybrid Approach: Try Fetch (Live Server), Fallback to embedded (File/Offline)
+            const isLocalFile = window.location.protocol === 'file:';
+            
+            if(!isLocalFile) {
+                try {
+                    const resp = await fetch(`lang/${lang}.json`);
+                    if(resp.ok) {
+                        const data = await resp.json();
+                        TRANSLATIONS[lang] = data; // Cache/Overwrite
+                        return data;
+                    }
+                } catch(e) {
+                    // console.warn("Failed to load external lang file, using internal fallback if available.", e);
+                }
+            }
+            
+            // Return from internal object if fetch failed or skipped
+            return TRANSLATIONS[lang] || TRANSLATIONS[DEFAULT_LANGUAGE];
+        }
+
+        function getTranslation(key, params = {}) {
+            const data = TRANSLATIONS[currentLanguage] || TRANSLATIONS[DEFAULT_LANGUAGE];
+            // Split key by dot (e.g. main.btn_copy)
+            const keys = key.split('.');
+            let value = data;
+            
+            for(const k of keys) {
+                if(value && value[k]) value = value[k];
+                else return key; // Return key if not found
+            }
+            
+            // Replace params
+            for(const [pKey, pVal] of Object.entries(params)) {
+                value = value.replace(`{{${pKey}}}`, pVal);
+            }
+            
+            return value;
+        }
+
+        function applyTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                
+                // Check if attribute target (e.g. [placeholder]main.key)
+                if(key.startsWith('[')) {
+                    const match = key.match(/^\[(.*?)\](.*)/);
+                    if(match) {
+                        const attr = match[1];
+                        const realKey = match[2];
+                        el.setAttribute(attr, getTranslation(realKey));
+                    }
+                } else {
+                    el.innerHTML = getTranslation(key); // Use innerHTML to support span/links
+                }
+            });
+            
+            // Update dynamic elements that might need forced redraw
+            updateModeButton(); 
+            updateAcHelpText();
+            updateGradient(); // Force re-render of output text which might depend on lang format labels
+        }
+
+        async function setLanguage(lang) {
+            if(lang === 'auto') lang = resolveLanguage();
+            if(!AVAILABLE_LANGUAGES.includes(lang)) lang = DEFAULT_LANGUAGE;
+            
+            currentLanguage = lang;
+            await loadLanguage(lang);
+            applyTranslations();
+            
+            // Update UI Flags
+            document.querySelectorAll('.lang-flag').forEach(img => {
+                img.classList.toggle('active', img.dataset.lang === lang);
+            });
+            document.getElementById('langAutoBtn').classList.toggle('opacity-50', lang !== resolveLanguage());
+        }
+
+        function initFlags() {
+            const container = document.getElementById('flagsContainer');
+            // Flags mapping (using flagcdn)
+            const flags = {
+                'en': 'us', // English -> US flag
+                'es': 'es',
+                'fr': 'fr',
+                'it': 'it',
+                'zh': 'cn',
+                'ja': 'jp',
+                'ko': 'kr'
+            };
+            
+            AVAILABLE_LANGUAGES.forEach(lang => {
+                const img = document.createElement('img');
+                img.src = `https://flagcdn.com/w40/${flags[lang]}.png`;
+                img.className = 'lang-flag';
+                img.dataset.lang = lang;
+                img.title = lang.toUpperCase();
+                img.onclick = () => setLanguage(lang);
+                container.appendChild(img);
+            });
+            
+            document.getElementById('langAutoBtn').onclick = () => setLanguage('auto');
+        }
+
+        function updateModeButton() {
+            const btn = document.getElementById('modeBtn');
+            if(currentMode === 'text') btn.textContent = getTranslation("styling.mode_text");
+            else if(currentMode === 'lore') btn.textContent = getTranslation("styling.mode_lore");
+            else if(currentMode === 'motd') btn.textContent = getTranslation("styling.mode_motd");
+        }
+        
+        function updateAcHelpText() {
+             const id = document.getElementById('acIdentifier').value || "mygradient";
+             const text = getTranslation("alonso_color.help_text", { identifier: id });
+             const el = document.getElementById('acHelpText');
+             el.innerHTML = text;
+        }
+        function toggleEmojiPicker() {
+            const modal = document.getElementById('emojiPickerModal');
+            if (modal.style.display === 'flex') {
+                modal.style.display = 'none';
+            } else {
+                modal.style.display = 'flex';
+                // Lazy load emojis
+                const grid = document.getElementById('emojiGrid');
+                if (grid.children.length <= 1) { 
+                    const fragment = document.createDocumentFragment();
+                    emoji_array.forEach(char => {
+                        const btn = document.createElement('button');
+                        btn.className = 'emoji-btn';
+                        btn.textContent = char;
+                        btn.onclick = () => insertEmoji(char,this.event);
+                        fragment.appendChild(btn);
+                    });
+                    grid.innerHTML = ''; 
+                    grid.appendChild(fragment);
+                }
+            }
+        }
+        
+        function insertEmoji(char,event) {
+            const input = document.getElementById('textInput');
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+            const text = input.value;
+            input.value = text.substring(0, start) + char + text.substring(end);
+            input.focus();
+            input.selectionStart = input.selectionEnd = start + char.length;
+            console.log(event)
+            if(!event || !event.altKey) toggleEmojiPicker(); 
+            updateGradient(); 
+        }
+
+        // --- Reminder Logic ---
+        function checkReminder() {
+            const key = "site_reminder_accepted";
+            const now = Date.now();
+            const twoDays = 2 * 24 * 60 * 60 * 1000;
+            const saved = localStorage.getItem(key);
+            
+            if (!saved || (now - parseInt(saved) > twoDays)) {
+                const modal = document.getElementById('reminderModal');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.querySelector('div').classList.remove('scale-95');
+                    modal.querySelector('div').classList.add('scale-100');
+                }, 10);
+            }
+        }
+        function closeReminder() {
+            const modal = document.getElementById('reminderModal');
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            localStorage.setItem("site_reminder_accepted", Date.now());
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // --- Dark Mode Logic ---
+        const darkModeCheck = document.getElementById('darkModeCheck');
+        const body = document.body;
+
+        darkModeCheck.addEventListener('change', () => {
+            if (darkModeCheck.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        });
+
+        // --- Toast Logic ---
+        function showToast(key) {
+            const t = document.getElementById('toast');
+            // If key exists in toast translations, use it, else display raw text
+            const msg = getTranslation("toasts." + key);
+            t.textContent = (msg.includes("toasts.") ? key : msg); 
+            
+            t.style.opacity = '1';
+            setTimeout(() => {
+                t.style.opacity = '0';
+            }, 2500);
+        }
+
+        // --- Error Popup Logic ---
+        function showErrorPopup(key, params = {}) {
+            const el = document.getElementById('errorPopup');
+            const msg = getTranslation("errors." + key, params);
+            document.getElementById('errorMsg').textContent = (msg.includes("errors.") ? key : msg);
+            el.classList.add('show');
+            setTimeout(() => {
+                el.classList.remove('show');
+            }, 4000); 
+        }
+
+        // --- ONLINE CHECKER SCRIPT ---
+        function loadChecking() {
+            let href = window.location.href;
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5Pg==")
+                .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A");
+            
+            let counter = document.getElementById("online-counter");
+            
+            if(counter) {
+                $.ajax({
+                    url: link,
+                    type: "GET", 
+                    dataType: "json",
+                    data: {},
+                    success: function (result) {
+                        counter.dataset.failed = "0";
+                        counter.style.display = "flex";
+                        if(isNaN(result)) {
+                            counter.textContent = `🟡 You shouldn't be reading this. Report it on https://alonsoaliaga.com/discord`;
+                            counter.style.backgroundColor = "yellow";
+                            counter.style.color = "black";
+                        } else {
+                            counter.textContent = `🟢 ${result} online creating amazing gradients for their server with our generator!`;
+                            counter.style.backgroundColor = "green";
+                            counter.style.color = "white";
+                        }
+                    },
+                    error: function (e) {
+                        if(counter.style.display != "none") {
+                            let currentFails = +counter.dataset.failed || 0;
+                            if(currentFails >= 1){
+                                counter.style.display = "none"
+                            } else {
+                                counter.textContent = `🔴 Check your internet connection!`;
+                                counter.style.backgroundColor = "#7c0000";
+                                counter.dataset.failed = `${currentFails + 1}`
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // --- SITE CHECKER & TOOLS LOADER ---
+        function checkSite(window) {
+            fetch('https://raw.githubusercontent.com/AlonsoAliaga/AlonsoAliagaAPI/refs/heads/main/api/tools/tools-list.json')
+                .then(res => res.json())
+                .then(content => {
+                let toolsData = content;
+                let toolsArray = []
+                for(let toolData of toolsData) {
+                    let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
+                    let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
+                    toolsArray.push(`<span>💠</span> <span${clazz}${style}><a title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}" target="_blank">${toolData.name}</a></span>`);
+                }
+                document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
+                })
+                .catch(err => console.log("Tools fetch error:", err));
+            setTimeout(()=>{
+                setLanguage('auto'); // Set language after loading tools to ensure translations are ready
+                if(localStorage.getItem("alonso-gradient-last-settings") != null) {
+                    try {
+                        let value = localStorage.getItem("alonso-gradient-last-settings");
+                        const importInput = document.getElementById('importInput');
+                        if(importInput) {
+                            importInput.value = value; // Set the import input to the last settings for easy re-import
+                            importSettings();
+                        }
+                    } catch(e) {
+                        console.warn("Failed to load last settings:", e);
+                    }
+                }
+            },500);
+        }
+
+        // --- VISITOR COUNTER SCRIPT ---
+        let times = 0;
+        function loadCounter() {
+            let href = window.location.href;
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NvdW50ZXI/c2l0ZT08c2l0ZT4ma2V5PTxrZXk+")
+            .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A"); 
+            let counter = document.getElementById("visitor-counter");
+            
+            if(counter) {
+            $.ajax({
+                url: link,
+                type: "GET", 
+                dataType: "json",
+                data: {},
+                success: function (result) {
+                    if(isNaN(result))
+                        document.getElementById("counter-amount").innerHTML = "Click to return!";
+                    else document.getElementById("counter-amount").innerHTML = `Visits: ${result}`;
+                },
+                error: function (e) {
+                    times++;
+                    document.getElementById("counter-amount").innerHTML = "Click to return!";
+                }
+            });
+            }
+        }
+
+        // ==========================================
+        //  GRADIENT LOGIC START
+        // ==========================================
+        
+        // --- PRESETS DATA ---
+        const presets = {
+            0: { name: "None" },
+            1: { name: "Rainbow", colors: ["FF0000", "FF7F00", "FFFF00", "00FF00", "0000FF", "4B0082", "9400D3"] },
+            // ... (other presets omitted for brevity, but exist in logic)
+            2: { name: "Fire", colors: ["A10100", "DA3604", "FE650D", "FFC11F", "FFF75D"] },
+            3: { name: "Sweet Morning", colors: ["FF5F6D", "FFC371"] },
+            4: { name: "Deep Space", colors: ["000000", "434343"] },
+            5: { name: "Superman", colors: ["0099F7", "F11712"] },
+            6: { name: "Netflix", colors: ["8E0E00", "1F1C18"] },
+            7: { name: "Timber", colors: ["fc00ff", "00dbde"] },
+            8: { name: "Piglet", colors: ["ee9ca7", "ffdde1"] },
+            9: { name: "Instagram", colors: ["833ab4", "fd1d1d", "fcb045"] },
+            10: { name: "Twitch", colors: ["6441A5", "2a0845"] },
+            11: { name: "SoundCloud", colors: ["fe8c00", "f83600"] },
+            12: { name: "Facebook", colors: ["00c6ff", "0072ff"] },
+            13: { name: "Amethyst", colors: ["9D50BB", "6E48AA"] },
+            14: { name: "Starfall", colors: ["F0C27B", "4B1248"] },
+            15: { name: "Sunset", colors: ["FF512F", "DD2476"] },
+            16: { name: "JShine", colors: ["12c2e9", "c471ed", "f64f59"] },
+            17: { name: "Candy", colors: ["009FFF", "ec2F4B"] },
+            18: { name: "Argon", colors: ["03001e", "7303c0", "ec38bc", "fdeff9"] },
+            19: { name: "Cosmic Fusion", colors: ["#ff00cc", "#333399"] },
+            20: { name: "Deep Blue", colors: ["6a11cb", "2575fc"] },
+            21: { name: "Phoenix", colors: ["f83600", "f9d423"] },
+            22: { name: "Sublime Light", colors: ["fc5c7d", "6a82fb"] },
+            23: { name: "Sunrise", colors: ["ff512f", "f09819"] },
+            24: { name: "Sky Glider", colors: ["88d3ce", "6e45e2"] },
+            25: { name: "Love Kiss", colors: ["ff0844", "ffb199"] },
+            26: { name: "TikTok", colors: ["FF0050", "4B0018", "00F2EA"] },
+            27: { name: "Peach", colors: ["ED4264","FFEDBC"] },
+            28: { name: "Electric Violet", colors: ["4776E6","8E54E9"] },
+            29: { name: "Party", colors: ["3A3AAE","7719B8","FF00CC"] },
+            30: { name: "Purple Lake", colors: ["662D8C","ED1E79"] },
+            31: { name: "Quepal", colors: ["11998E","38EF7D"] },
+            32: { name: "Fresh", colors: ["9F025E","F9C929"] },
+            33: { name: "Skyline", colors: ["1488CC","2B32B2"] },
+            34: { name: "Mango", colors: ["FFE259","FFA751"] },
+            35: { name: "Dawn", colors: ["F3904F","3B4371"] },
+            36: { name: "Rose", colors: ["F4C4F3","FC67FA"] },
+            37: { name: "Firewatch", colors: ["CB2D3E","EF473A"] },
+            38: { name: "Chroma Blend", colors: ["FF000F","FD2170","C204AF"] },
+            39: { name: "Skyline Reverse", colors: ["3C5ED6","51B2E8"] }
+        };
+
+        // --- FORMATS DATA ---
+        const formats = {
+          separator1: { name: 'Popular formats', separator: true },
+          a0: {
+            name: 'Default &#rrggbb', outputPrefix: '', template: '&#$1$2$3$4$5$6$f$c', formatChar: '&', maxLength: 256,
+            hover:[ "This is the most well-known format for hex!", "", "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>", "{plugins}", "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>" ],
+            plugins: { "deluxecombat":"DeluxeCombat", "deluxemenus": "DeluxeMenus", "executableblocks":"ExecutableBlocks", "executableitems":"ExecutableItems", "loreattributesrecoded": "LoreAttributesRecoded", "sternalboard": "SternalBoard", "tab": "TAB" }
+          },
+          a1: { name: 'Chat <#rrggbb>', outputPrefix: '', template: '<#$1$2$3$4$5$6>$f$c', formatChar: '&', maxLength: 256, plugins: { "libertybans":"LibertyBans", "mythicmobs":"MythicMobs" } },
+          a2: { name: 'Legacy &x&r&r&g&g&b&b', outputPrefix: '', template: '&x&$1&$2&$3&$4&$5&$6$f$c', formatChar: '&', maxLength: 256 },
+          a3: { name: 'Nick &#rrggbb', outputPrefix: '/nick ', template: '&#$1$2$3$4$5$6$f$c', formatChar: '&', maxLength: 256 },
+          a4: { name: 'Nick Special <&#rrggbb>', outputPrefix: '/nick ', template: '<&#$1$2$3$4$5$6>$f$c', formatChar: '&', maxLength: 256 },
+          a5: { name: 'Nick Legacy &x&r&r&g&g&b&b', outputPrefix: '/nick ', template: '&x&$1&$2&$3&$4&$5&$6$f$c', formatChar: '&', maxLength: 256 },
+          a6: { name: 'Console §x§r§r§g§g§b§b', outputPrefix: '', template: '§x§$1§$2§$3§$4§$5§$6$f$c', formatChar: '§', maxLength: null, hover:[ "Use this format to send messages in console.", "", "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>", "{plugins}", "<span style='color: red;text-align:center;'>Know a plugin using this format? Let us know!</span>" ], plugins: { "animatedscoreboards": "AnimatedScoreboards", "litebans": "LiteBans" } },
+          a7: { name: 'BBCode [COLOR=#rrggbb]', outputPrefix: '', template: '[COLOR=#$1$2$3$4$5$6]$c[/COLOR]', formatChar: null, maxLength: null },
+          a8: { name: 'MOTD (\\u00A7x)', outputPrefix: '', template: '\\u00A7x\\u00A7$1\\u00A7$2\\u00A7$3\\u00A7$4\\u00A7$5\\u00A7$6$f$c', formatChar: "\\u00A7", maxLength: null, hover:[ "Use this format to edit motd in server.properties!", ] },
+          separator2: { name: 'AlonsoAliaga\'s plugins', separator: true },
+          a9: { name: 'Alonso Series ✔️', outputPrefix: '', template: '#$1$2$3$4$5$6$f$c', formatChar: '&', maxLength: null, hover: [ "🔔 <span style='margin: auto;'><strong>Our plugins using this format:</strong></span>", "{plugins}", "<span style='color: red'>These plugins are made by our team!</span>" ], plugins: { "alonsochat": { displayName: "AlonsoChat 💠", link: "https://alonsoaliaga.com/AlonsoChat", hover: [ "Customizable chat for your server!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsogg": { displayName: "AlonsoGG 💠", link: "https://alonsoaliaga.com/AlonsoGG", hover: [ "Reward your players!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsojoin": { displayName: "AlonsoJoin 💠", link: "https://alonsoaliaga.com/AlonsoJoin", hover: [ "Customizable join message!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsoleaderboards": { displayName: "AlonsoLeaderboards 💠", link: "https://alonsoaliaga.com/AlonsoLeaderboards", hover: [ "Highly customizable leaderboards plugin for your server!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsoleagues": { displayName: "AlonsoLeagues 💠", link: "https://alonsoaliaga.com/AlonsoLeagues", hover: [ "Create a ranking system for your players!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsolevels": { displayName: "AlonsoLevels 💠", link: "https://alonsoaliaga.com/AlonsoLevelsPro", hover: [ "A highly customizable level system for your network that actually works.", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsoplus": { displayName: "AlonsoPlus 💠", link: "https://alonsoaliaga.com/AlonsoPlus", hover: [ "Customizable +!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsorftb": { displayName: "AlonsoRunFromTheBeast 💠", link: "https://alonsoaliaga.com/AlonsoRFTB", hover: [ "Minigame!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "alonsotags": { displayName: "AlonsoTags 💠", link: "https://alonsoaliaga.com/AlonsoTagsPro", hover: [ "Tags plugin!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, } },
+          a10: { name: 'Better Series ✔️', outputPrefix: '', template: '#$1$2$3$4$5$6$f$c', formatChar: '&', maxLength: null, hover: [ "🔔 <span style='margin: auto;'><strong>Our plugins using this format:</strong></span>", "{plugins}", "<span style='color: red'>These plugins are made by our team!</span>" ], plugins: { "bettereggs": { displayName: "BetterEggs 💠", link: "https://alonsoaliaga.com/BetterEggs", hover: [ "Hatch eggs!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "betterbackpacks": { displayName: "BetterBackpacks 💠", link: "https://alonsoaliaga.com/BetterBackpacksPro", hover: [ "Backpacks!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "betterheads": { displayName: "BetterHeads 💠", link: "https://alonsoaliaga.com/BetterHeads", hover: [ "Heads!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "betterprofiles": { displayName: "BetterProfiles 💠", link: "https://alonsoaliaga.com/BetterProfiles", hover: [ "Profiles!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "betterrevive": { displayName: "BetterRevive 💠", link: "https://alonsoaliaga.com/BetterRevive", hover: [ "Revive players!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "bettersocial": { displayName: "BetterSocial 💠", link: "https://alonsoaliaga.com/BetterSocial", hover: [ "Social media!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, "betterwaypoints": { displayName: "BetterWaypoints 💠", link: "https://alonsoaliaga.com/BetterWaypoints", hover: [ "Waypoints!", "<span style='color: red;'>This plugin was made by our team!</span>", "", "<span style='text-decoration: bold;color: red;'>Download on:</span> {link}" ] }, } },
+          separator3: { name: 'Popular APIs', separator: true },
+          a11: { name: 'Adventure Gradient', outputPrefix: '', template: '&#$1$2$3$4$5$6$f$c', formatChar: null, maxLength: null, adventureGradient: true, hover: [ "<span style='color: red'>To use this format your plugin MUST support Adventure format!</span>" ], plugins: { "playervaults":"PlayerVaults", "itemsadder":"ItemsAdder" } },
+          a12: { name: 'Iridium Gradient', outputPrefix: '', template: '&#$1$2$3$4$5$6$f$c', formatChar: null, maxLength: null, iridiumGradient: true, hover: [ "<span style='color: red'>To use this format your plugin MUST support IridiumColor format!</span>" ] },
+          separator4: { name: 'Common formats', separator: true },
+          a13: { name: 'Brackets {#rrggbb}', outputPrefix: '', template: '{#$1$2$3$4$5$6}$f$c', formatChar: "&", maxLength: null, hover: [ "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>", "{plugins}", "<span style='color: red'>Know a plugin using this format? Let us know!</span>" ], plugins: { "auctionmaster":"AUCTIONMASTER", "darkauctionsx":"DarkAuctionsX", "royaleeconomy":"RoyaleEconomy" } },
+          a14: { name: 'Simple #rrggbb', outputPrefix: '', template: '#$1$2$3$4$5$6$f$c', formatChar: "&", maxLength: null, plugins: { "advancedcrates":"AdvancedCrates", "combatpetreborn":"CombatPets REBORN", "conditionalevents":"ConditionalEvents", "decentholograms":"DecentHolograms", "deluxebazaar":"DELUXEBAZAAR", "elementalgems":"ElementalGems", "playerkits":"PlayerKits", "playerkits2":"PlayerKits2", "pyrofishingpro":"PyroFishingPro", "pyrominig":"PyroMining", "pyrospawners":"PyroSpawners", "pyroweatherpro":"PyroWeatherPro", }, hover: [ "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>", "{plugins}", "<span style='color: red'>Know a plugin using this format? Let us know!</span>" ] },
+          separator5: { name: 'Uncommon formats', separator: true },
+          a15: { name: 'Percentage %#rrggbb%', outputPrefix: '', template: '%#$1$2$3$4$5$6%$f$c', formatChar: "&", maxLength: null, plugins: { "advancednmotd":"AdvancedNMotd", "cosmeticscore":"CosmeticsCore" }, hover: [ "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>", "{plugins}", "<span style='color: red'>Know a plugin using this format? Let us know!</span>" ] },
+        };
+
+        // --- FONTS DATA --- (Same as previous, omitted for length)
+        const fonts = {
+          "normal": { "name": "Normal", "default": true },
+          "accent": { "name": "Accent", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ĀBÇÐÊFǴĦÎĴĶĿMŇήÖPQŘŞŢŬVŴXŸƵābčďéfǥĥɨĵķłmņŇǒpqřşŧùvŵxŷž⁰¹²³⁴⁵⁶⁷⁸⁹".split("") } },
+          "big": { "name": "Big", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ᗩᗷᑕᗪEᖴGᕼIᒍKᒪᗰᑎÑOᑭᑫᖇᔕTᑌᐯᗯ᙭YᘔᗩᗷᑕᗪEᖴGᕼIᒍKᒪᗰᑎñOᑭᑫᖇᔕTᑌᐯᗯ᙭Yᘔ0123456789".split("") } },
+          "bubble": { "name": "Bubble", "processed": {}, "data": { tosearch: "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩ⓪①②③④⑤⑥⑦⑧⑨".split("") } },
+          "currency": { "name": "Currency", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"₳฿₵ĐɆ₣₲ⱧłJ₭Ⱡ₥₦ÑØ₱QⱤ₴₮ɄV₩ӾɎⱫ₳฿₵ĐɆ₣₲ⱧłJ₭Ⱡ₥₦ñØ₱QⱤ₴₮ɄV₩ӾɎⱫ0123456789".split("") } },
+          "cursed": { "name": "Cursed", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ԹՅՇԺȝԲԳɧɿʝƙʅʍՌՌԾρφՐՏԵՄעաՃՎՀԹՅՇԺȝԲԳɧɿʝƙʅʍՌՌԾρφՐՏԵՄעաՃՎՀ0123456789".split("") } },
+          "elegant": { "name": "Elegant", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ąɓƈđε∱ɠɧïʆҡℓɱŋñσþҩŗşŧų√щхγẕąɓƈđε∱ɠɧïʆҡℓɱŋñσþҩŗşŧų√щхγẕ0123456789".split("") } },
+          "greek": { "name": "Greek", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"αႦƈԃҽϝɠԋιʝƙʅɱɳñσρϙɾʂƚυʋɯxყȥαႦƈԃҽϝɠԋιʝƙʅɱɳñσρϙɾʂƚυʋɯxყȥ0123456789".split("") } },
+          "knight": { "name": "Knight", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ḀḃḉḊḕḟḠḧḭjḲḶṁṆÑṏṖqṙṠṮṳṼẇẌẏẒḀḃḉḊḕḟḠḧḭjḲḶṁṆñṏṖqṙṠṮṳṼẇẌẏẒ0123456789".split("") } },
+          "krypto": { "name": "Krypto", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"คც८ძ૯Բ૭ҺɿʆқՆɱՈÑ૦ƿҩՐς੮υ౮ω૪עઽคც८ძ૯Բ૭ҺɿʆқՆɱՈՈ૦ƿҩՐς੮υ౮ω૪עઽ0123456789".split("") } },
+          "parenthesis": { "name": "Parenthesis", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵⒪⑴⑵⑶⑷⑸⑹⑺⑻⑼".split("") } },
+          "random": { "name": "Random", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ᏗᏰፈᎴᏋᎦᎶᏂᎥᏠᏦᏝᎷᏁÑᎧᎮᎤᏒᏕᏖᏬᏉᏇጀᎩፚᏗᏰፈᎴᏋᎦᎶᏂᎥᏠᏦᏝᎷᏁñᎧᎮᎤᏒᏕᏖᏬᏉᏇጀᎩፚ0123456789".split("") } },
+          "small-caps": { "name": "Small caps 💎", "before": function(s) { return s.toLowerCase(); }, "processed": {}, "data": { tosearch:"abcdefghijklmnñopqrstuvwxyzqæƀðʒǝɠɨłꟽɯœɔȣꝵʉγλπρψ0123456789-+".split(""), toreplace:"ᴀʙᴄᴅᴇғɢʜɪᴊᴋʟᴍɴñᴏᴘǫʀsᴛᴜᴠᴡxʏᴢǫᴁᴃᴆᴣⱻʛᵻᴌꟺꟺɶᴐᴕꝶᵾᴦᴧᴨᴩᴪ₀₁₂₃₄₅₆₇₈₉₋₊".split("") } },
+          "spaced": { "name": "Spaced", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ＡＢＣＤＥＦＧＨＩＪＫＬＭＮÑＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎñｏｐｑｒｓｔｕｖｗｘｙｚ０１２３４５６７８９".split("") } },
+          "superscript": { "name": "SuperScript", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺÑᴼᴾᵠᴿˢᵀᵁⱽᵂˣʸᶻᵃᵇᶜᵈᵉᶠᵍʰᶦʲᵏˡᵐⁿñᵒᵖᵠʳˢᵗᵘᵛʷˣʸᶻ⁰¹²³⁴⁵⁶⁷⁸⁹".split("") } },
+          "tail": { "name": "Tail", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυvɯҳɣȥ0123456789".split("") } },
+          "tailuppercase": { "name": "Tail Uppercase", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ƛƁƇƊЄƑƓӇƖʆƘԼMƝƝƠƤƢƦƧƬƲƔƜҲƳȤƛƁƇƊЄƑƓӇƖʆƘԼMƝÑƠƤƢƦƧƬƲƔƜҲƳȤ0123456789".split("") } },
+          "taillowercase": { "name": "Tail Lowercase", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυVɯҳɣȥʌƅƈɗєƒʛɦɪʝƙʅɱɲɲơƥƣɾƨƭυvɯҳɣȥ0123456789".split("") } },
+          "upsidedown": { "name": "Upside down", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"∀ᙠƆᗡƎℲ⅁HIſ⋊˥WNÑOԀΌᴚS⊥∩ΛWX⅄Zɐqɔpǝɟɓɥıɾʞlɯuñopqɹsʇuʌʍxʎz0⇂ᄅƐㄣގ9ㄥ89".split("") } },
+          "upsidedown2": { "name": "Upside down #2", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ɐqɔpǝɟɓɥıſʞๅɯuuodbɹsʇnʌʍxʎzɐqɔpǝɟɓɥıſʞๅɯuũodbɹsʇnʌʍxʎz0123456789".split("") } },
+          "upsidedown3": { "name": "Upside down #3", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"∀ʙCᴅєɻƋʜǀๅĸΓWИÑObƠɩƧ⊥∏ΛMXλZɑʙcᴅєɻმʜιɿĸгwиñoƅϭʁƨ⊥nʌʍx⑃z0123456789".split("") } },
+          "weird": { "name": "Weird", "processed": {}, "data": { tosearch:"ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz0123456789".split(""), toreplace:"ǟɮƈɖɛʄɢɦɨʝӄʟʍռñօքզʀֆȶʊʋաӼʏʐǟɮƈɖɛʄɢɦɨʝӄʟʍռñօքզʀֆȶʊʋաӼʏʐ0123456789".split("") } }
+        };
+
+        // --- Dynamic Colors Logic ---
+        const MAX_COLORS = 20;
+        const FIXED_START_COLORS = ["#C00BD6", "#FD2177"];
+        
+        let fullColorPalette = [];
+        let activeColorCount = 2; 
+        
+        let currentFormatId = "a0"; 
+        let currentPluginId = "";
+        let currentFontId = "normal";
+        let currentMode = "text"; 
+        let motdIcon = "https://i.imgur.com/wDASRvr.gif";
+
+        // Drag & Drop Globals
+        let dragSrcEl = null;
+        let dragSrcIndex = -1;
+
+        function getRandomHex() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+        }
+
+        function initPalette() {
+            fullColorPalette = [...FIXED_START_COLORS];
+            while(fullColorPalette.length < MAX_COLORS) {
+                fullColorPalette.push(getRandomHex());
+            }
+        }
+        
+        function initPresets() {
+            const select = document.getElementById('presetSelector');
+            select.innerHTML = '';
+            for(let key in presets) {
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = presets[key].name;
+                select.appendChild(opt);
+            }
+            select.addEventListener('change', (e) => {
+                applyPreset(e.target.value);
+            });
+        }
+
+        // --- FONTS LOGIC ---
+        function initFonts() {
+            const select = document.getElementById('fontSelector');
+            select.innerHTML = '';
+            for(let key in fonts) {
+                let f = fonts[key];
+                if(f.data) {
+                    f.processed = {};
+                    for(let i=0; i<f.data.tosearch.length; i++) {
+                        f.processed[f.data.tosearch[i]] = f.data.toreplace[i];
+                    }
+                }
+                const opt = document.createElement('option');
+                opt.value = key;
+                opt.textContent = f.name;
+                select.appendChild(opt);
+            }
+            select.addEventListener('change', (e) => {
+                currentFontId = e.target.value;
+                updateGradient();
+                setTimeout(() => {
+                    autosaveSettings();
+                },50);
+            });
+        }
+
+        function applyFont(text) {
+            let fontData = fonts[currentFontId];
+            if(!fontData || fontData.default) return text;
+            let newText = text;
+            if(typeof fontData.before != "undefined") newText = fontData.before(newText);
+            let processedText = "";
+            let map = fontData.processed;
+            for(let i = 0; i < newText.length; i++) {
+                processedText += map[newText[i]] || newText[i];
+            }
+            if(typeof fontData.after != "undefined") processedText = fontData.after(processedText);
+            return processedText;
+        }
+
+        // --- FORMATS & PLUGINS LOGIC ---
+        function initFormatsAndPlugins() {
+            const formatSel = document.getElementById('formatSelector');
+            const pluginSel = document.getElementById('pluginSelector');
+            
+            for(const [key, val] of Object.entries(formats)) {
+                if(val.separator) {
+                    const opt = document.createElement('option');
+                    opt.disabled = true;
+                    opt.textContent = "─ " + val.name + " ─";
+                    formatSel.appendChild(opt);
+                } else {
+                    const opt = document.createElement('option');
+                    opt.value = key;
+                    opt.textContent = val.name || key;
+                    formatSel.appendChild(opt);
+                }
+            }
+            
+            let allPlugins = [];
+            for (const [fmtKey, fmtVal] of Object.entries(formats)) {
+                if (fmtVal.plugins) {
+                    for (const [plugKey, plugVal] of Object.entries(fmtVal.plugins)) {
+                        let name = typeof plugVal === 'string' ? plugVal : plugVal.displayName;
+                        allPlugins.push({
+                            name: name,
+                            value: `${fmtKey}|${plugKey}`, 
+                            originalKey: plugKey,
+                            data: plugVal 
+                        });
+                    }
+                }
+            }
+            allPlugins.sort((a, b) => a.name.localeCompare(b.name));
+
+            let groupedPlugins = {};
+            allPlugins.forEach(p => {
+                let firstChar = p.name.charAt(0).toUpperCase();
+                if (!/^[A-Z]/.test(firstChar)) firstChar = "Others";
+                if (!groupedPlugins[firstChar]) groupedPlugins[firstChar] = [];
+                groupedPlugins[firstChar].push(p);
+            });
+
+            let sortedGroups = Object.keys(groupedPlugins).sort();
+            if (sortedGroups.includes("Others")) {
+                sortedGroups = sortedGroups.filter(k => k !== "Others").concat(["Others"]);
+            }
+
+            pluginSel.innerHTML = '<option value="">(Select a plugin)</option>';
+            sortedGroups.forEach(letter => {
+                const group = document.createElement('optgroup');
+                group.label = letter.length === 1 ? `Letter ${letter}` : letter;
+                groupedPlugins[letter].forEach(plug => {
+                    const opt = document.createElement('option');
+                    opt.value = plug.value;
+                    opt.textContent = plug.name;
+                    group.appendChild(opt);
+                });
+                pluginSel.appendChild(group);
+            });
+
+            formatSel.addEventListener('change', (e) => {
+                currentFormatId = e.target.value;
+                pluginSel.value = ""; 
+                updateLinkButton(null);
+                updateFormatTooltip(currentFormatId);
+                updateGradient();
+                setTimeout(() => {
+                    autosaveSettings();
+                },50);
+            });
+
+            formatSel.parentElement.addEventListener('mouseover', () => {
+                 updateFormatTooltip(formatSel.value);
+            });
+            formatSel.addEventListener('change', () => {
+                 updateFormatTooltip(formatSel.value);
+            });
+
+            pluginSel.addEventListener('change', (e) => {
+                const val = e.target.value;
+                if(!val) {
+                    updateLinkButton(null);
+                    return;
+                }
+                const [fmtId, plugId] = val.split('|');
+                formatSel.value = fmtId;
+                currentFormatId = fmtId;
+                const pluginData = formats[fmtId].plugins[plugId];
+                updateLinkButton(pluginData);
+                updateFormatTooltip(fmtId);
+                updateGradient();
+            });
+            updateFormatTooltip(currentFormatId);
+        }
+
+        function getPluginsString(formatData) {
+            if(!formatData.plugins) return "";
+            let list = [];
+            for(let key in formatData.plugins) {
+                let p = formatData.plugins[key];
+                list.push(typeof p === 'string' ? p : p.displayName);
+            }
+            return list.join(", ");
+        }
+
+        function updateFormatTooltip(fmtId) {
+            const tooltip = document.getElementById('formatInfoTooltip');
+            const fmtData = formats[fmtId];
+            if(fmtData && fmtData.hover && fmtData.hover.length > 0) {
+                let html = fmtData.hover.join('<br>');
+                if(html.includes("{plugins}")) {
+                    const pluginsStr = getPluginsString(fmtData);
+                    html = html.replace("{plugins}", pluginsStr);
+                }
+                tooltip.innerHTML = html;
+                tooltip.style.display = 'block'; 
+            } else {
+                tooltip.style.display = 'none';
+            }
+        }
+
+        function updateLinkButton(pluginData) {
+            const container = document.getElementById('pluginLinkContainer');
+            const btn = document.getElementById('pluginLinkBtn');
+            const tooltip = document.getElementById('pluginLinkTooltip');
+            if(pluginData && typeof pluginData === 'object' && pluginData.link) {
+                container.classList.remove('hidden');
+                btn.href = pluginData.link;
+                if(pluginData.hover && Array.isArray(pluginData.hover)) {
+                    let htmlContent = pluginData.hover.join('<br>').replace('{link}', pluginData.link);
+                    tooltip.innerHTML = htmlContent;
+                } else {
+                    tooltip.textContent = "View Plugin";
+                }
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        // --- PALETTE ACTIONS ---
+        function reverseActivePalette() {
+            const activeSlice = fullColorPalette.slice(0, activeColorCount).reverse();
+            for(let i=0; i<activeColorCount; i++) {
+                fullColorPalette[i] = activeSlice[i];
+            }
+            renderColorInputs();
+            updateGradient();
+        }
+
+        function rotateActivePalette(direction) {
+            const activeSlice = fullColorPalette.slice(0, activeColorCount);
+            if(direction === 'left') {
+                const first = activeSlice.shift();
+                activeSlice.push(first);
+            } else {
+                const last = activeSlice.pop();
+                activeSlice.unshift(last);
+            }
+            for(let i=0; i<activeColorCount; i++) {
+                fullColorPalette[i] = activeSlice[i];
+            }
+            renderColorInputs();
+            updateGradient();
+        }
+
+        document.getElementById('rotateLeftBtn').onclick = () => {
+            rotateActivePalette('left');
+            setTimeout(() => {
+                autosaveSettings();
+            },50);
+        };
+        document.getElementById('rotateRightBtn').onclick = () => {
+            rotateActivePalette('right');
+            setTimeout(() => {
+                autosaveSettings();
+            },50);
+        };
+        document.getElementById('reversePaletteBtn').onclick = () => {
+            reverseActivePalette();
+            setTimeout(() => {
+                autosaveSettings();
+            },50);
+        };
+
+        function applyPreset(id) {
+            if(id == 0) return; 
+            const p = presets[id];
+            if(!p || !p.colors) return;
+            activeColorCount = p.colors.length;
+            if(activeColorCount > MAX_COLORS) activeColorCount = MAX_COLORS;
+            for(let i = 0; i < activeColorCount; i++) {
+                let c = p.colors[i];
+                if(!c.startsWith('#')) c = '#' + c;
+                fullColorPalette[i] = c;
+            }
+            renderColorInputs();
+            updateGradient();
+        }
+
+        function updateCounterDisplay() {
+            document.getElementById('colorCounter').textContent = activeColorCount;
+        }
+
+        // --- MODE LOGIC ---
+        function toggleMode() {
+            const modes = ['text', 'lore', 'motd'];
+            let idx = modes.indexOf(currentMode);
+            idx = (idx + 1) % modes.length;
+            currentMode = modes[idx];
+            
+            updateModeButton();
+            updateGradient();
+        }
+        document.getElementById('modeBtn').onclick = toggleMode;
+
+        document.getElementById('iconUpload').addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    motdIcon = e.target.result;
+                    updateGradient();
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // --- DRAG AND DROP HANDLERS ---
+        function handleDragStart(e) {
+            dragSrcEl = this;
+            dragSrcIndex = parseInt(this.querySelector('input').dataset.index);
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', dragSrcIndex);
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) e.preventDefault(); 
+            e.dataTransfer.dropEffect = 'move';
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const width = rect.width;
+            this.classList.remove('drop-swap', 'drop-insert-left', 'drop-insert-right');
+            if (x < width * 0.25) {
+                this.classList.add('drop-insert-left');
+            } else if (x > width * 0.75) {
+                this.classList.add('drop-insert-right');
+            } else {
+                this.classList.add('drop-swap');
+            }
+            return false;
+        }
+
+        function handleDragEnter(e) {}
+
+        function handleDragLeave(e) {
+            this.classList.remove('drop-swap', 'drop-insert-left', 'drop-insert-right');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) e.stopPropagation();
+            const targetIndex = parseInt(this.querySelector('input').dataset.index);
+            if (dragSrcEl !== this) {
+                if (this.classList.contains('drop-swap')) {
+                    const temp = fullColorPalette[dragSrcIndex];
+                    fullColorPalette[dragSrcIndex] = fullColorPalette[targetIndex];
+                    fullColorPalette[targetIndex] = temp;
+                }
+                else if (this.classList.contains('drop-insert-left')) {
+                    const itemToMove = fullColorPalette[dragSrcIndex];
+                    const newArr = fullColorPalette.filter((_, i) => i !== dragSrcIndex);
+                    let finalIndex = targetIndex;
+                    if (dragSrcIndex < targetIndex) finalIndex = targetIndex - 1;
+                    newArr.splice(finalIndex, 0, itemToMove);
+                    fullColorPalette = newArr;
+                }
+                else if (this.classList.contains('drop-insert-right')) {
+                    const itemToMove = fullColorPalette[dragSrcIndex];
+                    const newArr = fullColorPalette.filter((_, i) => i !== dragSrcIndex);
+                    let finalIndex = targetIndex + 1;
+                    if (dragSrcIndex < targetIndex) finalIndex = targetIndex; 
+                    newArr.splice(finalIndex, 0, itemToMove);
+                    fullColorPalette = newArr;
+                }
+                while(fullColorPalette.length < MAX_COLORS) {
+                    fullColorPalette.push(getRandomHex());
+                }
+                renderColorInputs();
+                updateGradient();
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            document.querySelectorAll('.color-card').forEach(card => {
+                card.classList.remove('drop-swap', 'drop-insert-left', 'drop-insert-right');
+            });
+        }
+
+        function renderColorInputs() {
+            const container = document.getElementById("colors-container");
+            container.innerHTML = "";
+            for(let i = 0; i < activeColorCount; i++) {
+                const color = fullColorPalette[i];
+                const div = document.createElement("div");
+                div.className = "color-card";
+                div.draggable = true; 
+                div.innerHTML = `
+                    <div class="w-full">
+                        <input type="color" class="input-color input-color-dynamic rounded" value="${color}" data-index="${i}">
+                    </div>
+                    <div class="flex justify-between w-full items-center px-1">
+                        <label style="font-size:12px; font-family:'MinecraftBold'; opacity: 0.6;">#${i + 1}</label>
+                        <span class="text-[11px] opacity-80 font-mono">${color}</span>
+                    </div>
+                `;
+                div.addEventListener('dragstart', handleDragStart);
+                div.addEventListener('dragenter', handleDragEnter);
+                div.addEventListener('dragover', handleDragOver);
+                div.addEventListener('dragleave', handleDragLeave);
+                div.addEventListener('drop', handleDrop);
+                div.addEventListener('dragend', handleDragEnd);
+                container.appendChild(div);
+            }
+            document.querySelectorAll(".input-color-dynamic").forEach(el => {
+                el.addEventListener("input", (e) => {
+                    document.getElementById('presetSelector').value = 0;
+                    const idx = parseInt(e.target.dataset.index);
+                    fullColorPalette[idx] = e.target.value;
+                    e.target.parentElement.nextElementSibling.querySelector("span").textContent = e.target.value;
+                    updateGradient();
+                });
+                el.addEventListener('mousedown', (e) => { e.stopPropagation(); el.parentElement.parentElement.setAttribute('draggable', 'false'); });
+                el.addEventListener('mouseup', () => { el.parentElement.parentElement.setAttribute('draggable', 'true'); });
+            });
+            updateCounterDisplay();
+        }
+
+        document.getElementById("addInfoBtn").onclick = () => {
+            if(activeColorCount >= MAX_COLORS) { showErrorPopup(`Max ${MAX_COLORS} colors allowed!`); return; }
+            document.getElementById('presetSelector').value = 0;
+            activeColorCount++;
+            renderColorInputs();
+            updateGradient();
+            setTimeout(() => {
+                autosaveSettings();
+            },500);
+        };
+
+        document.getElementById("removeInfoBtn").onclick = () => {
+            if(activeColorCount <= 2) { showErrorPopup("You need at least 2 colors!"); return; }
+            document.getElementById('presetSelector').value = 0;
+            activeColorCount--;
+            renderColorInputs();
+            updateGradient();
+            setTimeout(() => {
+                autosaveSettings();
+            },500);
+        };
+
+        function hexToRgb(hex) {
+            hex = hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => r + r + g + g + b + b);
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : null;
+        }
+
+        function componentToHex(c) {
+            var hex = c.toString(16);
+            return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+
+        function generateMultiGradient(colors, steps) {
+            if(steps === 0) return [];
+            if(steps === 1) return [colors[0]];
+            let result = [];
+            let sections = colors.length - 1;
+            for (let i = 0; i < steps; i++) {
+                let percent = i / (steps - 1);
+                let sectionIndex = Math.min(Math.floor(percent * sections), sections - 1);
+                let startColor = colors[sectionIndex];
+                let endColor = colors[sectionIndex + 1];
+                let startRGB = hexToRgb(startColor);
+                let endRGB = hexToRgb(endColor);
+                let sectionStartPercent = sectionIndex / sections;
+                let sectionRange = 1 / sections;
+                let localPercent = (percent - sectionStartPercent) / sectionRange;
+                let r = Math.round(startRGB.r + (endRGB.r - startRGB.r) * localPercent);
+                let g = Math.round(startRGB.g + (endRGB.g - startRGB.g) * localPercent);
+                let b = Math.round(startRGB.b + (endRGB.b - startRGB.b) * localPercent);
+                result.push(rgbToHex(r, g, b));
+            }
+            return result;
+        }
+
+        function updateGradient() {
+            let fullText = document.getElementById('textInput').value || "Gradient";
+            let lines = fullText.split('\n');
+            
+            const isBold = document.getElementById('checkBold').checked;
+            const isItalic = document.getElementById('checkItalic').checked;
+            const isUnder = document.getElementById('checkUnderline').checked;
+            const isStrike = document.getElementById('checkStrike').checked;
+            const fmtData = formats[currentFormatId];
+            const fmtChar = fmtData.formatChar || '&';
+            const template = fmtData.template;
+            const prefix = fmtData.outputPrefix || '';
+            const iridiumWarning = document.getElementById('iridiumWarning');
+            if(fmtData.iridiumGradient && (isBold || isItalic || isUnder || isStrike)) iridiumWarning.classList.remove('hidden');
+            else iridiumWarning.classList.add('hidden');
+
+            let formatCodes = "";
+            if(isBold) formatCodes += fmtChar + "l";
+            if(isItalic) formatCodes += fmtChar + "o";
+            if(isUnder) formatCodes += fmtChar + "n";
+            if(isStrike) formatCodes += fmtChar + "m";
+
+            let fontFamily = "'MinecraftRegular'";
+            if(isBold && isItalic) fontFamily = "'MinecraftBoldItalic'";
+            else if(isBold) fontFamily = "'MinecraftBold'";
+            else if(isItalic) fontFamily = "'MinecraftItalic'";
+            let cssStyle = `font-family: ${fontFamily};`;
+            if(isUnder && isStrike) cssStyle += "text-decoration: underline line-through;";
+            else if(isUnder) cssStyle += "text-decoration: underline;";
+            else if(isStrike) cssStyle += "text-decoration: line-through;";
+
+            const activeColors = fullColorPalette.slice(0, activeColorCount);
+
+            let allHtmlLines = [];
+            let allCodeLines = [];
+
+            lines.forEach(rawLine => {
+                let lineText = applyFont(rawLine);
+                if(lineText.length === 0) { 
+                    allHtmlLines.push("<br>"); 
+                    allCodeLines.push(""); 
+                    return; 
+                }
+
+                let lineHtml = "";
+                let lineCode = prefix;
+
+                // Use Array.from for characters to handle emojis correctly
+                const chars = Array.from(lineText);
+                const steps = chars.length;
+
+                if(fmtData.adventureGradient) {
+                    let gradientTag = "<gradient";
+                    activeColors.forEach(c => gradientTag += ":" + c);
+                    gradientTag += ">";
+                    let openStyle = "", closeStyle = "";
+                    if(isBold) { openStyle += "<b>"; closeStyle = "</b>" + closeStyle; }
+                    if(isItalic) { openStyle += "<i>"; closeStyle = "</i>" + closeStyle; }
+                    if(isUnder) { openStyle += "<u>"; closeStyle = "</u>" + closeStyle; }
+                    if(isStrike) { openStyle += "<st>"; closeStyle = "</st>" + closeStyle; }
+                    lineCode = prefix + gradientTag + openStyle + lineText + closeStyle + "</gradient>";
+                    
+                    const colors = generateMultiGradient(activeColors, steps);
+                    for(let i = 0; i < steps; i++) {
+                        let hex = colors[i];
+                        let char = chars[i];
+                        let displayChar = char === ' ' ? '&nbsp;' : char;
+                        lineHtml += `<span style="color:${hex}; ${cssStyle}">${displayChar}</span>`;
+                    }
+                } 
+                else if(fmtData.iridiumGradient) {
+                    if(activeColorCount > 2) showErrorPopup("iridium_limit");
+                    const startColor = activeColors[0].replace('#', '');
+                    const endColor = activeColors[activeColors.length-1].replace('#', '');
+                    lineCode = `${prefix}<GRADIENT:${startColor}>${lineText}</GRADIENT:${endColor}>`;
+                    
+                    const colors = generateMultiGradient([activeColors[0], activeColors[activeColors.length-1]], steps);
+                    for(let i = 0; i < steps; i++) {
+                        let hex = colors[i]; 
+                        let char = chars[i];
+                        let displayChar = char === ' ' ? '&nbsp;' : char;
+                        lineHtml += `<span style="color:${hex}; ${cssStyle}">${displayChar}</span>`;
+                    }
+                } 
+                else {
+                    const colors = generateMultiGradient(activeColors, steps);
+                    for(let i = 0; i < steps; i++) {
+                        let char = chars[i];
+                        let hex = colors[i]; 
+                        let displayChar = char === ' ' ? '&nbsp;' : char;
+                        lineHtml += `<span style="color:${hex}; ${cssStyle}">${displayChar}</span>`;
+                        if(char === ' ') { lineCode += ' '; continue; }
+                        const h = hex.replace('#', '');
+                        let temp = template.replace('$1', h[0]).replace('$2', h[1]).replace('$3', h[2]).replace('$4', h[3]).replace('$5', h[4]).replace('$6', h[5]).replace('$f', formatCodes).replace('$c', char);
+                        lineCode += temp;
+                    }
+                }
+                allHtmlLines.push(lineHtml);
+                allCodeLines.push(lineCode);
+            });
+
+            let finalCodeOutput = allCodeLines.join('\n');
+            
+            // Length Validation
+            const warningEl = document.getElementById('lengthWarning');
+            if(fmtData.maxLength && finalCodeOutput.length > fmtData.maxLength) {
+                 warningEl.textContent = getTranslation("main.length_warning") + ` (${finalCodeOutput.length} > ${fmtData.maxLength})`;
+                 warningEl.classList.remove('hidden');
+            } else {
+                 warningEl.classList.add('hidden');
+            }
+            
+            document.getElementById('outputArea').value = finalCodeOutput;
+
+            const previewContainer = document.getElementById('preview-text');
+            const mainContainer = document.getElementById('mainContainer');
+
+            if(currentMode === 'text') {
+                previewContainer.innerHTML = allHtmlLines.join('<br>');
+                previewContainer.className = "canvas-content text-center";
+                mainContainer.style.background = "radial-gradient(circle at center, var(--canvas-gradient-start) 0%, var(--canvas-gradient-end) 100%)";
+            } else if(currentMode === 'lore') {
+                previewContainer.innerHTML = `<div class="lore-box">${allHtmlLines.join('<br>')}</div>`;
+                previewContainer.className = "canvas-content flex justify-center";
+                mainContainer.style.background = "radial-gradient(circle at center, var(--canvas-gradient-start) 0%, var(--canvas-gradient-end) 100%)";
+            } else if(currentMode === 'motd') {
+                let line1 = allHtmlLines[0] || "";
+                let line2 = allHtmlLines[1] || "";
+                let combinedHtml = line1;
+                if(line2) combinedHtml += "<br>" + line2;
+                
+                // Estructura simplificada sin columnas extra para mejor control Flex
+                const motdHtml = `
+                    <div class="motd-container">
+                        <img src="${motdIcon}" class="motd-icon" onclick="document.getElementById('iconUpload').click()" title="Click to change icon">
+                        <div class="motd-content">
+                            <div class="motd-top-row">
+                                <div class="motd-server-name" contenteditable="true">AlonsoCraft</div>
+                                <div class="motd-stats">
+                                    <span id="motdPlayerCount">0/20</span>
+                                    <img src="https://i.imgur.com/etolITx.png" class="motd-ping-img">
+                                </div>
+                            </div>
+                            <div class="motd-message">${combinedHtml}</div>
+                        </div>
+                    </div>
+                `;
+                previewContainer.innerHTML = motdHtml;
+                previewContainer.className = "canvas-content w-full flex justify-center";
+                mainContainer.style.background = "transparent";
+            }
+            autoResizeOutput();
+            
+        }
+        
+        setInterval(() => {
+             if(currentMode === 'motd') {
+                 const el = document.getElementById('motdPlayerCount');
+                 if(el) {
+                     const players = Math.floor(Math.random() * 5) + 1;
+                     el.textContent = `${players}/20`;
+                 }
+             }
+        }, 10000);
+
+        // --- ANIMATION GENERATOR ---
+        function generateAnimation(direction) {
+            let text = document.getElementById('textInput').value || "Gradient";
+            text = applyFont(text);
+
+            let workingPalette = [...fullColorPalette.slice(0, activeColorCount)];
+            let frames = [];
+            
+            for(let f = 0; f < activeColorCount; f++) {
+                const fmtData = formats[currentFormatId];
+                let frameOutput = "";
+                
+                // Standard Logic Copy for Anim
+                const colors = generateMultiGradient(workingPalette, text.length);
+                const prefix = fmtData.outputPrefix || '';
+                const template = fmtData.template;
+                const fmtChar = fmtData.formatChar || '&';
+                let formatCodes = "";
+                if(document.getElementById('checkBold').checked) formatCodes += fmtChar + "l";
+                // ... other styles skipped for brevity in anim demo
+                
+                if(fmtData.adventureGradient) {
+                     let gradTag = "<gradient";
+                     workingPalette.forEach(c => gradTag += ":" + c);
+                     gradTag += ">";
+                     frameOutput = gradTag + text + "</gradient>";
+                } else {
+                     frameOutput = prefix;
+                     for(let i=0; i<text.length; i++) {
+                        let char = text[i];
+                        if(char === ' ') { frameOutput += ' '; continue; }
+                        let h = colors[i].replace('#','');
+                        let temp = template.replace('$1', h[0]).replace('$2', h[1]).replace('$3', h[2]).replace('$4', h[3]).replace('$5', h[4]).replace('$6', h[5]).replace('$f', formatCodes).replace('$c', char);
+                        frameOutput += temp;
+                    }
+                }
+                
+                frames.push("- " + frameOutput); 
+                if(direction === 'left') { workingPalette.push(workingPalette.shift()); } 
+                else { workingPalette.unshift(workingPalette.pop()); }
+            }
+            const el = document.getElementById('outputArea');
+            el.value = frames.join('\n');
+            autoResizeOutput();
+        }
+
+        document.getElementById('generateAnimBtn').onclick = () => {
+            const dir = document.getElementById('animDirection').value;
+            generateAnimation(dir);
+        };
+        
+        // --- ALONSO COLOR COMMAND ---
+        function generateAlonsoColorCommand() {
+            let id = document.getElementById('acIdentifier').value.trim().toLowerCase().replace(/[^a-z0-9]/g, '') || "mygradient";
+            
+            // Update help text
+            document.getElementById('acHelpId').textContent = id;
+            
+            const colors = fullColorPalette.slice(0, activeColorCount).join('-');
+            
+            let styles = "";
+            if(document.getElementById('checkBold').checked) styles += "l";
+            if(document.getElementById('checkStrike').checked) styles += "m";
+            if(document.getElementById('checkUnderline').checked) styles += "n";
+            if(document.getElementById('checkItalic').checked) styles += "o";
+            
+            let cmd = `.ac create ${id} c=${colors}`;
+            if(styles) cmd += `;a=${styles}`;
+            cmd += `;t=gradient`;
+            
+            document.getElementById('acOutput').value = cmd;
+        }
+
+        // Add listener to update ID in help text on type
+        document.getElementById('acIdentifier').addEventListener('input', function(e) {
+             let val = e.target.value.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+             if(!val) val = "mygradient";
+             document.getElementById('acHelpId').textContent = val;
+        });
+
+        document.getElementById('generateAcBtn').onclick = generateAlonsoColorCommand;
+        document.getElementById('copyAcBtn').onclick = () => {
+             const field = document.getElementById('acOutput');
+             field.select();
+             navigator.clipboard.writeText(field.value).then(() => showToast("copied"));
+        };
+        
+        // --- DECODER LOGIC ---
+        document.getElementById('decThreshDec').onclick = (e) => {
+            adjustThreshold(-10, e.altKey);
+        };
+        document.getElementById('decThreshInc').onclick = (e) => {
+            adjustThreshold(10, e.altKey)
+        };
+        
+        function adjustThreshold(val, isAlt) {
+            if(!isAlt) val = val / 10; 
+             let el = document.getElementById('decThreshold');
+             let current = parseInt(el.value);
+             el.value = current + val;
+        }
+
+        function extractHexCodes(text) {
+            let colors = [];
+            const legacyRegex = /[&§]x([&§][0-9a-f]){6}/gi;
+            let match;
+            while ((match = legacyRegex.exec(text)) !== null) {
+                 let s = match[0];
+                 let hex = s.replace(/[&§x]/g, '');
+                 colors.push('#' + hex);
+            }
+            const hexRegex = /#([0-9a-fA-F]{6})/g;
+            while ((match = hexRegex.exec(text)) !== null) {
+                colors.push('#' + match[1]);
+            }
+            if(colors.length === 0) {
+                 const looseRegex = /([0-9a-fA-F]{6})/g;
+                 while ((match = looseRegex.exec(text)) !== null) {
+                     colors.push('#' + match[1]);
+                 }
+            }
+            return colors;
+        }
+        
+        function hexToRgbStruct(hex) {
+            var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : {r:0, g:0, b:0};
+        }
+        
+        function colorDistance(c1, c2) {
+             return Math.sqrt(Math.pow(c1.r - c2.r, 2) + Math.pow(c1.g - c2.g, 2) + Math.pow(c1.b - c2.b, 2));
+        }
+
+        function reduceToKeyframes(allColors, threshold) {
+            if(allColors.length <= 2) return allColors;
+            let keyframes = [allColors[0]];
+            let currentRef = hexToRgbStruct(allColors[0]);
+            for(let i=1; i < allColors.length; i++) {
+                let curr = hexToRgbStruct(allColors[i]);
+                let dist = colorDistance(currentRef, curr);
+                if(dist > threshold) {
+                    keyframes.push(allColors[i]);
+                    currentRef = curr;
+                }
+            }
+            if(keyframes[keyframes.length-1] !== allColors[allColors.length-1]) {
+                keyframes.push(allColors[allColors.length-1]);
+            }
+            return keyframes;
+        }
+
+        function decodeGradientLogic(loadIt) {
+            const inputStr = document.getElementById('decodeInput').value;
+            const threshold = parseInt(document.getElementById('decThreshold').value);
+            
+            if(!inputStr) return;
+            
+            const rawColors = extractHexCodes(inputStr);
+            if(rawColors.length === 0) {
+                showErrorPopup("no_colors_found");
+                return;
+            }
+            
+            const finalColors = reduceToKeyframes(rawColors, threshold);
+            let formattedStr = finalColors.map(c => `&${c}`).join('-'); 
+            
+            if(loadIt) {
+                activeColorCount = finalColors.length;
+                if(activeColorCount > MAX_COLORS) activeColorCount = MAX_COLORS;
+                for(let i=0; i<activeColorCount; i++) {
+                    fullColorPalette[i] = finalColors[i];
+                }
+                if(inputStr.includes("&l") || inputStr.includes("<b>")) document.getElementById('checkBold').checked = true;
+                if(inputStr.includes("&o") || inputStr.includes("<i>")) document.getElementById('checkItalic').checked = true;
+                
+                renderColorInputs();
+                updateGradient();
+                showToast("decoded_loaded");
+            } else {
+                 document.getElementById('importInput').value = formattedStr; 
+                 navigator.clipboard.writeText(formattedStr).then(() => showToast("decoded_copied"));
+            }
+        }
+        
+        document.getElementById('decodeBtn').onclick = () => decodeGradientLogic(false);
+        document.getElementById('decodeLoadBtn').onclick = () => decodeGradientLogic(true);
+
+        const inputs = ['textInput', 'checkBold', 'checkItalic', 'checkUnderline', 'checkStrike'];
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', updateGradient);
+            document.getElementById(id).addEventListener('input', ()=>{
+                setTimeout(() => {
+                    autosaveSettings();
+                }, 500);
+            });
+            document.getElementById(id).addEventListener('change', updateGradient);
+            document.getElementById(id).addEventListener('change', ()=>{
+                setTimeout(() => {
+                    autosaveSettings();
+                }, 500);
+            });
+        });
+        
+        document.getElementById('copyBtn').onclick = () => {
+            const field = document.getElementById('outputArea');
+            field.select();
+            navigator.clipboard.writeText(field.value).then(() => showToast("copied"));
+        };
+
+        function autoResizeOutput() {
+            const el = document.getElementById('outputArea');
+            el.style.height = 'auto'; 
+            if(el.value === "") {
+                el.style.height = '40px'; 
+            } else {
+                el.style.height = (el.scrollHeight + 2) + 'px'; 
+            }
+        }
+        
+        // --- Export / Import Functions ---
+        function exportSettings() {
+            const settings = {
+                text: document.getElementById('textInput').value,
+                colors: fullColorPalette.slice(0, activeColorCount),
+                format: currentFormatId,
+                font: currentFontId,
+                bold: document.getElementById('checkBold').checked,
+                italic: document.getElementById('checkItalic').checked,
+                underline: document.getElementById('checkUnderline').checked,
+                strike: document.getElementById('checkStrike').checked,
+            };
+            
+            try {
+                const jsonStr = JSON.stringify(settings);
+                const b64 = btoa(jsonStr); 
+                const importInput = document.getElementById('importInput');
+                importInput.value = b64;
+                importInput.select();
+                navigator.clipboard.writeText(b64).then(() => showToast("exported"));
+            } catch(e) {
+                showErrorPopup("Export failed!");
+                console.error(e);
+            }
+        }
+        
+        // --- Autosave Configurations ---
+        function autosaveSettings() {
+            const settings = {
+                text: document.getElementById('textInput').value,
+                colors: fullColorPalette.slice(0, activeColorCount),
+                format: currentFormatId,
+                font: currentFontId,
+                bold: document.getElementById('checkBold').checked,
+                italic: document.getElementById('checkItalic').checked,
+                underline: document.getElementById('checkUnderline').checked,
+                strike: document.getElementById('checkStrike').checked,
+            };
+            
+            try {
+                const jsonStr = JSON.stringify(settings);
+                const b64 = btoa(jsonStr); 
+                localStorage.setItem('alonso-gradient-last-settings', b64);
+            } catch(e) {
+                showErrorPopup("Export failed!");
+                console.error(e);
+            }
+        }
+        
+        function isArrayOfArrays(value) {
+            return Array.isArray(value) && Array.isArray(value[0]);
+        }
+        function componentToHex(c) {
+          let hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        }
+
+        function rgbToHex(r, g, b) {
+          return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+        }
+        function importSettings() {
+            const importInput = document.getElementById('importInput');
+            const b64 = importInput.value.trim();
+            if(!b64) return;
+            try {
+                const jsonStr = atob(b64); 
+                const settings = JSON.parse(jsonStr);
+                if(settings.colors && isArrayOfArrays(settings.colors)) {
+                    if(settings.text) document.getElementById('textInput').value = settings.text;
+                    if(settings.format) {
+                        currentFormatId = settings.format;
+                        document.getElementById('formatSelector').value = currentFormatId;
+                        document.getElementById('pluginSelector').value = "";
+                        updateLinkButton(null);
+                        updateFormatTooltip(currentFormatId);
+                    }
+                    if(settings.font) {
+                        currentFontId = settings.font;
+                        document.getElementById('fontSelector').value = currentFontId;
+                    }
+                    document.getElementById('checkBold').checked = settings.bold || false;
+                    document.getElementById('checkItalic').checked = settings.italic || false;
+                    document.getElementById('checkUnderline').checked = settings.underline || false;
+                    document.getElementById('checkStrike').checked = settings.strike || false;
+                    if(settings.colors && Array.isArray(settings.colors)) {
+                        activeColorCount = settings.colors.length;
+                        for(let i=0; i<activeColorCount; i++) {
+                            fullColorPalette[i] = rgbToHex(...settings.colors[i]);
+                        }
+                        while(fullColorPalette.length < MAX_COLORS) {
+                            fullColorPalette.push(getRandomHex());
+                        }
+                    }
+                }else{
+                    if(settings.text) document.getElementById('textInput').value = settings.text;
+                    if(settings.format) {
+                        currentFormatId = settings.format;
+                        document.getElementById('formatSelector').value = currentFormatId;
+                        document.getElementById('pluginSelector').value = "";
+                        updateLinkButton(null);
+                        updateFormatTooltip(currentFormatId);
+                    }
+                    if(settings.font) {
+                        currentFontId = settings.font;
+                        document.getElementById('fontSelector').value = currentFontId;
+                    }
+                    document.getElementById('checkBold').checked = settings.bold || false;
+                    document.getElementById('checkItalic').checked = settings.italic || false;
+                    document.getElementById('checkUnderline').checked = settings.underline || false;
+                    document.getElementById('checkStrike').checked = settings.strike || false;
+                    if(settings.colors && Array.isArray(settings.colors)) {
+                        activeColorCount = settings.colors.length;
+                        for(let i=0; i<activeColorCount; i++) {
+                            fullColorPalette[i] = settings.colors[i];
+                        }
+                        while(fullColorPalette.length < MAX_COLORS) {
+                            fullColorPalette.push(getRandomHex());
+                        }
+                    }
+                }
+                renderColorInputs();
+                updateGradient();
+                showToast("imported");
+                importInput.value = ""; 
+            } catch(e) {
+                showErrorPopup("import_failed");
+                console.error(e);
+            }
+        }
+        
+        document.getElementById('exportBtn').onclick = exportSettings;
+        document.getElementById('importInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                importSettings();
+            }
+        });
+
+        function processAds() {
+            const targets = [
+                { id: 'decoder-section', name: 'Decoder' },
+                { id: 'anim-mode-row', name: 'Modes & Animations' },
+                { id: 'alonso-color-section', name: 'AlonsoColor Mod' }
+            ];
+            
+            targets.forEach(t => {
+                const el = document.getElementById(t.id);
+                if(el && !el.querySelector('.ad-locked-overlay')) {
+                    el.style.position = 'relative'; 
+                    const overlay = document.createElement('div');
+                    overlay.className = 'ad-locked-overlay';
+                    overlay.innerHTML = `<span class="emoji">🔒</span><span class="text">Disable AdBlock to use ${t.name}</span>`;
+                    el.appendChild(overlay);
+                }
+            });
+        }
+
+        window.addEventListener('load', async () => {
+            setTimeout(()=>{ loadChecking(); setInterval(loadChecking, 10000); }, 100);
+            checkReminder();
+            checkSite(window); 
+            initPalette();
+            initPresets();
+            initFonts(); 
+            initFormatsAndPlugins(); 
+            initFlags();
+            renderColorInputs(); 
+            updateGradient();
+            loadCounter();
+            setTimeout(()=>{
+              let href = window.location.href;
+              if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) {
+                try{document.title = `Page stolen from https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}`;}catch(e){}
+                window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
+            },150);
+            setTimeout(()=>{
+              if(typeof window.getRandomStyle == "undefined" && myTimeoutLine == undefined) processAds();
+            },2000)
+            setTimeout(()=>{
+              let favoriteVersion = localStorage.getItem("favorite-version");
+              if(typeof favoriteVersion != "undefined" && favoriteVersion != null) {
+                if(favoriteVersion == "new") {
+                }else{
+                    window.location = `./legacy.html`;
+                    //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;
+                    return;
+                }
+              }
+            },500);
+            setTimeout(()=>{
+              let openLegacyGeneratorButton = document.getElementById("openLegacyGeneratorButtonDiv");
+                let isRed = false;
+                setInterval(()=>{
+                    if(isRed) {
+                        openLegacyGeneratorButton.style.backgroundColor = "#ffc107";
+                        openLegacyGeneratorButton.style.color = "black";
+                        isRed = false;
+                    }else{
+                        isRed = true;
+                        openLegacyGeneratorButton.style.backgroundColor = "red";
+                        openLegacyGeneratorButton.style.color = "white";
+                    }
+                },1000);
+                openLegacyGeneratorButton.addEventListener("click", ()=>{
+                    localStorage.removeItem("favorite-version");
+                    window.open(`./legacy.html`, '_blank').focus();
+                    //window.open(`https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`, '_blank').focus();
+                    //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;
+                });
+            },650);
+        });
+
+    </script>
+    
+    <script src="resources.js" onerror="myTimeoutLine = 'inline-block'; processAds();"></script>
+</body>
 </html>

@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "RGB 생성기",
+    "browser_warning": "더 나은 경험을 위해 Google Chrome 또는 Opera를 사용하세요. Edge는 호환되지 않는 것으로 보고되었습니다!"
+  },
+  "header": {
+    "description_title": "다른 생성기와 무엇이 다른가요?",
+    "description_text": "솔직히 말해서, 세상에는 <span class=\"rainbow\">너무 많은 생성기</span>가 있습니다. 하지만 그들 모두 하나 또는 다른 기능이 부족합니다. 저희 생성기에는 서버를 구성하는 데 필요할 수 있는 <span class=\"rainbow\">모든 기능</span>이 있습니다!",
+    "discord_suggestion": "⚠️ 멋진 아이디어가 있다면 <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">공식 디스코드 서버</a>에서 제안해주세요.",
+    "donate_text": "이 도구가 유용했다면, 저희의 노고를 위해 <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">기부</a>를 고려해주세요. 감사합니다!"
+  },
+  "options": {
+    "site_options": "사이트 옵션:",
+    "dark_mode": "다크 모드 👁️‍🗨️",
+    "button_auto": "🤖 자동",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ 클릭하여 이전 생성기로 돌아가기 🎉 <span style='color: #ff6c6c;'>(곧 제거될 수 있음)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;출력 코드 📝&nbsp;",
+    "btn_copy": "📋 코드 복사",
+    "output_placeholder": "결과 코드가 여기에 표시됩니다...",
+    "length_warning": "⚠️ 출력이 채팅에 너무 깁니다!",
+    "format_label": "형식: {{name}}",
+    "input_placeholder": "여기에 텍스트를 입력하세요...",
+    "preview_default": "무언가를 작성하세요..."
+  },
+  "palette": {
+    "legend": "&nbsp;색상 팔레트 🎨&nbsp;",
+    "btn_remove_title": "색상 제거",
+    "btn_add_title": "색상 추가",
+    "colors_text": "색상",
+    "max_colors": "최대 20가지 색상",
+    "drag_drop_tip": "팁: 색상을 드래그 앤 드롭하여 재정렬, 교환 또는 사이에 삽입하세요!"
+  },
+  "styling": {
+    "legend": "&nbsp;스타일링 및 도구 ✨&nbsp;",
+    "label_styles": "스타일:",
+    "check_bold": "굵게",
+    "check_italic": "기울임꼴",
+    "check_underline": "밑줄",
+    "check_strike": "취소선",
+    "label_actions": "작업:",
+    "btn_rotate_left": "왼쪽으로 회전",
+    "btn_reverse": "반전 🔄",
+    "btn_reverse_title": "팔레트 반전",
+    "btn_rotate_right": "오른쪽으로 회전",
+    "warning_iridium": "⚠️ Iridium 형식은 스타일링을 지원하지 않습니다!",
+    "mode_text": "모드: 텍스트 📖",
+    "mode_lore": "모드: Lore 🏹",
+    "mode_motd": "모드: MOTD 🎀",
+    "label_anim": "애니메이션:",
+    "anim_right": "오른쪽으로 ->",
+    "anim_left": "<- 왼쪽으로",
+    "btn_generate_anim": "🎬 생성"
+  },
+  "config": {
+    "legend": "&nbsp;구성 🛠️&nbsp;",
+    "label_format": "형식:",
+    "label_plugins": "플러그인 목록:",
+    "select_plugin_default": "(플러그인 선택)",
+    "btn_link_tooltip": "플러그인 정보",
+    "btn_view_plugin": "플러그인 보기",
+    "label_presets": "프리셋:",
+    "label_fonts": "폰트 목록:"
+  },
+  "alonso_color": {
+    "title": "지금 이 형식을 Minecraft로 가져오세요!",
+    "description": "복사 붙여넣기는 이제 그만! <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod)를 사용하면 프리셋을 만들고 그라데이션을 자동으로 입력할 수 있습니다.<br>언제 어디서나 사용할 수 있는 프리셋을 만들고 저장하세요!<br><span style=\"font-size: 11px;\"><a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>에서 AlonsoColor에 대한 자세한 정보를 확인하세요.</span>",
+    "label_identifier": "식별자:",
+    "placeholder_identifier": "그라데이션이름",
+    "btn_generate": "명령어 생성 🚀",
+    "placeholder_command": "명령어가 여기에 표시됩니다...",
+    "btn_copy": "복사",
+    "help_text": "이 명령어를 복사하여 붙여넣어 생성하고 <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code> 로 선택하세요"
+  },
+  "data": {
+    "legend": "&nbsp;데이터 관리 💾&nbsp;",
+    "btn_export": "옵션 내보내기 ⚙️",
+    "input_import": "내보낸 옵션을 붙여넣고 Enter 키를 눌러 가져오세요.",
+    "footer_note": "💎 아래의 디코드 기능에서 생성된 콘텐츠도 지원합니다."
+  },
+  "decoder": {
+    "label_experimental": "실험적 기능",
+    "title": "가지고 있는 그라데이션을 디코딩하여 사용된 색상을 얻으세요:",
+    "input_placeholder": "디코딩할 그라데이션을 붙여넣으세요.",
+    "btn_decode": "그라데이션 디코드 🧬",
+    "btn_load": "디코드 및 로드 📥",
+    "footer_note": "위의 값은 임계값입니다. 색상이 너무 많다고 생각되면 값을 높이세요. Alt + 클릭으로 10씩 수정할 수 있습니다."
+  },
+  "showcase": {
+    "pixelart": "이런 픽셀 아트를 찾고 계신가요? 💎",
+    "render": "이런 렌더링을 찾고 계신가요? 💎",
+    "animation": "이런 애니메이션을 찾고 계신가요? 💎"
+  },
+  "moretoolsforyou": {
+    "title": "당신을 위한 더 많은 도구:"
+  },
+  "footer": {
+    "text": "이 도구 개발에 힘써준 <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a>와 <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a>에게 감사드립니다."
+  },
+  "emoji": {
+    "title": "이모지 선택",
+    "button": "😀 이모지",
+    "information": "🖱️ Alt + 클릭을 유지하면 상자를 닫지 않고 이모지를 추가할 수 있습니다!"
+  },
+  "modal": {
+    "title": "우리가 돌아왔습니다! 🚀",
+    "text": "<span class=\"font-bold\">잠깐 알려드립니다:</span><br>우리는 여러분이 알고 있는 그 신뢰할 수 있는 도구 그대로입니다! <br>지루한 이유로 처음부터 다시 만들어야 했지만, 더 많은 기능을 갖추고 돌아왔습니다! 💎",
+    "btn_got_it": "알겠습니다! 👍",
+    "footer": "쉿... 색상 정리가 이제 더 부드럽게 느껴질 겁니다. 드래그해 보세요!"
+  },
+  "toasts": {
+    "copied": "클립보드에 복사되었습니다!",
+    "exported": "설정이 클립보드로 내보내졌습니다!",
+    "imported": "설정이 성공적으로 가져와졌습니다!",
+    "decoded_copied": "디코딩된 색상이 복사되었습니다!",
+    "decoded_loaded": "그라데이션이 디코딩되어 로드되었습니다!"
+  },
+  "errors": {
+    "import_failed": "잘못된 가져오기 문자열입니다!",
+    "no_colors_found": "색상을 찾을 수 없습니다!",
+    "iridium_limit": "Iridium 형식은 2가지 색상만 지원합니다!",
+    "max_colors": "최대 {{count}}가지 색상만 허용됩니다!",
+    "min_colors": "최소 2가지 색상이 필요합니다!"
+  }
+}

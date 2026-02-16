@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "RGBジェネレーター",
+    "browser_warning": "より良い体験のためにGoogle ChromeまたはOperaを使用してください。Edgeは非互換として報告されています！"
+  },
+  "header": {
+    "description_title": "他のジェネレーターと何が違いますか？",
+    "description_text": "正直に言いましょう。世の中には<span class=\"rainbow\">あまりにも多くのジェネレーター</span>があります。しかし、どれも何らかの機能が欠けています。当社のジェネレーターには、サーバーの設定に必要な<span class=\"rainbow\">すべての機能</span>が備わっています！",
+    "discord_suggestion": "⚠️ クールなアイデアがあれば、<a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">公式Discordサーバー</a>で提案してください。",
+    "donate_text": "このツールが役に立った場合は、私たちのハードワークに対して<a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">寄付</a>をご検討ください。感謝いたします！"
+  },
+  "options": {
+    "site_options": "サイトオプション:",
+    "dark_mode": "ダークモード 👁️‍🗨️",
+    "button_auto": "🤖 自動",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ ここをクリックして旧ジェネレーターに戻る 🎉 <span style='color: #ff6c6c;'>(まもなく削除される可能性があります)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;出力コード 📝&nbsp;",
+    "btn_copy": "📋 コードをコピー",
+    "output_placeholder": "結果のコードがここに表示されます...",
+    "length_warning": "⚠️ 出力がチャットには長すぎます！",
+    "format_label": "フォーマット: {{name}}",
+    "input_placeholder": "ここにテキストを入力...",
+    "preview_default": "何か書いてください..."
+  },
+  "palette": {
+    "legend": "&nbsp;カラーパレット 🎨&nbsp;",
+    "btn_remove_title": "色を削除",
+    "btn_add_title": "色を追加",
+    "colors_text": "色",
+    "max_colors": "最大20色",
+    "drag_drop_tip": "ヒント: ドラッグ＆ドロップで並べ替え、交換、または間に挿入できます！"
+  },
+  "styling": {
+    "legend": "&nbsp;スタイルとツール ✨&nbsp;",
+    "label_styles": "スタイル:",
+    "check_bold": "太字",
+    "check_italic": "斜体",
+    "check_underline": "下線",
+    "check_strike": "取り消し線",
+    "label_actions": "アクション:",
+    "btn_rotate_left": "左に回転",
+    "btn_reverse": "反転 🔄",
+    "btn_reverse_title": "パレットを反転",
+    "btn_rotate_right": "右に回転",
+    "warning_iridium": "⚠️ Iridium形式はスタイルをサポートしていません！",
+    "mode_text": "モード: テキスト 📖",
+    "mode_lore": "モード: Lore 🏹",
+    "mode_motd": "モード: MOTD 🎀",
+    "label_anim": "アニメ:",
+    "anim_right": "右へ ->",
+    "anim_left": "<- 左へ",
+    "btn_generate_anim": "🎬 生成"
+  },
+  "config": {
+    "legend": "&nbsp;設定 🛠️&nbsp;",
+    "label_format": "フォーマット:",
+    "label_plugins": "プラグインリスト:",
+    "select_plugin_default": "(プラグインを選択)",
+    "btn_link_tooltip": "プラグイン情報",
+    "btn_view_plugin": "プラグインを表示",
+    "label_presets": "プリセット:",
+    "label_fonts": "フォントリスト:"
+  },
+  "alonso_color": {
+    "title": "今すぐこのフォーマットをMinecraftへ！",
+    "description": "コピー＆ペーストはやめましょう！<a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod) を使えば、プリセットを作成してグラデーションを自動で入力できます。<br>プリセットを作成・保存して、いつでもどこでも使用可能！<br><span style=\"font-size: 11px;\">AlonsoColorの詳細は <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a> で確認できます。</span>",
+    "label_identifier": "識別子:",
+    "placeholder_identifier": "グラデーション名",
+    "btn_generate": "コマンドを生成 🚀",
+    "placeholder_command": "コマンドがここに表示されます...",
+    "btn_copy": "コピー",
+    "help_text": "このコマンドをコピーして貼り付けて作成し、<code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code> で選択してください"
+  },
+  "data": {
+    "legend": "&nbsp;データ管理 💾&nbsp;",
+    "btn_export": "オプションをエクスポート ⚙️",
+    "input_import": "エクスポートしたオプションを貼り付けてEnterキーを押してインポートします。",
+    "footer_note": "💎 下記のデコード機能から生成されたコンテンツもサポートしています。"
+  },
+  "decoder": {
+    "label_experimental": "実験的な機能",
+    "title": "持っているグラデーションをデコードして、使用されている色を取得します:",
+    "input_placeholder": "デコードしたいグラデーションを貼り付けてください。",
+    "btn_decode": "グラデーションをデコード 🧬",
+    "btn_load": "デコードして読み込む 📥",
+    "footer_note": "上の値はしきい値です。色が多すぎると感じる場合は増やしてください。Alt + クリックで10ずつ変更できます。"
+  },
+  "showcase": {
+    "pixelart": "このようなピクセルアートをお探しですか？ 💎",
+    "render": "このようなレンダリング画像をお探しですか？ 💎",
+    "animation": "このようなアニメーションをお探しですか？ 💎"
+  },
+  "moretoolsforyou": {
+    "title": "あなたのためのさらに多くのツール："
+  },
+  "footer": {
+    "text": "このツールの開発中のハードワークに対して、<a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> と <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> に感謝します。"
+  },
+  "emoji": {
+    "title": "絵文字を選択",
+    "button": "😀 絵文字",
+    "information": "🖱️ Alt + クリックを押したままにすると、ボックスを閉じずに絵文字を追加できます！"
+  },
+  "modal": {
+    "title": "戻ってきました！ 🚀",
+    "text": "<span class=\"font-bold\">簡単なリマインダー:</span><br>私たちはあなたが知っている同じ信頼できるツールです！<br>いくつかの退屈な理由でゼロから作り直す必要がありましたが、さらに多くの機能を備えてここにいます！ 💎",
+    "btn_got_it": "了解！ 👍",
+    "footer": "Psst... 色の整理がよりスムーズになりました。ドラッグして試してみてください！"
+  },
+  "toasts": {
+    "copied": "クリップボードにコピーしました！",
+    "exported": "設定をクリップボードにエクスポートしました！",
+    "imported": "設定を正常にインポートしました！",
+    "decoded_copied": "デコードされた色をコピーしました！",
+    "decoded_loaded": "グラデーションをデコードして読み込みました！"
+  },
+  "errors": {
+    "import_failed": "無効なインポート文字列です！",
+    "no_colors_found": "色が見つかりません！",
+    "iridium_limit": "Iridium形式は2色のみサポートしています！",
+    "max_colors": "最大 {{count}} 色まで許可されています！",
+    "min_colors": "少なくとも2色必要です！"
+  }
+}

@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="https://i.imgur.com/0zaH4wJ.png" type="image/png">
+    <link rel="icon" href="https://i.imgur.com/0zaH4wJ.png" type="image/png">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development</title>
+
+    <meta name="theme-color" content="#9a14ff"/>
+    <meta property="og:title" content="Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development">
+    <meta property="og:key" content="Minecraft HEX Generator (RGB Color Gradient) | AlonsoAliaga Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png">
+    <meta property="og:description" content="Create HEX gradients for your Minecraft server easily.&#10;&#13;Supports multiple formats, emojis, lore and MOTD!">
+    <meta property="description" content="Create HEX gradients for your Minecraft server easily.&#10;&#13;Supports multiple formats, emojis, lore and MOTD!">
+    <meta name="og:keywords" content="spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator, alonsoaliaga.github.io, alonsoaliaga.com, Minecraft hex generator,Minecraft hex color tool,gradient generator for Minecraft,Minecraft text gradient tool,Minecraft color presets,MiniMessage hex generator,Minecraft gradient maker,Minecraft chat colors,Minecraft hex syntax,Minecraft color codes,PlaceholderAPI hex,Minecraft hex presets,Minecraft gradient builder,Minecraft gradient preview,Minecraft RGB text,hex decode tool for Minecraft,decode hex gradient,color string decoder,convert hex to gradient,chat gradient editor,Minecraft scoreboard color,Minecraft tablist color,custom gradient chat,Minecraft RGB codes,Minecraft formatting tool,Minecraft color string parser,save gradient for Minecraft,load Minecraft hex gradient,Minecraft font color manager,Minecraft plugin dev tool,Minecraft text colorizer,custom rank color,Minecraft prefix gradient,color formatting for plugins,Minecraft hex tag tool,chat message colorizer,Minecraft plugin utility,MiniMessage color preview,Minecraft rank color generator,Minecraft name color generator,LuckPerms hex colors,chat hex formatting,PlaceholderAPI gradient plugin,ItemsAdder hex colors,Oraxen chat gradient,Minecraft UI gradient,Minecraft hex font preview,font color formatting,text color generator Minecraft,color string saver Minecraft,color gradient visualizer,Minecraft gradient editor,creador de degradados Minecraft,generador de colores hex Minecraft,formato hex para Minecraft,gradiente de colores en Minecraft,personalizar texto Minecraft,colores en scoreboard,colores en tablist,editar color de texto Minecraft,plugin de colores para Minecraft,códigos de color Minecraft,personalizar rangos con color,generador de texto RGB,guardar degradado Minecraft,importar colores hex,Minecraft español,crear degradado visual,Minecraft herramienta de color,herramienta para desarrolladores de plugins,formato MiniMessage en español,degradados en plugins,color personalizado para jugadores">
+    <meta name="keywords" content="spigot, bungeecord, paper, alonsoaliaga, minecraft, plugins, html, css, javascript, java, hex, rgb, generator, alonsoaliaga.github.io, alonsoaliaga.com, Minecraft hex generator,Minecraft hex color tool,gradient generator for Minecraft,Minecraft text gradient tool,Minecraft color presets,MiniMessage hex generator,Minecraft gradient maker,Minecraft chat colors,Minecraft hex syntax,Minecraft color codes,PlaceholderAPI hex,Minecraft hex presets,Minecraft gradient builder,Minecraft gradient preview,Minecraft RGB text,hex decode tool for Minecraft,decode hex gradient,color string decoder,convert hex to gradient,chat gradient editor,Minecraft scoreboard color,Minecraft tablist color,custom gradient chat,Minecraft RGB codes,Minecraft formatting tool,Minecraft color string parser,save gradient for Minecraft,load Minecraft hex gradient,Minecraft font color manager,Minecraft plugin dev tool,Minecraft text colorizer,custom rank color,Minecraft prefix gradient,color formatting for plugins,Minecraft hex tag tool,chat message colorizer,Minecraft plugin utility,MiniMessage color preview,Minecraft rank color generator,Minecraft name color generator,LuckPerms hex colors,chat hex formatting,PlaceholderAPI gradient plugin,ItemsAdder hex colors,Oraxen chat gradient,Minecraft UI gradient,Minecraft hex font preview,font color formatting,text color generator Minecraft,color string saver Minecraft,color gradient visualizer,Minecraft gradient editor,creador de degradados Minecraft,generador de colores hex Minecraft,formato hex para Minecraft,gradiente de colores en Minecraft,personalizar texto Minecraft,colores en scoreboard,colores en tablist,editar color de texto Minecraft,plugin de colores para Minecraft,códigos de color Minecraft,personalizar rangos con color,generador de texto RGB,guardar degradado Minecraft,importar colores hex,Minecraft español,crear degradado visual,Minecraft herramienta de color,herramienta para desarrolladores de plugins,formato MiniMessage en español,degradados en plugins,color personalizado para jugadores">
+    <meta property="og:url" content="https://alonsoaliaga.github.io/index.html">
+    <meta property="og:site_name" content="Minecraft HEX Generator (RGB Color Gradient) - AlonsoAliaga Development" />
+
+  </head>
+
+  <body id="bg" class="container">
+    <span style="display: none;text-align: center;">Create HEX color gradients for your Minecraft server easily with the #1 HEX generator! Supports multiple formats, emojis, lore and MOTD!</span>
+    <div id="online-counter" data-failed="0" style="position: relative;background-color: green;height: 30px;display: flex; align-items: center;justify-content: center;">🟢 0 online creating amazing gradients for their server with our generator!</div>
+    <div id="hexColorTemplate" style="display:none;">
+      <div class="row">
+        <label style="border: 3px;border-color: rgb(65, 65, 65);" for="color-$NUM">Hex Color #$NUM</label>
+        <div style="display: flex;">
+          <div>
+            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'up')">▲</button><br>
+            <button class="movecolorclass darktextboxes" color-number="$NUM" onclick="moveColor(this,'down')">▼</button>
+          </div>&nbsp<input class="form-control col-md-1 hexColor" id="color-$NUM" style="height: 50px;border-radius: 10px;" value="$VAL"
+                 data-jscolor="{preset:'small dark', position:'right'}" oninput="javascript: updateOutputText(event)"
+                 onchange="javascript: updateOutputText(event); Cookies.set(`#${$NUM}`, document.getElementById('color-$NUM').value, { expires: 7, path: '' })"/>
+          </div>
+        </div>
+    </div>
+    
+    <div id="content">
+      <h1 id="title">HEX Generator (RGB) | AlonsoAliaga Development</h1>
+      <p id="graylabel1" class="gray" style="text-align: center;color:#ff5448;font-size: 29px; padding-bottom: 0px;">Use Google Chrome or Opera for a better experience.</p>
+      <div id="new-generator-div" style="margin-bottom: 10px;font-size: 20px;justify-self: center;color: aliceblue !important;margin-top: 5px;
+        border-radius: 5px;text-align: center;min-width: 80%;padding: 5px;justify-content: center;align-content: center;
+        max-width: 100%; background-color: #fc5044;">
+        <input type="checkbox" style="visibility: hidden;" id="new-generator" onclick="darkMode();"></input>
+        <label for="new-generator" style="margin-bottom: 0px;margin-top: 0px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ Click to try the new generator!! 🧪&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2" style="display: flex;flex-direction: column;align-items: center;padding-left: 0;">
+            <p style="text-align: center;font-weight: bold;font-size: 20px;margin-bottom: 0px;">Permutation:</a><div style="display:inline-flex;">
+              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="left-permute" type="button" maxlength="10"
+                         value="⬅️" onclick="runPermutation(event,false)">
+              <input style="width: 70px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="right-permute" type="button" maxlength="10" 
+                         value="➡️" onclick="runPermutation(event,true)">
+            </div>
+            <br>
+            <div id="hexColors" class="container-fluid">
+              <!-- Will be populated in JavaScript -->
+            </div>
+          </div>
+          <div class="col-md-10" style="padding-right: 0;">
+            <div class="container-fluid">
+              <div class="row">
+                <div id="output">
+                  <!-- <label id="label4" for="outputText">Output:</label> -->
+                  <label id="graylabel2" class="gray" for="outputText" style="font-weight: bold;"><span style="color: #fc5044;">TIP: </span> Click below to copy the content with RGB!</label>
+                  <pre id="outputText" 
+                    onclick="copyTextToClipboard(this.textContent);"></pre>
+                    <!--
+                  <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
+                  <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
+                  <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
+                -->
+                  <span id="snackbar"><b>💎 Successfully Copied! 💎</b><br><span style="font-size: small;">Thanks for using our tool!</span></span>
+                </div>
+              </div>
+              <div class="row">
+                <div id="coloredNick"></div>
+              </div>
+              <div class="row">
+                <div id="motd-icon" style="display: none;">
+                  <p class="alonsocraft" onclick="makeEditable(this)">AlonsoCraft</p>
+                  <p style= "left:unset; right: 91px" class="alonsocraft">0/20</p>
+                  <!-- <img style="position: absolute; width: -webkit-fill-available;" src="https://i.imgur.com/GMwGfAW.png"> -->
+                  <div class="motd-icon-container">
+                    <img id="motd-icon-item" style="position: absolute;" class="motd-icon" 
+                      src="https://i.imgur.com/wDASRvr.gif" onclick="openIconUploadBox(event)"
+                      alt="📤 Click to upload your icon!">
+                  </div>
+                  <img style="position: absolute; width: 27px; height: auto; top: 145px;left: unset;right: 60px" src="https://i.imgur.com/etolITx.png">  
+                </div>
+                <div style="display: none;white-space: pre;" class="motd-class" id="coloredMOTD">
+                </div>
+              </div>
+              
+              <p id="error">This message contains more than 256 characters and might not fit in your chat box.</p>
+              <p id="warning-iridium">Iridium gradients only allow 2 hex colors (start and end). All hex between them will be ignored!</p>
+              <p id="warning-iridium-decoration">Iridium gradients don't allow decorations like bold, italic, strike or underline :(</p>
+
+              <div id="lore-container" class="lore-item">
+                <div id="lore-text" class="lore-text">
+                  Loading..
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="nickname">Message</label>
+                  <input class="form-control" id="nickname" type="text" maxlength="200" placeholder="Type your Text"
+                         value="alonsoaliaga.com" oninput="javascript: updateOutputText(event);"
+                         onchange="javascript: updateOutputText(event)">
+                  <textarea class="form-control" id="lore-input" placeholder="Type your Lore"
+                         value="alonsoaliaga.com" oninput="javascript: updateOutputText(this);"
+                         onchange="javascript: updateOutputText(this)"></textarea>
+                  <textarea class="form-control" id="motd-input" placeholder="Type your MOTD"
+                         value="alonsoaliaga.com\r\nJoin us now!" oninput="javascript: updateOutputText(this);"
+                         onchange="javascript: updateOutputText(this)"></textarea>
+                </div>
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="nickname">Emojis</label>
+                  <input style="width: 45px;" class="form-control" id="emojis" type="button" maxlength="10" placeholder="Pick your emoji"
+                         value="😁" onclick="if(document.getElementById('emojis-spoiler') .style.display=='none') {document.getElementById('emojis-spoiler') .style.display=''}else{document.getElementById('emojis-spoiler') .style.display='none'}"
+                         onchange="javascript: updateOutputText(event)">
+                  <div
+                  style="min-width:450px;max-height:350px;overflow:auto;overflow-y:scroll;height:fit-content;z-index: 1;padding: 0px 5px 0px 5px ;background-color: gray; border-width: 1px; border-color:rgba(113, 113, 113, 0.63) ;position: absolute; width: fit-content; display: none;"
+                   class="form-control" id="emojis-spoiler" type="button" value="😁">
+                    <p style="text-align: center; font-size: 18px; font-weight: bold; color: rgb(248, 248, 248);">Click on your favorite emojis to add them!</p>
+                    <div>
+                      <table class="c"> <!-- style="height:200px;" -->
+                      <tbody id="emoji-table" style="overflow:auto;overflow-y:scroll">
+                        <p id="loading_text" style="color:rgb(255, 227, 16);text-decoration: double;font-size: 30px;text-align:center;">Loading..</p>
+                      </tbody>
+                     </table>
+                    </div>
+                   <p style="text-align: center; padding-bottom: 0px;font-size: 15px; font-weight: bold; color: rgb(156, 0, 0);">New emojis? Suggest your favorites in our <a target="_blank" href="https://alonsoaliaga.com/discord">Discord</a>!</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;" id="minecraft">
+                  <label for="output-format">Output format</label>
+                  <select id="output-format"
+                          class="form-control"
+                          onmouseenter="showOutPutFormatTooltip();"
+                          onmouseout="hideOutPutFormatTooltip();"
+                          onload="addDefaultsFormats();" onchange="updateOutputText(event);">
+                    <!-- <option value='0'>Default (&#rrggbb)</option>
+                    <option value='2'>Legacy (&x&r&r&g&g&b&b)</option>
+                    <option value='3'>Nick (&#rrggbb)</option>
+                    <option value='4'>Nick Special (<&#rrggbb>)</option>
+                    <option value='6'>Console (§x§r§r§g§g§b§b)</option>
+                    <option value='8'>MOTD (\u00A7x)</option>
+                    <option value='1'>Chat (<#rrggbb>)</option>
+                    <option value='7'>BBCode [COLOR=#rrggbb]</option>
+                    <option value='9'>AlonsoTags (#rrggbb)</option>
+                    <option value='10'>AlonsoChat (&#rrggbb)</option>
+                    <option value='11'>Iridium Gradient</option> -->
+                  </select>
+                  <div id="output-format-tooltip" style="width: max-content; height: fit-content; position: absolute; display: none;z-index: 1" class="form-control">Loading..</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="color-preset">Presets colors</label>
+                  <select id="color-preset"
+                          class="form-control"
+                          onload="addDefaultsPresets();"
+                          onchange="preset(this.value); updateOutputText(event); ">
+                    <!-- <option value='0'>None</option>
+                    <option value='1'>Rainbow</option>
+                    <option value='2'>Fire</option>
+                    <option value='3'>Sweet Morning</option>
+                    <option value='4'>Deep Space</option>
+                    <option value='5'>Superman</option>
+                    <option value='6'>Netflix</option>
+                    <option value='7'>Timber</option>
+                    <option value='8'>Piglet</option>
+                    <option value='9'>Instagram</option>
+                    <option value='10'>Twitch</option>
+                    <option value='11'>SoundCloud</option>
+                    <option value='12'>Facebook</option>
+                    <option value='13'>Amethyst</option>
+                    <option value='14'>Starfall</option>
+                    <option value='15'>Bloody Mary</option>
+                    <option value='16'>JShine</option>
+                    <option value='17'>Candy</option>
+                    <option value='18'>Argon</option>
+                    <option value='19'>Cosmic Fusion</option>
+                    <option value='20'>Deep Blue</option>
+                    <option value='21'>Phoenix</option>
+                    <option value='22'>Sublime Light</option>
+                    <option value='23'>Sunrise</option>
+                    <option value='24'>Sky Glider</option>
+                    <option value='25'>Love Kiss</option>
+                    <option value='26'>TikTok</option> -->
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <label for="numOfColors">Amount of colors</label>
+                <input class="form-control"
+                       style="width: 75px;"
+                       value="2" id="numOfColors" type="number" min="2" max="20"
+                       onchange="updateOutputText(event); toggleColors(this.value);"
+                       oninput="updateOutputText(event); toggleColors(this.value);"/>
+              </div>
+              <div class="row">
+                <div id="dbold">
+                  <input type="checkbox" id="bold" onclick="updateOutputText(event);"/>
+                  <label for="bold">Bold</label>
+                </div>
+                <div id="ditalics">
+                  <input type="checkbox" id="italics" onclick="updateOutputText(event);"/>
+                  <label for="italics">Italic</label>
+                </div>
+                <div id="dunderline">
+                  <input type="checkbox" id="underline" onclick="updateOutputText(event);"/>
+                  <label for="underline">Underline</label>
+                </div>
+                <div id="dstrike">
+                  <input type="checkbox" id="strike" onclick="updateOutputText(event);"/>
+                  <label for="strike">Strikethrough</label>
+                </div>
+                <div id="dgenmode" style="display: block;">
+                  <input type="checkbox" id="gen-mode" onclick="toggleMode(event);"/>
+                  <label id="gen-mode-text" for="gen-mode">Loading..</label>
+                </div>
+                <div id="ddevmode" style="display: none;">
+                  <input type="checkbox" id="dev-mode" onclick="copyCustomURL();"/>
+                  <label id="dev-mode-text" for="dev-mode">Create URL 🦄</label>
+                </div>
+                <div id="appearance">
+                  <input type="checkbox" id="darkmode" onclick="darkMode();"></input>
+                  <label for="darkmode" style="margin-bottom: 0px;margin-top: 0px;"> Dark Mode 👁‍🗨</label>
+                </div><br>
+                <div id="gen-perm-div" style="display: inline-flex;">
+                  <input id="generate-permutation" style="max-width:fit-content" class="form-control" type="button" value="Generate permutation 🎨" onclick="generatePermutation();">&nbsp;
+                  <div style="padding: 5px;justify-content: center;align-content: center;max-width: fit-content;" class="darktextboxes form-control" id="reverse-permutation-div">
+                    <input type="checkbox" id="reverse-permutation"/>
+                    <label for="reverse-permutation">Reverse?</label>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <div id="plugin-tooltip" style="bottom: 34px;width: max-content; height: fit-content; position: absolute; display: none" class="form-control">Loading..</div>
+                  <label for="plugins-list">Plugins list</label>
+                  <select id="plugins-list"
+                          style="display:inline-block"
+                          class="form-control"
+                          onload="addPluginsList();"
+                          onmouseenter="showPluginTooltip();"
+                          onmouseout="hidePluginTooltip();"
+                          onchange="updateOutputTextFromPlugin(event);">
+                          <option selected="true" disabled="disabled">Select a plugin</option>
+                  </select>
+                  <a target="_blank" style="width: 45px;position: absolute;display: none;text-decoration: none;" class="form-control linktooltip" 
+                    id="plugin-link-button" maxlength="10"
+                  >🔗<span class="linktooltiptext">Click to go to download page!</span></a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" style="padding-left: 0;">
+                  <label for="fonts-list">Fonts list</label>
+                  <select id="fonts-list"
+                          style="display:inline-block"
+                          class="form-control"
+                          onload="addFontsList();"
+                          onchange="updateOutputTextFromFont(event);">
+                          <option selected="true" disabled="disabled">Select a font</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="align-items: center;">&nbsp;Export your settings to use them later:&nbsp;</span>
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <input id="export-button" style="max-width:fit-content" class="form-control darktextboxes" type="button" value="Export options ⚙️" onclick="exportOptions();">
+      <input id="import-button" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste your exported options and press enter to import."
+             onkeypress="
+             if(event.key == 'Enter' || event.code == 'Enter'){
+                loadImport(event.srcElement);
+             }
+             ">
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;Supports also the content generated from Decode feature below.&nbsp;</span>
+    </div><br>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="display:inline-block; padding:5px 10px 0px 10px; background-color:red; color:#fff; font-size:18px; font-weight:bold; border-radius:4px; text-transform:uppercase;">EXPERIMENTAL FEATURE</span>
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="align-items: center;">&nbsp;Decode a gradient you have and obtain the colors used for this gradient:&nbsp;</span>
+    </div>
+    <div id="input-to-decode-div" style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <input id="input-to-decode" class="form-control darktextboxes" style="width: 50%;" type="text" placeholder="Paste the gradient you want to decode.">
+              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="less-threshold" type="button" maxlength="10"
+                         value="-" onclick="
+                         let value = +document.getElementById('threshold-value').value;
+                         let newValue = value - (((event.altKey || event.shiftKey)) ? 10 : 1);
+                         document.getElementById('threshold-value').value = newValue;
+                         ">
+              <input style="width: fit-content;font-size: 15px;padding: 0 5 0 5;align-content: center;justify-content: center;vertical-align: middle;" class="form-control darktextboxes" id="threshold-value" type="button" maxlength="10"
+              value="75">
+              <input style="width: 40px;font-size: 27px;padding-top: 0%;" class="form-control darktextboxes" id="more-threshold" type="button" maxlength="10" 
+                         value="+" onclick="
+                         let value2 = +document.getElementById('threshold-value').value;
+                         let newValue2 = value2 + (((event.altKey || event.shiftKey)) ? 10 : 1);
+                         document.getElementById('threshold-value').value = newValue2;
+                         "><input id="decode-button" style="max-width:fit-content" class="form-control" type="button" value="Decode gradient 🧬" onclick="decodeInput();">
+    </div>
+    <div style="display: flex;align-items: center;padding-left: 0;justify-content: center;align-content: center;flex-wrap: nowrap;">
+      <span style="color: rgb(160, 160, 160);align-items: center;">&nbsp;The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10.&nbsp;</span>
+    </div><br>
+    <div id="mybutton" style="z-index: 250;">
+      <div style="position: center;display: inline-block;">
+        <div style="text-align: center;">
+          <span style="font-weight: bold;">Click for more tools!</span>
+        </div>
+        <button class="buttonface"><a href="https://alonsoaliaga.github.io"><img src="https://raw.githubusercontent.com/AlonsoAliaga/alonsoaliaga.github.io/main/assets/img/apple-touch-icon.png"></a></button>
+        <br>
+        <div id="visitor-counter" style="text-align: center;">
+          <span id="counter-amount" style="font-weight: bold;">Visits: 0</span>
+        </div>
+      </div>
+    </div>
+    <div style="justify-content: center;display: flex;">
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a pixelart like this? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/pixelart-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mcpfp', '_blank');">
+        </fieldset>
+      </div>&nbsp;&nbsp;
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 70%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for a render like this one? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/render-showcase.png" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-renders', '_blank');">
+        </fieldset>
+      </div>&nbsp;&nbsp;
+      <div class="center-container">
+        <fieldset class="group" style="display: flex; justify-content: center;border: 2px solid silver;padding: 0px;width: 300px;align-content: center;"> 
+          <legend style="text-align: center;width: 80%;padding: 0px 15px 5px 15px;" id="thelegend">Looking for an animation like this one? 💎</legend> 
+          <img src="https://raw.githubusercontent.com/AlonsoAliaga/generator/main/assets/showcase/skin-showcase.gif" style="height: 200px;padding-bottom: 0px;cursor: pointer;" onclick="window.open('https://alonsoaliaga.com/mc-skin', '_blank');">
+        </fieldset>
+      </div>
+    </div>
+    <br>
+    <div id="theoptions" class="options">
+      <div style="font-size: 18px ;padding-top: 0px;padding-bottom: 0px; font-family: MinecraftRegular;" class="examples">
+        <h2 style="font-size: 18px; font-family: MinecraftBold;text-align: center;">More tools for you:</h2>
+        <div style="text-align: left;font-size: 20px;" id="tools-for-you">
+        </div>
+        <br>
+        <h2 style="color: transparent;font-size: 20px ;text-align: center; font-family: MinecraftBold;"><a class="rainbow" href="https://alonsoaliaga.github.io" rel="noopener" target="_blank">AlonsoAliaga Development</a></h2>
+      </div>
+    </div>
+    <footer style="display: block;text-align: center;">
+      <p>❤ Special thanks to <a target="_blank" href="https://github.com/Oli-idk">Oli</a> and <a target="_blank" href="https://github.com/saboooor">Saboor</a> for his repositories in which this project was inspired.</p>
+      <p>❤ Thanks to <a target="_blank" href="https://www.youtube.com/c/HolaMundoDev/">HolaMundo</a> for his tutorials of CSS and HTML.</p>
+    </footer>
+  </body>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5185973148525065"
+     data-ad-slot="2004758913"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+
+</script>
+  <script src="jscolor.js"></script>
+  <script src="script.js"></script>
+  <script src="resources.js"></script>
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('alonsoaliaga', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Send love ❤️',
+      'floating-chat.donateButton.background-color': '#fcbf47',
+      'floating-chat.donateButton.text-color': '#323842'
+    });
+  </script>
+</html>
