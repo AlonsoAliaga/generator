@@ -2596,11 +2596,21 @@
             }
         });
 
+        setTimeout(()=>{
+            const el = document.getElementById("alonso-color-section");
+            if(el && !el.querySelector('.ad-locked-overlay')) {
+                el.style.position = 'relative'; 
+                const overlay = document.createElement('div');
+                overlay.className = 'ad-locked-overlay';
+                overlay.innerHTML = `<span class="emoji">🔒</span><span class="text">This feature is soon to be released!</span>`;
+                el.appendChild(overlay);
+            }
+        },100);
         function processAds() {
             const targets = [
                 { id: 'decoder-section', name: 'Decoder' },
                 { id: 'anim-mode-row', name: 'Modes & Animations' },
-                { id: 'alonso-color-section', name: 'AlonsoColor Mod' }
+                // { id: 'alonso-color-section', name: 'AlonsoColor Mod' }
             ];
             
             targets.forEach(t => {
