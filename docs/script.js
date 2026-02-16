@@ -2402,7 +2402,7 @@ async function checkSite(window) {
         for(let toolData of toolsData) {
           let clazz = typeof toolData.clazz == "undefined" ? "" : ` class="${toolData.clazz}"`;
           let style = typeof toolData.style == "undefined" ? "" : ` style="${toolData.style}"`;
-          toolsArray.push(`<span>💠</span> <span${clazz}${style}><a title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}">${toolData.name}</a></span>`);
+          toolsArray.push(`<span>💠</span> <span${clazz}${style}><a ${clazz}${style} title="${toolData.description}" id="tool-priority-${toolData.priority}" href="${toolData.link}">${toolData.name}</a></span>`);
         }
         document.getElementById("tools-for-you").innerHTML = toolsArray.join(`<br>`);
       });
