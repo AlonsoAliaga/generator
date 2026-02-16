@@ -2640,12 +2640,12 @@
               let favoriteVersion = localStorage.getItem("favorite-version");
               if(typeof favoriteVersion != "undefined" && favoriteVersion != null) {
                 if(favoriteVersion == "new") {
-                }else{
-                    window.location = `./legacy.html`;
-                    //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;
                     return;
                 }
               }
+              window.location = `./legacy.html`;
+              //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;
+              return;
             },500);
             setTimeout(()=>{
               let openLegacyGeneratorButton = document.getElementById("openLegacyGeneratorButtonDiv");
