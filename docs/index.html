@@ -1390,7 +1390,7 @@
             let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPiZnZW49PGdlbj4=")
                 .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A")
                 .replace(/<gen>/g,`new`)
-                .replace(/<lock>/g,`${typeof window.getRandomStyle == "undefined" || typeof window.adBlockEnabled == "undefined" || window.adBlockEnabled || myTimeoutLine != undefined}`);
+                .replace(/<lock>/g,(typeof window.getRandomStyle == "undefined" || typeof window.adBlockEnabled == "undefined" || window.adBlockEnabled || myTimeoutLine != undefined) ? "yes" : "no"  );
             
             let counter = document.getElementById("online-counter");
             
@@ -2685,7 +2685,18 @@
         });
 
     </script>
-    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5185973148525065"
+     crossorigin="anonymous"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5185973148525065"
+             data-ad-slot="2004758913"
+             data-ad-format="auto"
+             data-full-width-responsive="true">
+        </ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <script src="resources.js" onerror="myTimeoutLine = 'inline-block'; processAds();"></script>
 </body>
 </html>
