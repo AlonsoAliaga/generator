@@ -2247,7 +2247,7 @@ function loadChecking() {
  if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) return;
  let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPiZnZW49PGdlbj4=")
     .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A")
-    .replace(/<gen>/g,`old`)
+    .replace(/<gen>/g,localStorage.getItem("favorite-version") || "old")
     .replace(/<lock>/g,(typeof window.getRandomStyle == "undefined" || typeof adBlockEnabled == "undefined" || adBlockEnabled || myTimeout != undefined) ? "yes" : "no"  );
  let counter = document.getElementById("online-counter");
  if(counter) {
