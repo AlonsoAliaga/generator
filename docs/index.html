@@ -1387,8 +1387,10 @@
         // --- ONLINE CHECKER SCRIPT ---
         function loadChecking() {
             let href = window.location.href;
-            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5Pg==")
-                .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A");
+            let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPiZnZW49PGdlbj4=")
+                .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A")
+                .replace(/<gen>/g,`new`)
+                .replace(/<lock>/g,`${typeof window.getRandomStyle == "undefined" || typeof window.adBlockEnabled == "undefined" || window.adBlockEnabled || myTimeoutLine != undefined}`);
             
             let counter = document.getElementById("online-counter");
             
@@ -2646,7 +2648,7 @@
                 window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`}
             },150);
             setTimeout(()=>{
-              if(typeof window.getRandomStyle == "undefined" && myTimeoutLine == undefined) processAds();
+              if(typeof window.getRandomStyle == "undefined" || myTimeoutLine != undefined) processAds();
             },2000)
             setTimeout(()=>{
               let favoriteVersion = localStorage.getItem("favorite-version");
