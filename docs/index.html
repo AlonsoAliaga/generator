@@ -2281,7 +2281,7 @@
                     }
                 }
                 
-                frames.push("- \"" + frameOutput+"\""); 
+                frames.push("- \"" + frameOutput.replace(/"/g, '\\"') + "\""); 
                 if(direction === 'left') { workingPalette.push(workingPalette.shift()); } 
                 else { workingPalette.unshift(workingPalette.pop()); }
             }
@@ -2420,8 +2420,10 @@
                 for(let i=0; i<activeColorCount; i++) {
                     fullColorPalette[i] = finalColors[i];
                 }
-                if(inputStr.includes("&l") || inputStr.includes("<b>")) document.getElementById('checkBold').checked = true;
-                if(inputStr.includes("&o") || inputStr.includes("<i>")) document.getElementById('checkItalic').checked = true;
+                if(inputStr.includes("&l") || inputStr.includes("§l") || inputStr.includes("<b>")) document.getElementById('checkBold').checked = true;
+                if(inputStr.includes("&o") || inputStr.includes("§o") || inputStr.includes("<i>")) document.getElementById('checkItalic').checked = true;
+                if(inputStr.includes("&n") || inputStr.includes("§n") || inputStr.includes("<u>")) document.getElementById('checkUnderline').checked = true;
+                if(inputStr.includes("&m") || inputStr.includes("§m") || inputStr.includes("<s>")) document.getElementById('checkStrike').checked = true;
                 
                 renderColorInputs();
                 updateGradient();
