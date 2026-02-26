@@ -254,6 +254,22 @@
         .color-card.drop-insert-left { border-left-width: 6px; border-left-color: #00aa00; padding-left: 0; }
         .color-card.drop-insert-right { border-right-width: 6px; border-right-color: #00aa00; padding-right: 0; }
 
+        .hex-text-input {
+            background: transparent;
+            border: none;
+            width: 56px;
+            text-align: right;
+            outline: none;
+            color: inherit;
+            cursor: text;
+            padding: 0;
+            margin: 0;
+        }
+        .hex-text-input:focus {
+            opacity: 1 !important;
+            border-bottom: 1px dotted var(--text-color);
+        }
+
         .input-color {
             -webkit-appearance: none;
             border: none;
@@ -489,6 +505,12 @@
             border-color: rgba(0, 0, 0, 0.9) transparent transparent transparent; 
         }
 
+        .notification-popup {
+            background-color: #1d3b00 !important; 
+            border: 2px solid #00af00 !important;
+            font-size: 30px !important; /* +2px (13->15) */
+        }
+
         .error-popup {
             position: fixed;
             bottom: -100px; 
@@ -697,6 +719,146 @@
         }
         .emoji-btn:hover { background: rgba(128,128,128,0.2); }
         
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 56px;
+            height: 26px;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #e5e5e5;
+            transition: .3s;
+            border-radius: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        input:checked + .toggle-slider { background-color: #61d331; }
+        input:checked + .toggle-slider:before { transform: translateX(30px); }
+        .toggle-on, .toggle-off {
+            font-family: Arial, sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            z-index: 1;
+            user-select: none;
+        }
+        .toggle-on { color: rgba(255,255,255,0.9); opacity: 0; transition: .3s; padding-left: 1px;}
+        .toggle-off { color: rgba(255,255,255,1); opacity: 1; transition: .3s; text-align: right; width: 100%; padding-right: 1px;}
+        input:checked + .toggle-slider .toggle-on { opacity: 1; }
+        input:checked + .toggle-slider .toggle-off { opacity: 0; }
+        body.dark-mode .toggle-slider { background-color: #444; }
+        body.dark-mode input:checked + .toggle-slider { background-color: #55c02b; }
+
+        /* HISTORY BAR */
+        .history-container {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: var(--container-bg);
+            border: 2px solid var(--border-color);
+            border-bottom: none;
+            border-radius: 15px 15px 0 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .history-container.collapsed {
+            transform: translateX(-50%) translateY(calc(100% - 32px));
+        }
+        .history-header {
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 15px 15px 0 0;
+            border-bottom: 2px solid var(--border-color);
+            user-select: none;
+            color: var(--text-color);
+            font-family: 'MinecraftBold';
+        }
+        .history-header:hover { background-color: rgba(0,0,0,0.2); }
+        .history-content {
+            padding: 5px 10px 10px 10px;
+            height: 300px;
+            max-height: 50vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .history-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 5px;
+        }
+        .history-list::-webkit-scrollbar { width: 6px; }
+        .history-list::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); border-radius: 4px; }
+        .history-list::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+        
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--bg-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 6px 10px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            flex-shrink: 0;
+        }
+        .history-item:hover { transform: translateY(-1px); background-color: rgba(0,0,0,0.05); }
+        .history-item.dragging { opacity: 0.5; }
+        .history-item.drop-target { border-style: dashed; border-color: #00aa00; background-color: rgba(0,200,0,0.1); }
+        .history-preview {
+            flex-grow: 1;
+            font-size: 16px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            pointer-events: none;
+        }
+        .history-delete {
+            background-color: #fee2e2;
+            border: 2px solid #b91c1c;
+            color: #b91c1c;
+            border-radius: 6px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        .history-delete:hover { background-color: #fecaca; transform: scale(1.05); }
+
         @media (max-width: 850px) {
             .canvas-box { height: auto; min-height: 100px; width: 100%; }
             .ad-space { display: none; }
@@ -1005,8 +1167,9 @@
                     <fieldset class="config-block">
                         <legend data-i18n="data.legend">&nbsp;Data Management 💾&nbsp;</legend>
                         <div class="flex flex-col sm:flex-row gap-3 items-center justify-center p-2">
-                             <div class="flex flex-col w-full sm:w-auto">
-                                 <button id="exportBtn" class="btn-custom w-full sm:w-auto" style="background:#ffd1dc; border-color:#d4a0a0; color:#5c2b2b; padding-left: 20px; padding-right: 20px;" data-i18n="data.btn_export">Export options ⚙️</button>
+                             <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                                 <button id="exportBtn" class="btn-custom w-full sm:w-auto" style="background:#ffd1dc; border-color:#d4a0a0; color:#5c2b2b; padding-left: 15px; padding-right: 15px;" data-i18n="data.btn_export">Export options ⚙️</button>
+                                 <button id="exportColorsBtn" class="btn-custom w-full sm:w-auto" style="background:#d1fae5; border-color:#047857; color:#064e3b; padding-left: 15px; padding-right: 15px;" data-i18n="data.btn_export_colors">Export colors 🎨</button>
                              </div>
                              <div class="flex flex-col w-full">
                                  <input type="text" id="importInput" class="input-custom w-full" style="text-align: left;" placeholder="Paste your exported options and press enter to import." data-i18n="[placeholder]data.input_import">
@@ -1084,6 +1247,47 @@
         </div>
     </div>
 
+    <!-- History Floating Bar -->
+    <div id="history-container" class="history-container collapsed">
+        <div id="history-header" class="history-header text-sm font-bold" onclick="toggleHistory()">
+            <span data-i18n="history.title">History 📚</span> <span id="history-toggle-icon" class="ml-2">▲</span>
+        </div>
+        <div id="history-content" class="history-content relative">
+            <button id="saveHistoryBtn" class="btn-custom w-full mb-[6px]" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; flex-shrink: 0;" onclick="saveCurrentToHistory()" data-i18n="history.btn_save">💾 Save Current Style</button>
+            <div id="history-list" class="history-list"></div>
+            <div class="flex justify-between items-center w-full mt-2 pt-2 border-t-2 border-[var(--border-color)] flex-shrink-0 px-1 overflow-hidden">
+                
+                <div class="flex items-center gap-2 sm:gap-4 flex-grow">
+                    <div class="flex items-center gap-1">
+                        <span class="text-[10px] sm:text-xs font-bold opacity-80 whitespace-nowrap" data-i18n="history.load_format" style="color: var(--text-color);">Include format:</span>
+                        <label class="toggle-switch" style="transform: scale(0.7); transform-origin: left; margin-right: -16px;" title="Toggle load format on/off">
+                            <input type="checkbox" id="historyLoadFormat" onchange="saveHistoryPrefs()">
+                            <span class="toggle-slider">
+                                <span class="toggle-on">ON</span>
+                                <span class="toggle-off">OFF</span>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <span class="text-[10px] sm:text-xs font-bold opacity-80 whitespace-nowrap" data-i18n="history.load_font" style="color: var(--text-color);">Include font:</span>
+                        <label class="toggle-switch" style="transform: scale(0.7); transform-origin: left; margin-right: -16px;" title="Toggle load font on/off">
+                            <input type="checkbox" id="historyLoadFont" onchange="saveHistoryPrefs()">
+                            <span class="toggle-slider">
+                                <span class="toggle-on">ON</span>
+                                <span class="toggle-off">OFF</span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Separador vertical -->
+                <div class="border-l-2 border-[var(--border-color)] h-5 mx-1 opacity-50 flex-shrink-0"></div>
+
+                <button id="historyReverseBtn" class="btn-custom flex-shrink-0" style="padding: 1px 6px; font-size: 11px; height: 24px;" onclick="toggleHistoryOrder()" data-i18n="history.btn_reverse">Reverse order 🔄️</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Generic Error Popup -->
     <div id="errorPopup" class="error-popup">
         <span style="font-size: 20px;">⚠️</span>
@@ -1094,6 +1298,15 @@
         <span style="font-size: 20px;">⚠️</span>
     </div>
 
+    <!-- Generic Error Popup -->
+    <div id="notificationPopup" class="notification-popup error-popup">
+        <span style="font-size: 20px;">⚠️</span>
+        <div style="text-align: center;">
+            <!-- <div style="font-weight: bold; font-size: 16px;"></div> -->
+            <div style="font-size: 12px; opacity: 0.9;" id="notificationMsg">Something went wrong.</div>
+        </div>
+        <span style="font-size: 20px;">⚠️</span>
+    </div>
     <!-- Scripts -->
     <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 
@@ -1129,8 +1342,9 @@
               "styling": { "legend": "&nbsp;Styling & Tools ✨&nbsp;", "label_styles": "Styles:", "check_bold": "Bold", "check_italic": "Italic", "check_underline": "Underline", "check_strike": "Strike", "label_actions": "Actions:", "btn_reverse": "🔄 Reverse", "warning_iridium": "⚠️ Iridium format does not support styling!", "mode_text": "Mode: Text 📖", "mode_lore": "Mode: Lore 🏹", "mode_motd": "Mode: MOTD 🎀", "label_anim": "Anim:", "anim_right": "To Right ->", "anim_left": "<- To Left", "btn_generate_anim": "🎬 Generate" },
               "config": { "legend": "&nbsp;Configuration 🛠️&nbsp;", "label_format": "Format:", "label_plugins": "Plugins list:", "btn_link_tooltip": "Plugin Info", "label_presets": "Presets:", "label_fonts": "Fonts list:" },
               "alonso_color": { "title": "Bring this format to Minecraft now!", "description": "Stop copying and pasting! With <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod), you can create presets and type in gradients automatically. Create and save presets to use anytime, anywhere!<br><span style=\"font-size: 11px;\">More information about AlonsoColor on <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>", "label_identifier": "Identifier:", "placeholder_identifier": "gradientname", "btn_generate": "Generate Command 🚀", "placeholder_command": "Command will appear here...", "btn_copy": "Copy", "help_text": "Copy and paste this command to create it and select it with <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>" },
-              "data": { "legend": "&nbsp;Data Management 💾&nbsp;", "btn_export": "Export options ⚙️", "input_import": "Paste your exported options and press enter to import.", "footer_note": "💎 Supports also the content generated from Decode feature below." },
+              "data": { "legend": "&nbsp;Data Management 💾&nbsp;", "btn_export": "Export options ⚙️", "btn_export_colors": "Export colors 🎨", "input_import": "Paste your exported options and press enter to import.", "footer_note": "💎 Supports also the content generated from Decode feature below." },
               "decoder": { "label_experimental": "EXPERIMENTAL FEATURE", "title": "Decode a gradient you have and obtain the colors used for this gradient:", "input_placeholder": "Paste the gradient you want to decode.", "btn_decode": "Decode gradient 🧬", "btn_load": "Decode and load 📥", "footer_note": "The value above is the threshold. Increase it if you consider you get too many colors. Alt + click to modify by 10." },
+              "history": { "title": "History 📚", "btn_save": "💾 Save Current Style", "empty": "History is empty.", "load_format": "Include format:", "load_font": "Include font:", "btn_reverse": "Reverse order 🔄️" },
               "showcase": { "pixelart": "Looking for a pixelart like this? 💎", "render": "Looking for a render like this one? 💎", "animation": "Looking for an animation like this one? 💎" },
               "footer": { "text": "Thanks to <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> and <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> for his hard work during the development of this tool." },
               "modal": { "title": "We are back! 🚀", "text": "<span class=\"font-bold\">Just a quick reminder:</span><br>We are the same trusted tool you know! <br>We had to rebuild from scratch due to some boring reasons!, but we are here with even more features! 💎", "btn_got_it": "Got it! 👍", "footer": "Psst... color organization feels smoother now. Try dragging things!" },
@@ -1151,8 +1365,9 @@
                 "styling": { "legend": "&nbsp;Estilo y Herramientas ✨&nbsp;", "label_styles": "Estilos:", "check_bold": "Negrita", "check_italic": "Cursiva", "check_underline": "Subrayado", "check_strike": "Tachado", "label_actions": "Acciones:", "btn_reverse": "🔄 Invertir", "btn_reverse_title": "Invertir Paleta", "btn_rotate_left": "Rotar Izq", "btn_rotate_right": "Rotar Der", "warning_iridium": "⚠️ ¡El formato Iridium no soporta estilos!", "mode_text": "Modo: Texto 📖", "mode_lore": "Modo: Lore 🏹", "mode_motd": "Modo: MOTD 🎀", "label_anim": "Anim:", "anim_right": "A Derecha ->", "anim_left": "<- A Izquierda", "btn_generate_anim": "🎬 Generar" },
                 "config": { "legend": "&nbsp;Configuración 🛠️&nbsp;", "label_format": "Formato:", "label_plugins": "Lista de plugins:", "btn_link_tooltip": "Info del Plugin", "label_presets": "Preajustes:", "label_fonts": "Lista de fuentes:" },
                 "alonso_color": { "title": "¡Lleva este formato a Minecraft ahora!", "description": "¡Deja de copiar y pegar! Con <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Mod de Fabric), puedes crear presets y escribir en gradientes automáticamente. ¡Crea y guarda presets para usarlos cuando y donde quieras!<br><span style=\"font-size: 11px;\">Más información sobre AlonsoColor en <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>", "label_identifier": "Identificador:", "placeholder_identifier": "nombregradiente", "btn_generate": "Generar Comando 🚀", "placeholder_command": "El comando aparecerá aquí...", "btn_copy": "Copiar", "help_text": "Copia y pega este comando para crearlo y selecciónalo con <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>" },
-                "data": { "legend": "&nbsp;Gestión de Datos 💾&nbsp;", "btn_export": "Exportar opciones ⚙️", "input_import": "Pega tus opciones exportadas y presiona enter para importar.", "footer_note": "💎 También soporta el contenido generado por la función Decodificar abajo." },
+                "data": { "legend": "&nbsp;Gestión de Datos 💾&nbsp;", "btn_export": "Exportar opciones ⚙️", "btn_export_colors": "Exportar colores 🎨", "input_import": "Pega tus opciones exportadas y presiona enter para importar.", "footer_note": "💎 También soporta el contenido generado por la función Decodificar abajo." },
                 "decoder": { "label_experimental": "FUNCIÓN EXPERIMENTAL", "title": "Decodifica un gradiente que tengas y obtén los colores usados para este gradiente:", "input_placeholder": "Pega el gradiente que quieres decodificar.", "btn_decode": "Decodificar gradiente 🧬", "btn_load": "Decodificar y cargar 📥", "footer_note": "El valor arriba es el umbral. Auméntalo si consideras que obtienes demasiados colores. Alt + clic para modificar de 10 en 10." },
+                "history": { "title": "Historial 📚", "btn_save": "💾 Guardar Estilo Actual", "empty": "El historial está vacío.", "load_format": "Incluir formato:", "load_font": "Incluir fuente:", "btn_reverse": "Revertir orden 🔄️" },
                 "showcase": { "pixelart": "¿Buscas un pixelart como este? 💎", "render": "¿Buscas un render como este? 💎", "animation": "¿Buscas una animación como esta? 💎" },
                 "footer": { "text": "Gracias a <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> y <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> por su arduo trabajo durante el desarrollo de esta herramienta." },
                 "modal": { "title": "¡Estamos de vuelta! 🚀", "text": "<span class=\"font-bold\">Solo un recordatorio rápido:</span><br>¡Somos la misma herramienta confiable que conoces! <br>Tuvimos que reconstruir desde cero debido a algunas razones aburridas, ¡pero estamos aquí con aún más funciones! 💎", "btn_got_it": "¡Entendido! 👍", "footer": "Psst... la organización de colores se siente más fluida ahora. ¡Intenta arrastrar cosas!" },
@@ -1363,18 +1578,8 @@
             }
         });
 
-        // --- Toast Logic ---
-        function showToast(key) {
-            const t = document.getElementById('toast');
-            // If key exists in toast translations, use it, else display raw text
-            const msg = getTranslation("toasts." + key);
-            t.textContent = (msg.includes("toasts.") ? key : msg); 
-            
-            t.style.opacity = '1';
-            setTimeout(() => {
-                t.style.opacity = '0';
-            }, 2500);
-        }
+        // --- Toast Logic (Compactado en una línea) ---
+        function showToast(key) { const t = document.getElementById('toast'); const msg = getTranslation("toasts." + key); t.textContent = msg.includes("toasts.") ? key : msg; t.style.opacity = '1'; setTimeout(() => t.style.opacity = '0', 2500); }
 
         // --- Error Popup Logic ---
         function showErrorPopup(key, params = {}) {
@@ -1386,13 +1591,23 @@
                 el.classList.remove('show');
             }, 4000); 
         }
+        // --- Error Popup Logic ---
+        function showNotificationPopup(key, params = {}) {
+            const el = document.getElementById('notificationPopup');
+            const msg = getTranslation("toasts." + key, params);
+            document.getElementById('notificationMsg').textContent = (msg.includes("toasts.") ? key : msg);
+            el.classList.add('show');
+            setTimeout(() => {
+                el.classList.remove('show');
+            }, 4000); 
+        }
 
         // --- ONLINE CHECKER SCRIPT ---
         function loadChecking() {
             let href = window.location.href;
             if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) return;
             let storedGen = localStorage.getItem("favorite-version");
-            let gen = typeof storedGen != "undefined" && storedGen == "new" ? "new" : "old";
+            let gen = typeof storedGen != "undefined" && storedGen == "old" ? "old" : "new";
             let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPiZnZW49PGdlbj4=")
                 .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A")
                 .replace(/<gen>/g,gen)
@@ -1605,6 +1820,11 @@
         let fullColorPalette = [];
         let activeColorCount = 2; 
         
+        let historyEntryExample = "alonsoaliaga.com";
+        let savedHistory = JSON.parse(localStorage.getItem('alonso-gradient-history') || '[]');
+        let historyDragIndex = -1;
+        let historyOrderReversed = false;
+
         let currentFormatId = "a0"; 
         let currentPluginId = "";
         let currentFontId = "normal";
@@ -1994,7 +2214,7 @@
                     </div>
                     <div class="flex justify-between w-full items-center px-1">
                         <label style="font-size:12px; font-family:'MinecraftBold'; opacity: 0.6;">#${i + 1}</label>
-                        <span class="text-[11px] opacity-80 font-mono">${color}</span>
+                        <input type="text" class="hex-text-input text-[11px] opacity-80 font-mono" value="${color}" data-index="${i}" maxlength="7" spellcheck="false">
                     </div>
                 `;
                 div.addEventListener('dragstart', handleDragStart);
@@ -2010,8 +2230,26 @@
                     document.getElementById('presetSelector').value = 0;
                     const idx = parseInt(e.target.dataset.index);
                     fullColorPalette[idx] = e.target.value;
-                    e.target.parentElement.nextElementSibling.querySelector("span").textContent = e.target.value;
+                    e.target.parentElement.nextElementSibling.querySelector(".hex-text-input").value = e.target.value.toUpperCase();
                     updateGradient();
+                });
+                el.addEventListener('mousedown', (e) => { e.stopPropagation(); el.parentElement.parentElement.setAttribute('draggable', 'false'); });
+                el.addEventListener('mouseup', () => { el.parentElement.parentElement.setAttribute('draggable', 'true'); });
+            });
+            document.querySelectorAll(".hex-text-input").forEach(el => {
+                el.addEventListener("change", (e) => {
+                    let val = e.target.value.trim();
+                    if(!val.startsWith('#')) val = '#' + val;
+                    if(/^#[0-9A-Fa-f]{6}$/i.test(val)) {
+                        document.getElementById('presetSelector').value = 0;
+                        const idx = parseInt(e.target.dataset.index);
+                        fullColorPalette[idx] = val.toUpperCase();
+                        renderColorInputs(); 
+                        updateGradient();
+                    } else {
+                        const idx = parseInt(e.target.dataset.index);
+                        e.target.value = fullColorPalette[idx];
+                    }
                 });
                 el.addEventListener('mousedown', (e) => { e.stopPropagation(); el.parentElement.parentElement.setAttribute('draggable', 'false'); });
                 el.addEventListener('mouseup', () => { el.parentElement.parentElement.setAttribute('draggable', 'true'); });
@@ -2328,7 +2566,7 @@
         document.getElementById('copyAcBtn').onclick = () => {
              const field = document.getElementById('acOutput');
              field.select();
-             navigator.clipboard.writeText(field.value).then(() => showToast("copied"));
+             navigator.clipboard.writeText(field.value).then(() => showNotificationPopup("copied"));
         };
         
         // --- DECODER LOGIC ---
@@ -2420,17 +2658,16 @@
                 for(let i=0; i<activeColorCount; i++) {
                     fullColorPalette[i] = finalColors[i];
                 }
-                if(inputStr.includes("&l") || inputStr.includes("§l") || inputStr.includes("<b>")) document.getElementById('checkBold').checked = true;
-                if(inputStr.includes("&o") || inputStr.includes("§o") || inputStr.includes("<i>")) document.getElementById('checkItalic').checked = true;
-                if(inputStr.includes("&n") || inputStr.includes("§n") || inputStr.includes("<u>")) document.getElementById('checkUnderline').checked = true;
-                if(inputStr.includes("&m") || inputStr.includes("§m") || inputStr.includes("<s>")) document.getElementById('checkStrike').checked = true;
-                
+                document.getElementById('checkBold').checked = inputStr.includes("&l") || inputStr.includes("§l") || inputStr.includes("<b>");
+                document.getElementById('checkItalic').checked = inputStr.includes("&o") || inputStr.includes("§o") || inputStr.includes("<i>");
+                document.getElementById('checkUnderline').checked = inputStr.includes("&n") || inputStr.includes("§n") || inputStr.includes("<u>");
+                document.getElementById('checkStrike').checked = inputStr.includes("&m") || inputStr.includes("§m") || inputStr.includes("<s>");
                 renderColorInputs();
                 updateGradient();
-                showToast("decoded_loaded");
+                showErrorPopup("decoded_loaded");
             } else {
                  document.getElementById('importInput').value = formattedStr; 
-                 navigator.clipboard.writeText(formattedStr).then(() => showToast("decoded_copied"));
+                 navigator.clipboard.writeText(formattedStr).then(() => showErrorPopup("decoded_copied"));
             }
         }
         
@@ -2456,7 +2693,7 @@
         document.getElementById('copyBtn').onclick = () => {
             const field = document.getElementById('outputArea');
             field.select();
-            navigator.clipboard.writeText(field.value).then(() => showToast("copied"));
+            navigator.clipboard.writeText(field.value).then(() => showNotificationPopup("copied"));
         };
 
         function autoResizeOutput() {
@@ -2469,6 +2706,202 @@
             }
         }
         
+        // --- History Logic ---
+        function toggleHistory() {
+            const container = document.getElementById('history-container');
+            const icon = document.getElementById('history-toggle-icon');
+            if(container.classList.contains('collapsed')) {
+                container.classList.remove('collapsed');
+                icon.textContent = '▼';
+            } else {
+                container.classList.add('collapsed');
+                icon.textContent = '▲';
+            }
+        }
+
+        function toggleHistoryOrder() {
+            historyOrderReversed = !historyOrderReversed;
+            saveHistoryPrefs();
+            renderHistory();
+        }
+
+        function saveHistoryPrefs() {
+            const prefs = {
+                loadFormat: document.getElementById('historyLoadFormat').checked,
+                loadFont: document.getElementById('historyLoadFont').checked,
+                reverseOrder: historyOrderReversed
+            };
+            localStorage.setItem('alonso-history-prefs', JSON.stringify(prefs));
+        }
+
+        function initHistoryPrefs() {
+            let prefs = JSON.parse(localStorage.getItem('alonso-history-prefs') || '{"loadFormat":false,"loadFont":false,"reverseOrder":false}');
+            document.getElementById('historyLoadFormat').checked = prefs.loadFormat;
+            document.getElementById('historyLoadFont').checked = prefs.loadFont;
+            historyOrderReversed = prefs.reverseOrder;
+        }
+
+        function saveCurrentToHistory() {
+            const settings = {
+                id: Date.now().toString(),
+                colors: fullColorPalette.slice(0, activeColorCount),
+                format: currentFormatId,
+                font: currentFontId,
+                bold: document.getElementById('checkBold').checked,
+                italic: document.getElementById('checkItalic').checked,
+                underline: document.getElementById('checkUnderline').checked,
+                strike: document.getElementById('checkStrike').checked
+            };
+            savedHistory.unshift(settings);
+            localStorage.setItem('alonso-gradient-history', JSON.stringify(savedHistory));
+            renderHistory();
+            showNotificationPopup('Saved to history!');
+        }
+
+        function loadFromHistory(index) {
+            const settings = savedHistory[index];
+            if(!settings) return;
+
+            const loadFormat = document.getElementById('historyLoadFormat').checked;
+            const loadFont = document.getElementById('historyLoadFont').checked;
+
+            if (loadFormat) {
+                currentFormatId = settings.format || 'a0';
+                document.getElementById('formatSelector').value = currentFormatId;
+                updateFormatTooltip(currentFormatId);
+                document.getElementById('pluginSelector').value = "";
+                updateLinkButton(null);
+            }
+
+            if (loadFont) {
+                currentFontId = settings.font || 'normal';
+                document.getElementById('fontSelector').value = currentFontId;
+            }
+
+            document.getElementById('checkBold').checked = settings.bold || false;
+            document.getElementById('checkItalic').checked = settings.italic || false;
+            document.getElementById('checkUnderline').checked = settings.underline || false;
+            document.getElementById('checkStrike').checked = settings.strike || false;
+
+            if (settings.colors && Array.isArray(settings.colors)) {
+                activeColorCount = settings.colors.length;
+                for(let i=0; i<activeColorCount; i++) {
+                    fullColorPalette[i] = settings.colors[i];
+                }
+                while(fullColorPalette.length < MAX_COLORS) {
+                    fullColorPalette.push(getRandomHex());
+                }
+            }
+
+            renderColorInputs();
+            updateGradient();
+            showNotificationPopup('Style loaded!');
+        }
+
+        function deleteFromHistory(index, event) {
+            event.stopPropagation();
+            savedHistory.splice(index, 1);
+            localStorage.setItem('alonso-gradient-history', JSON.stringify(savedHistory));
+            renderHistory();
+        }
+
+        function generateHistoryPreviewHtml(settings, text) {
+            let prevFont = currentFontId;
+            currentFontId = settings.font || 'normal';
+            let lineText = applyFont(text);
+            currentFontId = prevFont;
+
+            const isBold = settings.bold;
+            const isItalic = settings.italic;
+            const isUnder = settings.underline;
+            const isStrike = settings.strike;
+
+            let fontFamily = "'MinecraftRegular'";
+            if(isBold && isItalic) fontFamily = "'MinecraftBoldItalic'";
+            else if(isBold) fontFamily = "'MinecraftBold'";
+            else if(isItalic) fontFamily = "'MinecraftItalic'";
+            
+            let cssStyle = `font-family: ${fontFamily};`;
+            if(isUnder && isStrike) cssStyle += "text-decoration: underline line-through;";
+            else if(isUnder) cssStyle += "text-decoration: underline;";
+            else if(isStrike) cssStyle += "text-decoration: line-through;";
+
+            let html = "";
+            const chars = Array.from(lineText);
+            const steps = chars.length;
+            const safeColors = (settings.colors && settings.colors.length > 0) ? settings.colors : ['#FFFFFF', '#FFFFFF'];
+            const colors = generateMultiGradient(safeColors, steps);
+
+            for(let i = 0; i < steps; i++) {
+                let char = chars[i];
+                let hex = colors[i] || '#FFFFFF';
+                let displayChar = char === ' ' ? '&nbsp;' : char;
+                html += `<span style="color:${hex}; ${cssStyle}">${displayChar}</span>`;
+            }
+            return html;
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            list.innerHTML = '';
+
+            if(savedHistory.length === 0) {
+                list.innerHTML = `<div class="text-center opacity-50 italic mt-4 text-sm" data-i18n="history.empty">History is empty.</div>`;
+                return;
+            }
+
+            savedHistory.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.draggable = true;
+                div.dataset.index = index;
+
+                const previewHtml = generateHistoryPreviewHtml(item, historyEntryExample);
+
+                div.innerHTML = `
+                    <div class="history-preview">${previewHtml}</div>
+                    <button class="history-delete" onclick="deleteFromHistory(${index}, event)" title="Delete">🗑️</button>
+                `;
+
+                div.onclick = () => loadFromHistory(index);
+
+                div.addEventListener('dragstart', (e) => {
+                    historyDragIndex = index;
+                    div.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+                div.addEventListener('dragover', (e) => {
+                    e.preventDefault(); 
+                    div.classList.add('drop-target');
+                });
+                div.addEventListener('dragleave', () => {
+                    div.classList.remove('drop-target');
+                });
+                div.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    div.classList.remove('drop-target');
+                    const targetIndex = index;
+                    if(historyDragIndex !== targetIndex && historyDragIndex > -1) {
+                        const itemToMove = savedHistory.splice(historyDragIndex, 1)[0];
+                        savedHistory.splice(targetIndex, 0, itemToMove);
+                        localStorage.setItem('alonso-gradient-history', JSON.stringify(savedHistory));
+                        renderHistory();
+                    }
+                });
+                div.addEventListener('dragend', () => {
+                    div.classList.remove('dragging');
+                    document.querySelectorAll('.history-item').forEach(el => el.classList.remove('drop-target'));
+                });
+
+                if(historyOrderReversed) {
+                    list.prepend(div);
+                } else {
+                    list.appendChild(div);
+                }
+            });
+        }
+
         // --- Export / Import Functions ---
         function exportSettings() {
             const settings = {
@@ -2488,12 +2921,21 @@
                 const importInput = document.getElementById('importInput');
                 importInput.value = b64;
                 importInput.select();
-                navigator.clipboard.writeText(b64).then(() => showToast("exported"));
+                navigator.clipboard.writeText(b64).then(() => showNotificationPopup("exported"));
             } catch(e) {
                 showErrorPopup("Export failed!");
                 console.error(e);
             }
         }
+
+        document.getElementById('exportColorsBtn').onclick = () => {
+            const colors = fullColorPalette.slice(0, activeColorCount);
+            const exportStr = colors.map(c => `&${c}`).join('-');
+            const importInput = document.getElementById('importInput');
+            importInput.value = exportStr;
+            importInput.select();
+            navigator.clipboard.writeText(exportStr).then(() => showNotificationPopup("copied"));
+        };
         
         // --- Autosave Configurations ---
         function autosaveSettings() {
@@ -2591,11 +3033,27 @@
                 }
                 renderColorInputs();
                 updateGradient();
-                showToast("imported");
+                showNotificationPopup("imported");
                 importInput.value = ""; 
             } catch(e) {
+                const extractedColors = extractHexCodes(b64);
+                console.log("Extracted colors from input:", extractedColors);
+                if(extractedColors.length >= 2) {
+                    activeColorCount = Math.min(extractedColors.length, MAX_COLORS);
+                    for(let i=0; i<activeColorCount; i++) {
+                        fullColorPalette[i] = extractedColors[i].toUpperCase();
+                    }
+                    while(fullColorPalette.length < MAX_COLORS) {
+                        fullColorPalette.push(getRandomHex());
+                    }
+                    renderColorInputs();
+                    updateGradient();
+                    showNotificationPopup("imported");
+                    importInput.value = ""; 
+                    return;
+                }
                 showErrorPopup("import_failed");
-                console.error(e);
+                //console.error(e);
             }
         }
         function randomUUID() {
@@ -2622,6 +3080,7 @@
             const targets = [
                 { id: 'decoder-section', name: 'Decoder' },
                 { id: 'anim-mode-row', name: 'Modes & Animations' },
+                { id: 'history-content', name: 'Format History' }
                 // { id: 'alonso-color-section', name: 'AlonsoColor Mod' }
             ];
             
@@ -2639,15 +3098,17 @@
 
         window.addEventListener('load', async () => {
             setTimeout(()=>{ loadChecking(); setInterval(loadChecking, 10000); }, 100);
-            checkReminder();
+            setTimeout(()=> checkReminder(), 1000 * 5);
             checkSite(window); 
             initPalette();
             initPresets();
             initFonts(); 
             initFormatsAndPlugins(); 
             initFlags();
+            initHistoryPrefs();
             renderColorInputs(); 
             updateGradient();
+            renderHistory();
             loadCounter();
             setTimeout(()=>{
               let href = window.location.href;
@@ -2661,11 +3122,11 @@
             setTimeout(()=>{
               let favoriteVersion = localStorage.getItem("favorite-version");
               if(typeof favoriteVersion != "undefined" && favoriteVersion != null) {
-                if(favoriteVersion == "new") {
+                if(favoriteVersion == "old") {
+                    window.location = `./legacy.html`;
                     return;
                 }
               }
-              window.location = `./legacy.html`;
               //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;
               return;
             },500);
@@ -2684,7 +3145,7 @@
                     }
                 },1000);
                 openLegacyGeneratorButton.addEventListener("click", ()=>{
-                    localStorage.removeItem("favorite-version");
+                    localStorage.setItem("favorite-version","old");
                     window.open(`./legacy.html`, '_blank').focus();
                     //window.open(`https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`, '_blank').focus();
                     //window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/legacy.html`;

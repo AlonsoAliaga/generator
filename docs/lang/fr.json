@@ -78,7 +78,16 @@
     "legend": "&nbsp;Gestion des Données 💾&nbsp;",
     "btn_export": "Exporter les options ⚙️",
     "input_import": "Collez vos options exportées et appuyez sur entrée pour importer.",
-    "footer_note": "💎 Prend également en charge le contenu généré par la fonction Décodage ci-dessous."
+    "footer_note": "💎 Prend également en charge le contenu généré par la fonction Décodage ci-dessous.",
+    "btn_export_colors": "Exporter les couleurs 🎨"
+  },
+  "history": {
+    "title": "Historique 📚",
+    "btn_save": "💾 Sauvegarder le style actuel",
+    "empty": "L'historique est vide.",
+    "load_format": "Inclure le format :",
+    "load_font": "Inclure la police :",
+    "btn_reverse": "Inverser l'ordre 🔄️"
   },
   "decoder": {
     "label_experimental": "FONCTIONNALITÉ EXPÉRIMENTALE",

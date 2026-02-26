@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "Generator (RGB)",
+    "browser_warning": "Verwende Google Chrome oder Opera für ein besseres Erlebnis. Edge wird als nicht kompatibel gemeldet!"
+  },
+  "header": {
+    "description_title": "Wie unterscheidet sich das von anderen Generatoren?",
+    "description_text": "Seien wir mal ehrlich. Es gibt <span class=\"rainbow\">zu viele Generatoren</span> da draußen. Aber jedem fehlt das eine oder andere Feature. Unser Generator bietet <span class=\"rainbow\">alle Funktionen</span>, die du für die Konfiguration deines Servers benötigst!",
+    "discord_suggestion": "⚠️ Wenn du coole Ideen hast, schlage sie auf unserem <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">offiziellen Discord-Server</a> vor.",
+    "donate_text": "Wenn du dieses Tool nützlich fandest, erwäge <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">eine Spende</a> für unsere harte Arbeit. Wir wissen das sehr zu schätzen!"
+  },
+  "options": {
+    "site_options": "Seitenoptionen:",
+    "dark_mode": "Dark Mode 👁️‍🗨️",
+    "button_auto": "🤖 Auto",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ Klicke hier, um zum alten Generator zurückzukehren 🎉 <span style='color: #ff6c6c;'>(Wird eventuell bald entfernt)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;Ausgabecode 📝&nbsp;",
+    "btn_copy": "📋 CODE KOPIEREN",
+    "output_placeholder": "Der resultierende Code wird hier angezeigt...",
+    "length_warning": "⚠️ Ausgabe ist zu lang für den Chat!",
+    "format_label": "Format: {{name}}",
+    "input_placeholder": "Gib deinen Text hier ein...",
+    "preview_default": "Schreibe etwas..."
+  },
+  "palette": {
+    "legend": "&nbsp;Farbpalette 🎨&nbsp;",
+    "btn_remove_title": "Farbe entfernen",
+    "btn_add_title": "Farbe hinzufügen",
+    "colors_text": "Farben",
+    "max_colors": "Max. 20 Farben",
+    "drag_drop_tip": "Tipp: Drag & Drop Farben, um sie neu anzuordnen, zu tauschen oder dazwischen einzufügen!"
+  },
+  "styling": {
+    "legend": "&nbsp;Styling & Tools ✨&nbsp;",
+    "label_styles": "Stile:",
+    "check_bold": "Fett",
+    "check_italic": "Kursiv",
+    "check_underline": "Unterstrichen",
+    "check_strike": "Durchgestrichen",
+    "label_actions": "Aktionen:",
+    "btn_rotate_left": "Nach links rotieren",
+    "btn_reverse": "Umkehren 🔄",
+    "btn_reverse_title": "Palette umkehren",
+    "btn_rotate_right": "Nach rechts rotieren",
+    "warning_iridium": "⚠️ Das Iridium-Format unterstützt kein Styling!",
+    "mode_text": "Modus: Text 📖",
+    "mode_lore": "Modus: Lore 🏹",
+    "mode_motd": "Modus: MOTD 🎀",
+    "label_anim": "Anim:",
+    "anim_right": "Nach rechts ->",
+    "anim_left": "<- Nach links",
+    "btn_generate_anim": "🎬 Generieren"
+  },
+  "config": {
+    "legend": "&nbsp;Konfiguration 🛠️&nbsp;",
+    "label_format": "Format:",
+    "label_plugins": "Plugin-Liste:",
+    "select_plugin_default": "(Wähle ein Plugin)",
+    "btn_link_tooltip": "Plugin-Info",
+    "btn_view_plugin": "Plugin ansehen",
+    "label_presets": "Voreinstellungen:",
+    "label_fonts": "Schriftarten-Liste:"
+  },
+  "alonso_color": {
+    "title": "Bringe dieses Format jetzt in Minecraft!",
+    "description": "Hör auf zu kopieren und einzufügen! Mit <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod) kannst du Voreinstellungen erstellen und Farbverläufe automatisch eingeben.<br>Erstelle und speichere Voreinstellungen, um sie jederzeit und überall zu nutzen!<br><span style=\"font-size: 11px;\">Weitere Informationen über AlonsoColor auf <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>",
+    "label_identifier": "Bezeichner:",
+    "placeholder_identifier": "verlaufsname",
+    "btn_generate": "Befehl generieren 🚀",
+    "placeholder_command": "Befehl wird hier angezeigt...",
+    "btn_copy": "Kopieren",
+    "help_text": "Kopiere diesen Befehl und füge ihn ein, um ihn zu erstellen, und wähle ihn mit <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code> aus"
+  },
+  "data": {
+    "legend": "&nbsp;Datenverwaltung 💾&nbsp;",
+    "btn_export": "Optionen exportieren ⚙️",
+    "input_import": "Füge deine exportierten Optionen ein und drücke Enter, um sie zu importieren.",
+    "footer_note": "💎 Unterstützt auch die Inhalte, die mit der Dekodier-Funktion unten generiert wurden."
+  },
+  "decoder": {
+    "label_experimental": "EXPERIMENTELLES FEATURE",
+    "title": "Dekodiere einen vorhandenen Farbverlauf und erhalte die dafür verwendeten Farben:",
+    "input_placeholder": "Füge den Farbverlauf ein, den du dekodieren möchtest.",
+    "btn_decode": "Farbverlauf dekodieren 🧬",
+    "btn_load": "Dekodieren und laden 📥",
+    "footer_note": "Der obige Wert ist der Schwellenwert. Erhöhe ihn, wenn du der Meinung bist, dass du zu viele Farben erhältst. Alt + Klick, um in 10er-Schritten zu ändern."
+  },
+  "showcase": {
+    "pixelart": "Suchst du nach so einem Pixelart? 💎",
+    "render": "Suchst du nach so einem Render? 💎",
+    "animation": "Suchst du nach so einer Animation? 💎"
+  },
+  "moretoolsforyou": {
+    "title": "Weitere Tools für dich:"
+  },
+  "footer": {
+    "text": "Danke an <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> und <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> für ihre harte Arbeit bei der Entwicklung dieses Tools."
+  },
+  "emoji": {
+    "title": "Emoji auswählen",
+    "button": "😀 Emojis",
+    "information": "🖱️ Halte Alt + Klick gedrückt, um Emojis hinzuzufügen, ohne das Fenster zu schließen!"
+  },
+  "modal": {
+    "title": "Wir sind zurück! 🚀",
+    "text": "<span class=\"font-bold\">Nur eine kurze Erinnerung:</span><br>Wir sind dasselbe vertrauenswürdige Tool, das du kennst! <br>Wir mussten es aus einigen langweiligen Gründen von Grund auf neu erstellen!, aber wir sind mit noch mehr Funktionen hier! 💎",
+    "btn_got_it": "Verstanden! 👍",
+    "footer": "Psst... die Farborganisation fühlt sich jetzt flüssiger an. Versuche, Elemente zu ziehen!"
+  },
+  "toasts": {
+    "copied": "In die Zwischenablage kopiert!",
+    "exported": "Einstellungen in die Zwischenablage exportiert!",
+    "imported": "Einstellungen erfolgreich importiert!",
+    "decoded_copied": "Dekodierte Farben kopiert!",
+    "decoded_loaded": "Farbverlauf dekodiert & geladen!"
+  },
+  "errors": {
+    "import_failed": "Ungültiger Import-String!",
+    "no_colors_found": "Keine Farben gefunden!",
+    "iridium_limit": "Das Iridium-Format unterstützt nur 2 Farben!",
+    "max_colors": "Maximal {{count}} Farben erlaubt!",
+    "min_colors": "Du benötigst mindestens 2 Farben!"
+  }
+}

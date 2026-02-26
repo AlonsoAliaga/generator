@@ -2246,7 +2246,7 @@ function loadChecking() {
  let href = window.location.href;
  if(!href.includes(atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw=="))) return;
  let storedGen = localStorage.getItem("favorite-version");
- let gen = typeof storedGen != "undefined" && storedGen == "new" ? "new" : "old";
+ let gen = typeof storedGen != "undefined" && storedGen == "old" ? "old" : "new";
  let link = atob("aHR0cHM6Ly9hbG9uc29hcGkuZGlzY2xvdWQuYXBwL2NoZWNraW5nP3NpdGU9PHNpdGU+JmtleT08a2V5PiZsb2NrPTxsb2NrPiZnZW49PGdlbj4=")
     .replace(/<site>/g,"generator").replace(/<key>/g,"KEY-A")
     .replace(/<gen>/g,gen)
@@ -2816,7 +2816,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(()=>{
     let favoriteVersion = localStorage.getItem("favorite-version");
     if(typeof favoriteVersion != "undefined" && favoriteVersion != null) {
-      if(favoriteVersion == "new") {  
+      if(favoriteVersion != "old") {  
         window.location = `https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`;
         return;
       }
@@ -2839,7 +2839,7 @@ document.addEventListener("DOMContentLoaded", () => {
           window.open(`./index.html`, '_blank').focus();
           //window.open(`https://${atob("YWxvbnNvYWxpYWdhLmdpdGh1Yi5pbw==")}/generator/`, '_blank').focus();
       });
-  },250);
+  },1000);
 });
 function randomUUID() {
   // Generate a random UUID (version 4)

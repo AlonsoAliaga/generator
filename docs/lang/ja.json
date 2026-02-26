@@ -78,7 +78,16 @@
     "legend": "&nbsp;データ管理 💾&nbsp;",
     "btn_export": "オプションをエクスポート ⚙️",
     "input_import": "エクスポートしたオプションを貼り付けてEnterキーを押してインポートします。",
-    "footer_note": "💎 下記のデコード機能から生成されたコンテンツもサポートしています。"
+    "footer_note": "💎 下記のデコード機能から生成されたコンテンツもサポートしています。",
+    "btn_export_colors": "色をエクスポート 🎨"
+  },
+  "history": {
+    "title": "履歴 📚",
+    "btn_save": "💾 現在のスタイルを保存",
+    "empty": "履歴は空です。",
+    "load_format": "フォーマットを含める:",
+    "load_font": "フォントを含める:",
+    "btn_reverse": "順序を反転 🔄️"
   },
   "decoder": {
     "label_experimental": "実験的な機能",

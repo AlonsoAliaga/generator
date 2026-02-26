@@ -78,7 +78,16 @@
     "legend": "&nbsp;数据管理 💾&nbsp;",
     "btn_export": "导出选项 ⚙️",
     "input_import": "粘贴您导出的选项并按 Enter 键导入。",
-    "footer_note": "💎 还支持从下面的解码功能生成的内容。"
+    "footer_note": "💎 还支持从下面的解码功能生成的内容。",
+    "btn_export_colors": "导出颜色 🎨"
+  },
+  "history": {
+    "title": "历史记录 📚",
+    "btn_save": "💾 保存当前样式",
+    "empty": "历史记录为空。",
+    "load_format": "包含格式：",
+    "load_font": "包含字体：",
+    "btn_reverse": "反转顺序 🔄️"
   },
   "decoder": {
     "label_experimental": "实验性功能",

@@ -78,7 +78,16 @@
     "legend": "&nbsp;Gestione Dati 💾&nbsp;",
     "btn_export": "Esporta opzioni ⚙️",
     "input_import": "Incolla le opzioni esportate e premi invio per importare.",
-    "footer_note": "💎 Supporta anche il contenuto generato dalla funzione Decodifica qui sotto."
+    "footer_note": "💎 Supporta anche il contenuto generato dalla funzione Decodifica qui sotto.",
+    "btn_export_colors": "Esporta colori 🎨"
+  },
+  "history": {
+    "title": "Cronologia 📚",
+    "btn_save": "💾 Salva lo stile attuale",
+    "empty": "La cronologia è vuota.",
+    "load_format": "Includi formato:",
+    "load_font": "Includi font:",
+    "btn_reverse": "Inverti ordine 🔄️"
   },
   "decoder": {
     "label_experimental": "FUNZIONE SPERIMENTALE",

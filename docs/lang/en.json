@@ -78,7 +78,16 @@
     "legend": "&nbsp;Data Management 💾&nbsp;",
     "btn_export": "Export options ⚙️",
     "input_import": "Paste your exported options and press enter to import.",
-    "footer_note": "💎 Supports also the content generated from Decode feature below."
+    "footer_note": "💎 Supports also the content generated from Decode feature below.",
+    "btn_export_colors": "Export colors 🎨"
+  },
+  "history": {
+    "title": "History 📚",
+    "btn_save": "💾 Save Current Style",
+    "empty": "History is empty.",
+    "load_format": "Include format:",
+    "load_font": "Include font:",
+    "btn_reverse": "Reverse order 🔄️"
   },
   "decoder": {
     "label_experimental": "EXPERIMENTAL FEATURE",

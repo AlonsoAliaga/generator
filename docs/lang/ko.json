@@ -78,7 +78,16 @@
     "legend": "&nbsp;데이터 관리 💾&nbsp;",
     "btn_export": "옵션 내보내기 ⚙️",
     "input_import": "내보낸 옵션을 붙여넣고 Enter 키를 눌러 가져오세요.",
-    "footer_note": "💎 아래의 디코드 기능에서 생성된 콘텐츠도 지원합니다."
+    "footer_note": "💎 아래의 디코드 기능에서 생성된 콘텐츠도 지원합니다.",
+    "btn_export_colors": "색상 내보내기 🎨"
+  },
+  "history": {
+    "title": "기록 📚",
+    "btn_save": "💾 현재 스타일 저장",
+    "empty": "기록이 비어 있습니다.",
+    "load_format": "형식 포함:",
+    "load_font": "폰트 포함:",
+    "btn_reverse": "순서 반전 🔄️"
   },
   "decoder": {
     "label_experimental": "실험적 기능",
