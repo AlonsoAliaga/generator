@@ -78,7 +78,16 @@
     "legend": "&nbsp;Datenverwaltung 💾&nbsp;",
     "btn_export": "Optionen exportieren ⚙️",
     "input_import": "Füge deine exportierten Optionen ein und drücke Enter, um sie zu importieren.",
-    "footer_note": "💎 Unterstützt auch die Inhalte, die mit der Dekodier-Funktion unten generiert wurden."
+    "footer_note": "💎 Unterstützt auch die Inhalte, die mit der Dekodier-Funktion unten generiert wurden.",
+    "btn_export_colors": "Farben exportieren 🎨"
+  },
+  "history": {
+    "title": "Verlauf 📚",
+    "btn_save": "💾 Aktuellen Stil speichern",
+    "empty": "Der Verlauf ist leer.",
+    "load_format": "Format einschließen:",
+    "load_font": "Schriftart einschließen:",
+    "btn_reverse": "Reihenfolge umkehren 🔄️"
   },
   "decoder": {
     "label_experimental": "EXPERIMENTELLES FEATURE",
