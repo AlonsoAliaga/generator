@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "Generator (RGB)",
+    "browser_warning": "استخدم Google Chrome أو Opera للحصول على تجربة أفضل. يُذكر أن Edge غير متوافق!"
+  },
+  "header": {
+    "description_title": "كيف يختلف هذا عن المولدات الأخرى؟",
+    "description_text": "حسناً، لنكن صادقين. هناك <span class=\"rainbow\">عدد كبير جداً من المولدات</span> المتاحة. لكن جميعها تفتقر إلى ميزة أو أخرى. يمتلك المولد الخاص بنا <span class=\"rainbow\">جميع الميزات</span> التي قد تحتاجها لتهيئة خادمك!",
+    "discord_suggestion": "⚠️ إذا كان لديك أفكار رائعة، اقترحها في <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">خادم الديسكورد الرسمي</a> الخاص بنا.",
+    "donate_text": "إذا وجدت هذه الأداة مفيدة، فكر في <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">تقديم تبرع</a> لعملنا الشاق. نحن نقدر ذلك!"
+  },
+  "options": {
+    "site_options": "خيارات الموقع:",
+    "dark_mode": "الوضع الداكن 👁️‍🗨️",
+    "button_auto": "🤖 تلقائي",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ انقر هنا للعودة إلى المولد القديم 🎉 <span style='color: #ff6c6c;'>(قد تتم إزالته قريبًا)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;كود المخرجات 📝&nbsp;",
+    "btn_copy": "📋 نسخ الكود",
+    "output_placeholder": "سيظهر كود النتيجة هنا...",
+    "length_warning": "⚠️ المخرجات طويلة جداً للدردشة!",
+    "format_label": "التنسيق: {{name}}",
+    "input_placeholder": "اكتب نصك هنا...",
+    "preview_default": "اكتب شيئاً..."
+  },
+  "palette": {
+    "legend": "&nbsp;لوحة الألوان 🎨&nbsp;",
+    "btn_remove_title": "إزالة اللون",
+    "btn_add_title": "إضافة لون",
+    "colors_text": "الألوان",
+    "max_colors": "الحد الأقصى 20 لوناً",
+    "drag_drop_tip": "تلميح: اسحب وأفلت الألوان لإعادة ترتيبها، أو تبديلها، أو إدراجها بين الألوان الأخرى!"
+  },
+  "styling": {
+    "legend": "&nbsp;الأنماط والأدوات ✨&nbsp;",
+    "label_styles": "الأنماط:",
+    "check_bold": "غامق",
+    "check_italic": "مائل",
+    "check_underline": "تسطير",
+    "check_strike": "يتوسطه خط",
+    "label_actions": "الإجراءات:",
+    "btn_rotate_left": "تدوير لليسار",
+    "btn_reverse": "عكس 🔄",
+    "btn_reverse_title": "عكس اللوحة",
+    "btn_rotate_right": "تدوير لليمين",
+    "warning_iridium": "⚠️ تنسيق Iridium لا يدعم الأنماط!",
+    "mode_text": "الوضع: نص 📖",
+    "mode_lore": "الوضع: Lore 🏹",
+    "mode_motd": "الوضع: MOTD 🎀",
+    "label_anim": "متحرك:",
+    "anim_right": "إلى اليمين ->",
+    "anim_left": "<- إلى اليسار",
+    "btn_generate_anim": "🎬 توليد"
+  },
+  "config": {
+    "legend": "&nbsp;الإعدادات 🛠️&nbsp;",
+    "label_format": "التنسيق:",
+    "label_plugins": "قائمة الإضافات:",
+    "select_plugin_default": "(اختر إضافة)",
+    "btn_link_tooltip": "معلومات الإضافة",
+    "btn_view_plugin": "عرض الإضافة",
+    "label_presets": "الإعدادات المسبقة:",
+    "label_fonts": "قائمة الخطوط:"
+  },
+  "alonso_color": {
+    "title": "أحضر هذا التنسيق إلى Minecraft الآن!",
+    "description": "توقف عن النسخ واللصق! باستخدام <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod)، يمكنك إنشاء إعدادات مسبقة وكتابة التدرجات اللونية تلقائيًا.<br>أنشئ واحفظ الإعدادات المسبقة لاستخدامها في أي وقت وأي مكان!<br><span style=\"font-size: 11px;\">مزيد من المعلومات حول AlonsoColor على <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>",
+    "label_identifier": "المُعرّف:",
+    "placeholder_identifier": "اسم_التدرج",
+    "btn_generate": "توليد الأمر 🚀",
+    "placeholder_command": "سيظهر الأمر هنا...",
+    "btn_copy": "نسخ",
+    "help_text": "انسخ والصق هذا الأمر لإنشائه وتحديده باستخدام <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>"
+  },
+  "data": {
+    "legend": "&nbsp;إدارة البيانات 💾&nbsp;",
+    "btn_export": "تصدير الخيارات ⚙️",
+    "input_import": "الصق الخيارات المصدرة واضغط على Enter للاستيراد.",
+    "footer_note": "💎 يدعم أيضًا المحتوى المولد من ميزة فك التشفير أدناه.",
+    "btn_export_colors": "تصدير الألوان 🎨"
+  },
+  "history": {
+    "title": "السجل 📚",
+    "btn_save": "💾 حفظ النمط الحالي",
+    "empty": "السجل فارغ.",
+    "load_format": "تضمين التنسيق:",
+    "load_font": "تضمين الخط:",
+    "btn_reverse": "عكس الترتيب 🔄️"
+  },
+  "decoder": {
+    "label_experimental": "ميزة تجريبية",
+    "title": "قم بفك تشفير تدرج لوني لديك واحصل على الألوان المستخدمة فيه:",
+    "input_placeholder": "الصق التدرج اللوني الذي تريد فك تشفيره.",
+    "btn_decode": "فك تشفير التدرج 🧬",
+    "btn_load": "فك التشفير والتحميل 📥",
+    "footer_note": "القيمة أعلاه هي الحد الأدنى. قم بزيادتها إذا كنت تعتقد أنك ستحصل على ألوان أكثر من اللازم. Alt + انقر للتعديل بمقدار 10."
+  },
+  "showcase": {
+    "pixelart": "هل تبحث عن فن بكسل مثل هذا؟ 💎",
+    "render": "هل تبحث عن تصيير مثل هذا؟ 💎",
+    "animation": "هل تبحث عن رسوم متحركة مثل هذه؟ 💎"
+  },
+  "moretoolsforyou": {
+    "title": "المزيد من الأدوات لك:"
+  },
+  "footer": {
+    "text": "شكرًا لـ <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> و <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> على عملهما الشاق أثناء تطوير هذه الأداة."
+  },
+  "emoji": {
+    "title": "اختر رمزًا تعبيريًا",
+    "button": "😀 رموز تعبيرية",
+    "information": "🖱️ الاستمرار بالضغط على Alt + النقر يضيف الرموز التعبيرية دون إغلاق المربع!"
+  },
+  "modal": {
+    "title": "لقد عدنا! 🚀",
+    "text": "<span class=\"font-bold\">تذكير سريع:</span><br>نحن نفس الأداة الموثوقة التي تعرفها! <br>اضطررنا إلى إعادة البناء من الصفر لبعض الأسباب المملة!، لكننا هنا مع المزيد من الميزات! 💎",
+    "btn_got_it": "فهمت! 👍",
+    "footer": "ملاحظة... يبدو تنظيم الألوان أكثر سلاسة الآن. جرب سحب الأشياء!"
+  },
+  "toasts": {
+    "copied": "تم النسخ إلى الحافظة!",
+    "exported": "تم تصدير الإعدادات إلى الحافظة!",
+    "imported": "تم استيراد الإعدادات بنجاح!",
+    "decoded_copied": "تم نسخ الألوان المفككة!",
+    "decoded_loaded": "تم فك تشفير التدرج اللوني وتحميله!"
+  },
+  "errors": {
+    "import_failed": "نص استيراد غير صالح!",
+    "no_colors_found": "لم يتم العثور على ألوان!",
+    "iridium_limit": "تنسيق Iridium يدعم لونين فقط!",
+    "max_colors": "يُسمح بـ {{count}} ألوان كحد أقصى!",
+    "min_colors": "تحتاج إلى لونين على الأقل!"
+  }
+}

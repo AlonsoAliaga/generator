@@ -1324,7 +1324,7 @@
         }
 
         // --- I18N SYSTEM ---
-        const AVAILABLE_LANGUAGES = ['en', 'es', 'fr', 'it', 'zh', 'ja', 'ko', 'de'];
+        const AVAILABLE_LANGUAGES = ['en', 'es', 'fr', 'it', 'zh', 'ja', 'ko', 'de', 'ar', 'ga'];
         const DEFAULT_LANGUAGE = 'en';
         
         // HARDCODED FALLBACK (English)
@@ -1479,11 +1479,15 @@
                 'ja': 'jp',
                 'ko': 'kr',
                 'de': 'de',
+                'ar': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Flag_of_the_Arab_League.svg/1920px-Flag_of_the_Arab_League.svg.png',
+                'ga': 'ie'
             };
             
             AVAILABLE_LANGUAGES.forEach(lang => {
                 const img = document.createElement('img');
-                img.src = `https://flagcdn.com/w40/${flags[lang]}.png`;
+                if(flags[lang].startsWith("http")) img.src = flags[lang];
+                else img.src = `https://flagcdn.com/w40/${flags[lang]}.png`;
+                img.style.height = "26px"
                 img.className = 'lang-flag';
                 img.dataset.lang = lang;
                 img.title = lang.toUpperCase();

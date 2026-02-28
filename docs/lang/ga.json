@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "title_hex": "HEX",
+    "title_generator": "Generator (RGB)",
+    "browser_warning": "Bain úsáid as Google Chrome nó Opera le haghaidh eispéireas níos fearr. Tuairiscítear nach bhfuil Edge comhoiriúnach!"
+  },
+  "header": {
+    "description_title": "Conas atá sé seo difriúil ó ghineadóirí eile?",
+    "description_text": "Bhuel, bímis macánta. Tá <span class=\"rainbow\">an iomarca gineadóirí</span> amuigh ansin. Ach tá gné amháin nó gné eile in easnamh orthu ar fad. Tá <span class=\"rainbow\">na gnéithe go léir</span> a d'fhéadfadh a bheith uait chun do fhreastalaí a chumrú ag ár ngineadóir!",
+    "discord_suggestion": "⚠️ Má tá smaointe iontacha agat, mol iad inár <a href=\"https://alonsoaliaga.com/discord\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">freastalaí oifigiúil discord</a>.",
+    "donate_text": "Má fuair tú an uirlis seo úsáideach, smaoinigh ar <a href=\"https://alonsoaliaga.com/donate\" target=\"_blank\" style=\"color:#5555ff; text-decoration:underline;\">síntiús a thabhairt</a> as ár gcuid oibre crua. Is mór againn é!"
+  },
+  "options": {
+    "site_options": "Roghanna an tsuímh:",
+    "dark_mode": "Mód Dorcha 👁️‍🗨️",
+    "button_auto": "🤖 Uath",
+    "open_legacy_generator": "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔄️ Cliceáil anseo chun filleadh ar an seanghineadóir 🎉 <span style='color: #ff6c6c;'>(B'fhéidir go mbainfear go luath é)</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+  },
+  "main": {
+    "output_legend": "&nbsp;Cód Aschuir 📝&nbsp;",
+    "btn_copy": "📋 CÓIPEÁIL AN CÓD",
+    "output_placeholder": "Beidh cód an toraidh anseo...",
+    "length_warning": "⚠️ Aschur ró-fhada don chomhrá!",
+    "format_label": "Formáid: {{name}}",
+    "input_placeholder": "Clóscríobh do théacs anseo...",
+    "preview_default": "Scríobh rud éigin..."
+  },
+  "palette": {
+    "legend": "&nbsp;Pailéad Dathanna 🎨&nbsp;",
+    "btn_remove_title": "Bain Dath",
+    "btn_add_title": "Cuir Dath Leis",
+    "colors_text": "Dathanna",
+    "max_colors": "Uasmhéid 20 dath",
+    "drag_drop_tip": "Leid: Tarraing & scaoil dathanna chun iad a ath-ordú, a mhalartú, nó a chur isteach idir cinn eile!"
+  },
+  "styling": {
+    "legend": "&nbsp;Stíliú & Uirlisí ✨&nbsp;",
+    "label_styles": "Stíleanna:",
+    "check_bold": "Cló Trom",
+    "check_italic": "Cló Iodálach",
+    "check_underline": "Folíne",
+    "check_strike": "Líne Tríd",
+    "label_actions": "Gníomhartha:",
+    "btn_rotate_left": "Rothlaigh ar Chlé",
+    "btn_reverse": "Aisiompaigh 🔄",
+    "btn_reverse_title": "Aisiompaigh Pailéad",
+    "btn_rotate_right": "Rothlaigh ar Dheis",
+    "warning_iridium": "⚠️ Ní thacaíonn formáid Iridium le stíliú!",
+    "mode_text": "Mód: Téacs 📖",
+    "mode_lore": "Mód: Lore 🏹",
+    "mode_motd": "Mód: MOTD 🎀",
+    "label_anim": "Beochan:",
+    "anim_right": "Go Deas ->",
+    "anim_left": "<- Go Clé",
+    "btn_generate_anim": "🎬 Gin"
+  },
+  "config": {
+    "legend": "&nbsp;Cumraíocht 🛠️&nbsp;",
+    "label_format": "Formáid:",
+    "label_plugins": "Liosta Breiseán:",
+    "select_plugin_default": "(Roghnaigh breiseán)",
+    "btn_link_tooltip": "Eolas faoin mBreiseán",
+    "btn_view_plugin": "Féach ar an mBreiseán",
+    "label_presets": "Réamhshocruithe:",
+    "label_fonts": "Liosta Clónna:"
+  },
+  "alonso_color": {
+    "title": "Tabhair an fhormáid seo chuig Minecraft anois!",
+    "description": "Stop de bheith ag cóipeáil agus ag greamú! Le <a href=\"https://alonsoaliaga.com/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; font-weight: bold;\">AlonsoColor</a> (Fabric Mod), is féidir leat réamhshocruithe a chruthú agus grádáin a chlóscríobh go huathoibríoch.<br>Cruthaigh agus sábháil réamhshocruithe le húsáid am ar bith, áit ar bith!<br><span style=\"font-size: 11px;\">Tuilleadh eolais faoi AlonsoColor ar <a href=\"https://github.com/AlonsoAliaga/AlonsoColor\" target=\"_blank\" style=\"color: #5555ff; text-decoration: underline;\">GitHub</a>.</span>",
+    "label_identifier": "Aitheantóir:",
+    "placeholder_identifier": "ainm_an_ghrádáin",
+    "btn_generate": "Gin Ordú 🚀",
+    "placeholder_command": "Beidh an t-ordú anseo...",
+    "btn_copy": "Cóipeáil",
+    "help_text": "Cóipeáil agus greamaigh an t-ordú seo chun é a chruthú agus roghnaigh é le <code class=\"bg-black/20 px-1 rounded text-white/90\">.ac set <span id=\"acHelpId\">{{identifier}}</span></code>"
+  },
+  "data": {
+    "legend": "&nbsp;Bainistíocht Sonraí 💾&nbsp;",
+    "btn_export": "Roghanna Easpórtála ⚙️",
+    "input_import": "Greamaigh do chuid roghanna easpórtáilte agus brúigh Enter chun iompórtáil.",
+    "footer_note": "💎 Tacaíonn sé freisin leis an ábhar a ghintear ón ngné Díchódaithe thíos.",
+    "btn_export_colors": "Easpórtáil dathanna 🎨"
+  },
+  "history": {
+    "title": "Stair 📚",
+    "btn_save": "💾 Sábháil an Stíl Reatha",
+    "empty": "Tá an stair folamh.",
+    "load_format": "Cuir formáid san áireamh:",
+    "load_font": "Cuir cló san áireamh:",
+    "btn_reverse": "Aisiompaigh an t-ord 🔄️"
+  },
+  "decoder": {
+    "label_experimental": "GNÉ THRIAILIACH",
+    "title": "Díchódaigh grádán atá agat agus faigh na dathanna a úsáideadh don ghrádán seo:",
+    "input_placeholder": "Greamaigh an grádán is mian leat a dhíchódú.",
+    "btn_decode": "Díchódaigh grádán 🧬",
+    "btn_load": "Díchódaigh agus lódáil 📥",
+    "footer_note": "Is í an luach thuas an tairseach. Méadaigh é má mheasann tú go bhfaigheann tú an iomarca dathanna. Alt + cliceáil chun athrú faoi 10."
+  },
+  "showcase": {
+    "pixelart": "Ag lorg ealaín picteilíní mar seo? 💎",
+    "render": "Ag lorg rindreáil mar seo? 💎",
+    "animation": "Ag lorg beochan mar seo? 💎"
+  },
+  "moretoolsforyou": {
+    "title": "Tuilleadh uirlisí duit:"
+  },
+  "footer": {
+    "text": "Buíochas le <a href=\"https://alonsoaliaga.com/donate\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">AlonsoAliaga</a> agus <a href=\"https://google.com\" rel=\"noopener\" target=\"_blank\" style=\"color:var(--link-color);\">Gemini</a> as a gcuid oibre crua le linn fhorbairt na huirlise seo."
+  },
+  "emoji": {
+    "title": "Roghnaigh Emoji",
+    "button": "😀 Emojis",
+    "information": "🖱️ Trí Alt + Cliceáil a choinneáil, is féidir emojis a chur leis gan an bosca a dhúnadh!"
+  },
+  "modal": {
+    "title": "Táimid ar ais! 🚀",
+    "text": "<span class=\"font-bold\">Meabhrúchán gasta:</span><br>Is muidne an uirlis iontaofa chéanna a bhfuil aithne agat uirthi! <br>B'éigean dúinn athchruthú ón tús de bharr cúiseanna leadránacha!, ach táimid anseo le níos mó gnéithe fós! 💎",
+    "btn_got_it": "Tuigim! 👍",
+    "footer": "Psst... tá eagrú dathanna níos fusa anois. Bain triail as rudaí a tharraingt!"
+  },
+  "toasts": {
+    "copied": "Cóipeáilte go dtí an ghearrthaisce!",
+    "exported": "Socruithe easpórtáilte go dtí an ghearrthaisce!",
+    "imported": "Socruithe iompórtáilte go rathúil!",
+    "decoded_copied": "Dathanna díchódaithe cóipeáilte!",
+    "decoded_loaded": "Grádán díchódaithe & lódáilte!"
+  },
+  "errors": {
+    "import_failed": "Teaghrán iompórtála neamhbhailí!",
+    "no_colors_found": "Níor aimsíodh aon dathanna!",
+    "iridium_limit": "Ní thacaíonn formáid Iridium ach le 2 dhath!",
+    "max_colors": "Uasmhéid {{count}} dath ceadaithe!",
+    "min_colors": "Teastaíonn 2 dhath ar a laghad uait!"
+  }
+}
