@@ -922,7 +922,6 @@
 
     <!-- Separator Line -->
     <hr style="width: 70%; border-color: #888; margin-bottom: 5px;width: 100%;max-width: 950px;">
-    <div class="minecraft_auth"></div>
     <!-- Warning Bar -->
     <div class="warning-text" data-i18n="meta.browser_warning">
         Use Google Chrome or Opera for a better experience. Edge is reported as not compatible!
@@ -1163,7 +1162,7 @@
                             </div>
                         </div>
                     </fieldset>
-
+                    <div class="minecraft_auth" data-max-width="750px" data-max-height="120px"></div>
                     <!-- BLOCK 6: Data Management -->
                     <fieldset class="config-block">
                         <legend data-i18n="data.legend">&nbsp;Data Management 💾&nbsp;</legend>
@@ -3102,6 +3101,7 @@
                     el.appendChild(overlay);
                 }
             });
+            layer();
         }
 
         window.addEventListener('load', async () => {
