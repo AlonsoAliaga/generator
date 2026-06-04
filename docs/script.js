@@ -587,7 +587,7 @@ const formats = {
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
     ],
   },
-  a16: {
+  a17: {
     name: 'Backslash \\#rrggbb\\',
     outputPrefix: '',
     template: '\\#$1$2$3$4$5$6\\$f$c',
