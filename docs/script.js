@@ -587,6 +587,18 @@ const formats = {
       "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
     ],
   },
+  a16: {
+    name: 'Backslash \\#rrggbb\\',
+    outputPrefix: '',
+    template: '\\#$1$2$3$4$5$6\\$f$c',
+    formatChar: "&",
+    maxLength: null,
+    hover: [
+      "🔔 <span style='margin: auto;'><strong>Plugins using this format:</strong></span>",
+      "{plugins}",
+      "<span style='color: red'>Know a plugin using this format? Let us know!</span>"
+    ],
+  },
 };
 let emojis_to_use_as_replacement = []
 let double_emojis = []
